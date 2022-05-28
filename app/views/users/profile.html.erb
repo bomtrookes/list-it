@@ -1,4 +1,4 @@
 <h1>my profile</h1>
 <p><%= current_user.email %></p>
-<p>following: <%= current_user.followings.count %></p>
-<p>followers: <%= @user.followers.count %></p>
+<p>following: <%= link_to current_user.followings.count, following_path %></p>
+<p>followers: <%= link_to current_user.followers.count, followers_path %></p>
