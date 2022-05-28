@@ -1,3 +1,5 @@
+require 'faker'
+
 puts "Cleaning Database..."
 User.destroy_all
 Follow.destroy_all
@@ -13,7 +15,7 @@ puts "Database clean"
 
 puts "Creating Users..."
 user1 = User.create(email: "bom@test.com", password: "pass123")
-user2 = User.create(email: "and@test.com", password: "pass123")
+user2 = User.create(email: "nuria@test.com", password: "pass123")
 user3 = User.create(email: "athe@test.com", password: "pass123")
 user4 = User.create(email: "snoop@test.com", password: "pass123")
 user5 = User.create(email: "smile@test.com", password: "pass123")
@@ -25,13 +27,58 @@ user5 = User.create(email: "smile@test.com", password: "pass123")
 puts "User created"
 
 puts "Creating Follows..."
-follow1 = Follow.create(follower_id: user5.id, followed_id: 0)
-follow2 = Follow.create(follower_id: user4.id, followed_id: 0)
-follow3 = Follow.create(follower_id: user1.id, followed_id: follow2.id)
-follow4 = Follow.create(follower_id: user2.id, followed_id: follow3.id)
-follow5 = Follow.create(follower_id: user3.id, followed_id: follow4.id)
-follow1.update(follower_id: user5.id, followed_id: follow5.id)
-follow2.update(follower_id: user5.id, followed_id: follow4.id)
+Follow.create(follower_id: user5.id, followed_id: user2.id)
+Follow.create(follower_id: user4.id, followed_id: user2.id)
+Follow.create(follower_id: user1.id, followed_id: user2.id)
+Follow.create(follower_id: user2.id, followed_id: user3.id)
+Follow.create(follower_id: user3.id, followed_id: user4.id)
+
+rand(120..589).times do
+
+  user_a = User.create!(
+    {
+      email: Faker::Internet.email,
+      password: "pass123"
+    }
+  )
+
+  user_b = User.create!(
+    {
+      email: Faker::Internet.email,
+      password: "pass123"
+    }
+  )
+
+  Follow.create(follower_id: user_a.id, followed_id: user_b.id)
+
+  Follow.create(follower_id: user1.id, followed_id: user_a.id)
+  Follow.create(follower_id: user2.id, followed_id: user_b.id)
+  Follow.create(follower_id: user3.id, followed_id: user_b.id)
+
+end
+
+rand(120..589).times do
+
+  user_a = User.create!(
+    {
+      email: Faker::Internet.email,
+      password: "pass123"
+    }
+  )
+
+  user_b = User.create!(
+    {
+      email: Faker::Internet.email,
+      password: "pass123"
+    }
+  )
+
+  Follow.create(follower_id: user_a.id, followed_id: user1.id)
+  Follow.create(follower_id: user_b.id, followed_id: user2.id)
+  Follow.create(follower_id: user_a.id, followed_id: user3.id)
+
+end
+
 puts "Follows created"
 
 puts "Creating Lists..."

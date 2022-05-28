@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  # https://betterprogramming.pub/how-to-create-a-follow-feature-in-rails-by-aliasing-associations-30d63edee284
+
   # Will return an array of follows for the given user instance
   has_many :received_follows, foreign_key: :followed_id, class_name: "Follow"
   # Will return an array of users who follow the user instance
