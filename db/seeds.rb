@@ -8,54 +8,64 @@ FavouriteList.destroy_all
 # ListTag.destroy_all
 puts "Database clean"
 
-puts "Creating Users..."
-User.create(username: "bomtrookes", email: "bom@test.com", password: "pass123", avatar: "#", bio: "Some information about me")
-User.create(username: "andyouare", email: "and@test.com", password: "pass123", avatar: "#", bio: "Some information about me")
-User.create(username: "Athelas85", email: "athe@test.com", password: "pass123", avatar: "#", bio: "Some information about me")
-User.create(username: "snoopy", email: "snoop@test.com", password: "pass123", avatar: "#", bio: "Some information about me")
-User.create(username: "emojiBoy", email: "smile@test.com", password: "pass123", avatar: "#", bio: "Some information about me")
+# Bio for users
+bio = "This is the bio section of the users profile. You can update this information."
 
-puts "Creating Following..."
-Following.create(follower_id: 1, followed_id: 4)
-Following.create(follower_id: 2, followed_id: 5)
-Following.create(follower_id: 3, followed_id: 1)
-Following.create(follower_id: 4, followed_id: 2)
-Following.create(follower_id: 5, followed_id: 3)
+puts "Creating Users..."
+user1 = User.create(username: "bomtrookes", email: "bom@test.com", password: "pass123", avatar: "#", bio: bio)
+user2 = User.create(username: "andyouare", email: "and@test.com", password: "pass123", avatar: "#", bio: bio)
+user3 = User.create(username: "Athelas85", email: "athe@test.com", password: "pass123", avatar: "#", bio: bio)
+user4 = User.create(username: "snoopy", email: "snoop@test.com", password: "pass123", avatar: "#", bio: bio)
+user5 = User.create(username: "emojiBoy", email: "smile@test.com", password: "pass123", avatar: "#", bio: bio)
+puts "User created"
+
+puts "Creating Follows..."
+follow1 = Follow.create(follower_id: user5.id, followed_id: 0)
+follow2 = Follow.create(follower_id: user4.id, followed_id: follow4.id)
+follow3 = Follow.create(follower_id: user1.id, followed_id: follow2.id)
+follow4 = Follow.create(follower_id: user2.id, followed_id: follow3.id)
+follow5 = Follow.create(follower_id: user3.id, followed_id: follow4.id)
+follow1.update(follower_id: user5.id, followed_id: follow5.id)
+puts "Follows created"
 
 puts "Creating Lists..."
-List.create(used_id: 1, title: "Best Movies", votes: 234, published: true)
-List.create(used_id: 2, title: "Walks in London", votes: 345, published: true)
-List.create(used_id: 3, title: "Summer Holiday Destionations", votes: 456, published: true)
-List.create(used_id: 4, title: "Ketchup Brands", votes: 353, published: true)
-List.create(used_id: 5, title: "Website Designs", votes: 536, published: true)
+list1 = List.create(used_id: user1.id, title: "Best Movies", votes: 234, published: true)
+list2 = List.create(used_id: user2.id, title: "Walks in London", votes: 345, published: true)
+list3 = List.create(used_id: user3.id, title: "Summer Holiday Destionations", votes: 456, published: true)
+list4 = List.create(used_id: user4.id, title: "Ketchup Brands", votes: 353, published: true)
+list5 = List.create(used_id: user5.id, title: "Website Designs", votes: 536, published: true)
+puts "Lists created"
 
 puts "Creating List Items..."
-Item.create(name: "Godfather", description: "It's really good, so I made a list about it", link: "#", list_id: 1)
-Item.create(name: "Amelie", description: "It's really good, so I made a list about it", link: "#", list_id: 1)
-Item.create(name: Her, description: "It's really good, so I made a list about it", link: "#", list_id: 1)
-
-Item.create(name: "Hampstead Heath", description: "It's really good, so I made a list about it", link: "#", list_id: 2)
-Item.create(name: "Regents Park", description: "It's really good, so I made a list about it", link: "#", list_id: 2)
-Item.create(name: "Clissold Park", description: "It's really good, so I made a list about it", link: "#", list_id: 2)
-
-Item.create(name: "Spain", description: "It's really good, so I made a list about it", link: "#", list_id: 3)
-Item.create(name: "Greece", description: "It's really good, so I made a list about it", link: "#", list_id: 3)
-Item.create(name: "France", description: "It's really good, so I made a list about it", link: "#", list_id: 3)
-
-Item.create(name: "Heinz", description: "It's really good, so I made a list about it", link: "#", list_id: 4)
-Item.create(name: "Daddy's", description: "It's really good, so I made a list about it", link: "#", list_id: 4)
-Item.create(name: "Sauce Shop", description: "It's really good, so I made a list about it", link: "#", list_id: 4)
-
-Item.create(name: "Google", description: "It's really good, so I made a list about it", link: "#", list_id: 5)
-Item.create(name: "Apple", description: "It's really good, so I made a list about it", link: "#", list_id: 5)
-Item.create(name: "Awwwards", description: "It's really good, so I made a list about it", link: "#", list_id: 5)
+# list 3 - items
+Item.create(name: "Godfather" , description: "It's really good, so I made a list about it", link: "#", list_id: list1.id  )
+Item.create(name: "Amelie" , description: "It's really good, so I made a list about it", link: "#", list_id: list1.id )
+Item.create(name: Her, description: "It's really good, so I made a list about it", link: "#", list_id: list1.id )
+# list 2 - items
+Item.create(name: "Hampstead Heath", description: "It's really good, so I made a list about it", link: "#", list_id: list2.id)
+Item.create(name: "Regents Park", description: "It's really good, so I made a list about it", link: "#", list_id: list2.id)
+Item.create(name: "Clissold Park", description: "It's really good, so I made a list about it", link: "#", list_id: list2.id)
+# list 3 - items
+Item.create(name: "Spain", description: "It's really good, so I made a list about it", link: "#", list_id: list3.id)
+Item.create(name: "Greece", description: "It's really good, so I made a list about it", link: "#", list_id: list3.id)
+Item.create(name: "France", description: "It's really good, so I made a list about it", link: "#", list_id: list3.id)
+# list 4 - items
+Item.create(name: "Heinz", description: "It's really good, so I made a list about it", link: "#", list_id: list4.id)
+Item.create(name: "Daddy's", description: "It's really good, so I made a list about it", link: "#", list_id: list4.id)
+Item.create(name: "Sauce Shop", description: "It's really good, so I made a list about it", link: "#", list_id: list4.id)
+# list 5 - items
+Item.create(name: "Google", description: "It's really good, so I made a list about it", link: "#", list_id: list5.id)
+Item.create(name: "Apple", description: "It's really good, so I made a list about it", link: "#", list_id: list5.id)
+Item.create(name: "Awwwards", description: "It's really good, so I made a list about it", link: "#", list_id: list5.id)
+puts "List Items created"
 
 puts "Creating Favourite Lists..."
-FavouriteList.create(used_id: 1, list_id: 5)
-FavouriteList.create(used_id: 2, list_id: 4)
-FavouriteList.create(used_id: 3, list_id: 3)
-FavouriteList.create(used_id: 4, list_id: 1)
-FavouriteList.create(used_id: 5, list_id: 2)
+FavouriteList.create(used_id: user1.id, list_id: list5.id)
+FavouriteList.create(used_id: user2.id, list_id: list4.id)
+FavouriteList.create(used_id: user3.id, list_id: list3.id)
+FavouriteList.create(used_id: user4.id, list_id: list1.id)
+FavouriteList.create(used_id: user5.id, list_id: list2.id)
+puts "Favourite Lists created"
 
 # puts "Creating Tags..."
 
