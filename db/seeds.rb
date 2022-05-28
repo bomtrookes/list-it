@@ -33,7 +33,7 @@ Follow.create(follower_id: user1.id, followed_id: user2.id)
 Follow.create(follower_id: user2.id, followed_id: user3.id)
 Follow.create(follower_id: user3.id, followed_id: user4.id)
 
-rand(120..589).times do
+rand(120..289).times do
 
   user_a = User.create!(
     {
@@ -57,7 +57,7 @@ rand(120..589).times do
 
 end
 
-rand(120..589).times do
+rand(120..289).times do
 
   user_a = User.create!(
     {
