@@ -4,8 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user
-    # @following = current_user.followings.find(@user.id)
-    @following = current_user.followings.find
+    @following = @user.following
   end
 
   private
