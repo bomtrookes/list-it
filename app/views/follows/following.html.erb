@@ -1,6 +1,7 @@
 <h1>Following</h1>
-<%= current_user.followers.each do |follower| %>
-<ul>
-  <li><%= follower.email %></li>
-</ul>
+
+<% @user.followings.each do |following| %>
+  <ul>
+    <li><%= link_to following.email, user_path(following) %></li>
+  </ul>
 <% end %>

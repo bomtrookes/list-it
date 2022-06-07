@@ -3,15 +3,17 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :follows
   resources :favourite_lists
   resources :items
 
   resources :users do
     resources :lists
+    resources :follows, only: [:create, :destroy]
+    get 'following', action: :following, controller: 'follows'
+    get 'followers', action: :followers, controller: 'follows'
   end
 
-  get 'profile', action: :profile, controller: 'users'
+  get 'profile', action: :profile, controller: 'users' # can we make username part of the url instead of id?
   get 'following', action: :following, controller: 'follows'
   get 'followers', action: :followers, controller: 'follows'
 
