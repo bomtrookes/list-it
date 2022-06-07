@@ -1,0 +1,9 @@
+<h1> <%= @list.title %> </h1>
+
+<% @list.items.each do | item | %>
+  <ul>
+    <li>
+  <%= item.name %>
+    </li>
+  </ul>
+<% end %>
