@@ -27,11 +27,6 @@ user5 = User.create(email: "smile@test.com", password: "pass123")
 puts "Users created"
 
 puts "Creating Follows..."
-Follow.create(follower_id: user5.id, followed_id: user2.id)
-Follow.create(follower_id: user4.id, followed_id: user2.id)
-Follow.create(follower_id: user1.id, followed_id: user2.id)
-Follow.create(follower_id: user2.id, followed_id: user3.id)
-Follow.create(follower_id: user3.id, followed_id: user4.id)
 
 rand(5..10).times do
 
@@ -92,10 +87,6 @@ rand(5..10).times do
   Follow.create(follower_id: user_a.id, followed_id: user_b.id)
   Follow.create(follower_id: user_b.id, followed_id: user_a.id)
   Follow.create(follower_id: user_c.id, followed_id: user_b.id)
-
-  Follow.create(follower_id: user_a.id, followed_id: user1.id)
-  Follow.create(follower_id: user_b.id, followed_id: user2.id)
-  Follow.create(follower_id: user_c.id, followed_id: user3.id)
 
 end
 

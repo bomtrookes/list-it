@@ -4,16 +4,16 @@ class UsersController < ApplicationController
 
   def show
     @user
-    @following = @user.following
+    @following = current_user.followings.find_by(id: @user.id)
   end
 
   private
 
   def set_user
-    if params[:user_id].nil?
+    if params[:id] == current_user.id
       @user = current_user
     else
-      @user = User.find(params[:user_id])
+      @user = User.find(params[:id])
     end
   end
 

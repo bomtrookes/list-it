@@ -1,6 +1,6 @@
-<p><%= @user.email %></p>
+<h3><%= @user.email %></h3>
 
-<% if current_user %>
+<% unless hide_follow_button(@user) %>
   <%= follow_or_unfollow_button(@user, @following) %>
 <% end %>
 

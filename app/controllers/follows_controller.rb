@@ -11,13 +11,15 @@ class FollowsController < ApplicationController
   end
 
   def create
+    @user
     @user.followers << current_user
     redirect_to @user
   end
 
   def destroy
-    followed = current_user.followers.find(@user.id)
-    followed.destroy
+    @user
+    follow = Follow.find_by(follower_id: current_user.id, followed_id: @user.id)
+    follow.destroy
 
     redirect_to @user
   end
@@ -25,10 +27,11 @@ class FollowsController < ApplicationController
   private
 
   def set_user
-    if params[:user_id].nil?
+    if params[:user_id] == current_user.id
       @user = current_user
     else
       @user = User.find(params[:user_id])
     end
   end
+
 end
