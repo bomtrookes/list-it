@@ -15,9 +15,10 @@ class User < ApplicationRecord
   # returns an array of other users who the user has followed
   has_many :followings, through: :given_follows, source: :followed
 
-  # validates :username, uniqueness: { case_sensitive: true }
-  # validates :username, presence: true
-  # validates :bio, presence: true
+  validates :username, uniqueness: { case_sensitive: true }
+  validates :username, presence: true, length: { in: 2..20 }
+  validates :bio, presence: true, length: { maximum: 500,
+    too_long: "%{count} characters is the maximum allowed" }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
