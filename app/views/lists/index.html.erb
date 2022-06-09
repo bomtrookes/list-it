@@ -1,7 +1,7 @@
 <h1>My Lists</h1>
 
   <ul>
-<% @lists.each do | list | %>
+<% @user.lists.each do | list | %>
     <li><%= link_to list.title, user_list_path(current_user, list) %> </li>
   <% end %>
   </ul>
