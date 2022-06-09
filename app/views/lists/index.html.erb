@@ -1,0 +1,10 @@
+<h1>All Lists</h1>
+
+  <ul>
+<% @lists.each do | list | %>
+    <li><%= link_to list.title, user_lists_path(current_user, list) %> </li>
+  <% end %>
+  </ul>
+
+<%# show all users lists %>
+<%# lists need to link to list show page %>
