@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def show
     @user
-    @following = current_user.followings.find_by(id: @user.id)
   end
 
   private
