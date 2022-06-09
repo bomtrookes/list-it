@@ -19,21 +19,16 @@ user2 = User.create(email: "nuria@test.com", password: "pass123")
 user3 = User.create(email: "athe@test.com", password: "pass123")
 user4 = User.create(email: "snoop@test.com", password: "pass123")
 user5 = User.create(email: "smile@test.com", password: "pass123")
-# user1 = User.create(username: "bomtrookes", email: "bom@test.com", password: "pass123", avatar: "#", bio: bio)
-# user2 = User.create(username: "andyouare", email: "and@test.com", password: "pass123", avatar: "#", bio: bio)
-# user3 = User.create(username: "Athelas85", email: "athe@test.com", password: "pass123", avatar: "#", bio: bio)
+# user1 = User.create(username: "bomtrookes", email: "bom@test.com", password: "pass123", avatar: "#", bio: bio, admin: true)
+# user2 = User.create(username: "andyouare", email: "and@test.com", password: "pass123", avatar: "#", bio: bio, admin: true)
+# user3 = User.create(username: "Athelas85", email: "athe@test.com", password: "pass123", avatar: "#", bio: bio, admin: true)
 # user4 = User.create(username: "snoopy", email: "snoop@test.com", password: "pass123", avatar: "#", bio: bio)
 # user5 = User.create(username: "emojiBoy", email: "smile@test.com", password: "pass123", avatar: "#", bio: bio)
-puts "User created"
+puts "Users created"
 
 puts "Creating Follows..."
-Follow.create(follower_id: user5.id, followed_id: user2.id)
-Follow.create(follower_id: user4.id, followed_id: user2.id)
-Follow.create(follower_id: user1.id, followed_id: user2.id)
-Follow.create(follower_id: user2.id, followed_id: user3.id)
-Follow.create(follower_id: user3.id, followed_id: user4.id)
 
-rand(120..289).times do
+rand(5..10).times do
 
   user_a = User.create!(
     {
@@ -43,6 +38,13 @@ rand(120..289).times do
   )
 
   user_b = User.create!(
+    {
+      email: Faker::Internet.email,
+      password: "pass123"
+    }
+  )
+
+  user_c = User.create!(
     {
       email: Faker::Internet.email,
       password: "pass123"
@@ -50,14 +52,16 @@ rand(120..289).times do
   )
 
   Follow.create(follower_id: user_a.id, followed_id: user_b.id)
+  Follow.create(follower_id: user_b.id, followed_id: user_a.id)
+  Follow.create(follower_id: user_c.id, followed_id: user_b.id)
 
-  Follow.create(follower_id: user1.id, followed_id: user_a.id)
-  Follow.create(follower_id: user2.id, followed_id: user_b.id)
-  Follow.create(follower_id: user3.id, followed_id: user_b.id)
+  Follow.create(follower_id: user_a.id, followed_id: user1.id)
+  Follow.create(follower_id: user_b.id, followed_id: user2.id)
+  Follow.create(follower_id: user_c.id, followed_id: user3.id)
 
 end
 
-rand(120..289).times do
+rand(5..10).times do
 
   user_a = User.create!(
     {
@@ -73,9 +77,16 @@ rand(120..289).times do
     }
   )
 
-  Follow.create(follower_id: user_a.id, followed_id: user1.id)
-  Follow.create(follower_id: user_b.id, followed_id: user2.id)
-  Follow.create(follower_id: user_a.id, followed_id: user3.id)
+  user_c = User.create!(
+    {
+      email: Faker::Internet.email,
+      password: "pass123"
+    }
+  )
+
+  Follow.create(follower_id: user_a.id, followed_id: user_b.id)
+  Follow.create(follower_id: user_b.id, followed_id: user_a.id)
+  Follow.create(follower_id: user_c.id, followed_id: user_b.id)
 
 end
 
