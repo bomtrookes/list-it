@@ -1,5 +1,8 @@
 class User < ApplicationRecord
 
+  has_many :lists, dependent: :destroy
+  has_many :favourite_lists, dependent: :destroy
+
   # https://betterprogramming.pub/how-to-create-a-follow-feature-in-rails-by-aliasing-associations-30d63edee284
 
   # Will return an array of follows for the given user instance

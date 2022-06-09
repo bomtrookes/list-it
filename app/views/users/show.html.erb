@@ -1,0 +1,9 @@
+<h3><%= @user.email %></h3>
+
+<% unless hide_follow_button(@user) %>
+  <%= follow_or_unfollow_button(@user, @following) %>
+<% end %>
+
+<p>Lists: <%= link_to @user.followings.size, user_following_path(@user) %></p>
+<p>following: <%= link_to @user.followings.size, user_following_path(@user) %></p>
+<p>followers: <%= link_to @user.followers.size, user_followers_path(@user) %></p>
