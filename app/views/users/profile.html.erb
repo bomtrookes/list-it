@@ -1,0 +1,6 @@
+<h1>my profile</h1>
+<p><%= current_user.email %></p>
+<p>following: <%= link_to current_user.followings.count, following_path %></p>
+<p>followers: <%= link_to current_user.followers.count, followers_path %></p>
+
+<%# lists: <%= link_to current_user.lists.count, lists_path %>

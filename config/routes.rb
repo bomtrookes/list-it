@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :favourite_lists
-  resources :items
 
   resources :users do
     resources :lists

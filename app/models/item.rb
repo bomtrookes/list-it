@@ -3,5 +3,5 @@ class Item < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 2 }
   validates :list_id, presence: true
-  validates :description, length: { maximum: 200 }
+  validates :description, length: { maximum: 200 }, allow_blank: true
 end
