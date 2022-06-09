@@ -14,40 +14,46 @@ puts "Database clean"
 # bio = "This is the bio section of the users profile. You can update this information."
 
 puts "Creating Users..."
-user1 = User.create(email: "bom@test.com", password: "pass123")
-user2 = User.create(email: "nuria@test.com", password: "pass123")
-user3 = User.create(email: "athe@test.com", password: "pass123")
-user4 = User.create(email: "snoop@test.com", password: "pass123")
-user5 = User.create(email: "smile@test.com", password: "pass123")
-# user1 = User.create(username: "bomtrookes", email: "bom@test.com", password: "pass123", avatar: "#", bio: bio, admin: true)
-# user2 = User.create(username: "andyouare", email: "and@test.com", password: "pass123", avatar: "#", bio: bio, admin: true)
-# user3 = User.create(username: "Athelas85", email: "athe@test.com", password: "pass123", avatar: "#", bio: bio, admin: true)
-# user4 = User.create(username: "snoopy", email: "snoop@test.com", password: "pass123", avatar: "#", bio: bio)
-# user5 = User.create(username: "emojiBoy", email: "smile@test.com", password: "pass123", avatar: "#", bio: bio)
-puts "Users created"
+user1 = User.create(username: "bomtrookes", email: "bom@test.com", password: "pass123", avatar: Faker::Avatar.image, bio: Faker::GreekPhilosophers.quote, admin: true)
+user2 = User.create(username: "nuria", email: "nuria@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote, admin: true)
+user3 = User.create(username: "Athelas85", email: "athe@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote, admin: true)
+user4 = User.create(username: "snoop", email: "snoop@test.com", password: "pass123", avatar: Faker::Avatar.image, bio: Faker::GreekPhilosophers.quote)
+user5 = User.create(username: "smile", email: "smile@test.com", password: "pass123", avatar: Faker::Avatar.image, bio: Faker::GreekPhilosophers.quote)
+
 
 puts "Creating Follows..."
+
+i = 0
 
 rand(5..10).times do
 
   user_a = User.create!(
     {
       email: Faker::Internet.email,
-      password: "pass123"
+      password: "pass123",
+      bio: Faker::GreekPhilosophers.quote,
+      username: "#{Faker::Name.first_name}#{i}",
+      avatar: Faker::Avatar.image
     }
   )
 
   user_b = User.create!(
     {
       email: Faker::Internet.email,
-      password: "pass123"
+      password: "pass123",
+      bio: Faker::GreekPhilosophers.quote,
+      username: "#{Faker::Name.first_name}#{i}",
+      avatar: Faker::Avatar.image
     }
   )
 
   user_c = User.create!(
     {
       email: Faker::Internet.email,
-      password: "pass123"
+      password: "pass123",
+      bio: Faker::GreekPhilosophers.quote,
+      username: "#{Faker::Name.first_name}#{i}",
+      avatar: Faker::Avatar.image
     }
   )
 
@@ -59,6 +65,8 @@ rand(5..10).times do
   Follow.create(follower_id: user_b.id, followed_id: user2.id)
   Follow.create(follower_id: user_c.id, followed_id: user3.id)
 
+  i += 3
+
 end
 
 rand(5..10).times do
@@ -66,27 +74,38 @@ rand(5..10).times do
   user_a = User.create!(
     {
       email: Faker::Internet.email,
-      password: "pass123"
+      password: "pass123",
+      bio: Faker::GreekPhilosophers.quote,
+      username: "#{Faker::Name.first_name}#{i}",
+      avatar: Faker::Avatar.image
     }
   )
 
   user_b = User.create!(
     {
       email: Faker::Internet.email,
-      password: "pass123"
+      password: "pass123",
+      bio: Faker::GreekPhilosophers.quote,
+      username: "#{Faker::Name.first_name}#{i}",
+      avatar: Faker::Avatar.image
     }
   )
 
   user_c = User.create!(
     {
       email: Faker::Internet.email,
-      password: "pass123"
+      password: "pass123",
+      bio: Faker::GreekPhilosophers.quote,
+      username: "#{Faker::Name.first_name}#{i}",
+      avatar: Faker::Avatar.image
     }
   )
 
   Follow.create(follower_id: user_a.id, followed_id: user_b.id)
   Follow.create(follower_id: user_b.id, followed_id: user_a.id)
   Follow.create(follower_id: user_c.id, followed_id: user_b.id)
+
+  i += 2
 
 end
 
@@ -98,6 +117,8 @@ list2 = List.create(user_id: user2.id, title: "Walks in London", votes: 345, pub
 list3 = List.create(user_id: user3.id, title: "Summer Holiday Destionations", votes: 456, published: true)
 list4 = List.create(user_id: user4.id, title: "Ketchup Brands", votes: 353, published: true)
 list5 = List.create(user_id: user5.id, title: "Website Designs", votes: 536, published: true)
+list6 = List.create(user_id: user2.id, title: "Top 10 Jamie Oliver Recipes", votes: 0, published: false)
+list6 = List.create(user_id: user2.id, title: "Fav colors", votes: 0, published: false)
 puts "Lists created"
 
 puts "Creating List Items..."
@@ -121,6 +142,21 @@ Item.create(name: "Sauce Shop", description: "It's really good, so I made a list
 Item.create(name: "Google", description: "It's really good, so I made a list about it", link: "#", list_id: list5.id)
 Item.create(name: "Apple", description: "It's really good, so I made a list about it", link: "#", list_id: list5.id)
 Item.create(name: "Awwwards", description: "It's really good, so I made a list about it", link: "#", list_id: list5.id)
+# list 6 - items
+Item.create(name: "Silky squash risotto", list_id: list6.id)
+Item.create(name: "Beautiful courgette carbonara", list_id: list6.id)
+Item.create(name: "Greens mac 'n' cheese", list_id: list6.id)
+Item.create(name: "Roasted veggie curry", list_id: list6.id)
+Item.create(name: "Claudia Winkleman's butter chicken", list_id: list6.id)
+Item.create(name: "Love heart Camembert", list_id: list6.id)
+# list 7 - items
+Item.create(name: "red", list_id: list6.id)
+Item.create(name: "orange", list_id: list6.id)
+Item.create(name: "black", list_id: list6.id)
+Item.create(name: "green", list_id: list6.id)
+Item.create(name: "surf green", list_id: list6.id)
+Item.create(name: "garnet", list_id: list6.id)
+
 puts "List Items created"
 
 puts "Creating Favourite Lists..."
