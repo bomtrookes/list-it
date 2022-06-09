@@ -3,6 +3,7 @@ class ListsController < ApplicationController
 
   # read - for Search see line 35 onwards
   def index
+    @user = User.find(params[:user_id])
     @lists = List.all
   end
 
