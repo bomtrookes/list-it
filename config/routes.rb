@@ -6,9 +6,12 @@ Rails.application.routes.draw do
   resources :follows
   resources :favourite_lists
 
+  resources :items, only: [:create]
+
   resources :users do
     resources :lists
   end
+
 
   get 'profile', action: :profile, controller: 'users'
   get 'following', action: :following, controller: 'follows'

@@ -2,7 +2,7 @@
 
   <ul>
 <% @lists.each do | list | %>
-    <li><%= link_to list.title, user_list_path(current_user, list) %> </li>
+    <li><%= link_to list.title, user_lists_path(current_user, list) %> </li>
   <% end %>
   </ul>
 

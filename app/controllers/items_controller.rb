@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_list, only: [:new, :create]
+  # before_action :set_user, only: [:new, :create]
+  # before_action :set_list, only: [:new, :create]
   def index
     @items = Item.all
   end
@@ -10,11 +11,13 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
-      flash[:notice] = "Saved"
+    @item.list = List.find(params[:item][:list_id])
+    if @item.save!
+      redirect_to user_list_path(user_id: current_user, id: @item.list)
     else
       flash[:notice] = "Not valid"
       render :new
+    end
   end
 
   def edit
@@ -28,6 +31,7 @@ class ItemsController < ApplicationController
     else
       flash[:notice] = "Not Valid"
       render :edit
+    end
   end
 
   def destroy
@@ -38,10 +42,14 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :link, :list_id)
+    params.require(:item).permit(:name, :list_id)
   end
 
-  def set_list
-    @list = List.find(params[:list_id])
-  end
+  # def set_user
+  #   @user = User.find(params[:user_id])
+  # end
+
+  # def set_list
+  #   @list = List.find(params[:list_id])
+  # end
 end
