@@ -2,7 +2,7 @@
 <%= image_tag @user.avatar, height: 250, width: 250, crop: :fill %>
 <h3><%= @user.username %></h3>
 <p>bio: <%= @user.bio %></p>
-<% unless hide_follow_button(@user) %>
+<% unless hide_button(@user) %>
   <%= follow_or_unfollow_button(@user, @following) %>
 <% end %>
 

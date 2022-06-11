@@ -7,10 +7,12 @@
       <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
         <div class="item-infos" data-edit-item-target="infos">
           <%= item.name %>
+          <% if hide_button(@list.user)%>
           <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
+          <% end %>
         </div>
 
-        <% if current_user %>
+        <% if hide_button(@list.user)%>
           <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
             <%= f.input :name %>
             <%= f.hidden_field :list_id, value: @list.id %>
@@ -22,7 +24,7 @@
   <% end %>
   </ul>
 
-  <% if @list.items.length < 11 %>
+  <% if hide_button(@list.user) && @list.items.length < 11 %>
     <%= simple_form_for [@item] do |f| %>
       <%= f.input :name %>
       <%= f.hidden_field :list_id, value: @list.id %>
@@ -32,5 +34,5 @@
 
   <br>
   <br>
-  <%= link_to "<<< My Lists", user_lists_path  %>
+  <%= link_to "<<< Back", url_for(:back)  %>
 </div>
