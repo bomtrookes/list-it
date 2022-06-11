@@ -27,6 +27,10 @@ class ItemsController < ApplicationController
   def update
     @item = find_item
     if @item.update(item_params)
+      respond_to do |format|
+        format.html { redirect_to items_path }
+        format.text { render partial: "lists/item_infos", locals: { item: @item }, formats: [:html] }
+      end
       flash[:notice] = "Updated!"
     else
       flash[:notice] = "Not Valid"
@@ -43,6 +47,10 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :list_id)
+  end
+
+  def find_item
+    @item = Item.find(params[:id])
   end
 
   # def set_user

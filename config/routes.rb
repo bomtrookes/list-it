@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :favourite_lists
 
-  resources :items, only: [:create]
+  resources :items, only: [:create, :index, :update]
 
   resources :users do
     resources :lists

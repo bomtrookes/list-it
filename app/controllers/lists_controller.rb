@@ -3,7 +3,6 @@ class ListsController < ApplicationController
 
   # read - for Search see line 35 onwards
   def index
-    @user = User.find(params[:user_id])
     @lists = List.all
   end
 
@@ -50,9 +49,9 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end
 
-  def list_params
-    params.require(:list).permit(:title)
-  end
+  # def list_params
+  #   params.require(:list).permit(:title, :id)
+  # end
 
   def set_user
     @user = User.find(params[:user_id])
