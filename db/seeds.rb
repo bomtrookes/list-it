@@ -22,6 +22,15 @@ user5 = User.create(username: "smile", email: "smile@test.com", password: "pass1
 
 puts "Creating Follows..."
 
+Follow.create(follower_id: user1.id, followed_id: user2.id)
+Follow.create(follower_id: user1.id, followed_id: user3.id)
+
+Follow.create(follower_id: user2.id, followed_id: user1.id)
+Follow.create(follower_id: user2.id, followed_id: user3.id)
+
+Follow.create(follower_id: user3.id, followed_id: user1.id)
+Follow.create(follower_id: user3.id, followed_id: user2.id)
+
 i = 0
 
 rand(5..10).times do
@@ -117,7 +126,7 @@ list3 = List.create(user_id: user3.id, title: "Summer Holiday Destionations", vo
 list4 = List.create(user_id: user4.id, title: "Ketchup Brands", votes: 353, published: true)
 list5 = List.create(user_id: user5.id, title: "Website Designs", votes: 536, published: true)
 list6 = List.create(user_id: user2.id, title: "Top 10 Jamie Oliver Recipes", votes: 0, published: false)
-list6 = List.create(user_id: user2.id, title: "Fav colors", votes: 0, published: false)
+list7 = List.create(user_id: user2.id, title: "Fav colors", votes: 0, published: false)
 puts "Lists created"
 
 puts "Creating List Items..."
@@ -149,12 +158,12 @@ Item.create(name: "Roasted veggie curry", list_id: list6.id)
 Item.create(name: "Claudia Winkleman's butter chicken", list_id: list6.id)
 Item.create(name: "Love heart Camembert", list_id: list6.id)
 # list 7 - items
-Item.create(name: "red", list_id: list6.id)
-Item.create(name: "orange", list_id: list6.id)
-Item.create(name: "black", list_id: list6.id)
-Item.create(name: "green", list_id: list6.id)
-Item.create(name: "surf green", list_id: list6.id)
-Item.create(name: "garnet", list_id: list6.id)
+Item.create(name: "red", list_id: list7.id)
+Item.create(name: "orange", list_id: list7.id)
+Item.create(name: "black", list_id: list7.id)
+Item.create(name: "green", list_id: list7.id)
+Item.create(name: "surf green", list_id: list7.id)
+Item.create(name: "garnet", list_id: list7.id)
 
 puts "List Items created"
 
