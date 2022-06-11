@@ -4,13 +4,12 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :favourite_lists
-
   resources :items, only: [:create, :index, :update]
 
   resources :users do
     resources :lists
     resources :follows, only: [:create, :destroy]
+    resources :favourite_lists, only: [:create, :destroy]
     get 'following', action: :following, controller: 'follows'
     get 'followers', action: :followers, controller: 'follows'
   end
