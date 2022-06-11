@@ -2,6 +2,7 @@
   "name": "list-it",
   "private": true,
   "dependencies": {
+    "@hotwired/stimulus": "^3.0.1",
     "@popperjs/core": "^2.11.5",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
