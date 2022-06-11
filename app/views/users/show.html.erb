@@ -1,3 +1,5 @@
+
+<%= image_tag @user.avatar, height: 250, width: 250, crop: :fill %>
 <h3><%= @user.username %></h3>
 <p>bio: <%= @user.bio %></p>
 <% unless hide_follow_button(@user) %>
