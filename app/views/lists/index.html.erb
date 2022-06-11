@@ -12,7 +12,10 @@
 
   <br>
   <br>
-  <%= link_to "+ Create List", new_user_list_path  %>
+
+  <% if hide_button(@user)%>
+    <%= link_to "+ Create List", new_user_list_path  %>
+  <% end %>
 </div>
 <%# show all users lists %>
 <%# lists need to link to list show page %>
