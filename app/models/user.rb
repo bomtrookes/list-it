@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  # has_one_attached :avatar
+
   has_many :lists, dependent: :destroy
   has_many :favourite_lists, dependent: :destroy
 
@@ -17,7 +19,7 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: { case_sensitive: true }
   validates :username, presence: true, length: { in: 2..20 }
-  validates :bio, presence: true, length: { maximum: 500,
+  validates :bio, length: { maximum: 500,
     too_long: "%{count} characters is the maximum allowed" }
 
   # Include default devise modules. Others available are:

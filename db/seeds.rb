@@ -20,7 +20,6 @@ user3 = User.create(username: "Athelas85", email: "athe@test.com", password: "pa
 user4 = User.create(username: "snoop", email: "snoop@test.com", password: "pass123", avatar: Faker::Avatar.image, bio: Faker::GreekPhilosophers.quote)
 user5 = User.create(username: "smile", email: "smile@test.com", password: "pass123", avatar: Faker::Avatar.image, bio: Faker::GreekPhilosophers.quote)
 
-
 puts "Creating Follows..."
 
 i = 0
