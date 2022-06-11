@@ -22,6 +22,15 @@ user5 = User.create(username: "smile", email: "smile@test.com", password: "pass1
 
 puts "Creating Follows..."
 
+Follow.create(follower_id: user1.id, followed_id: user2.id)
+Follow.create(follower_id: user1.id, followed_id: user3.id)
+
+Follow.create(follower_id: user2.id, followed_id: user1.id)
+Follow.create(follower_id: user2.id, followed_id: user3.id)
+
+Follow.create(follower_id: user3.id, followed_id: user1.id)
+Follow.create(follower_id: user3.id, followed_id: user2.id)
+
 i = 0
 
 rand(5..10).times do
