@@ -1,6 +1,6 @@
 module UsersHelper
 
-  def hide_follow_button(user)
+  def hide_button(user)
     user.id == current_user.id
   end
 
