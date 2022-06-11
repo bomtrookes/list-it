@@ -1,32 +1,34 @@
-<h1> <%= @list.title %> </h1>
+ <div class="container">
+  <h1> <%= @list.title %> </h1>
 
-<ul>
-<% @list.items.each do | item | %>
-  <li>
-    <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
-      <div class="item-infos" data-edit-item-target="infos">
-        <%= item.name %>
-        <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
+  <ul>
+  <% @list.items.each do | item | %>
+    <li>
+      <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
+        <div class="item-infos" data-edit-item-target="infos">
+          <%= item.name %>
+          <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
+        </div>
+
+        <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
+          <%= f.input :name %>
+          <%= f.hidden_field :list_id, value: @list.id %>
+          <%= f.submit %>
+        <% end %>
       </div>
-
-      <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
-        <%= f.input :name %>
-        <%= f.hidden_field :list_id, value: @list.id %>
-        <%= f.submit %>
-      <% end %>
-    </div>
-  </li>
-<% end %>
-</ul>
-
-<% if @list.items.length < 11 %>
-  <%= simple_form_for [@item] do |f| %>
-    <%= f.input :name %>
-    <%= f.hidden_field :list_id, value: @list.id %>
-    <%= f.submit %>
+    </li>
   <% end %>
-<% end %>
+  </ul>
 
-<br>
-<br>
-<%= link_to "<<< My Lists", user_lists_path  %>
+  <% if @list.items.length < 11 %>
+    <%= simple_form_for [@item] do |f| %>
+      <%= f.input :name %>
+      <%= f.hidden_field :list_id, value: @list.id %>
+      <%= f.submit %>
+    <% end %>
+  <% end %>
+
+  <br>
+  <br>
+  <%= link_to "<<< My Lists", user_lists_path  %>
+</div>
