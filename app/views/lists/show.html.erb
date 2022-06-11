@@ -10,10 +10,12 @@
           <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
         </div>
 
-        <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
-          <%= f.input :name %>
-          <%= f.hidden_field :list_id, value: @list.id %>
-          <%= f.submit %>
+        <% if current_user %>
+          <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
+            <%= f.input :name %>
+            <%= f.hidden_field :list_id, value: @list.id %>
+            <%= f.submit %>
+          <% end %>
         <% end %>
       </div>
     </li>
