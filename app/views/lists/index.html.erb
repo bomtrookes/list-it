@@ -1,8 +1,8 @@
 <div class="container">
-  <h1>My Lists</h1>
+  <h1>Lists</h1>
 
     <ul>
-  <% current_user.lists.each do | list | %>
+  <% @user.lists.each do | list | %>
       <li class="d-flex justify-content-between">
       <%= link_to list.title, user_list_path(current_user, list) %>
       <%= list.votes ? list.votes : "new" %>
