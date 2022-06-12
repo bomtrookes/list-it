@@ -25,6 +25,7 @@ class ListsController < ApplicationController
   def show
     @list = find_list
     @item = Item.new
+    @fav = current_user.favourite_lists.find_by(list_id: @list.id)
   end
 
   def edit

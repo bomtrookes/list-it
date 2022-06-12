@@ -43,16 +43,32 @@
         </li>
       <% end %>
     </ul>
+<% end %>
 
-  <% if hide_button(@user) %>
+
+<% if hide_button(@user) %>
+  <% if unpublished_lists(@user).present? %>
     <p><%= pluralize(unpublished_lists(current_user).size, "🔒 list") %>:</p>
-      <ul>
-        <% unpublished_lists(current_user).each do | list | %>
+    <ul>
+      <% unpublished_lists(current_user).each do | list | %>
+        <li>
+          <%= link_to list.title, user_list_path(current_user, list) %>
+          <%= list.votes ? list.votes : 0 %> 👍
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
+
+<% if @user.favourite_lists.present? %>
+  <p><%= pluralize(@user.favourite_lists.size, "Fav lists") %>:</p>
+<ul>
+      <% @user.favourited_lists.each do | list | %>
           <li>
-            <%= link_to list.title, user_list_path(current_user, list) %>
-            <%= list.votes ? list.votes : 0 %> 👍
+          <%= link_to list.title, list_path(list) %>
+          <%= list.votes ? list.votes : 0 %> 👍
           </li>
         <% end %>
-      </ul>
-  <% end %>
-</div>
+    </ul>
+<% end %>
+

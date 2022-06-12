@@ -120,6 +120,124 @@ end
 puts "Follows created"
 
 puts "Creating Lists..."
+
+10.times do
+
+user = User.all.sample
+
+  list = List.create!(
+    {
+      user_id: user.id,
+      title: "Top 10 Superhero powers",
+      votes: rand(5..90),
+      published: true
+    }
+  )
+
+  10.times do
+    Item.create!(
+      {
+        name: Faker::Superhero.power,
+        list_id: list.id
+      }
+    )
+  end
+
+end
+
+10.times do
+
+  user = User.all.sample
+
+    list = List.create!(
+      {
+        user_id: user.id,
+        title: "Best tea varieties",
+        votes: rand(5..90),
+        published: true
+      }
+    )
+
+    10.times do
+      Item.create!(
+        {
+          name: Faker::Tea.variety,
+          list_id: list.id
+        }
+      )
+    end
+end
+
+10.times do
+
+  user = User.all.sample
+
+    list = List.create!(
+      {
+        user_id: user.id,
+        title: "Top rated Universities",
+        votes: rand(5..90),
+        published: true
+      }
+    )
+
+    10.times do
+      Item.create!(
+        {
+          name: Faker::University.name,
+          list_id: list.id
+        }
+      )
+    end
+end
+
+3.times do
+
+  user = User.all.sample
+
+    list = List.create!(
+      {
+        user_id: user.id,
+        title: "Highest mountaines climbed",
+        votes: rand(5..90),
+        published: true
+      }
+    )
+
+    10.times do
+      Item.create!(
+        {
+          name: Faker::Mountain.name,
+          list_id: list.id
+        }
+      )
+    end
+end
+
+10.times do
+
+  user = User.all.sample
+
+    list = List.create!(
+      {
+        user_id: user.id,
+        title: "Fav Harry Potter Characters",
+        votes: rand(5..90),
+        published: true
+      }
+    )
+
+    10.times do
+      Item.create!(
+        {
+          name: Faker::Movies::HarryPotter.character,
+          list_id: list.id
+        }
+      )
+    end
+end
+
+
 list1 = List.create(user_id: user1.id, title: "Best Movies", votes: 234, published: true)
 list2 = List.create(user_id: user2.id, title: "Walks in London", votes: 345, published: true)
 list3 = List.create(user_id: user3.id, title: "Summer Holiday Destionations", votes: 456, published: true)

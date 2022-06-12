@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :favourite_lists
-
   resources :items, only: [:create, :index, :update]
 
   resources :users do
@@ -13,6 +11,10 @@ Rails.application.routes.draw do
     resources :follows, only: [:create, :destroy]
     get 'following', action: :following, controller: 'follows'
     get 'followers', action: :followers, controller: 'follows'
+  end
+
+  resources :lists do
+    resources :favourite_lists, only: [:create, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
