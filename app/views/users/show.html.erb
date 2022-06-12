@@ -34,10 +34,10 @@
 <%# if published_lists(@user).present? %>
   <%#= pluralize(published_lists(@user).size, "list") %>
 <%# end %>
-<div class="container">
+<div class="list-card container">
     <ul>
       <% published_lists(@user).each do | list | %>
-        <li>
+        <li class="list-card-info d-flex justify-content-between">
           <%= link_to list.title, user_list_path(@user, list) %>
           <%= list.votes ? list.votes : 0 %> 👍
         </li>
