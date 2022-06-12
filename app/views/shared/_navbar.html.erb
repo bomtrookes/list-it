@@ -1,13 +1,10 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-      <%# start testing purposes - delete later %>
+  <div class="container-fluid d-flex justify-content-center align-items-center">
+
       <% if current_user %>
-        <p><%= current_user.id%> <%= link_to current_user.email, current_user %></p>
+        <%= link_to current_user.email, current_user %>
       <% end %>
-      <%# end testing purposes %>
-    <% end %>
+
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
