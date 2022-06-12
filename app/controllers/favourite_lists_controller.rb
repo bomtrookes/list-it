@@ -1,29 +1,23 @@
 class FavouriteListsController < ApplicationController
 
-  before_action :set_user
+  before_action :set_list
 
   def create
-    @user
-    @user.favourite_lists << current_user
-    redirect_to @user
+    @list.favourite_lists.create!(user: current_user)
+    redirect_to @list
   end
 
   def destroy
-    @user
-    fav = FavouriteLists.find_by(user_id: current_user.id, list_id: params[:id])
+    fav = current_user.favourite_lists.find(params[:id])
     fav.destroy
 
-    redirect_to @user
+    redirect_to @list
   end
 
   private
 
-  def set_user
-    if params[:user_id] == current_user.id
-      @user = current_user
-    else
-      @user = User.find(params[:user_id])
-    end
+  def set_list
+    @list = List.find(params[:list_id])
   end
 
 end

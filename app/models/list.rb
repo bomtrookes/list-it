@@ -5,6 +5,7 @@ class List < ApplicationRecord
 
   has_many :items, dependent: :destroy
   has_many :favourite_lists, dependent: :destroy
+  has_many :favoriters, through: :favourite_lists, source: :user
 
   # gem tags
   acts_as_taggable_on :tags
