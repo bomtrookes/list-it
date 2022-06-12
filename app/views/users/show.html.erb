@@ -1,26 +1,50 @@
+<div class="container d-flex justify-content-center mt-3">
+  <%= image_tag @user.avatar, class: "avatar-profile", height: 150, width: 150, crop: :fill %>
+</div>
 
-<%= image_tag @user.avatar, height: 250, width: 250, crop: :fill %>
-<h3><%= @user.username %></h3>
-<p>bio: <%= @user.bio %></p>
+<div class="container d-flex justify-content-center flex-column user-bio mt-3">
+  <h3><%= @user.username %></h3>
+  <p><%= @user.bio %></p>
+</div>
+
 <% unless hide_button(@user) %>
+<div class="container d-flex justify-content-center mb-3">
   <%= follow_or_unfollow_button(@user, @following) %>
+</div>
 <% end %>
 
-<p>Following: <%= link_to @user.followings.size, user_following_path(@user) %></p>
-<p>Followers: <%= link_to @user.followers.size, user_followers_path(@user) %></p>
-<p>Favourite Lists: <%= link_to @user.favourite_lists.size, '#' %></p>
+<div class="container profile-info mt-1">
+  <ul class="d-flex justify-content-around">
+    <li class="d-flex flex-column align-items-center">
+    <%= link_to @user.followers.size, user_followers_path(@user) %><p>followers</p>
+    </li>
+    <li class="d-flex flex-column align-items-center">
+    <%= link_to @user.followings.size, user_following_path(@user) %><p>following</p>
+    </li>
+    <li class="d-flex flex-column align-items-center">
+    <%= link_to published_lists(@user).size, '#' %><p>lists</p>
+    </li>
+    <%# <li class="d-flex flex-column align-items-center">
+    <%= link_to @user.favourite_lists.size, '#' %>
+    <%# </li> %>
+  </ul>
+</div>
 
-<% if published_lists(@user).present? %>
-  <p><%= pluralize(published_lists(@user).size, "list") %>:</p>
-<ul>
+
+<%# if published_lists(@user).present? %>
+  <%#= pluralize(published_lists(@user).size, "list") %>
+<%# end %>
+<div class="list-card container">
+    <ul>
       <% published_lists(@user).each do | list | %>
-          <li>
+        <li class="list-card-info d-flex justify-content-between">
           <%= link_to list.title, user_list_path(@user, list) %>
           <%= list.votes ? list.votes : 0 %> 👍
-          </li>
-        <% end %>
+        </li>
+      <% end %>
     </ul>
 <% end %>
+
 
 <% if hide_button(@user) %>
   <% if unpublished_lists(@user).present? %>
@@ -47,3 +71,4 @@
         <% end %>
     </ul>
 <% end %>
+

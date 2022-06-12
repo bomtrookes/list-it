@@ -5,7 +5,9 @@
       <% published_lists(@user).each do | list | %>
           <li class="d-flex justify-content-between">
           <%= link_to list.title, user_list_path(current_user, list) %>
-          <%= list.votes ? list.votes : "new" %>
+            <i class="fa-solid fa-thumbs-up">
+            <%= list.votes ? list.votes : "new" %>
+          </i>
           </li>
         <% end %>
     </ul>
@@ -19,3 +21,4 @@
 </div>
 <%# show all users lists %>
 <%# lists need to link to list show page %>
+<%# look at rendering list-item form on this page %>
