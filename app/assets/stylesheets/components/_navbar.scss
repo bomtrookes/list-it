@@ -8,6 +8,8 @@
 }
 
 .navbar-lewagon .navbar-collapse {
+  position : fixed;
+  top : 0;
   flex-grow: 0;
 }
 
