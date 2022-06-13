@@ -129,7 +129,6 @@ user = User.all.sample
     {
       user_id: user.id,
       title: "Top 10 Superhero powers",
-      votes: rand(5..90),
       published: true
     }
   )
@@ -153,7 +152,6 @@ end
       {
         user_id: user.id,
         title: "Best tea varieties",
-        votes: rand(5..90),
         published: true
       }
     )
@@ -176,7 +174,6 @@ end
       {
         user_id: user.id,
         title: "Top rated Universities",
-        votes: rand(5..90),
         published: true
       }
     )
@@ -199,7 +196,6 @@ end
       {
         user_id: user.id,
         title: "Highest mountaines climbed",
-        votes: rand(5..90),
         published: true
       }
     )
@@ -222,7 +218,6 @@ end
       {
         user_id: user.id,
         title: "Fav Harry Potter Characters",
-        votes: rand(5..90),
         published: true
       }
     )
@@ -238,13 +233,13 @@ end
 end
 
 
-list1 = List.create(user_id: user1.id, title: "Best Movies", votes: 234, published: true)
-list2 = List.create(user_id: user2.id, title: "Walks in London", votes: 345, published: true)
-list3 = List.create(user_id: user3.id, title: "Summer Holiday Destionations", votes: 456, published: true)
-list4 = List.create(user_id: user4.id, title: "Ketchup Brands", votes: 353, published: true)
-list5 = List.create(user_id: user5.id, title: "Website Designs", votes: 536, published: true)
-list6 = List.create(user_id: user2.id, title: "Top 10 Jamie Oliver Recipes", votes: 0, published: false)
-list7 = List.create(user_id: user2.id, title: "Fav colors", votes: 0, published: false)
+list1 = List.create(user_id: user1.id, title: "Best Movies", published: true)
+list2 = List.create(user_id: user2.id, title: "Walks in London", published: true)
+list3 = List.create(user_id: user3.id, title: "Summer Holiday Destionations", published: true)
+list4 = List.create(user_id: user4.id, title: "Ketchup Brands", published: true)
+list5 = List.create(user_id: user5.id, title: "Website Designs", published: true)
+list6 = List.create(user_id: user2.id, title: "Top 10 Jamie Oliver Recipes", published: false)
+list7 = List.create(user_id: user2.id, title: "Fav colors", published: false)
 puts "Lists created"
 
 puts "Creating List Items..."
@@ -292,6 +287,18 @@ FavouriteList.create(user_id: user3.id, list_id: list3.id)
 FavouriteList.create(user_id: user4.id, list_id: list1.id)
 FavouriteList.create(user_id: user5.id, list_id: list2.id)
 puts "Favourite Lists created"
+
+puts "Creating votes..."
+
+lists = List.all
+
+lists.each do |list|
+  rand(50-100).times do
+    list.votes.create
+  end
+end
+
+puts "Votes created!"
 
 # puts "Creating Tags..."
 
