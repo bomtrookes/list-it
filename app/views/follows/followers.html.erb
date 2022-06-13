@@ -1,7 +1,8 @@
-<h3><%= link_to @user.username, @user %></h3>
-<h4>Followers</h4>
-<% @user.followers.each do |follower| %>
-  <ul>
-    <li><%= link_to follower.email, user_path(follower) %></li>
-  </ul>
-<% end %>
+<div class="container">
+  <h1>Followers</h1>
+  <% @user.followers.each do |follower| %>
+    <ul>
+      <li><%= link_to follower.email, user_path(follower) %></li>
+    </ul>
+  <% end %>
+</div>
