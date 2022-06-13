@@ -13,6 +13,7 @@
 </div>
 <% end %>
 
+<%# Lists, Followers, Following %>
 <div class="container profile-info mt-1">
   <ul class="d-flex justify-content-around">
     <li class="d-flex flex-column align-items-center">
@@ -31,6 +32,20 @@
   </ul>
 </div>
 
+<%# Published, Drafts, Pinned %>
+<div class="container profile-nav mt-1">
+  <ul class ="d-flex justify-content-around">
+    <li class="d-flex flex-column align-items-center">
+      <i class="fa-solid fa-list"></i>
+    </li>
+    <li class="d-flex flex-column align-items-center">
+      <i class="fa-solid fa-file-pen"></i>
+    </li>
+    <li class="d-flex flex-column align-items-center">
+      <i class="fa-solid fa-thumbtack"></i>
+    </li>
+  </ul>
+</div>
 
 <%# if published_lists(@user).present? %>
   <%#= pluralize(published_lists(@user).size, "list") %>

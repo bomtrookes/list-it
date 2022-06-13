@@ -1,4 +1,4 @@
-.profile-info {
+.profile-info, .profile-nav {
   border-top : 1px solid rgba(79, 79, 79, 0.2);
   ul {
     list-style: none;
@@ -19,6 +19,10 @@
     font-size : 18px;
     text-decoration: none;
     color : rgb(79, 79, 79);
+  }
+  i {
+    color : rgb(79, 79, 79);
+    padding : 8px 0;
   }
 }
 

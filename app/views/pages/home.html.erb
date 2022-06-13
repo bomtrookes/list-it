@@ -1,2 +1,6 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container d-flex justify-content-center flex-column">
+  <h1>List-It</h1>
+    <% if !current_user %>
+      <%= link_to "Login", new_user_session_path %>
+    <% end %>
+</div>
