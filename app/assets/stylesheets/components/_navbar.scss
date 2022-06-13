@@ -1,17 +1,24 @@
 .navbar-lewagon {
+  position : fixed;
+  top: 0;
+  left : 0;
+  width : 100%;
   justify-content: space-between;
   background: rgb(119, 203, 157);
   a {
     text-decoration: none;
+    color : black;
+  }
+  .white-font > a, i {
     color : white;
   }
 }
 
-.navbar-lewagon .navbar-collapse {
-  position : fixed;
-  top : 0;
-  flex-grow: 0;
-}
+// .navbar-lewagon .navbar-collapse {
+//   position : fixed;
+//   top : 0;
+//   flex-grow: 0;
+// }
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;

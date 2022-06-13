@@ -12,11 +12,11 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.list = List.find(params[:item][:list_id])
-    if @item.save!
+    if @item.save
       redirect_to user_list_path(user_id: current_user, id: @item.list)
     else
-      flash[:notice] = "Not valid"
-      render :new
+      flash[:notice] = "Invalid"
+      redirect_to user_list_path(user_id: current_user, id: @item.list)
     end
   end
 
@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
       end
       flash[:notice] = "Updated!"
     else
-      flash[:notice] = "Not Valid"
+      flash[:notice] = "Invalid"
       render :edit
     end
   end

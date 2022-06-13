@@ -1,9 +1,9 @@
  <% if current_user %>
 
-    <div class="bottom-navbar container flex justify-content-around-align-items-center">
+    <div class="bottom-navbar flex justify-content-around-align-items-center">
     <ul class="d-flex justify-content-around">
       <li class="d-flex flex-column align-items-center">
-      <%= link_to "#" do %>
+      <%= link_to user_lists_path(current_user) do %>
         <i class="fa-solid fa-magnifying-glass"></i>
       <% end %>
       </li>
@@ -15,7 +15,7 @@
       </li>
 
       <li class="d-flex flex-column align-items-center">
-      <%= link_to new_user_list_path(current_user) do %>
+      <%= link_to current_user do %>
         <i class="fa-solid fa-user"></i>
       <% end %>
       </li>
