@@ -44,6 +44,11 @@ class ListsController < ApplicationController
     redirect_to user_lists_path
   end
 
+  def publish
+    @list = find_list
+    @list.published = true
+  end
+
   private
 
   def find_list
