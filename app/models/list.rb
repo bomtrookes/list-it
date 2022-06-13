@@ -16,6 +16,6 @@ class List < ApplicationRecord
   validates :published, inclusion: [true, false]
 
   def self.ordered_published_lists
-    left_joins(:votes).group(:id).order('COUNT(votes.id) DESC')
+    where('published = ?', true).left_joins(:votes).group(:id).order('COUNT(votes.id) DESC')
   end
 end
