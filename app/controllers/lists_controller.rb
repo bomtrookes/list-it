@@ -4,7 +4,13 @@ class ListsController < ApplicationController
   # read - for Search see line 35 onwards
   def index
     @user = User.find(params[:user_id])
-    @lists = List.all
+    # @lists = List.all
+    if params[:tag].present?
+      @lists = List.where(user_id: @user.id).tagged_with(params[:tag])
+      # raise
+    else
+      @lists = List.where(user_id: @user.id)
+    end
   end
 
   def new
@@ -26,6 +32,7 @@ class ListsController < ApplicationController
   def show
     @list = find_list
     @item = Item.new
+    @related_lists = @list.find_related_tags
   end
 
   def edit
@@ -44,6 +51,15 @@ class ListsController < ApplicationController
     redirect_to user_lists_path
   end
 
+  # def tagged
+  #   if params[:tag].present?
+  #     @lists = List.tagged_with(params[:tag])
+  #     raise
+  #   else
+  #     @lists = List.all
+  #   end
+  # end
+
   private
 
   def find_list
@@ -51,7 +67,7 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:title)
+    params.require(:list).permit(:title, :tag_list)
   end
 
   def set_user

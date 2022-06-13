@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+  # tags
+  get '/tagged', to: "lists#tagged", as: :tagged
+
   resources :favourite_lists
 
   resources :items, only: [:create]

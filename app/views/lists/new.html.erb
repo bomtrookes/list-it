@@ -3,6 +3,7 @@
 <%# List Title %>
 <%= simple_form_for [current_user, @list] do |f| %>
   <%= f.input :title %>
+  <%= f.input :tag_list, label: "Add tags", hint: "Add your tags, separated by commas" %>
   <%= f.submit %>
 <% end %>
 

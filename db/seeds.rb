@@ -112,13 +112,13 @@ end
 puts "Follows created"
 
 puts "Creating Lists..."
-list1 = List.create(user_id: user1.id, title: "Best Movies", votes: 234, published: true)
-list2 = List.create(user_id: user2.id, title: "Walks in London", votes: 345, published: true)
-list3 = List.create(user_id: user3.id, title: "Summer Holiday Destionations", votes: 456, published: true)
-list4 = List.create(user_id: user4.id, title: "Ketchup Brands", votes: 353, published: true)
-list5 = List.create(user_id: user5.id, title: "Website Designs", votes: 536, published: true)
-list6 = List.create(user_id: user2.id, title: "Top 10 Jamie Oliver Recipes", votes: 0, published: false)
-list6 = List.create(user_id: user2.id, title: "Fav colors", votes: 0, published: false)
+list1 = List.create(user_id: user1.id, title: "Best Movies", votes: 234, published: true, tag_list: ["madrid", "movies"])
+list2 = List.create(user_id: user2.id, title: "Walks in London", votes: 345, published: true, tag_list: ["madrid", "london", "walks"])
+list3 = List.create(user_id: user3.id, title: "Summer Holiday Destionations", votes: 456, published: true, tag_list: ["madrid", "spain"])
+list4 = List.create(user_id: user4.id, title: "Ketchup Brands", votes: 353, published: true, tag_list: ["spain", "food"])
+list5 = List.create(user_id: user5.id, title: "Website Designs", votes: 536, published: true, tag_list: ["design", "website"])
+list6 = List.create(user_id: user2.id, title: "Top 10 Jamie Oliver Recipes", votes: 0, published: false, tag_list: ["food", "jamie", "london"])
+list7 = List.create(user_id: user2.id, title: "Fav colors", votes: 0, published: false, tag_list: ["madrid", "colors"])
 puts "Lists created"
 
 puts "Creating List Items..."

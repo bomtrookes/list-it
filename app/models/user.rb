@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-
+  acts_as_taggable_on :tags
   has_many :lists, dependent: :destroy
   has_many :favourite_lists, dependent: :destroy
 
