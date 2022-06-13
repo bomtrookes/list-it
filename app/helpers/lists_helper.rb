@@ -12,7 +12,7 @@ module ListsHelper
     end
   end
 
-  def fav_unfav_button(list, fav)
+    def fav_unfav_button(list, fav)
     if fav
       button_to "♡ Unfav", list_favourite_list_path(list, fav), method: :delete
     else

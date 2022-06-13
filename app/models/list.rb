@@ -13,4 +13,8 @@ class List < ApplicationRecord
   validates :title, presence: true, length: { minimum: 2 }
   validates :user_id, presence: true
   validates :published, inclusion: [true, false]
+
+  def self.ordered_published_lists
+    where('published = ?', true).order(votes: :desc)
+  end
 end

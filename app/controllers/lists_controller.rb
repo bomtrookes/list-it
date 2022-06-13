@@ -1,9 +1,9 @@
 class ListsController < ApplicationController
-  before_action :set_user, only: [:new, :create, :index]
+  before_action :set_user, only: [:new, :create]
 
   # read - for Search see line 35 onwards
   def index
-    @lists = List.all
+    @lists = List.ordered_published_lists
   end
 
   def new
