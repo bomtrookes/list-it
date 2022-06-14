@@ -21,5 +21,6 @@ class List < ApplicationRecord
   end
 
   include PgSearch::Model
-  multisearchable against: [:title, :tag_list]
+    multisearchable against: [:title, :tag_list]
+  end
 end
