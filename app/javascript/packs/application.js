@@ -15,4 +15,4 @@ ActiveStorage.start()
 import "controllers"
 import "bootstrap"
 // trying to solve bootstrap icon issue
-import "@fortawesome/fontawesome-free/css/all"
+import "@fortawesome/fontawesome-free/js/all"
