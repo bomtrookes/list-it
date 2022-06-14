@@ -76,3 +76,5 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'acts-as-taggable-on', '~> 9.0'
 
 gem 'stimulus-rails'
+# Search funtion
+gem 'pg_search', '~> 2.3.0'

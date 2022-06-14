@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :items, only: [:create, :index, :update]
 
   resources :users do
-    resources :lists
+    resources :lists do
+      member do
+        post :publish
+      end
+    end
     resources :follows, only: [:create, :destroy]
     get 'following', action: :following, controller: 'follows'
     get 'followers', action: :followers, controller: 'follows'
