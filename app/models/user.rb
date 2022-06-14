@@ -32,6 +32,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   include PgSearch::Model
-   multisearchable against: [:username]
-  end
+  multisearchable against: [:username]
 end
