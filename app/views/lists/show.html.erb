@@ -26,12 +26,9 @@
     </li>
   <% end %>
   </ul>
-<% end %>
-<% @list.tag_list.each do |tag| %>
+  <% @list.tag_list.each do |tag| %>
       <%= link_to tag, tagged_path(tag: tag) %>
-<% end %>
-<% if @list.items.length < 11 %>
-
+  <% end %>
 
   <% if hide_button(@list.user) && @list.items.length < 11 %>
     <%= simple_form_for [@item] do |f| %>
