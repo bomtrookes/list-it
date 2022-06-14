@@ -1,5 +1,16 @@
 <div class="container">
   <h1>Discover</h1>
+
+  <%= form_tag lists_path, class: "input-group d-flex search-bar justify-content-center", method: :get do %>
+<%= text_field_tag :query,
+  params[:query],
+  id: "form1",
+  type: "search",
+  class: "form-control",
+  placeholder: "Search..."%>
+<%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
   <ul>
     <% @ordered_lists.each do | list | %>
      <li class="d-flex justify-content-between">

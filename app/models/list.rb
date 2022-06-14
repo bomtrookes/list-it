@@ -19,4 +19,7 @@ class List < ApplicationRecord
   def self.ordered_published_lists
     where('published = ?', true).left_joins(:votes).group(:id).order('COUNT(votes.id) DESC')
   end
+
+  include PgSearch::Model
+  multisearchable against: [:title, :tag_list]
 end
