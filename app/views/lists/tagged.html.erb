@@ -1,6 +1,6 @@
 <h3>Related Lists</h3>
 <ul>
-  <% @related_lists.each do |list| %>
-    <li><%= list.title %></li>
+  <% @lists.each do |list| %>
+    <li><%= link_to list.title, user_list_path(current_user, list) %></li>
   <% end %>
 </ul>
