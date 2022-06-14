@@ -78,7 +78,6 @@ class ListsController < ApplicationController
 
   def list_params
     params.require(:list).permit(:title, :id, :tag_list)
-
   end
 
   def set_user
