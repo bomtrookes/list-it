@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Discover</h1>
   <ul>
-    <% @lists.each do | list | %>
+    <% @ordered_lists.each do | list | %>
      <li class="d-flex justify-content-between">
           <%= link_to list.title, user_list_path(current_user, list) %>
             <i class="fa-solid fa-thumbs-up">

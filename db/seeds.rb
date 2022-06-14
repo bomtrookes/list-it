@@ -121,6 +121,15 @@ puts "Follows created"
 
 puts "Creating Lists..."
 
+list1 = List.create(user_id: user1.id, title: "Best Movies",  published: true, tag_list: ["madrid", "movies"])
+list2 = List.create(user_id: user2.id, title: "Walks in London",  published: true, tag_list: ["madrid", "london", "walks"])
+list3 = List.create(user_id: user3.id, title: "Summer Holiday Destionations", published: true, tag_list: ["madrid", "spain"])
+list4 = List.create(user_id: user4.id, title: "Ketchup Brands", published: true, tag_list: ["spain", "food"])
+list5 = List.create(user_id: user5.id, title: "Website Designs", published: true, tag_list: ["design", "website"])
+list6 = List.create(user_id: user2.id, title: "Top 10 Jamie Oliver Recipes", published: false, tag_list: ["food", "jamie", "london"])
+list7 = List.create(user_id: user2.id, title: "Fav colors", published: false, tag_list: ["madrid", "colors"])
+
+
 10.times do
 
 user = User.all.sample
@@ -233,13 +242,6 @@ end
 end
 
 
-list1 = List.create(user_id: user1.id, title: "Best Movies", published: true)
-list2 = List.create(user_id: user2.id, title: "Walks in London", published: true)
-list3 = List.create(user_id: user3.id, title: "Summer Holiday Destionations", published: true)
-list4 = List.create(user_id: user4.id, title: "Ketchup Brands", published: true)
-list5 = List.create(user_id: user5.id, title: "Website Designs", published: true)
-list6 = List.create(user_id: user2.id, title: "Top 10 Jamie Oliver Recipes", published: false)
-list7 = List.create(user_id: user2.id, title: "Fav colors", published: false)
 puts "Lists created"
 
 puts "Creating List Items..."

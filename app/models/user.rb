@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  acts_as_taggable_on :tags
 
   # has_one_attached :avatar
 

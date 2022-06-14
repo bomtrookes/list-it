@@ -2,7 +2,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+
+  # tags
+  get '/tagged', to: "lists#tagged", as: :tagged
+
   root to: 'pages#home'
+
 
   resources :items, only: [:create, :index, :update]
 
