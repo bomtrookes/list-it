@@ -79,10 +79,10 @@
 <% end %>
 
 <% if @user.favourite_lists.present? %>
-  <p><%= pluralize(@user.favourite_lists.size, "Fav lists") %>:</p>
+  <p class="container"><%= pluralize(@user.favourite_lists.size, "Pin") %>:</p>
 <ul>
       <% @user.favourited_lists.each do | list | %>
-          <li>
+          <li class="list-card-info d-flex justify-content-between">
           <%= link_to list.title, list_path(list) %>
           <%= list.votes ? list.votes : 0 %> 👍
           </li>
