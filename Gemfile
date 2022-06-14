@@ -50,7 +50,9 @@ group :development do
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
-  gem 'rack-mini-profiler', '~> 2.0'
+
+  # uncomment below line when testing speed
+  # gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -72,3 +74,7 @@ gem 'cloudinary', '~> 1.16.0'
 
 # for tags
 gem 'acts-as-taggable-on', '~> 9.0'
+
+gem 'stimulus-rails'
+# Search funtion
+gem 'pg_search', '~> 2.3.0'

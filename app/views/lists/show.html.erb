@@ -1,25 +1,58 @@
-<h1> <%= @list.title %> </h1>
-
-<% @list.items.each do | item | %>
+ <div class="container">
+  <h1> <%= @list.title %> </h1>
+  <% unless hide_button(@list.user) %>
+    <%= fav_unfav_button(@list, @fav) %> <br>
+    <%= vote_unvote_button(@list, @vote) %><%= @list.votes.size %>
+  <% end %>
   <ul>
+  <% @list.items.each do | item | %>
     <li>
-  <%= item.name %>
+      <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
+        <div class="item-infos" data-edit-item-target="infos">
+          <%= item.name %>
+          <% if hide_button(@list.user)%>
+          <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
+          <% end %>
+        </div>
+
+        <% if hide_button(@list.user)%>
+          <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
+            <%= f.input :name %>
+            <%= f.hidden_field :list_id, value: @list.id %>
+            <%= f.submit %>
+          <% end %>
+        <% end %>
+      </div>
     </li>
+  <% end %>
   </ul>
 <% end %>
-  <% @list.tag_list.each do |tag| %>
-        <%= link_to tag, tagged_path(tag: tag) %>
-  <% end %>
+<% @list.tag_list.each do |tag| %>
+      <%= link_to tag, tagged_path(tag: tag) %>
+<% end %>
 <% if @list.items.length < 11 %>
 
-  <%= simple_form_for [@item] do |f| %>
-    <%= f.input :name %>
-    <%= f.hidden_field :list_id, value: @list.id %>
-    <%= f.submit %>
+
+  <% if hide_button(@list.user) && @list.items.length < 11 %>
+    <%= simple_form_for [@item] do |f| %>
+      <%= f.input :name %>
+      <%= f.hidden_field :list_id, value: @list.id %>
+      <%= f.submit %>
+    <% end %>
   <% end %>
 
-<% end %>
+  <br>
+  <br>
+ <div class="d-flex justify-content-between mt-5 pt-5">
+    <%# Publish %>
+    <% if @list.published == false %>
+      <%= button_to "Publish", publish_user_list_path, class: "btn btn-success" %>
+    <% end %>
+    <%# Save to Drafts %>
+    <%= link_to "Save", current_user, class:"btn btn-primary" %>
+    <%# Delete %>
+    <%= button_to "Delete", user_list_path(current_user, @list), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+ </div>
 
-<br>
-<br>
-<%= link_to "<<< My Lists", user_lists_path  %>
+
+</div>

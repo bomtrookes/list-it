@@ -12,11 +12,11 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.list = List.find(params[:item][:list_id])
-    if @item.save!
+    if @item.save
       redirect_to user_list_path(user_id: current_user, id: @item.list)
     else
-      flash[:notice] = "Not valid"
-      render :new
+      flash[:notice] = "Invalid"
+      redirect_to user_list_path(user_id: current_user, id: @item.list)
     end
   end
 
@@ -27,9 +27,13 @@ class ItemsController < ApplicationController
   def update
     @item = find_item
     if @item.update(item_params)
+      respond_to do |format|
+        format.html { redirect_to items_path }
+        format.text { render partial: "lists/item_infos", locals: { item: @item }, formats: [:html] }
+      end
       flash[:notice] = "Updated!"
     else
-      flash[:notice] = "Not Valid"
+      flash[:notice] = "Invalid"
       render :edit
     end
   end
@@ -43,6 +47,10 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :list_id)
+  end
+
+  def find_item
+    @item = Item.find(params[:id])
   end
 
   # def set_user

@@ -1,14 +1,17 @@
-<h1>My Lists</h1>
-
+<div class="container">
+  <h1>Discover</h1>
   <ul>
-<% @lists.each do | list | %>
-    <li><%= link_to list.title, user_list_path(current_user, list) %>
-    </li>
-  <% end %>
+    <% @ordered_lists.each do | list | %>
+     <li class="d-flex justify-content-between">
+          <%= link_to list.title, user_list_path(current_user, list) %>
+            <i class="fa-solid fa-thumbs-up">
+            <%= list.votes.size ? list.votes.size : 0 %>
+          </i>
+          </li>
+    <% end %>
   </ul>
 
-<br>
-<br>
-<%= link_to "+ Create List", new_user_list_path  %>
+</div>
 <%# show all users lists %>
 <%# lists need to link to list show page %>
+<%# look at rendering list-item form on this page %>

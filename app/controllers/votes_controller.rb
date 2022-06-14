@@ -1,15 +1,15 @@
-class FavouriteListsController < ApplicationController
+class VotesController < ApplicationController
 
   before_action :set_list
 
   def create
-    @list.favourite_lists.create!(user: current_user)
+    @list.votes.create!(user: current_user)
     redirect_to @list
   end
 
   def destroy
-    fav = current_user.favourite_lists.find(params[:id])
-    fav.destroy
+    vote = current_user.votes.find(params[:id])
+    vote.destroy
 
     redirect_to @list
   end

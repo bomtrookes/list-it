@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_user, only: [:new, :create]
+  before_action :set_user, only: [:new, :create, :publish]
 
   # read - for Search see line 35 onwards
   def index
@@ -7,10 +7,11 @@ class ListsController < ApplicationController
     # @lists = List.all
     if params[:tag].present?
       @lists = List.where(user_id: @user.id).tagged_with(params[:tag])
-      # raise
     else
       @lists = List.where(user_id: @user.id)
     end
+    @ordered_lists = List.ordered_published_lists
+
   end
 
   def new
@@ -21,7 +22,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     @list.user = current_user
-    if @list.save!
+    if @list.save
       redirect_to user_list_path(user_id: current_user, id: @list)
     else
       render :new
@@ -33,6 +34,8 @@ class ListsController < ApplicationController
     @list = find_list
     @item = Item.new
     @related_lists = @list.find_related_tags
+    @fav = current_user.favourite_lists.find_by(list_id: @list.id)
+    @vote = current_user.votes.find_by(list_id: @list.id)
   end
 
   def edit
@@ -48,7 +51,14 @@ class ListsController < ApplicationController
   def destroy
     @list = find_list
     @list.destroy
-    redirect_to user_lists_path
+    redirect_to current_user
+  end
+
+  def publish
+    @list = find_list
+    @list.published = true
+    @list.save
+    redirect_to current_user
   end
 
   # def tagged
@@ -67,7 +77,8 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:title, :tag_list)
+    params.require(:list).permit(:title, :id, :tag_list)
+
   end
 
   def set_user

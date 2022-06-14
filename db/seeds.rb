@@ -20,8 +20,16 @@ user3 = User.create(username: "Athelas85", email: "athe@test.com", password: "pa
 user4 = User.create(username: "snoop", email: "snoop@test.com", password: "pass123", avatar: Faker::Avatar.image, bio: Faker::GreekPhilosophers.quote)
 user5 = User.create(username: "smile", email: "smile@test.com", password: "pass123", avatar: Faker::Avatar.image, bio: Faker::GreekPhilosophers.quote)
 
-
 puts "Creating Follows..."
+
+Follow.create(follower_id: user1.id, followed_id: user2.id)
+Follow.create(follower_id: user1.id, followed_id: user3.id)
+
+Follow.create(follower_id: user2.id, followed_id: user1.id)
+Follow.create(follower_id: user2.id, followed_id: user3.id)
+
+Follow.create(follower_id: user3.id, followed_id: user1.id)
+Follow.create(follower_id: user3.id, followed_id: user2.id)
 
 i = 0
 
@@ -112,13 +120,128 @@ end
 puts "Follows created"
 
 puts "Creating Lists..."
-list1 = List.create(user_id: user1.id, title: "Best Movies", votes: 234, published: true, tag_list: ["madrid", "movies"])
-list2 = List.create(user_id: user2.id, title: "Walks in London", votes: 345, published: true, tag_list: ["madrid", "london", "walks"])
-list3 = List.create(user_id: user3.id, title: "Summer Holiday Destionations", votes: 456, published: true, tag_list: ["madrid", "spain"])
-list4 = List.create(user_id: user4.id, title: "Ketchup Brands", votes: 353, published: true, tag_list: ["spain", "food"])
-list5 = List.create(user_id: user5.id, title: "Website Designs", votes: 536, published: true, tag_list: ["design", "website"])
-list6 = List.create(user_id: user2.id, title: "Top 10 Jamie Oliver Recipes", votes: 0, published: false, tag_list: ["food", "jamie", "london"])
-list7 = List.create(user_id: user2.id, title: "Fav colors", votes: 0, published: false, tag_list: ["madrid", "colors"])
+
+list1 = List.create(user_id: user1.id, title: "Best Movies",  published: true, tag_list: ["madrid", "movies"])
+list2 = List.create(user_id: user2.id, title: "Walks in London",  published: true, tag_list: ["madrid", "london", "walks"])
+list3 = List.create(user_id: user3.id, title: "Summer Holiday Destionations", published: true, tag_list: ["madrid", "spain"])
+list4 = List.create(user_id: user4.id, title: "Ketchup Brands", published: true, tag_list: ["spain", "food"])
+list5 = List.create(user_id: user5.id, title: "Website Designs", published: true, tag_list: ["design", "website"])
+list6 = List.create(user_id: user2.id, title: "Top 10 Jamie Oliver Recipes", published: false, tag_list: ["food", "jamie", "london"])
+list7 = List.create(user_id: user2.id, title: "Fav colors", published: false, tag_list: ["madrid", "colors"])
+
+
+10.times do
+
+user = User.all.sample
+
+  list = List.create!(
+    {
+      user_id: user.id,
+      title: "Top 10 Superhero powers",
+      published: true
+    }
+  )
+
+  10.times do
+    Item.create!(
+      {
+        name: Faker::Superhero.power,
+        list_id: list.id
+      }
+    )
+  end
+
+end
+
+10.times do
+
+  user = User.all.sample
+
+    list = List.create!(
+      {
+        user_id: user.id,
+        title: "Best tea varieties",
+        published: true
+      }
+    )
+
+    10.times do
+      Item.create!(
+        {
+          name: Faker::Tea.variety,
+          list_id: list.id
+        }
+      )
+    end
+end
+
+10.times do
+
+  user = User.all.sample
+
+    list = List.create!(
+      {
+        user_id: user.id,
+        title: "Top rated Universities",
+        published: true
+      }
+    )
+
+    10.times do
+      Item.create!(
+        {
+          name: Faker::University.name,
+          list_id: list.id
+        }
+      )
+    end
+end
+
+3.times do
+
+  user = User.all.sample
+
+    list = List.create!(
+      {
+        user_id: user.id,
+        title: "Highest mountaines climbed",
+        published: true
+      }
+    )
+
+    10.times do
+      Item.create!(
+        {
+          name: Faker::Mountain.name,
+          list_id: list.id
+        }
+      )
+    end
+end
+
+10.times do
+
+  user = User.all.sample
+
+    list = List.create!(
+      {
+        user_id: user.id,
+        title: "Fav Harry Potter Characters",
+        published: true
+      }
+    )
+
+    10.times do
+      Item.create!(
+        {
+          name: Faker::Movies::HarryPotter.character,
+          list_id: list.id
+        }
+      )
+    end
+end
+
+
 puts "Lists created"
 
 puts "Creating List Items..."
@@ -150,12 +273,12 @@ Item.create(name: "Roasted veggie curry", list_id: list6.id)
 Item.create(name: "Claudia Winkleman's butter chicken", list_id: list6.id)
 Item.create(name: "Love heart Camembert", list_id: list6.id)
 # list 7 - items
-Item.create(name: "red", list_id: list6.id)
-Item.create(name: "orange", list_id: list6.id)
-Item.create(name: "black", list_id: list6.id)
-Item.create(name: "green", list_id: list6.id)
-Item.create(name: "surf green", list_id: list6.id)
-Item.create(name: "garnet", list_id: list6.id)
+Item.create(name: "red", list_id: list7.id)
+Item.create(name: "orange", list_id: list7.id)
+Item.create(name: "black", list_id: list7.id)
+Item.create(name: "green", list_id: list7.id)
+Item.create(name: "surf green", list_id: list7.id)
+Item.create(name: "garnet", list_id: list7.id)
 
 puts "List Items created"
 
@@ -166,6 +289,19 @@ FavouriteList.create(user_id: user3.id, list_id: list3.id)
 FavouriteList.create(user_id: user4.id, list_id: list1.id)
 FavouriteList.create(user_id: user5.id, list_id: list2.id)
 puts "Favourite Lists created"
+
+puts "Creating votes..."
+
+lists = List.all
+users = User.all
+
+lists.each do |list|
+  rand(3-6).times do
+    list.votes.create(user: users.sample)
+  end
+end
+
+puts "Votes created!"
 
 # puts "Creating Tags..."
 

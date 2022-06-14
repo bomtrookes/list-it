@@ -1,7 +1,13 @@
 class User < ApplicationRecord
   acts_as_taggable_on :tags
+
+  # has_one_attached :avatar
+
   has_many :lists, dependent: :destroy
   has_many :favourite_lists, dependent: :destroy
+  has_many :favourited_lists, through: :favourite_lists, source: :list
+  has_many :votes, dependent: :destroy
+  has_many :voted_lists, through: :votes, source: :vote
 
   # https://betterprogramming.pub/how-to-create-a-follow-feature-in-rails-by-aliasing-associations-30d63edee284
 
@@ -17,7 +23,7 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: { case_sensitive: true }
   validates :username, presence: true, length: { in: 2..20 }
-  validates :bio, presence: true, length: { maximum: 500,
+  validates :bio, length: { maximum: 500,
     too_long: "%{count} characters is the maximum allowed" }
 
   # Include default devise modules. Others available are:

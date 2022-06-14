@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def show
-    @user
+    @following = current_user.followings.find_by(id: @user.id)
   end
 
   private
