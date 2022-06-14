@@ -61,14 +61,13 @@ class ListsController < ApplicationController
     redirect_to current_user
   end
 
-  # def tagged
-  #   if params[:tag].present?
-  #     @lists = List.tagged_with(params[:tag])
-  #     raise
-  #   else
-  #     @lists = List.all
-  #   end
-  # end
+  def tagged
+    if params[:tag].present?
+      @lists = List.tagged_with(params[:tag])
+    else
+      @lists = List.all
+    end
+  end
 
   private
 
@@ -88,7 +87,7 @@ end
 
 # def index
 #   if params[:query].present?
-#     @lit = List.search_by_list_title(params[:query])
+#     @list = List.search_by_list_title(params[:query])
 #   else
 #     @list = List.all
 #   end

@@ -4,10 +4,9 @@ Rails.application.routes.draw do
 
 
   # tags
-  get '/tagged', to: "lists#tagged", as: :tagged
+  get '/tagged', to: 'lists#tagged', as: :tagged
 
   root to: 'pages#home'
-
 
   resources :items, only: [:create, :index, :update]
 
