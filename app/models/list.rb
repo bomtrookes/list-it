@@ -21,5 +21,5 @@ class List < ApplicationRecord
   end
 
   include PgSearch::Model
-  multisearchable against: [:title, :tag_list]
+  pg_search_scope :search_by_title, against: [:title], using: { tsearch: { prefix: true } }
 end
