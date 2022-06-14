@@ -20,4 +20,12 @@ module ListsHelper
     end
   end
 
+  def vote_unvote_button(list, vote)
+    if vote
+      button_to "👎", list_vote_path(list, vote), method: :delete
+    else
+      button_to "👍", list_votes_path(list)
+    end
+  end
+
 end

@@ -4,9 +4,10 @@ class List < ApplicationRecord
   has_one_attached :photo
 
   has_many :items, dependent: :destroy
-  has_many :votes, dependent: :destroy
   has_many :favourite_lists, dependent: :destroy
   has_many :favoriters, through: :favourite_lists, source: :user
+  has_many :votes, dependent: :destroy
+  has_many :voters, through: :votes, source: :user
 
   # gem tags
   acts_as_taggable_on :tags

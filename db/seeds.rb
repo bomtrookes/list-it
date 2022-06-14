@@ -288,17 +288,18 @@ FavouriteList.create(user_id: user4.id, list_id: list1.id)
 FavouriteList.create(user_id: user5.id, list_id: list2.id)
 puts "Favourite Lists created"
 
-puts "Creating votes..."
+# puts "Creating votes..."
 
-lists = List.all
+# lists = List.all
+# users = User.all
 
-lists.each do |list|
-  rand(50-100).times do
-    list.votes.create
-  end
-end
+# lists.each do |list|
+#   rand(50..100).times do
+#     list.votes.create(user: users.sample)
+#   end
+# end
 
-puts "Votes created!"
+# puts "Votes created!"
 
 # puts "Creating Tags..."
 
