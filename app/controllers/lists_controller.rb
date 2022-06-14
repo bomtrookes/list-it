@@ -1,9 +1,9 @@
 class ListsController < ApplicationController
-  before_action :set_user, only: [:new, :create, :index, :publish]
+  before_action :set_user, only: [:new, :create, :publish]
 
   # read - for Search see line 35 onwards
   def index
-    @lists = List.all
+    @lists = List.ordered_published_lists
   end
 
   def new
@@ -26,6 +26,7 @@ class ListsController < ApplicationController
     @list = find_list
     @item = Item.new
     @fav = current_user.favourite_lists.find_by(list_id: @list.id)
+    @vote = current_user.votes.find_by(list_id: @list.id)
   end
 
   def edit

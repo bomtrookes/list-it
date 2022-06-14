@@ -57,7 +57,7 @@
       <% published_lists(@user).each do | list | %>
         <li class="list-card-info d-flex justify-content-between">
           <%= link_to list.title, user_list_path(@user, list) %>
-          <%= list.votes ? list.votes : 0 %> 👍
+          <%= list.votes.size ? list.votes.size : 0 %> 👍
         </li>
       <% end %>
           <%#= list.updated_at %>
@@ -71,7 +71,7 @@
       <% unpublished_lists(current_user).each do | list | %>
         <li>
           <%= link_to list.title, user_list_path(current_user, list) %>
-          <%= list.votes ? list.votes : 0 %> 👍
+          <%= list.votes.size ? list.votes.size : 0 %> 👍
         </li>
       <% end %>
     </ul>
@@ -84,7 +84,7 @@
       <% @user.favourited_lists.each do | list | %>
           <li class="list-card-info d-flex justify-content-between">
           <%= link_to list.title, list_path(list) %>
-          <%= list.votes ? list.votes : 0 %> 👍
+          <%= list.votes.size ? list.votes.size : 0 %> 👍
           </li>
         <% end %>
     </ul>
