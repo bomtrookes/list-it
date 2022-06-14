@@ -19,4 +19,8 @@ class List < ApplicationRecord
   def self.ordered_published_lists
     where('published = ?', true).left_joins(:votes).group(:id).order('COUNT(votes.id) DESC')
   end
+
+  def self.followings_lists(following)
+    where(user_id: following).order('created_at DESC')
+  end
 end
