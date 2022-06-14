@@ -36,8 +36,9 @@
 
   <br>
   <br>
-
-  <%= link_to "Save Draft", current_user  %>
-  <%= link_to "Publish", current_user  %>
-
+  <%= link_to "Save Draft", current_user %>
+  <%= button_to "Delete", user_list_path(current_user, @list), method: :delete %>
+  <% if @list.published == false %>
+    <%= button_to "Publish", publish_user_list_path %>
+  <% end %>
 </div>
