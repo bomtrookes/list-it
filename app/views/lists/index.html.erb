@@ -14,14 +14,10 @@
   <ul>
     <% @ordered_lists.each do | list | %>
      <li class="d-flex justify-content-between">
-          <%= link_to list.title, user_list_path(current_user, list) %>
-            <i class="fa-solid fa-thumbs-up"></i>
-<<<<<<< HEAD
-            <%= list.votes.size ? list.votes.size : 0 %>
-=======
-          <%= list.votes.size ? list.votes.size : 0 %>
->>>>>>> 88c17da4a4f78d0db988c9c599acde7ab3dd24b6
-          </li>
+        <%= link_to list.title, user_list_path(current_user, list) %>
+        <i class="fa-solid fa-thumbs-up"></i>
+        <%= list.votes.size ? list.votes.size : 0 %>
+      </li>
     <% end %>
   </ul>
 
