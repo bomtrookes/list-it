@@ -1,8 +1,18 @@
 <div class="container">
-  <h1>Followers</h1>
+   <div class="d-flex">
+    <%= link_to '<', current_user, class:"back-button" %>
+    <h1>Followers</h1>
+  </div>
   <% @user.followers.each do |follower| %>
-    <ul>
-      <li><%= link_to follower.email, user_path(follower) %></li>
+       <ul class="follow-list">
+      <li class="list-card-info d-flex justify-content-between">
+        <div class="list-info d-flex align-items-center">
+          <%# user image %>
+
+          <%# follower user %>
+          <%= link_to follower.email, user_path(follower) %>
+        </div>
+        </li>
     </ul>
   <% end %>
 </div>

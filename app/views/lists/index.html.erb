@@ -1,5 +1,8 @@
 <div class="container discover-list">
-  <h1>Discover</h1>
+   <div class="d-flex">
+    <%= link_to '<', current_user, class:"back-button" %>
+    <h1>Discover</h1>
+  </div>
 
   <ul>
   <% @ordered_lists.each do | list | %>
