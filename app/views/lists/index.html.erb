@@ -1,14 +1,30 @@
-<div class="container">
+<div class="container discover-list">
   <h1>Discover</h1>
+
   <ul>
-    <% @ordered_lists.each do | list | %>
-     <li class="d-flex justify-content-between">
-          <%= link_to list.title, user_list_path(current_user, list) %>
-            <i class="fa-solid fa-thumbs-up"></i>
-          <%= list.votes.size ? list.votes.size : 0 %>
-          </li>
-    <% end %>
-  </ul>
+  <% @ordered_lists.each do | list | %>
+    <li class="list-card-info d-flex justify-content-between mt-2">
+    <div class="list-info d-flex align-items-center">
+      <%# user image %>
+      <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
+      <div class="list-title-user d-flex flex-column">
+          <%# list size, title %>
+          <div class="d-flex list-card-info">
+          <%#= list.item_ids.size %>
+          <%= link_to list.title, user_list_path(@user, list), class:"list-title" %>
+          </div>
+          <%# list username %>
+          <%= link_to list.user.username, user_path(@user), class:"username-italic" %>
+        </div>
+    </div>
+    <%# votes %>
+    <div class="vote-box d-flex align-items-center">
+      <%= list.votes.size ? list.votes.size : 0 %>
+      <i class="fa-solid fa-thumbs-up"></i>
+    </div>
+    </li>
+  <% end %>
+</ul>
 
 </div>
 <%# show all users lists %>

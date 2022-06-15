@@ -48,16 +48,31 @@
   </div>
   <% end %>
 
-  <%# Published Lists %>
+  <%# Published Lists - progress %>
   <div class="list-card container">
     <ul class="d-none" data-change-view-target="list">
       <% published_lists(@user).each do | list | %>
         <li class="list-card-info d-flex justify-content-between">
-          <%= link_to list.title, user_list_path(@user, list) %>
-          <%= list.votes.size ? list.votes.size : 0 %> 👍
+        <div class="list-info d-flex">
+          <%# user image %>
+          <%= image_tag @user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
+          <div class="list-title-user d-flex flex-column justify-content-center">
+             <%# list size?, title %>
+             <div class="d-flex">
+              <%#= list.item_ids.size %>
+              <%= link_to list.title, user_list_path(@user, list), class:"list-title" %>
+             </div>
+           </div>
+        </div>
+        <%# votes %>
+        <div class="vote-box d-flex align-items-center">
+          <%= list.votes.size ? list.votes.size : 0 %>
+          <i class="fa-solid fa-thumbs-up"></i>
+        </div>
         </li>
       <% end %>
     </ul>
+
     <%# Draft Lists %>
     <% if hide_button(@user) %>
       <% if unpublished_lists(@user).present? %>
@@ -72,6 +87,7 @@
         </ul>
       <% end %>
     <% end %>
+
     <%# Pinned Lists %>
     <% if @user.favourite_lists.present? %>
       <%# <p class="container"><%= pluralize(@user.favourite_lists.size, "Pin") %>
