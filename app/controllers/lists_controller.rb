@@ -11,7 +11,6 @@ class ListsController < ApplicationController
       @lists = List.where(user_id: @user.id)
     end
     @ordered_lists = List.ordered_published_lists
-
   end
 
   def new
