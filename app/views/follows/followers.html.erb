@@ -10,7 +10,7 @@
           <%# user image %>
 
           <%# follower user %>
-          <%= link_to follower.email, user_path(follower) %>
+          <%= link_to format_username(follower.username), user_path(follower) %>
         </div>
         </li>
     </ul>

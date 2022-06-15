@@ -4,7 +4,7 @@
 </div>
 <%# profile name & bio %>
 <div class="container d-flex justify-content-center flex-column user-bio mt-3">
-  <h3><%= @user.username %></h3>
+  <h3><%= format_username(@user.username) %></h3>
   <p><%= @user.bio %></p>
 </div>
 
