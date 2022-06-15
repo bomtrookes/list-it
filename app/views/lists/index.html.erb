@@ -17,7 +17,7 @@
           <%= link_to list.title, user_list_path(@user, list), class:"list-title" %>
           </div>
           <%# list username %>
-          <%= link_to list.user.username, user_path(@user), class:"username-italic" %>
+          <%= link_to format_username(list.user.username), user_path(@user), class:"username-italic" %>
         </div>
     </div>
     <%# votes %>

@@ -1,5 +1,6 @@
  <div class="container">
   <h1> <%= @list.title %> </h1>
+  <%= cl_image_tag @list.photo.key, height: 200, width: 300, crop: :fill if @list.photo.key %>
   <% unless hide_button(@list.user) %>
     <%= fav_unfav_button(@list, @fav) %> <br>
     <%= vote_unvote_button(@list, @vote) %><%= @list.votes.size %>
