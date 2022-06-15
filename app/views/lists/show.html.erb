@@ -41,19 +41,18 @@
       <%= f.submit %>
     <% end %>
   <% end %>
-
   <br>
   <br>
- <div class="d-flex justify-content-between mt-5 pt-5">
-    <%# Publish %>
-    <% if @list.published == false %>
-      <%= button_to "Publish", publish_user_list_path, class: "btn btn-success" %>
-    <% end %>
-    <%# Save to Drafts %>
-    <%= link_to "Save", current_user, class:"btn btn-primary" %>
-    <%# Delete %>
-    <%= button_to "Delete", user_list_path(current_user, @list), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
- </div>
-
-
+  <% if hide_button(@list.user) %>
+  <div class="d-flex justify-content-between list-editor">
+      <%# Publish %>
+      <% if @list.published == false %>
+        <%= button_to "Publish", publish_user_list_path, class: "btn btn-success" %>
+      <% end %>
+      <%# Save to Drafts %>
+      <%= link_to "Save", current_user, class:"btn btn-primary" %>
+      <%# Delete %>
+      <%= button_to "Delete", user_list_path(current_user, @list), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+  </div>
+  <% end %>
 </div>

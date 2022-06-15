@@ -1,5 +1,8 @@
 <div class="container">
-  <h1>New List</h1>
+  <div class="d-flex">
+    <%= link_to '<', current_user, class:"back-button" %>
+    <h1>New List</h1>
+  </div>
 
 <%# List Title %>
 <%= simple_form_for [current_user, @list] do |f| %>
@@ -8,9 +11,6 @@
   <%= f.submit %>
 <% end %>
 
-  <br>
-  <br>
-  <%= link_to "<< Back", current_user  %>
 </div>
   <%# List Items %>
   <%#= simple_form_for [@user, @item] do |f| %>
