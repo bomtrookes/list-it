@@ -3,18 +3,20 @@ class ListsController < ApplicationController
 
   # read - for Search see line 35 onwards
   def index
-    # tags
-    if params[:tag].present?
-      @lists = List.where(user_id: @user.id).tagged_with(params[:tag])
-    else
-      @lists = List.where(user_id: @user.id)
-    end
     # search
     if params[:query].present?
-      @ordered_lists = List.search_by_title(params[:query])
+      # @ordered_lists = List.search_by_title(params[:query])
+      @ordered_lists = List.global_search(params[:query])
     else
       @ordered_lists = List.ordered_published_lists
     end
+    # tags - stopping search from working
+    # @user = User.find(params[:user_id])
+    # if params[:tag].present?
+    #   @lists = List.where(user_id: @user.id).tagged_with(params[:tag])
+    # else
+    #   @lists = List.where(user_id: @user.id)
+    # end
   end
 
   def new

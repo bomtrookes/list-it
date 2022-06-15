@@ -6,6 +6,15 @@ class UsersController < ApplicationController
     @following = current_user.followings.find_by(id: @user.id)
   end
 
+  def index
+    if params[:query].present?
+      # @ordered_lists = List.search_by_title(params[:query])
+      @users = User.global_search(params[:query])
+    else
+      @users = User.all
+    end
+  end
+
   private
 
   def set_user
