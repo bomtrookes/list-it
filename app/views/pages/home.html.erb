@@ -1,13 +1,31 @@
-<div class="container d-flex justify-content-center flex-column">
-  <h1>List-It</h1>
-    <% if !current_user %>
-      <%= link_to "Login", new_user_session_path %>
-    <% else %>
-      <% @lists.each do |list| %>
-        <ul>
-          <li><%= link_to list.title, list  %> - <em> <%= time_ago_in_words(list.created_at) %> </em> - <%= link_to format_username(list.user.username), list.user %>
-          </li>
-        </ul>
-      <% end %>
+<div class="container discover-list">
+   <div class="d-flex">
+    <%= link_to '<', current_user, class:"back-button" %>
+    <h1>List-It</h1>
+  </div>
+  <% if !current_user %>
+    <%= link_to "Login", new_user_session_path %>
+  <% else %>
+    <ul>
+    <% @lists.each do | list | %>
+      <li class="list-card-info d-flex justify-content-between mt-2">
+      <div class="list-info d-flex align-items-center">
+        <%# user image %>
+        <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
+        <div class="list-title-user d-flex flex-column">
+            <%# list size, title %>
+            <div class="d-flex list-card-info">
+            <%#= list.item_ids.size %>
+            <%= link_to list.title, list, class:"list-title" %>
+            </div>
+            <%# list username %>
+            <div class="username-italic">
+            <%= format_username(list.user.username) %> - created <%= time_ago_in_words(list.created_at) %> ago
+            </div>
+          </div>
+      </div>
+      </li>
     <% end %>
+  </ul>
+<% end %>
 </div>

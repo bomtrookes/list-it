@@ -1,5 +1,7 @@
  <div class="container">
   <h1> <%= @list.title %> </h1>
+  <p><%= format_username(@list.user.username) %></p>
+  <%= cl_image_tag @list.photo.key, height: 200, width: 300, crop: :fill if @list.photo.key %>
   <% unless hide_button(@list.user) %>
     <%= fav_unfav_button(@list, @fav) %> <br>
     <%= vote_unvote_button(@list, @vote) %><%= @list.votes.size %>
@@ -55,4 +57,8 @@
       <%= button_to "Delete", user_list_path(current_user, @list), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
   </div>
   <% end %>
+
+  <div>
+  <p><em>Created <%= time_ago_in_words(@list.created_at) %> ago</em></p>
+  </div>
 </div>

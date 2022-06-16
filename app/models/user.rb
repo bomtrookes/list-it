@@ -23,7 +23,7 @@ class User < ApplicationRecord
   has_many :followings, through: :given_follows, source: :followed
 
   validates :username, uniqueness: { case_sensitive: true }
-  validates :username, presence: true, length: { in: 2..20 }
+  validates :username, presence: true, length: { in: 2..30 }
   validates :bio, length: { maximum: 500,
     too_long: "%{count} characters is the maximum allowed" }
 
