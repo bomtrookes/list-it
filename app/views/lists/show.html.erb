@@ -1,6 +1,9 @@
  <div class="container">
   <h1> <%= @list.title %> </h1>
-  <p><%= format_username(@list.user.username) %></p>
+
+  <% if @list.user != current_user %>
+    <p><%= format_username(@list.user.username) %></p>
+  <% end %>
   <%= cl_image_tag @list.photo.key, height: 200, width: 300, crop: :fill if @list.photo.key %>
   <% unless hide_button(@list.user) %>
     <%= fav_unfav_button(@list, @fav) %> <br>
@@ -32,7 +35,7 @@
   </ul>
 
   <% @list.tag_list.each do |tag| %>
-      <%= link_to tag, tagged_path(tag: tag) %>
+      <%= link_to format_tag(tag), tagged_path(tag: tag) %>
   <% end %>
 
 

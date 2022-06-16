@@ -8,4 +8,8 @@ module ApplicationHelper
     '@' + username
   end
 
+  def format_tag(tag)
+    '#' + tag
+  end
+
 end
