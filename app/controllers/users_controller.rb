@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :set_user
 
   def show
@@ -7,12 +6,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    if params[:query].present?
-      # @ordered_lists = List.search_by_title(params[:query])
-      @users = User.global_search(params[:query])
-    else
-      @users = User.all
-    end
+    @users = User.all
   end
 
   private
@@ -24,5 +18,4 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
   end
-
 end
