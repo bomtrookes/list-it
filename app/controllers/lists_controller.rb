@@ -3,21 +3,20 @@ class ListsController < ApplicationController
 
   # read - for Search see line 35 onwards
   def index
-    # SEARCH 1
-    # if params[:query].present?
-    #   # @ordered_lists = List.search_by_title(params[:query])
-    #   @ordered_lists = List.search_by_title(params[:query])
-    # else
-    #   @ordered_lists = List.ordered_published_lists
-    # end
-
-    # TAGS - stopping search from working
-    @user = User.find(params[:user_id])
-    if params[:tag].present?
-      @lists = List.where(user_id: @user.id).tagged_with(params[:tag])
+    # search
+    if params[:query].present?
+      # @ordered_lists = List.search_by_title(params[:query])
+      @ordered_lists = List.search_by_title(params[:query])
     else
-      @lists = List.where(user_id: @user.id)
+      @ordered_lists = List.ordered_published_lists
     end
+    # tags - don't think we need this
+    # @user = User.find(params[:user_id])
+    # if params[:tag].present?
+    #   @ordered_lists = List.where(user_id: @user.id).tagged_with(params[:tag])
+    # else
+    #   @ordered_lists = List.where(user_id: @user.id)
+    # end
   end
 
   def new
@@ -89,11 +88,3 @@ class ListsController < ApplicationController
     @user = User.find(params[:user_id])
   end
 end
-
-# def index
-#   if params[:query].present?
-#     @list = List.search_by_list_title(params[:query])
-#   else
-#     @list = List.all
-#   end
-# end
