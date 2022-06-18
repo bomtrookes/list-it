@@ -29,7 +29,7 @@
             <%# list size, title %>
             <div class="d-flex list-card-info">
             <%#= list.item_ids.size %>
-            <%= link_to list.title, user_list_path(@user, list), class:"list-title" %>
+            <%= link_to list.title, list, class:"list-title" %>
             </div>
             <%# list username %>
             <%= link_to format_username(list.user.username), user_path(list.user), class:"username-italic" %>
