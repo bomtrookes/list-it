@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
-
   before_action :set_user
 
   def show
     @following = current_user.followings.find_by(id: @user.id)
+  end
+
+  def index
+    @users = User.all
   end
 
   private
@@ -15,5 +18,4 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
   end
-
 end
