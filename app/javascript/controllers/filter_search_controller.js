@@ -59,3 +59,11 @@ export default class extends Controller {
     console.log("tags linked")
   }
 }
+
+// Search on type - also reveal 'filters' on search
+// document.getElementById('name')
+//     .addEventListener('keyup', function(event) {
+//      event.preventDefault();
+//      document.querySelector('form').submit();
+//         }
+//     });
