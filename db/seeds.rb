@@ -1,3 +1,4 @@
+require "open-uri"
 require 'faker'
 
 puts "Cleaning Database..."
@@ -12,9 +13,6 @@ Vote.destroy_all
 # ListTag.destroy_all
 
 puts "Database clean"
-
-# Bio for users
-# bio = "This is the bio section of the users profile. You can update this information."
 
 puts "Creating Users and followers..."
 
@@ -82,9 +80,7 @@ rand(10..20).times do
   Follow.create(follower_id: user_b.id, followed_id: tom.id)
   Follow.create(follower_id: user_c.id, followed_id: tom.id)
 
-
   i += 3
-
 end
 
 # nuria's followers
@@ -1376,9 +1372,19 @@ end
 
 puts "Lists created"
 
+# puts "Attaching list images"
+
+# lists = List.all
+# list_image = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655562546/list-it/pizza2_evnf9u.jpg")
+
+# lists.each do |l|
+#   l.photo.attach(io: list_image, filename: 'puzzle.jpg', content_type: 'image/jpg')
+# end
+
+# puts "Images attached!"
+
 puts "Creating votes..."
 
-lists = List.all
 users = User.all
 
 1000.times do
@@ -1392,7 +1398,6 @@ puts "Votes created!"
 
 puts "Creating pins..."
 
-lists = List.all
 users = User.all
 
 lists.each do |list|
