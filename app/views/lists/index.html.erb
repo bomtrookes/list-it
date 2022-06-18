@@ -1,11 +1,10 @@
-
 <div class="container">
-
   <div class="d-flex">
     <%= link_to '<', current_user, class:"back-button" %>
     <h1>Discover</h1>
   </div>
 
+  <%# Search Form %>
   <%= form_tag lists_path, class: "input-group d-flex search-bar justify-content-center", method: :get do %>
     <%= text_field_tag :query,
         params[:query],
@@ -16,80 +15,121 @@
     <%= submit_tag "Search", class: "btn btn-primary" %>
   <% end %>
 
-
+  <%# Search Filter %>
   <div class="container discover-list" data-controller="filter-search">
     <div class="container d-flex justify-content-between mt-3">
-      <h3 data-action="click->filter-search#lists" data-filter-search-target="listbutton">top</h3>
+      <h3 data-action="click->filter-search#tops" data-filter-search-target="topbutton">top</h3>
       <h3 data-action="click->filter-search#lists" data-filter-search-target="listbutton">lists</h3>
       <h3 data-action="click->filter-search#users" data-filter-search-target="userbutton">users</h3>
       <h3 data-action="click->filter-search#tags" data-filter-search-target="tagbutton">tags</h3>
     </div>
-  <ul>
 
   <%# TOP - search results %>
+  <ul class="d-none" data-filter-search-target="top">
+    <% if @top_lists.present? %>
+      <% @top_lists.each do | list | %>
+      <li class="list-card-info d-flex justify-content-between mt-2">
+        <div class="list-info d-flex align-items-center">
+          <%# user image %>
+          <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
+          <div class="list-title-user d-flex flex-column">
+          <%# list size, title %>
+            <div class="d-flex list-card-info">
+            <%#= list.item_ids.size %>
+            <%= link_to list.title, list, class:"list-title" %>
+            </div>
+            <%# list username %>
+            <%= link_to format_username(list.user.username), user_path(list.user), class:"username-italic" %>
+          </div>
+        </div>
+        <%# votes %>
+        <div class="vote-box d-flex align-items-center">
+        <%= list.votes.size ? list.votes.size : 0 %>
+        <i class="fa-solid fa-thumbs-up"></i>
+        </div>
+      </li>
+    <% end %>
+    <% else %>
+      <p>No Results Found</p>
+    <% end %>
+  </ul>
 
   <%# LISTS - search results %>
-    <% @search_lists.each do | list | %>
-      <li class="list-card-info d-flex justify-content-between mt-2" data-filter-search-target="list">
-      <div class="list-info d-flex align-items-center">
-        <%# user image %>
-        <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
-        <div class="list-title-user d-flex flex-column">
-            <%# list size, title %>
-            <div class="d-flex list-card-info">
-            <%#= list.item_ids.size %>
-            <%= link_to list.title, list, class:"list-title" %>
-            </div>
-            <%# list username %>
-            <%= link_to format_username(list.user.username), user_path(list.user), class:"username-italic" %>
-        </div>
+  <ul class="d-none" data-filter-search-target="list">
+  <% if @search_lists.present? %>
+  <% @search_lists.each do | list | %>
+    <li class="list-card-info d-flex justify-content-between mt-2">
+    <div class="list-info d-flex align-items-center">
+      <%# user image %>
+      <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
+      <div class="list-title-user d-flex flex-column">
+          <%# list size, title %>
+          <div class="d-flex list-card-info">
+          <%#= list.item_ids.size %>
+          <%= link_to list.title, list, class:"list-title" %>
+          </div>
+          <%# list username %>
+          <%= link_to format_username(list.user.username), user_path(list.user), class:"username-italic" %>
       </div>
-      <%# votes %>
-      <div class="vote-box d-flex align-items-center">
-        <%= list.votes.size ? list.votes.size : 0 %>
-        <i class="fa-solid fa-thumbs-up"></i>
-      </div>
-      </li>
-    <% end %>
+    </div>
+    <%# votes %>
+    <div class="vote-box d-flex align-items-center">
+      <%= list.votes.size ? list.votes.size : 0 %>
+      <i class="fa-solid fa-thumbs-up"></i>
+    </div>
+    </li>
+  <% end %>
+  <% else %>
+    <p>No Results Found</p>
+  <% end %>
+  </ul>
 
-     <%# USERS - search results %>
-       <% @search_users.each do | list | %>
-      <li class="list-card-info d-flex justify-content-between mt-2" data-filter-search-target="user">
-      <div class="list-info d-flex align-items-center">
-        <%# user image %>
-        <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
-        <div class="list-title-user d-flex flex-column">
-            <%# list size, title %>
-            <div class="d-flex list-card-info">
-            <%#= list.item_ids.size %>
-            <%= link_to list.title, list, class:"list-title" %>
-            </div>
-            <%# list username %>
-            <%= link_to format_username(list.user.username), user_path(list.user), class:"username-italic" %>
-        </div>
+    <%# USERS - search results %>
+    <ul class="d-none" data-filter-search-target="user">
+    <% if @search_users.present? %>
+      <% @search_users.each do | list | %>
+    <li class="list-card-info d-flex justify-content-between mt-2">
+    <div class="list-info d-flex align-items-center">
+      <%# user image %>
+      <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
+      <div class="list-title-user d-flex flex-column">
+          <%# list size, title %>
+          <div class="d-flex list-card-info">
+          <%#= list.item_ids.size %>
+          <%= link_to list.title, list, class:"list-title" %>
+          </div>
+          <%# list username %>
+          <%= link_to format_username(list.user.username), user_path(list.user), class:"username-italic" %>
       </div>
-      <%# votes %>
-      <div class="vote-box d-flex align-items-center">
-        <%= list.votes.size ? list.votes.size : 0 %>
-        <i class="fa-solid fa-thumbs-up"></i>
-      </div>
-      </li>
+    </div>
+    <%# votes %>
+    <div class="vote-box d-flex align-items-center">
+      <%= list.votes.size ? list.votes.size : 0 %>
+      <i class="fa-solid fa-thumbs-up"></i>
+    </div>
+    </li>
     <% end %>
+    <% else %>
+      <p>No Results Found</p>
+    <% end %>
+    </ul>
 
-      <%# TAG - search results %>
+    <%# TAG - search results %>
+    <ul class="d-none" data-filter-search-target="tag">
+    <% if @search_tags.present? %>
     <% @search_tags.each do | list | %>
-      <li class="list-card-info d-flex justify-content-between mt-2" data-filter-search-target="tag">
+      <li class="list-card-info d-flex justify-content-between mt-2">
       <div class="list-info d-flex align-items-center">
         <%# user image %>
         <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
         <div class="list-title-user d-flex flex-column">
-            <%# list size, title %>
-            <div class="d-flex list-card-info">
-            <%#= list.item_ids.size %>
-            <%= link_to list.title, list, class:"list-title" %>
-            </div>
-            <%# list username %>
-            <%= link_to format_username(list.user.username), user_path(list.user), class:"username-italic" %>
+          <%# list size, title %>
+          <div class="d-flex list-card-info">
+          <%#= list.item_ids.size %>
+          <%= link_to list.title, list, class:"list-title" %>
+          </div>
+          <%# list username %>
+          <%= link_to format_username(list.user.username), user_path(list.user), class:"username-italic" %>
         </div>
       </div>
       <%# votes %>
@@ -99,10 +139,9 @@
       </div>
       </li>
     <% end %>
- </ul>
-
-</div>
-<%# show all users lists %>
-<%# lists need to link to list show page %>
-<%# look at rendering list-item form on this page %>
+    <% else %>
+        <p>No Results Found</p>
+    <% end %>
+    </ul>
+  </div>
 </div>

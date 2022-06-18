@@ -1,40 +1,61 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["list", "user","tag"]
+  static targets = ["top", "list", "user","tag", "topbutton", "listbutton", "userbutton","tagbutton"]
 
   connect() {
+    this.topTarget.classList.remove("d-none")
+    this.topbuttonTarget.classList.add("active-search")
     console.log("search filter controller")
   }
 
+  tops() {
+    this.topTarget.classList.remove("d-none")
+    this.listTarget.classList.add("d-none")
+    this.userTarget.classList.add("d-none")
+    this.tagTarget.classList.add("d-none")
+
+    this.topbuttonTarget.classList.add("active-search")
+    this.listbuttonTarget.classList.remove("active-search")
+    this.userbuttonTarget.classList.remove("active-search")
+    this.tagbuttonTarget.classList.remove("active-search")
+    console.log("top linked")
+  }
+
   lists() {
+    this.topTarget.classList.add("d-none")
     this.listTarget.classList.remove("d-none")
     this.userTarget.classList.add("d-none")
     this.tagTarget.classList.add("d-none")
 
-    // this.listbuttoniconTarget.classList.add("active-tab")
-    // this.userbuttonTarget.classList.remove("active-tab")
-    // this.tagbuttonTarget.classList.remove("active-tab")
+    this.topbuttonTarget.classList.remove("active-search")
+    this.listbuttonTarget.classList.add("active-search")
+    this.userbuttonTarget.classList.remove("active-search")
+    this.tagbuttonTarget.classList.remove("active-search")
     console.log("lists linked")
   }
   users() {
-    this.listbuttonTarget.classList.add("d-none")
+    this.topTarget.classList.add("d-none")
+    this.listTarget.classList.add("d-none")
     this.userTarget.classList.remove("d-none")
     this.tagTarget.classList.add("d-none")
 
-    // this.listiconTarget.classList.remove("active-tab")
-    // this.userbuttonTarget.classList.add("active-tab")
-    // this.tagbuttonTarget.classList.remove("active-tab")
+    this.topbuttonTarget.classList.remove("active-search")
+    this.listbuttonTarget.classList.remove("active-search")
+    this.userbuttonTarget.classList.add("active-search")
+    this.tagbuttonTarget.classList.remove("active-search")
     console.log("users linked")
   }
   tags() {
-    this.listbuttonTarget.classList.add("d-none")
+    this.topTarget.classList.add("d-none")
+    this.listTarget.classList.add("d-none")
     this.userTarget.classList.add("d-none")
     this.tagTarget.classList.remove("d-none")
 
-    // this.listiconTarget.classList.remove("active-tab")
-    // this.userbuttonTarget.classList.remove("active-tab")
-    // this.tagbuttonTarget.classList.add("active-tab")
+    this.topbuttonTarget.classList.remove("active-search")
+    this.listbuttonTarget.classList.remove("active-search")
+    this.userbuttonTarget.classList.remove("active-search")
+    this.tagbuttonTarget.classList.add("active-search")
     console.log("tags linked")
   }
 }
