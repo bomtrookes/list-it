@@ -1,22 +1,13 @@
 class ListsController < ApplicationController
   before_action :set_user, only: [:new, :create, :publish]
 
-  # read - for Search see line 35 onwards
   def index
     # search
     if params[:query].present?
-      # @ordered_lists = List.search_by_title(params[:query])
-      @ordered_lists = List.search_by_title(params[:query])
+      @ordered_lists = List.global_search(params[:query])
     else
       @ordered_lists = List.ordered_published_lists
     end
-    # tags - don't think we need this
-    # @user = User.find(params[:user_id])
-    # if params[:tag].present?
-    #   @ordered_lists = List.where(user_id: @user.id).tagged_with(params[:tag])
-    # else
-    #   @ordered_lists = List.where(user_id: @user.id)
-    # end
   end
 
   def new
