@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+
   acts_as_taggable_on :tags
 
   # has_one_attached :avatar
@@ -22,7 +23,7 @@ class User < ApplicationRecord
   has_many :followings, through: :given_follows, source: :followed
 
   validates :username, uniqueness: { case_sensitive: true }
-  validates :username, presence: true, length: { in: 2..20 }
+  validates :username, presence: true, length: { in: 2..30 }
   validates :bio, length: { maximum: 500,
     too_long: "%{count} characters is the maximum allowed" }
 
@@ -31,6 +32,4 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  include PgSearch::Model
-  multisearchable against: [:username]
 end

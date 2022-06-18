@@ -1,25 +1,48 @@
+
 <div class="container">
-  <h1>Discover</h1>
+
+  <div class="d-flex">
+    <%= link_to '<', current_user, class:"back-button" %>
+    <h1>Discover</h1>
+  </div>
 
   <%= form_tag lists_path, class: "input-group d-flex search-bar justify-content-center", method: :get do %>
-<%= text_field_tag :query,
-  params[:query],
-  id: "form1",
-  type: "search",
-  class: "form-control",
-  placeholder: "Search..."%>
-<%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+    <%= text_field_tag :query,
+        params[:query],
+        id: "form1",
+        type: "search",
+        class: "form-control",
+        placeholder: "Search..." %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+
+
+  <div class="container discover-list">
 
   <ul>
     <% @ordered_lists.each do | list | %>
-     <li class="d-flex justify-content-between">
-        <%= link_to list.title, user_list_path(current_user, list) %>
-        <i class="fa-solid fa-thumbs-up"></i>
+      <li class="list-card-info d-flex justify-content-between mt-2">
+      <div class="list-info d-flex align-items-center">
+        <%# user image %>
+        <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
+        <div class="list-title-user d-flex flex-column">
+            <%# list size, title %>
+            <div class="d-flex list-card-info">
+            <%#= list.item_ids.size %>
+            <%= link_to list.title, user_list_path(@user, list), class:"list-title" %>
+            </div>
+            <%# list username %>
+            <%= link_to format_username(list.user.username), user_path(list.user), class:"username-italic" %>
+        </div>
+      </div>
+      <%# votes %>
+      <div class="vote-box d-flex align-items-center">
         <%= list.votes.size ? list.votes.size : 0 %>
+        <i class="fa-solid fa-thumbs-up"></i>
+      </div>
       </li>
     <% end %>
-  </ul>
+ </ul>
 
 </div>
 <%# show all users lists %>
