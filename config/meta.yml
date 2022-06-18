@@ -3,4 +3,5 @@ meta_title: "List-It - Discover. Create. Share."
 meta_description: "Create top 10 lists based on your interests
 Discover new interests or more about your own
 Share with your friends or with the world."
-# meta_image: "cover.png" # should exist in `app/assets/images/`
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "#"
