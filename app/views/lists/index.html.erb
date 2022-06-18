@@ -17,12 +17,20 @@
   <% end %>
 
 
-  <div class="container discover-list">
-
+  <div class="container discover-list" data-controller="filter-search">
+    <div class="container d-flex justify-content-between mt-3">
+      <h3 data-action="click->filter-search#lists" data-filter-search-target="listbutton">top</h3>
+      <h3 data-action="click->filter-search#lists" data-filter-search-target="listbutton">lists</h3>
+      <h3 data-action="click->filter-search#users" data-filter-search-target="userbutton">users</h3>
+      <h3 data-action="click->filter-search#tags" data-filter-search-target="tagbutton">tags</h3>
+    </div>
   <ul>
+
+  <%# TOP - search results %>
+
   <%# LISTS - search results %>
     <% @search_lists.each do | list | %>
-      <li class="list-card-info d-flex justify-content-between mt-2">
+      <li class="list-card-info d-flex justify-content-between mt-2" data-filter-search-target="list">
       <div class="list-info d-flex align-items-center">
         <%# user image %>
         <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
@@ -46,7 +54,7 @@
 
      <%# USERS - search results %>
        <% @search_users.each do | list | %>
-      <li class="list-card-info d-flex justify-content-between mt-2">
+      <li class="list-card-info d-flex justify-content-between mt-2" data-filter-search-target="user">
       <div class="list-info d-flex align-items-center">
         <%# user image %>
         <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
@@ -69,8 +77,8 @@
     <% end %>
 
       <%# TAG - search results %>
-       <% @search_tags.each do | list | %>
-      <li class="list-card-info d-flex justify-content-between mt-2">
+    <% @search_tags.each do | list | %>
+      <li class="list-card-info d-flex justify-content-between mt-2" data-filter-search-target="tag">
       <div class="list-info d-flex align-items-center">
         <%# user image %>
         <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
