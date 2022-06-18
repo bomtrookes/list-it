@@ -34,6 +34,8 @@
 
   </ul>
 
+<%# tag function %>
+
   <% @list.tag_list.each do |tag| %>
       <%= link_to format_tag(tag), tagged_path(tag: tag) %>
   <% end %>
