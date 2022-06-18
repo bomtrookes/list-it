@@ -4,9 +4,13 @@ class ListsController < ApplicationController
   def index
     # search
     if params[:query].present?
-      @ordered_lists = List.global_search(params[:query])
+      @search_lists = List.search_list(params[:query])
+      @search_users = List.search_user(params[:query])
+      @search_tags = List.search_tag(params[:query])
     else
-      @ordered_lists = List.ordered_published_lists
+      @search_lists = List.ordered_published_lists
+      @search_users = []
+      @search_tags = []
     end
   end
 
