@@ -2,9 +2,9 @@
   <h1> <%= @list.title %> </h1>
 
   <% if @list.user != current_user %>
-    <p><%= format_username(@list.user.username) %></p>
+    <p><%= format_username(@list.user.username) %> <%= follow_or_unfollow_button(@list.user, @following) %></p>
   <% end %>
-  <%= cl_image_tag @list.photo.key, height: 200, width: 300, crop: :fill if @list.photo.key %>
+  <%= cl_image_tag @list.photo.key, class: "list-photo-card", height: 200, width: 300, crop: :fill if @list.photo.key %>
   <% unless hide_button(@list.user) %>
     <%= fav_unfav_button(@list, @fav) %> <br>
     <%= vote_unvote_button(@list, @vote) %><%= @list.votes.size %>
