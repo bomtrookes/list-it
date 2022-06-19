@@ -3,4 +3,13 @@
     padding: 0;
     margin: 0;
   }
+  .active-search {
+    color : green;
+    text-decoration: underline;
+  }
+  p {
+    text-align: center;
+    color : rgb(148, 148, 148);
+    margin-top : 25%;
+  }
 }
