@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :lists do
       member do
         post :publish
+        post :article
       end
     end
     resources :follows, only: [:create, :destroy]

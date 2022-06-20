@@ -1,7 +1,9 @@
 <% if hide_button(@list.user) && @list.items.length <= 9 %>
   <%= simple_form_for [@item] do |f| %>
     <%= f.input :name %>
+  <% if @list.article == true %>
     <%= f.input :description %>
+  <% end %>
     <%= f.hidden_field :list_id, value: @list.id %>
     <%= f.submit %>
   <% end %>

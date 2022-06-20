@@ -1,5 +1,4 @@
- <%# NOT SURE HOW TO ACCESS ITEM FROM HERE %>
- <% if hide_button(@list.user) && @list.items.length <= 9 %>
+<% if hide_button(@list.user) && @list.items.length <= 9 %>
   <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>

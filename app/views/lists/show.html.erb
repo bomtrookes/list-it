@@ -1,16 +1,16 @@
  <div class="container pad">
   <div class="d-flex-justify-content-between">
     <h1> <%= @list.title %> </h1>
-    <label class="switch"><input type="checkbox"><span class="slider round"></span></label>
+    <% if @list.user == current_user %>
+      <%= button_to "Article", article_user_list_path(@list.user), class: "btn btn-primary" %>
+    <% end %>
+    <%# <label class="switch"><input type="checkbox"><span class="slider round"></span></label> %>
   </div>
-
 
   <%# LIST AUTHOR %>
   <% if @list.user != current_user %>
     <p><%= format_username(@list.user.username) %></p>
   <% end %>
-
-
 
   <%# UPLOADED IMAGE %>
   <%= cl_image_tag @list.photo.key, height: 200, width: 300, crop: :fill if @list.photo.key %>
@@ -22,13 +22,16 @@
   <% end %>
 
   <%# CURRENT LIST & ADD ITEMS %>
-  <ul>
+  <ul class="pt-4">
   <% @list.items.limit(10).each do | item | %>
     <li>
       <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
         <div class="item-infos" data-edit-item-target="infos">
           <%= item.name %>
+        <%# ARTICLE VIEW %>
+        <% if @list.article == true %>
           <%= item.description %>
+        <% end %>
           <% if hide_button(@list.user)%>
             <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
             <%#= button_to "Delete", item_path(item.id), method: :delete %>
@@ -39,12 +42,13 @@
         <% if hide_button(@list.user) && @list.items.length <= 9 %>
           <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
             <%= f.input :name %>
+          <% if @list.article == true %>
             <%= f.input :description %>
+          <% end %>
             <%= f.hidden_field :list_id, value: @list.id %>
             <%= f.submit %>
           <% end %>
         <% end %>
-
       </div>
     </li>
   <% end %>
