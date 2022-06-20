@@ -24,6 +24,13 @@
       <% end %>
       </li>
 
+      <%# Pinned Lists? %>
+      <li class="d-flex flex-column align-items-center">
+      <%= link_to "#" do %>
+        <i class="fa-solid fa-thumbtack"></i>
+      <% end %>
+      </li>
+
       <%# Profile %>
       <li class="d-flex flex-column align-items-center">
       <%= link_to current_user do %>
