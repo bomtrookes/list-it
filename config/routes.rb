@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :items, only: [:create, :index, :update]
+  resources :items, only: [:create, :index, :update, :destroy]
 
   resources :users do
     resources :lists do
