@@ -1,5 +1,6 @@
- <% if hide_button(@list.user) && @list.items.length < 11 %>
-  <%= simple_form_for @item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
+ <%# NOT SURE HOW TO ACCESS ITEM FROM HERE %>
+ <% if hide_button(@list.user) && @list.items.length <= 9 %>
+  <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
     <%= f.input :name %>
     <%= f.hidden_field :list_id, value: @list.id %>
     <%= f.submit %>

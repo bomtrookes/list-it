@@ -17,7 +17,7 @@
 
   <%# CURRENT LIST & ADD ITEMS %>
   <ul>
-  <% @list.items.each do | item | %>
+  <% @list.items.limit(10).each do | item | %>
     <li>
       <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
         <div class="item-infos" data-edit-item-target="infos">
@@ -27,9 +27,9 @@
           <% end %>
         </div>
 
-       <%#= render  %>
-        <% if hide_button(@list.user) %>
-          <%= simple_form_for @item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
+       <%#= render "list_item_update_form" %>
+        <% if hide_button(@list.user) && @list.items.length <= 9 %>
+          <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
             <%= f.input :name %>
             <%= f.hidden_field :list_id, value: @list.id %>
             <%= f.submit %>
@@ -42,14 +42,14 @@
   </ul>
 
   <%# LIST ITEM FORM %>
-  <%#= render %>
-  <% if hide_button(@list.user) && @list.items.length < 11 %>
-    <%= simple_form_for [@item] do |f| %>
-      <%= f.input :name %>
-      <%= f.hidden_field :list_id, value: @list.id %>
-      <%= f.submit %>
-    <% end %>
-  <% end %>
+  <%= render "list_item_form" %>
+  <%# if hide_button(@list.user) && @list.items.length < 11 %>
+    <%#= simple_form_for [@item] do |f| %>
+      <%#= f.input :name %>
+      <%#= f.hidden_field :list_id, value: @list.id %>
+      <%#= f.submit %>
+    <%# end %>
+  <%# end %>
 
   <%# TAG LINKS %>
   <div class="pt-4">
