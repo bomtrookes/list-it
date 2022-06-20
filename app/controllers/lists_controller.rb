@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_user, only: [:new, :create, :publish]
+  before_action :set_user, only: [:new, :create, :publish, :article]
 
   def index
     # search
@@ -63,6 +63,17 @@ class ListsController < ApplicationController
     redirect_to current_user
   end
 
+  def article
+    @list = find_list
+    if @list.article == false
+      @list.article = true
+    else
+      @list.article = false
+    end
+    @list.save
+    redirect_to user_list_path(user_id: current_user, id: @list)
+  end
+
   def tagged
     if params[:tag].present?
       @lists = List.tagged_with(params[:tag])
@@ -78,7 +89,7 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:title, :id, :tag_list, :photo)
+    params.require(:list).permit(:title, :id, :tag_list, :photo, :article)
   end
 
   def set_user
