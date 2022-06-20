@@ -76,7 +76,7 @@
     <div class="d-flex justify-content-between list-editor pt-4">
       <%# Publish %>
       <% if @list.published == false %>
-        <%= button_to "Publish", publish_user_list_path, class: "btn btn-success" %>
+        <%= button_to "Publish", current_user, class: "btn btn-success" %>
       <% end %>
       <%# Save to Drafts %>
       <%= link_to "Save", current_user, class:"btn btn-primary" %>
