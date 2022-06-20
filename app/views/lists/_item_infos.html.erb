@@ -7,7 +7,7 @@
     </li>
   </div>
 
-  <%= simple_form_for @item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
+  <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
     <%= f.input :name %>
     <%= f.hidden_field :list_id, value: @item.list.id %>
     <%= f.submit %>

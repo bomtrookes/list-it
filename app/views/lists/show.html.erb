@@ -1,14 +1,21 @@
  <div class="container pad">
   <h1> <%= @list.title %> </h1>
 
+  <%# LIST AUTHOR %>
   <% if @list.user != current_user %>
     <p><%= format_username(@list.user.username) %></p>
   <% end %>
+
+  <%# UPLOADED IMAGE %>
   <%= cl_image_tag @list.photo.key, height: 200, width: 300, crop: :fill if @list.photo.key %>
+
+  <%# PIN & VOTE BUTTONS %>
   <% unless hide_button(@list.user) %>
     <%= fav_unfav_button(@list, @fav) %> <br>
     <%= vote_unvote_button(@list, @vote) %><%= @list.votes.size %>
   <% end %>
+
+  <%# CURRENT LIST & ADD ITEMS %>
   <ul>
   <% @list.items.each do | item | %>
     <li>
@@ -20,27 +27,22 @@
           <% end %>
         </div>
 
-        <% if hide_button(@list.user)%>
-            <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
+       <%#= render  %>
+        <% if hide_button(@list.user) %>
+          <%= simple_form_for @item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
             <%= f.input :name %>
             <%= f.hidden_field :list_id, value: @list.id %>
             <%= f.submit %>
-            <% end %>
+          <% end %>
         <% end %>
 
       </div>
     </li>
   <% end %>
-
   </ul>
 
-<%# tag function %>
-
-  <% @list.tag_list.each do |tag| %>
-      <%= link_to format_tag(tag), tagged_path(tag: tag) %>
-  <% end %>
-
-
+  <%# LIST ITEM FORM %>
+  <%#= render %>
   <% if hide_button(@list.user) && @list.items.length < 11 %>
     <%= simple_form_for [@item] do |f| %>
       <%= f.input :name %>
@@ -48,10 +50,17 @@
       <%= f.submit %>
     <% end %>
   <% end %>
-  <br>
-  <br>
+
+  <%# TAG LINKS %>
+  <div class="pt-4">
+    <% @list.tag_list.each do |tag| %>
+      <%= link_to format_tag(tag), tagged_path(tag: tag) %>
+    <% end %>
+  </div>
+
+  <%# LIST PUBLISH OPTIONS %>
   <% if hide_button(@list.user) %>
-  <div class="d-flex justify-content-between list-editor">
+    <div class="d-flex justify-content-between list-editor pt-4">
       <%# Publish %>
       <% if @list.published == false %>
         <%= button_to "Publish", publish_user_list_path, class: "btn btn-success" %>
@@ -60,10 +69,12 @@
       <%= link_to "Save", current_user, class:"btn btn-primary" %>
       <%# Delete %>
       <%= button_to "Delete", user_list_path(current_user, @list), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
-  </div>
+    </div>
   <% end %>
 
-  <div>
-  <p><em>Created <%= time_ago_in_words(@list.created_at) %> ago</em></p>
+  <div class="pt-5">
+    <p>
+    <em>Created <%= time_ago_in_words(@list.created_at) %> ago</em>
+    </p>
   </div>
 </div>
