@@ -1,62 +1,63 @@
-<% if !current_user %>
+  <% if !current_user %>
 
-<div class="container pad home-card">
-  <div class="container d-flex flex-column justify-content-around logo-wrap">
+  <div class="pad home-card">
+    <div class="container d-flex flex-column justify-content-around logo-wrap">
 
-    <div class="logo-text">
-      <div class="home-logos">
-        <%= cl_image_tag("list-it/listit-icon_tldjfn", width: 120, height: 120, crop: :fill) %>
-      </div>
-
-      <div class="home-logos">
-        <%= cl_image_tag("list-it/listit-wordmark_dkt0ky", width: 250, crop: :fill) %>
-      </div>
-      <h3>Create. Discover. Share.</h3>
-    </div>
-
-    <div class="welcome-card">
-      <h1 class="h3 mb-3 font-weight-normal">Welcome!</h1>
-      <p>List-it is a community of list lovers. From the most generic topics to the most niche interests. There's a list of anything you can think of!</p>
-      <%= link_to "Log in", new_user_session_path, class: "btn btn-flat" %>
-      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-ghost" %>
-    </div>
-
-  </div>
-</div>
-
-<% else %>
-
-<div class="container home-card-login">
-
-  <div class="container d-flex flex-column justify-content-between discover-header">
-    <%#= link_to '<', current_user, class:"back-button" %>
-    <div class="home-logos">
-      <%= cl_image_tag("list-it/listit-icon_wordmark-horizontal_tgonja", width: 250, crop: :fill) %>
-    </div>
-  </div>
-
-  <ul>
-    <% @lists.each do | list | %>
-      <li class="list-card-info d-flex justify-content-between mt-2">
-        <div class="list-info d-flex align-items-center">
-          <%# user image %>
-          <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
-          <div class="list-title-user d-flex flex-column">
-              <%# list size, title %>
-              <div class="d-flex list-card-info">
-                <%#= list.item_ids.size %>
-                <%= link_to list.title, list, class:"list-title" %>
-              </div>
-              <%# list username %>
-              <div class="username-italic">
-                <%= format_username(list.user.username) %> - created <%= time_ago_in_words(list.created_at) %> ago
-              </div>
-          </div>
+      <div class="logo-text">
+        <div class="home-logos">
+          <%= cl_image_tag("list-it/listit-icon_tldjfn", width: 120, height: 120, crop: :fill) %>
         </div>
-      </li>
-    <% end %>
-  </ul>
 
-</div>
+        <div class="home-logos">
+          <%= cl_image_tag("list-it/listit-wordmark_dkt0ky", width: 250, crop: :fill) %>
+        </div>
+        <h3>Create. Discover. Share.</h3>
+      </div>
 
-<% end %>
+      <div class="welcome-card">
+        <h1 class="h3 mb-3 font-weight-normal">Welcome!</h1>
+        <p>List-it is a community of list lovers. From the most generic topics to the most niche interests. There's a list of anything you can think of!</p>
+        <%= link_to "Log in", new_user_session_path, class: "btn btn-flat" %>
+        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-ghost" %>
+      </div>
+
+    </div>
+  </div>
+
+  <% else %>
+
+  <div class="container pad">
+
+    <div class="container d-flex flex-column justify-content-between">
+      <%#= link_to '<', current_user, class:"back-button" %>
+      <%# <div class="home-logos">
+        <%= cl_image_tag("list-it/listit-icon_wordmark-horizontal_tgonja", width: 250, crop: :fill) %>
+      <%# </div> %>
+    </div>
+
+    <ul>
+      <h1>Feed</h1>
+      <% @lists.each do | list | %>
+        <li class="list-card-info d-flex justify-content-between mt-2">
+          <div class="list-info d-flex align-items-center">
+            <%# user image %>
+            <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
+            <div class="list-title-user d-flex flex-column">
+                <%# list size, title %>
+                <div class="d-flex list-card-info">
+                  <%#= list.item_ids.size %>
+                  <%= link_to list.title, list, class:"list-title" %>
+                </div>
+                <%# list username %>
+                <div class="username-italic">
+                  <%= format_username(list.user.username) %> - created <%= time_ago_in_words(list.created_at) %> ago
+                </div>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+
+  </div>
+
+  <% end %>
