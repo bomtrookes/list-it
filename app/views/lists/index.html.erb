@@ -93,20 +93,16 @@
       <%# user image %>
       <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
       <div class="list-title-user d-flex flex-column">
-          <%# list size, title %>
-          <div class="d-flex list-card-info">
-          <%#= list.item_ids.size %>
-          <%= link_to list.title, list, class:"list-title" %>
-          </div>
-          <%# list username %>
-          <%= link_to format_username(list.user.username), user_path(list.user), class:"username-italic" %>
+        <%# username %>
+        <%= link_to format_username(list.user.username), user_path(list.user), class:"list-title" %>
       </div>
     </div>
-    <%# votes %>
-    <div class="vote-box d-flex align-items-center">
-      <%= list.votes.size ? list.votes.size : 0 %>
-      <i class="fa-solid fa-thumbs-up"></i>
-    </div>
+     <%# followers %>
+      <div class="followers-box d-flex align-items-center">
+        <p>followers:
+        <%= list.user.follower_ids.size %>
+        </p>
+      </div>
     </li>
     <% end %>
     <% else %>
