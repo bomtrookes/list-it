@@ -8,14 +8,12 @@
     <h3><%= format_username(@user.username) %></h3>
     <p><%= @user.bio %></p>
   </div>
-​
   <%# follow button %>
   <% unless hide_button(@user) %>
   <div class="container d-flex justify-content-center mb-3">
     <%= follow_or_unfollow_button(@user, @following) %>
   </div>
   <% end %>
-​
   <%# Lists, Followers, Following %>
   <div class="container profile-info mt-1 mb-1">
     <ul class="d-flex justify-content-around" >
@@ -30,8 +28,6 @@
       </li>
     </ul>
   </div>
-
-​
   <div class="profile-views" data-controller="change-view">
     <%# Published, Drafts, Pinned %>
     <% if hide_button(@user) %>
@@ -51,7 +47,6 @@
       </ul>
     </div>
     <% end %>
-​
     <%# Published Lists - progress %>
     <div class="list-card container">
       <ul class="d-none" data-change-view-target="list">
@@ -78,7 +73,6 @@
 
         <% end %>
       </ul>
-​
       <%# Draft Lists %>
       <% if hide_button(@user) %>
         <% if unpublished_lists(@user).present? %>
@@ -107,7 +101,6 @@
           </ul>
         <% end %>
       <% end %>
-​
       <%# Pinned Lists %>
       <% if @user.favourite_lists.present? %>
         <%# <p class="container"><%= pluralize(@user.favourite_lists.size, "Pin") %>
