@@ -4,14 +4,17 @@ class FavouriteListsController < ApplicationController
 
   def create
     @list.favourite_lists.create!(user: current_user)
-    redirect_to @list
+
+    session[:return_to] ||= request.referer
+    redirect_to session.delete(:return_to)
   end
 
   def destroy
     fav = current_user.favourite_lists.find(params[:id])
     fav.destroy
 
-    redirect_to @list
+    session[:return_to] ||= request.referer
+    redirect_to session.delete(:return_to)
   end
 
   private

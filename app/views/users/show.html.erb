@@ -8,14 +8,14 @@
     <h3><%= format_username(@user.username) %></h3>
     <p><%= @user.bio %></p>
   </div>
-
+​
   <%# follow button %>
   <% unless hide_button(@user) %>
   <div class="container d-flex justify-content-center mb-3">
     <%= follow_or_unfollow_button(@user, @following) %>
   </div>
   <% end %>
-
+​
   <%# Lists, Followers, Following %>
   <div class="container profile-info mt-1 mb-1">
     <ul class="d-flex justify-content-around" >
@@ -31,31 +31,10 @@
     </ul>
   </div>
 
+​
   <div class="profile-views" data-controller="change-view">
     <%# Published, Drafts, Pinned %>
     <% if hide_button(@user) %>
-
-      <% if unpublished_lists(@user).present? %>
-        <%# <p><%= pluralize(unpublished_lists(current_user).size, "🔒 list") %>
-        <ul class="d-none" data-change-view-target="draft">
-          <% unpublished_lists(current_user).each do | list | %>
-            <li class="list-card-info d-flex justify-content-between">
-        <div class="list-info d-flex">
-          <%# user image %>
-          <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail", height: 50, width: 50, crop: :fill if list.photo.key %>
-          <div class="list-title-user d-flex flex-column justify-content-center">
-             <%# list size?, title %>
-             <div class="d-flex">
-              <%#= list.item_ids.size %>
-              <%= link_to list.title, user_list_path(@user, list), class:"list-title" %>
-             </div>
-           </div>
-        </div>
-        <%# votes %>
-        <div class="vote-box d-flex align-items-center">
-          <%= list.votes.size ? list.votes.size : 0 %>
-          <i class="fa-solid fa-thumbs-up"></i>
-        </div>
 
     <div class="container profile-nav pt-2 pb-2">
       <ul class ="d-flex justify-content-around">
@@ -72,7 +51,7 @@
       </ul>
     </div>
     <% end %>
-
+​
     <%# Published Lists - progress %>
     <div class="list-card container">
       <ul class="d-none" data-change-view-target="list">
@@ -80,7 +59,7 @@
           <li class="list-card-info d-flex justify-content-between">
 
           <div class="list-info d-flex">
-            <%# user image %>
+            <%# list image %>
             <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail", height: 50, width: 50, crop: :fill if list.photo.key %>
             <div class="list-title-user d-flex flex-column justify-content-center">
               <%# list size?, title %>
@@ -88,7 +67,6 @@
                 <%#= list.item_ids.size %>
                 <%= link_to list.title, user_list_path(@user, list), class:"list-title" %>
               </div>
-              <div class="username-italic"> <%= format_username(list.user.username) %></div>
             </div>
           </div>
           <%# votes %>
@@ -100,7 +78,7 @@
 
         <% end %>
       </ul>
-
+​
       <%# Draft Lists %>
       <% if hide_button(@user) %>
         <% if unpublished_lists(@user).present? %>
@@ -109,8 +87,8 @@
             <% unpublished_lists(current_user).each do | list | %>
               <li class="list-card-info d-flex justify-content-between">
           <div class="list-info d-flex">
-            <%# user image %>
-            <%= image_tag @user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
+            <%# list image %>
+            <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail", height: 50, width: 50, crop: :fill if list.photo.key %>
             <div class="list-title-user d-flex flex-column justify-content-center">
               <%# list size?, title %>
               <div class="d-flex">
@@ -129,7 +107,7 @@
           </ul>
         <% end %>
       <% end %>
-
+​
       <%# Pinned Lists %>
       <% if @user.favourite_lists.present? %>
         <%# <p class="container"><%= pluralize(@user.favourite_lists.size, "Pin") %>
@@ -138,7 +116,7 @@
             <li class="list-card-info d-flex justify-content-between">
           <div class="list-info d-flex">
             <%# user image %>
-            <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
+           <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail", height: 50, width: 50, crop: :fill if list.photo.key %>
             <div class="list-title-user d-flex flex-column justify-content-center">
               <%# list size?, title %>
               <div class="d-flex">

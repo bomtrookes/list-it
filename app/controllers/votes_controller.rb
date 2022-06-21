@@ -4,14 +4,17 @@ class VotesController < ApplicationController
 
   def create
     @list.votes.create!(user: current_user)
-    redirect_to @list
+
+    session[:return_to] ||= request.referer
+    redirect_to session.delete(:return_to)
   end
 
   def destroy
     vote = current_user.votes.find(params[:id])
     vote.destroy
 
-    redirect_to @list
+    session[:return_to] ||= request.referer
+    redirect_to session.delete(:return_to)
   end
 
   private
