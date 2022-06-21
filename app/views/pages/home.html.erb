@@ -36,22 +36,20 @@
     </div>
 
     <ul>
-      <h1>Feed</h1>
-      <% @lists.each do | list | %>
-        <li class="list-card-info d-flex justify-content-between mt-2">
-          <div class="list-info d-flex align-items-center">
-            <%# user image %>
-            <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
-            <div class="list-title-user d-flex flex-column">
-                <%# list size, title %>
-                <div class="d-flex list-card-info">
-                  <%#= list.item_ids.size %>
-                  <%= link_to list.title, list, class:"list-title" %>
-                </div>
-                <%# list username %>
-                <div class="username-italic">
-                  <%= format_username(list.user.username) %> - created <%= time_ago_in_words(list.created_at) %> ago
-                </div>
+    <% @lists.each do | list | %>
+      <li class="list-card-info d-flex justify-content-between mt-2">
+      <div class="list-info d-flex align-items-center">
+        <%# list image %>
+        <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail", height: 50, width: 50, crop: :fill if list.photo.key %>
+        <div class="list-title-user d-flex flex-column">
+            <%# list size, title %>
+            <div class="d-flex list-card-info">
+            <%#= list.item_ids.size %>
+            <%= link_to list.title, list, class:"list-title" %>
+            </div>
+            <%# list username %>
+            <div class="username-italic">
+              <%= format_username(list.user.username) %> - created <%= time_ago_in_words(list.created_at) %> ago
             </div>
           </div>
         </li>

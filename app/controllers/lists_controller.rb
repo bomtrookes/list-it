@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_user, only: [:new, :create, :publish, :article]
+  before_action :set_user, only: [:new, :create, :publish, :article, :show]
 
   def index
     # search
@@ -36,6 +36,7 @@ class ListsController < ApplicationController
     @list = find_list
     @item = Item.new
     @related_lists = @list.find_related_tags
+    @following = current_user.followings.find_by(id: @user.id)
     @fav = current_user.favourite_lists.find_by(list_id: @list.id)
     @vote = current_user.votes.find_by(list_id: @list.id)
   end
@@ -93,6 +94,11 @@ class ListsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:user_id])
+    if params[:user_id] == current_user.id
+      @user = current_user
+    else
+      @user = User.find(params[:user_id])
+    end
   end
+
 end

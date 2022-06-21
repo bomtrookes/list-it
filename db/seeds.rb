@@ -1,3 +1,4 @@
+require "open-uri"
 require 'faker'
 
 puts "Cleaning Database..."
@@ -12,9 +13,6 @@ Vote.destroy_all
 # ListTag.destroy_all
 
 puts "Database clean"
-
-# Bio for users
-# bio = "This is the bio section of the users profile. You can update this information."
 
 puts "Creating Users and followers..."
 
@@ -82,9 +80,7 @@ rand(10..20).times do
   Follow.create(follower_id: user_b.id, followed_id: tom.id)
   Follow.create(follower_id: user_c.id, followed_id: tom.id)
 
-
   i += 3
-
 end
 
 # nuria's followers
@@ -256,6 +252,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655627176/list-it/superhero-powers_frxazp.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -276,6 +276,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655627645/list-it/Superheroes_w5dyow.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -296,6 +300,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655627686/list-it/tea_wguth7.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -316,6 +324,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655627733/list-it/national-tea-festival_dkxctx.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -336,6 +348,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655627977/list-it/uni_bpoktj.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -356,12 +372,39 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655627940/list-it/columbia_zv48mz.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
   {
     user_id: user.id,
-    title: "Highest mountaines climbed",
+    title: "Top 10 moest expensive unis",
+    published: true,
+    tag_list: ['univesity'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+9.times do
+  Item.create!(
+    {
+      name: Faker::University.name,
+      list_id: list.id
+    }
+  )
+end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655627831/list-it/Woman-student-graduate-university-cambridge-money-pound-signs-cash_bybeop.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
+
+user = User.all.sample
+list = List.create!(
+  {
+    user_id: user.id,
+    title: "Highest mountains climbed",
     published: true,
     article: false,
     tag_list: ['mountain', 'climb'],
@@ -376,6 +419,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655628031/list-it/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006_v3icdy.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -396,6 +443,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655628104/list-it/211116-harry-potter-al-1232-b41548_u6c6tw.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -416,6 +467,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655628152/list-it/harry-p_m354qr.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -436,6 +491,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655628237/list-it/harrp_ryrobm.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -456,6 +515,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655628296/list-it/Art_qe8bk1.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -476,6 +539,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655628351/list-it/artist_hfxeuy.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -497,6 +564,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 user = User.all.sample
 list = List.create!(
   {
@@ -516,6 +585,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -537,6 +608,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 user = User.all.sample
 list = List.create!(
   {
@@ -556,6 +629,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -577,6 +652,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 user = User.all.sample
 list = List.create!(
   {
@@ -596,6 +673,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -617,6 +696,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 user = User.all.sample
 list = List.create!(
   {
@@ -636,6 +717,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -657,6 +740,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 user = User.all.sample
 list = List.create!(
   {
@@ -676,6 +761,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -697,6 +784,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 user = User.all.sample
 list = List.create!(
   {
@@ -716,6 +805,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -737,6 +828,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 user = User.all.sample
 list = List.create!(
   {
@@ -756,6 +849,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -777,6 +872,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 user = User.all.sample
 list = List.create!(
   {
@@ -796,6 +893,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -817,6 +916,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 user = User.all.sample
 list = List.create!(
   {
@@ -836,6 +937,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -857,6 +960,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 user = User.all.sample
 list = List.create!(
   {
@@ -876,6 +981,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -897,6 +1004,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 list = List.create!(
   {
     user_id: tom.id,
@@ -915,6 +1024,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655628448/list-it/food_xaykti.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 list = List.create!(
   {
@@ -934,11 +1047,15 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655628514/list-it/how-to-cook-steak-1061w_nkqjko.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 list = List.create!(
   {
     user_id: ana.id,
-    title: "Top 10 best dishes",
+    title: "Best food dishes",
     published: true,
     article: false,
     tag_list: ['food'],
@@ -953,6 +1070,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655628610/list-it/food-2_ilbmka.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 list = List.create!(
   {
@@ -972,6 +1093,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655628730/list-it/hobby_promo-master768_ndcynb.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 list = List.create!(
   {
@@ -991,6 +1116,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655628765/list-it/What-are-your-Hobbies_hpwfux.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 list = List.create!(
   {
@@ -1010,6 +1139,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655628854/list-it/hobbies_kyowxp.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -1030,6 +1163,10 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655628812/list-it/cast_frj3yn.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
 
 list = List.create!(
   {
@@ -1050,6 +1187,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 list = List.create!(
   {
     user_id: ana.id,
@@ -1068,6 +1207,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 list = List.create!(
   {
@@ -1088,6 +1229,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 list = List.create!(
   {
     user_id: tom.id,
@@ -1106,6 +1249,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 list = List.create!(
   {
@@ -1126,6 +1271,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 list = List.create!(
   {
     user_id: user.id,
@@ -1144,6 +1291,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -1165,6 +1314,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 user = User.all.sample
 list = List.create!(
   {
@@ -1184,6 +1335,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -1205,6 +1358,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 list = List.create!(
   {
     user_id: tom.id,
@@ -1224,6 +1379,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 list = List.create!(
   {
     user_id: ana.id,
@@ -1242,6 +1399,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -1263,6 +1422,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 list = List.create!(
   {
     user_id: nuria.id,
@@ -1281,6 +1442,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 list = List.create!(
   {
@@ -1301,6 +1464,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 list = List.create!(
   {
     user_id: tom.id,
@@ -1319,6 +1484,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 list = List.create!(
   {
@@ -1339,6 +1506,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 list = List.create!(
   {
     user_id: ana.id,
@@ -1357,6 +1526,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 user = User.all.sample
 list = List.create!(
@@ -1378,6 +1549,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 list = List.create!(
   {
     user_id: ana.id,
@@ -1396,6 +1569,8 @@ list = List.create!(
     }
   )
 end
+
+puts "list #{list.title} done!"
 
 list = List.create!(
   {
@@ -1416,6 +1591,8 @@ list = List.create!(
   )
 end
 
+puts "list #{list.title} done!"
+
 list = List.create!(
   {
     user_id: nuria.id,
@@ -1435,11 +1612,25 @@ list = List.create!(
   )
 end
 
-puts "Lists created"
+puts "list #{list.title} done!"
+
+puts "All lists created!"
+
+puts "Attaching list images"
+
+lists = List.all
+
+# lists.each do |l|
+#   list_image = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655562546/list-it/pizza2_evnf9u.jpg")
+#   ActiveRecord::Base.transaction do
+#     l.photo.attach(io: list_image, filename: 'puzzle.jpg', content_type: 'image/jpg')
+#   end
+# end
+
+# puts "Images attached!"
 
 puts "Creating votes..."
 
-lists = List.all
 users = User.all
 
 1000.times do
@@ -1453,7 +1644,6 @@ puts "Votes created!"
 
 puts "Creating pins..."
 
-lists = List.all
 users = User.all
 
 lists.each do |list|

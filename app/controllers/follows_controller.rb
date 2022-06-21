@@ -10,7 +10,9 @@ class FollowsController < ApplicationController
 
   def create
     @user.followers << current_user
-    redirect_to @user
+
+    session[:return_to] ||= request.referer
+    redirect_to session.delete(:return_to)
   end
 
   def destroy
@@ -18,7 +20,8 @@ class FollowsController < ApplicationController
     follow = Follow.find_by(follower_id: current_user.id, followed_id: @user.id)
     follow.destroy
 
-    redirect_to @user
+    session[:return_to] ||= request.referer
+    redirect_to session.delete(:return_to)
   end
 
   private

@@ -9,11 +9,11 @@
 
   <%# LIST AUTHOR %>
   <% if @list.user != current_user %>
-    <p><%= format_username(@list.user.username) %></p>
+    <p><%= format_username(@list.user.username) %> <%= follow_or_unfollow_button(@list.user, @following) %></p>
   <% end %>
 
   <%# UPLOADED IMAGE %>
-  <%= cl_image_tag @list.photo.key, height: 200, width: 300, crop: :fill if @list.photo.key %>
+  <%= cl_image_tag @list.photo.key, class: "list-photo-card", height: 200, width: 300, crop: :fill if @list.photo.key %>
 
   <%# PIN & VOTE BUTTONS %>
   <% unless hide_button(@list.user) %>
