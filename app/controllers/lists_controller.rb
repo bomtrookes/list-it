@@ -47,8 +47,18 @@ class ListsController < ApplicationController
 
   def update
     @list = find_list
-    @list.update(list_params)
-    redirect_to @list
+    # @list.update(list_params)
+    # redirect_to @list
+    if @list.update(list_params)
+      respond_to do |format|
+        format.html { redirect_to user_list_path(user_id: current_user, id: @list) }
+        format.text { render partial: "lists", locals: { title: @list, tag_list: @tag_list }, formats: [:html] }
+      end
+      flash[:notice] = "Updated!"
+    else
+      flash[:notice] = "Invalid"
+      render :edit
+    end
   end
 
   def destroy

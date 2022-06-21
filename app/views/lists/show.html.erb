@@ -1,6 +1,11 @@
  <div class="container pad">
   <div class="d-flex-justify-content-between">
-    <h1> <%= @list.title %> </h1>
+    <h1> <%= @list.title %> <% if hide_button(@list.user)%>
+            <%= link_to edit_user_list_path(current_user) do %>
+            <i class="fas fa-pen fa-xs ms-2"></i>
+            <% end %>
+          <% end %></h1>
+
     <% if @list.user == current_user %>
       <%= button_to "Article", article_user_list_path(@list.user), class: "btn btn-primary" %>
     <% end %>
@@ -69,6 +74,11 @@
     <% @list.tag_list.each do |tag| %>
       <%= link_to format_tag(tag), tagged_path(tag: tag) %>
     <% end %>
+    <% if hide_button(@list.user)%>
+            <%= link_to edit_user_list_path(current_user) do %>
+            <i class="fas fa-pen fa-xs ms-2"></i>
+            <% end %>
+          <% end %>
   </div>
 
   <%# LIST PUBLISH OPTIONS %>
