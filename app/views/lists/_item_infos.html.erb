@@ -1,14 +1,32 @@
-<div class="item-card" data-controller="edit-item" data-edit-item-target="card">
+<div class="item-card test-red" data-controller="edit-item" data-edit-item-target="card">
+  <div class="item-infos d-flex justify-content-between test-green" data-edit-item-target="infos">
+    <%# <li> not in list/show%>
+    <h4><%= @item.name %></h4>
 
-  <div class="item-infos" data-edit-item-target="infos">
-    <li>
-    <%= @item.name %>
-    <% if @item.list.article == true %>
-      <%= @item.description %>
+    <% if hide_button(@item.list.user)%>
+      <div class="test-blue">
+        <%# edit %>
+        <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
+        <%# delete %>
+        <i class="fa-solid fa-trash-can"></i>
+        <%# </li> %>
+      </div>
     <% end %>
-    <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
-    </li>
+
   </div>
+
+  <% if @item.list.article == true %>
+    <div class="item-info-bottom d-flex justify-content-end test-green" data-edit-item-target="editor">
+      <div class="article-editor test-blue">
+        <%# text %>
+        <i class="fa-solid fa-align-justify"></i>
+        <%# image %>
+        <i class="fa-solid fa-image"></i>
+        <%# url %>
+        <i class="fa-solid fa-link"></i>
+      </div>
+    </div>
+  <% end %>
 
   <%= simple_form_for @item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
     <%= f.input :name %>
@@ -18,5 +36,12 @@
     <%= f.hidden_field :list_id, value: @item.list.id %>
     <%= f.submit %>
   <% end %>
+
+  <%# ARTICLE VIEW %>
+  <div class="test-purple" data-edit-item-target="article">
+    <% if @item.list.article == true %>
+      <p><%= @item.description %></p>
+    <% end %>
+  </div>
 
 </div>

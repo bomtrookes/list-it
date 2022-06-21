@@ -41,16 +41,18 @@
 
         </div>
 
-        <div class="item-info-bottom d-flex justify-content-end test-green">
-          <div class="article-editor test-blue">
-            <%# text %>
-            <i class="fa-solid fa-align-justify"></i>
-            <%# image %>
-            <i class="fa-solid fa-image"></i>
-            <%# url %>
-            <i class="fa-solid fa-link"></i>
+        <% if @list.article == true %>
+          <div class="item-info-bottom d-flex justify-content-end test-green" data-edit-item-target="editor">
+            <div class="article-editor test-blue">
+              <%# text %>
+              <i class="fa-solid fa-align-justify"></i>
+              <%# image %>
+              <i class="fa-solid fa-image"></i>
+              <%# url %>
+              <i class="fa-solid fa-link"></i>
+            </div>
           </div>
-        </div>
+        <% end %>
 
         <%#= render "list_item_update_form" %>
           <% if hide_button(@list.user) && @list.items.length <= 9 %>
@@ -65,7 +67,7 @@
           <% end %>
 
           <%# ARTICLE VIEW %>
-            <div class="test-purple">
+            <div class="test-purple" data-edit-item-target="article">
               <% if @list.article == true %>
                 <p><%= item.description %></p>
               <% end %>

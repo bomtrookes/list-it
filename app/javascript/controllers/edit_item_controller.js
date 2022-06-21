@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["infos", "form", "card"];
+  static targets = ["infos", "form", "card", "editor", "article"];
 
   // connect() {
   //   console.log(this.formTarget);
@@ -11,6 +11,9 @@ export default class extends Controller {
   displayForm() {
     this.infosTarget.classList.add("d-none")
     this.formTarget.classList.remove("d-none")
+
+    this.editorTarget.classList.add("d-none")
+    this.articleTarget.classList.add("d-none")
   }
 
   update(event) {
@@ -21,9 +24,9 @@ export default class extends Controller {
       headers: { "Accept": "text/plain" },
       body: new FormData(this.formTarget)
     })
-      .then(response => response.text())
-      .then((data) => {
-        this.cardTarget.outerHTML = data
-      })
+    .then(response => response.text())
+    .then((data) => {
+      this.cardTarget.outerHTML = data
+    })
   }
 }
