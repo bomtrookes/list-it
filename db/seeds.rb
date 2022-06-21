@@ -16,7 +16,7 @@ puts "Database clean"
 
 puts "Creating Users and followers..."
 
-tom = User.create(username: "bomtrookes", email: "bom@test.com", password: "pass123", avatar: Faker::Avatar.image, bio: Faker::GreekPhilosophers.quote, admin: true)
+tom = User.create(username: "bomtrookes", email: "tom@test.com", password: "pass123", avatar: Faker::Avatar.image, bio: Faker::GreekPhilosophers.quote, admin: true)
 nuria = User.create(username: "nuria", email: "nuria@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote, admin: true)
 ana = User.create(username: "Athelas85", email: "athe@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote, admin: true)
 
@@ -194,16 +194,16 @@ puts "User and followings created!"
 puts "Creating Lists and items..."
 
 # tom
-list1 = List.create(user_id: tom.id, title: "Best Movies",  published: false, tag_list: ["cinema", "movies"])
-list2 = List.create(user_id: tom.id, title: "Walks in London",  published: false, tag_list: ["steps", "london", "walks"])
+list1 = List.create(user_id: tom.id, title: "Best Movies",  published: false, tag_list: ["cinema", "movies"], article: false)
+list2 = List.create(user_id: tom.id, title: "Walks in London",  published: false, tag_list: ["steps", "london", "walks"], article: false)
 
 # nuria
-list3 = List.create(user_id: nuria.id, title: "Summer Holiday Destionations", published: false, tag_list: ["madrid", "spain", "summer"])
-list4 = List.create(user_id: nuria.id, title: "Ketchup Brands", published: false, tag_list: ["ketchup", "food", "sauces"])
+list3 = List.create(user_id: nuria.id, title: "Summer Holiday Destionations", published: false, tag_list: ["madrid", "spain", "summer"], article: false)
+list4 = List.create(user_id: nuria.id, title: "Ketchup Brands", published: false, tag_list: ["ketchup", "food", "sauces"], article: false)
 
 # ana
-list5 = List.create(user_id: ana.id, title: "Website Designs", published: false, tag_list: ["design", "website"])
-list6 = List.create(user_id: ana.id, title: "Top 10 Jamie Oliver Recipes", published: false, tag_list: ["food", "jamie", "london"])
+list5 = List.create(user_id: ana.id, title: "Website Designs", published: false, tag_list: ["design", "website"], article: false)
+list6 = List.create(user_id: ana.id, title: "Top 10 Jamie Oliver Recipes", published: false, tag_list: ["food", "jamie", "london"], article: false)
 
 # list 3 - items
 Item.create(name: "Godfather", description: "It's really good, so I made a list about it", link: "#", list_id: list1.id)
@@ -239,6 +239,7 @@ list = List.create!(
     user_id: user.id,
     title: "Top 10 Superhero powers",
     published: true,
+    article: false,
     tag_list: ['superhero', 'power'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -262,6 +263,7 @@ list = List.create!(
     user_id: user.id,
     title: "Best Superhero powers to have",
     published: true,
+    article: false,
     tag_list: ['superhero', 'power'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -285,6 +287,7 @@ list = List.create!(
     user_id: user.id,
     title: "Best tea varieties",
     published: true,
+    article: false,
     tag_list: ['tea', 'england', 'drink'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -308,6 +311,7 @@ list = List.create!(
     user_id: user.id,
     title: "My favourite teas",
     published: true,
+    article: false,
     tag_list:  ['tea', 'drink'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -331,6 +335,7 @@ list = List.create!(
     user_id: user.id,
     title: "Top rated Universities",
     published: true,
+    article: false,
     tag_list: ['univesity', 'study'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -354,6 +359,7 @@ list = List.create!(
     user_id: user.id,
     title: "Best Universities for CS",
     published: true,
+    article: false,
     tag_list: ['univesity', 'study', 'programming'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -400,6 +406,7 @@ list = List.create!(
     user_id: user.id,
     title: "Highest mountains climbed",
     published: true,
+    article: false,
     tag_list: ['mountain', 'climb'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -423,6 +430,7 @@ list = List.create!(
     user_id: user.id,
     title: "Best Harry Potter characters",
     published: true,
+    article: false,
     tag_list: ['harry potter'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -446,6 +454,7 @@ list = List.create!(
     user_id: user.id,
     title: "My fav Harry Potter characters",
     published: true,
+    article: false,
     tag_list: ['harry potter'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -469,6 +478,7 @@ list = List.create!(
     user_id: user.id,
     title: "Top 10 Harry Potter characters",
     published: true,
+    article: false,
     tag_list: ['harry potter'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -492,6 +502,7 @@ list = List.create!(
     user_id: user.id,
     title: "Most overrated artists",
     published: true,
+    article: false,
     tag_list: ['art', 'artists'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -515,6 +526,7 @@ list = List.create!(
     user_id: user.id,
     title: "10 artists you need to know",
     published: true,
+    article: false,
     tag_list: ['art', 'artists'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -538,6 +550,7 @@ list = List.create!(
     user_id: user.id,
     title: "Best beer brands",
     published: true,
+    article: false,
     tag_list: ['beer', 'drink'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -559,6 +572,7 @@ list = List.create!(
     user_id: user.id,
     title: "Top beer brands",
     published: true,
+    article: false,
     tag_list: ['beer','drink'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -580,6 +594,7 @@ list = List.create!(
     user_id: user.id,
     title: "Top beer hops",
     published: true,
+    article: false,
     tag_list: ['beer', 'hops', 'drink'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -601,6 +616,7 @@ list = List.create!(
     user_id: user.id,
     title: "Best beer malt for DIY beer",
     published: true,
+    article: false,
     tag_list: ['beer', 'drink'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -622,6 +638,7 @@ list = List.create!(
     user_id: user.id,
     title: "Bossanova artists",
     published: true,
+    article: false,
     tag_list: ['music', 'art'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -643,6 +660,7 @@ list = List.create!(
     user_id: user.id,
     title: "Best 10 Bossanova songs",
     published: true,
+    article: false,
     tag_list: ['music', 'art'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -664,6 +682,7 @@ list = List.create!(
     user_id: user.id,
     title: "Top cameras for portrait",
     published: true,
+    article: false,
     tag_list: ['film', 'camera'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -685,6 +704,7 @@ list = List.create!(
     user_id: user.id,
     title: "Best Chuck Norris facts",
     published: true,
+    article: false,
     tag_list: ['chuck norris'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -706,6 +726,7 @@ list = List.create!(
     user_id: user.id,
     title: "Top health benefits from cannabis",
     published: true,
+    article: false,
     tag_list: ['health', 'cannabis'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -727,6 +748,7 @@ list = List.create!(
     user_id: user.id,
     title: "Best coffee origins",
     published: true,
+    article: false,
     tag_list: ['coffe', 'drink'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -748,6 +770,7 @@ list = List.create!(
     user_id: user.id,
     title: "Top 10 coffe blends",
     published: true,
+    article: false,
     tag_list: ['coffe', 'drink'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -769,6 +792,7 @@ list = List.create!(
     user_id: user.id,
     title: "Fav colors",
     published: true,
+    article: false,
     tag_list: ['colors'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -790,6 +814,7 @@ list = List.create!(
     user_id: user.id,
     title: "Best crypto to invest",
     published: true,
+    article: false,
     tag_list: ['crypto', 'invest', 'get rich'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -811,6 +836,7 @@ list = List.create!(
     user_id: user.id,
     title: "Top 10 cryptos",
     published: true,
+    article: false,
     tag_list: ['crypto'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -832,6 +858,7 @@ list = List.create!(
     user_id: user.id,
     title: "Cryptos that will crash in 2022",
     published: true,
+    article: false,
     tag_list: ['crypto'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -853,6 +880,7 @@ list = List.create!(
     user_id: user.id,
     title: "My favourite DC heros",
     published: true,
+    article: false,
     tag_list: ['superhero', 'comic', 'dc'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -874,6 +902,7 @@ list = List.create!(
     user_id: user.id,
     title: "Top 10 DC characters",
     published: true,
+    article: false,
     tag_list: ['superhero', 'comic', 'dc'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -895,6 +924,7 @@ list = List.create!(
     user_id: user.id,
     title: "Best DC villains ever",
     published: true,
+    article: false,
     tag_list: ['movie', 'comic', 'dc'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -916,6 +946,7 @@ list = List.create!(
     user_id: user.id,
     title: "My fav desserts",
     published: true,
+    article: false,
     tag_list: ['food', 'dessert'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -937,6 +968,7 @@ list = List.create!(
     user_id: user.id,
     title: "Yummiest dessert flavors",
     published: true,
+    article: false,
     tag_list: ['food', 'dessert'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -958,6 +990,7 @@ list = List.create!(
     user_id: user.id,
     title: "Best desset toppings",
     published: true,
+    article: false,
     tag_list: ['food', 'dessert', 'toppings'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -978,6 +1011,7 @@ list = List.create!(
     user_id: tom.id,
     title: "My top 10 food dishes ever",
     published: true,
+    article: false,
     tag_list: ['food'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1000,6 +1034,7 @@ list = List.create!(
     user_id: nuria.id,
     title: "My favourite dishes",
     published: true,
+    article: false,
     tag_list: ['food'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1022,6 +1057,7 @@ list = List.create!(
     user_id: ana.id,
     title: "Best food dishes",
     published: true,
+    article: false,
     tag_list: ['food'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1044,6 +1080,7 @@ list = List.create!(
     user_id: tom.id,
     title: "Fav hobbies",
     published: true,
+    article: false,
     tag_list: ['hobbies', 'fun'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1066,6 +1103,7 @@ list = List.create!(
     user_id: nuria.id,
     title: "Hobbies I enjoy the most",
     published: true,
+    article: false,
     tag_list: ['hobbies'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1088,6 +1126,7 @@ list = List.create!(
     user_id: ana.id,
     title: "My top hobbies",
     published: true,
+    article: false,
     tag_list: ['hobbies'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1111,6 +1150,7 @@ list = List.create!(
     user_id: user.id,
     title: "My top hobbies",
     published: true,
+    article: false,
     tag_list: ['hobbies'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1133,6 +1173,7 @@ list = List.create!(
     user_id: ana.id,
     title: "Most paid professions - IMO",
     published: true,
+    article: false,
     tag_list: ['job', 'profession'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1153,6 +1194,7 @@ list = List.create!(
     user_id: ana.id,
     title: "Top 10 skills to have at work",
     published: true,
+    article: false,
     tag_list: ['job', 'work'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1173,6 +1215,7 @@ list = List.create!(
     user_id: ana.id,
     title: "Most difficult mountains to climb",
     published: true,
+    article: false,
     tag_list: ['mountains', 'climb'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1193,6 +1236,7 @@ list = List.create!(
     user_id: tom.id,
     title: "Programming languages to learn in 2022",
     published: true,
+    article: false,
     tag_list: ['programming', 'code'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1213,6 +1257,7 @@ list = List.create!(
     user_id: user.id,
     title: "Top 10 languages to code a website",
     published: true,
+    article: false,
     tag_list: ['programming', 'code'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1233,6 +1278,7 @@ list = List.create!(
     user_id: user.id,
     title: "Programming languages I am fluent",
     published: true,
+    article: false,
     tag_list: ['programming', 'code'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1254,6 +1300,7 @@ list = List.create!(
     user_id: user.id,
     title: "Top 10 programming languages",
     published: true,
+    article: false,
     tag_list: ['programming', 'code'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1275,6 +1322,7 @@ list = List.create!(
     user_id: user.id,
     title: "Best cars",
     published: true,
+    article: false,
     tag_list: ['car'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1296,6 +1344,7 @@ list = List.create!(
     user_id: user.id,
     title: "Top car brands",
     published: true,
+    article: false,
     tag_list: ['car'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1316,6 +1365,7 @@ list = List.create!(
     user_id: tom.id,
     title: "My favourite Past Participle verbs",
     published: true,
+    article: false,
     tag_list: ['verbs', 'grammar'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1336,6 +1386,7 @@ list = List.create!(
     user_id: ana.id,
     title: "Favourite World Cup teams",
     published: true,
+    article: false,
     tag_list: ['world cup', 'football'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1357,6 +1408,7 @@ list = List.create!(
     user_id: user.id,
     title: "Best 2022 books",
     published: true,
+    article: false,
     tag_list: ['books', 'reading'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1377,6 +1429,7 @@ list = List.create!(
     user_id: nuria.id,
     title: "Top 10 books all time",
     published: true,
+    article: false,
     tag_list: ['books', 'reading'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1397,6 +1450,7 @@ list = List.create!(
     user_id: ana.id,
     title: "10 Favourite books",
     published: true,
+    article: false,
     tag_list: ['books', 'reading'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1417,6 +1471,7 @@ list = List.create!(
     user_id: tom.id,
     title: "10 books for summer reading",
     published: true,
+    article: false,
     tag_list: ['books', 'reading', 'summer'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1437,6 +1492,7 @@ list = List.create!(
     user_id: nuria.id,
     title: "Most amazing writers of all times",
     published: true,
+    article: false,
     tag_list: ['books', 'authors'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1457,6 +1513,7 @@ list = List.create!(
     user_id: ana.id,
     title: "Tolkien characters I hate the most",
     published: true,
+    article: false,
     tag_list: ['books', 'tolkien'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1478,6 +1535,7 @@ list = List.create!(
     user_id: user.id,
     title: "Tolkien locations I wish I could visit",
     published: true,
+    article: false,
     tag_list: ['books', 'tolkien'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1498,6 +1556,7 @@ list = List.create!(
     user_id: ana.id,
     title: "Favourite animals",
     published: true,
+    article: false,
     tag_list: ['animals'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1518,6 +1577,7 @@ list = List.create!(
     user_id: tom.id,
     title: "Animals I want to be",
     published: true,
+    article: false,
     tag_list: ['animals'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
@@ -1538,6 +1598,7 @@ list = List.create!(
     user_id: nuria.id,
     title: "Animal sounds I can impersonate",
     published: true,
+    article: false,
     tag_list: ['animals'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }

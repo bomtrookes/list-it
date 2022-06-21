@@ -6,12 +6,13 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :items, only: [:create, :index, :update]
+  resources :items, only: [:create, :index, :update, :destroy]
 
   resources :users do
     resources :lists do
       member do
         post :publish
+        post :article
       end
     end
     resources :follows, only: [:create, :destroy]

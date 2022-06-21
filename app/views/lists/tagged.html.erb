@@ -1,6 +1,8 @@
-<h3>Related Lists</h3>
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.title, user_list_path(current_user, list) %></li>
-  <% end %>
-</ul>
+<div class="container pad">
+  <h3>Related Lists</h3>
+  <ul>
+    <% @lists.each do |list| %>
+      <li><%= link_to list.title, user_list_path(current_user, list) %></li>
+    <% end %>
+  </ul>
+</div>

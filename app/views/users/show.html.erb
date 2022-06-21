@@ -1,80 +1,40 @@
-<%# profile image %>
-<div class="container d-flex justify-content-center mt-3">
-  <%= image_tag @user.avatar, class: "avatar-profile", height: 150, width: 150, crop: :fill %>
-</div>
-<%# profile name & bio %>
-<div class="container d-flex justify-content-center flex-column user-bio mt-3">
-  <h3><%= format_username(@user.username) %></h3>
-  <p><%= @user.bio %></p>
-</div>
+<div class="pad">
+  <%# profile image %>
+  <div class="container pad d-flex justify-content-center mt-3">
+    <%= image_tag @user.avatar, class: "avatar-profile", height: 150, width: 150, crop: :fill %>
+  </div>
+  <%# profile name & bio %>
+  <div class="container d-flex justify-content-center flex-column user-bio mt-3">
+    <h3><%= format_username(@user.username) %></h3>
+    <p><%= @user.bio %></p>
+  </div>
 
-<%# follow button %>
-<% unless hide_button(@user) %>
-<div class="container d-flex justify-content-center mb-3">
-  <%= follow_or_unfollow_button(@user, @following) %>
-</div>
-<% end %>
-
-<%# Lists, Followers, Following %>
-<div class="container profile-info mt-1 mb-1">
-  <ul class="d-flex justify-content-around" >
-    <li class="d-flex flex-column align-items-center">
-    <%= link_to published_lists(@user).size, '#' %><p>lists</p>
-    </li>
-    <li class="d-flex flex-column align-items-center">
-    <%= link_to @user.followers.size, user_followers_path(@user) %><p>followers</p>
-    </li>
-    <li class="d-flex flex-column align-items-center">
-    <%= link_to @user.followings.size, user_following_path(@user) %><p>following</p>
-    </li>
-  </ul>
-</div>
-
-<div class="profile-views" data-controller="change-view">
-  <%# Published, Drafts, Pinned %>
-  <% if hide_button(@user) %>
-  <div class="container profile-nav pt-2 pb-2">
-    <ul class ="d-flex justify-content-around">
-      <li class="d-flex flex-column align-items-center" data-action="click->change-view#lists" data-change-view-target="listicon">
-        <i class="fa-solid fa-list"></i>
-      </li>
-      <li class="d-flex flex-column align-items-center" data-action="click->change-view#drafts" data-change-view-target="drafticon">
-        <i class="fa-solid fa-file-pen"></i>
-      </li>
-      <li class="d-flex flex-column align-items-center" data-action="click->change-view#pins" data-change-view-target="pinicon">
-        <i class="fa-solid fa-thumbtack"></i>
-      </li>
-    </ul>
+  <%# follow button %>
+  <% unless hide_button(@user) %>
+  <div class="container d-flex justify-content-center mb-3">
+    <%= follow_or_unfollow_button(@user, @following) %>
   </div>
   <% end %>
 
-  <%# Published Lists - progress %>
-  <div class="list-card container">
-    <ul class="d-none" data-change-view-target="list">
-      <% published_lists(@user).each do | list | %>
-        <li class="list-card-info d-flex justify-content-between">
-        <div class="list-info d-flex">
-          <%# user image %>
-          <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail", height: 50, width: 50, crop: :fill if list.photo.key %>
-          <div class="list-title-user d-flex flex-column justify-content-center">
-             <%# list size?, title %>
-             <div class="d-flex">
-              <%#= list.item_ids.size %>
-              <%= link_to list.title, user_list_path(@user, list), class:"list-title" %>
-             </div>
-           </div>
-        </div>
-        <%# votes %>
-        <div class="vote-box d-flex align-items-center">
-          <%= list.votes.size ? list.votes.size : 0 %>
-          <i class="fa-solid fa-thumbs-up"></i>
-        </div>
-        </li>
-      <% end %>
+  <%# Lists, Followers, Following %>
+  <div class="container profile-info mt-1 mb-1">
+    <ul class="d-flex justify-content-around" >
+      <li class="d-flex flex-column align-items-center">
+      <%= link_to published_lists(@user).size, '#' %><p>lists</p>
+      </li>
+      <li class="d-flex flex-column align-items-center">
+      <%= link_to @user.followers.size, user_followers_path(@user) %><p>followers</p>
+      </li>
+      <li class="d-flex flex-column align-items-center">
+      <%= link_to @user.followings.size, user_following_path(@user) %><p>following</p>
+      </li>
     </ul>
+  </div>
 
-    <%# Draft Lists %>
+  <div class="profile-views" data-controller="change-view">
+    <%# Published, Drafts, Pinned %>
     <% if hide_button(@user) %>
+
       <% if unpublished_lists(@user).present? %>
         <%# <p><%= pluralize(unpublished_lists(current_user).size, "🔒 list") %>
         <ul class="d-none" data-change-view-target="draft">
@@ -96,38 +56,107 @@
           <%= list.votes.size ? list.votes.size : 0 %>
           <i class="fa-solid fa-thumbs-up"></i>
         </div>
+
+    <div class="container profile-nav pt-2 pb-2">
+      <ul class ="d-flex justify-content-around">
+        <li class="d-flex flex-column align-items-center" data-action="click->change-view#lists" data-change-view-target="listicon">
+          <i class="fa-solid fa-list"></i>
+
         </li>
+        <li class="d-flex flex-column align-items-center" data-action="click->change-view#drafts" data-change-view-target="drafticon">
+          <i class="fa-solid fa-file-pen"></i>
+        </li>
+        <li class="d-flex flex-column align-items-center" data-action="click->change-view#pins" data-change-view-target="pinicon">
+          <i class="fa-solid fa-thumbtack"></i>
+        </li>
+      </ul>
+    </div>
+    <% end %>
+
+    <%# Published Lists - progress %>
+    <div class="list-card container">
+      <ul class="d-none" data-change-view-target="list">
+        <% published_lists(@user).each do | list | %>
+          <li class="list-card-info d-flex justify-content-between">
+
+          <div class="list-info d-flex">
+            <%# user image %>
+            <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail", height: 50, width: 50, crop: :fill if list.photo.key %>
+            <div class="list-title-user d-flex flex-column justify-content-center">
+              <%# list size?, title %>
+              <div class="d-flex">
+                <%#= list.item_ids.size %>
+                <%= link_to list.title, user_list_path(@user, list), class:"list-title" %>
+              </div>
+              <div class="username-italic"> <%= format_username(list.user.username) %></div>
+            </div>
+          </div>
+          <%# votes %>
+          <div class="vote-box d-flex align-items-center">
+            <%= list.votes.size ? list.votes.size : 0 %>
+            <i class="fa-solid fa-thumbs-up"></i>
+          </div>
+          </li>
+
+        <% end %>
+      </ul>
+
+      <%# Draft Lists %>
+      <% if hide_button(@user) %>
+        <% if unpublished_lists(@user).present? %>
+          <%# <p><%= pluralize(unpublished_lists(current_user).size, "🔒 list") %>
+          <ul class="d-none" data-change-view-target="draft">
+            <% unpublished_lists(current_user).each do | list | %>
+              <li class="list-card-info d-flex justify-content-between">
+          <div class="list-info d-flex">
+            <%# user image %>
+            <%= image_tag @user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
+            <div class="list-title-user d-flex flex-column justify-content-center">
+              <%# list size?, title %>
+              <div class="d-flex">
+                <%#= list.item_ids.size %>
+                <%= link_to list.title, user_list_path(@user, list), class:"list-title" %>
+              </div>
+            </div>
+          </div>
+          <%# votes %>
+          <div class="vote-box d-flex align-items-center">
+            <%= list.votes.size ? list.votes.size : 0 %>
+            <i class="fa-solid fa-thumbs-up"></i>
+          </div>
+          </li>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
+
+      <%# Pinned Lists %>
+      <% if @user.favourite_lists.present? %>
+        <%# <p class="container"><%= pluralize(@user.favourite_lists.size, "Pin") %>
+        <ul class="d-none" data-change-view-target="pin">
+          <% @user.favourited_lists.each do | list | %>
+            <li class="list-card-info d-flex justify-content-between">
+          <div class="list-info d-flex">
+            <%# user image %>
+            <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
+            <div class="list-title-user d-flex flex-column justify-content-center">
+              <%# list size?, title %>
+              <div class="d-flex">
+                <%#= list.item_ids.size %>
+                <%= link_to list.title, user_list_path(@user, list), class:"list-title" %>
+              </div>
+              <div class="username-italic"> <%= format_username(list.user.username) %></div>
+            </div>
+          </div>
+          <%# votes %>
+          <div class="vote-box d-flex align-items-center">
+            <%= list.votes.size ? list.votes.size : 0 %>
+            <i class="fa-solid fa-thumbs-up"></i>
+          </div>
+          </li>
           <% end %>
         </ul>
       <% end %>
-    <% end %>
-
-    <%# Pinned Lists %>
-    <% if @user.favourite_lists.present? %>
-      <%# <p class="container"><%= pluralize(@user.favourite_lists.size, "Pin") %>
-      <ul class="d-none" data-change-view-target="pin">
-        <% @user.favourited_lists.each do | list | %>
-          <li class="list-card-info d-flex justify-content-between">
-        <div class="list-info d-flex">
-          <%# user image %>
-          <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail", height: 50, width: 50, crop: :fill if list.photo.key %>
-          <div class="list-title-user d-flex flex-column justify-content-center">
-             <%# list size?, title %>
-             <div class="d-flex">
-              <%#= list.item_ids.size %>
-              <%= link_to list.title, user_list_path(@user, list), class:"list-title" %>
-             </div>
-             <div class="username-italic"> <%= format_username(list.user.username) %></div>
-           </div>
-        </div>
-        <%# votes %>
-        <div class="vote-box d-flex align-items-center">
-          <%= list.votes.size ? list.votes.size : 0 %>
-          <i class="fa-solid fa-thumbs-up"></i>
-        </div>
-        </li>
-        <% end %>
-      </ul>
-    <% end %>
+    </div>
   </div>
 </div>

@@ -1,20 +1,11 @@
-<div class="container">
+<div class="container pad">
+
   <div class="d-flex">
     <%= link_to '<', current_user, class:"back-button" %>
     <h1>New List</h1>
   </div>
 
-<%# List Title %>
-<%= simple_form_for [current_user, @list] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :tag_list, label: "Add tags", hint: "Add your tags, separated by commas" %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit %>
-<% end %>
+  <%# title, tag, photo %>
+  <%= render "list_title_form" %>
 
 </div>
-  <%# List Items %>
-  <%#= simple_form_for [@user, @item] do |f| %>
-    <%#= f.input :name %>
-    <%#= f.submit %>
-  <%# end %>
