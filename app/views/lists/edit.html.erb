@@ -1,1 +1,11 @@
-<h1>Edit List</h1>
+<div class="container pad">
+
+  <div class="d-flex">
+    <%= link_to '<', current_user, class:"back-button" %>
+    <h1>Edit List</h1>
+  </div>
+
+  <%# title, tag, photo %>
+  <%= render "edit_form" %>
+
+</div>
