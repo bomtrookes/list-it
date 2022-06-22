@@ -1,5 +1,5 @@
 <% if hide_button(@list.user) && @list.items.length <= 9 %>
-  <%= simple_form_for [@item] do |f| %>
+  <%= simple_form_for [@item], html: { data: { edit_item_target:"addItem" } } do |f| %>
     <%= f.input :name, label: false, placeholder: "Item Name" %>
   <% if @list.article == true %>
     <%= f.input :description, label: false, placeholder: "Text..." %>

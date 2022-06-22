@@ -1,10 +1,11 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["infos", "form", "card", "editor", "article"];
+  static targets = ["infos", "form", "card", "editor", "article", "addItem"];
 
   connect() {
     this.articleTarget.classList.add("d-none")
+    this.addItemTarget.classList.add("d-none")
   }
 
   displayForm() {
