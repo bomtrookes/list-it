@@ -1,16 +1,18 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["infos", "form", "card"];
-
-  // connect() {
-  //   console.log(this.formTarget);
-  //   console.log(this.infosTarget);
-  // }
+  static targets = ["infos", "form", "card", "editor", "article"];
 
   displayForm() {
     this.infosTarget.classList.add("d-none")
     this.formTarget.classList.remove("d-none")
+
+    // this.editorTarget.classList.add("d-none")
+    this.articleTarget.classList.add("d-none")
+  }
+
+  descBtn() {
+    this.articleTarget.classList.toggle("d-none")
   }
 
   update(event) {
@@ -21,9 +23,9 @@ export default class extends Controller {
       headers: { "Accept": "text/plain" },
       body: new FormData(this.formTarget)
     })
-      .then(response => response.text())
-      .then((data) => {
-        this.cardTarget.outerHTML = data
-      })
+    .then(response => response.text())
+    .then((data) => {
+      this.cardTarget.outerHTML = data
+    })
   }
 }

@@ -1,18 +1,42 @@
 <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
+  <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
+    <%# <li> not in list/show%>
+    <h4><%= @item.name %></h4>
 
-  <div class="item-infos" data-edit-item-target="infos">
-    <li>
-    <%= @item.name %>
-    <%= @item.description %>
-    <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
-    </li>
+    <% if hide_button(@item.list.user)%>
+      <div>
+        <%# edit %>
+        <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
+        <%# delete %>
+        <i class="fa-solid fa-trash-can"></i>
+        <%# </li> %>
+      </div>
+    <% end %>
+
   </div>
 
   <%= simple_form_for @item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
+    <%= f.input :name, label: false %>
+    <% if @item.list.article == true %>
+      <%= f.input :description, label: false %>
+      <%= f.input :photo, as: :file %>
+    <% end %>
     <%= f.hidden_field :list_id, value: @item.list.id %>
     <%= f.submit %>
   <% end %>
+
+  <%# ARTICLE VIEW %>
+  <div data-edit-item-target="article">
+    <% if @item.list.article == true %>
+      <% if @item.description == nil || @item.description == ""  %>
+         <% if hide_button(@list.user) %>
+            <em>Type a description...</em>
+          <% end %>
+      <% else %>
+      <% end %>
+        <p><%= @item.description %></p>
+        <%= cl_image_tag item.photo.key, class:"list-photo-card", height: 200, width: 300, crop: :fill if item.photo.key %>
+    <% end %>
+  </div>
 
 </div>

@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       respond_to do |format|
         format.html { redirect_to items_path }
-        format.text { render partial: "lists/item_infos", locals: { item: @item, list_id: @list }, formats: [:html] }
+        format.text { render partial: "lists/item_infos", locals: { item: @item, list: @list }, formats: [:html] }
       end
       flash[:notice] = "Updated!"
     else
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :list_id)
+    params.require(:item).permit(:name, :description, :photo, :list_id)
   end
 
   def find_item

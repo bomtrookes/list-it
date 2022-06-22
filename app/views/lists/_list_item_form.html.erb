@@ -1,8 +1,9 @@
 <% if hide_button(@list.user) && @list.items.length <= 9 %>
   <%= simple_form_for [@item] do |f| %>
-    <%= f.input :name %>
+    <%= f.input :name, label: false, placeholder: "Item Name" %>
   <% if @list.article == true %>
-    <%= f.input :description %>
+    <%= f.input :description, label: false, placeholder: "Text..." %>
+    <%= f.input :photo, as: :file, label: false %>
   <% end %>
     <%= f.hidden_field :list_id, value: @list.id %>
     <%= f.submit %>

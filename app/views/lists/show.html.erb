@@ -1,4 +1,4 @@
- <div class="container pad">
+ <div class="pad">
   <div class="d-flex-justify-content-between">
     <h1> <%= @list.title %> <% if hide_button(@list.user)%>
             <%= link_to edit_user_list_path(current_user) do %>
@@ -28,32 +28,64 @@
 
   <%# CURRENT LIST & ADD ITEMS %>
   <ul class="pt-4">
-  <% @list.items.limit(10).each do | item | %>
+  <% @list.items.each do | item | %>
     <li>
       <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
-        <div class="item-infos" data-edit-item-target="infos">
-          <%= item.name %>
-        <%# ARTICLE VIEW %>
-        <% if @list.article == true %>
-          <%= item.description %>
-        <% end %>
+        <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
+          <h4><%= item.name %></h4>
+
           <% if hide_button(@list.user)%>
-            <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
-            <%#= button_to "Delete", item_path(item.id), method: :delete %>
+            <div>
+              <%# edit %>
+              <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
+              <%# delete %>
+              <i class="fa-solid fa-trash-can"></i>
+              <%#= button_to "Delete", item_path(item.id), method: :delete %>
+            </div>
           <% end %>
+
         </div>
 
-       <%#= render "list_item_update_form" %>
-        <% if hide_button(@list.user) && @list.items.length <= 9 %>
-          <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
-            <%= f.input :name %>
-          <% if @list.article == true %>
-            <%= f.input :description %>
+        <%# if @list.article == true %>
+          <%# <div class="item-info-bottom d-flex justify-content-end test-green" data-edit-item-target="editor"> %>
+            <%# <div class="article-editor test-blue"> %>
+              <%# text %>
+              <%# <i class="fa-solid fa-align-justify" data-action="click->edit-item#descBtn"></i> %>
+              <%# image %>
+              <%# <i class="fa-solid fa-image"></i> %>
+              <%# url %>
+              <%# <i class="fa-solid fa-link"></i> %>
+            <%# </div> %>
+          <%# </div> %>
+        <%# end %>
+
+        <%#= render "list_item_update_form" %>
+          <% if hide_button(@list.user) && @list.items.length <= 9 %>
+            <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
+              <%= f.input :name, label: false %>
+              <% if @list.article == true %>
+                <%= f.input :description, label: false %>
+                <%= f.input :photo, as: :file %>
+              <% end %>
+              <%= f.hidden_field :list_id, value: @list.id %>
+              <%= f.submit %>
+            <% end %>
           <% end %>
-            <%= f.hidden_field :list_id, value: @list.id %>
-            <%= f.submit %>
-          <% end %>
-        <% end %>
+
+          <%# ARTICLE VIEW %>
+            <div data-edit-item-target="article">
+              <% if @list.article == true %>
+                <% if item.description == nil || item.description == "" %>
+                  <% if hide_button(@list.user) %>
+                    <em>Type a description...</em>
+                  <% end %>
+                <% else %>
+                  <p><%= item.description %></p>
+                  <%= cl_image_tag item.photo.key, class:"list-photo-card", height: 200, width: 300, crop: :fill if item.photo.key %>
+                <% end %>
+              <% end %>
+            </div>
+
       </div>
     </li>
   <% end %>
@@ -101,3 +133,9 @@
     </p>
   </div>
 </div>
+
+<%# text <i class="fa-solid fa-align-justify"></i> %>
+<%# image <i class="fa-solid fa-image"></i> %>
+<%# url <i class="fa-solid fa-link"></i> %>
+<%# paperclip <i class="fa-solid fa-paperclip"></i> %>
+<%# delete <i class="fa-solid fa-trash-can"></i> %>
