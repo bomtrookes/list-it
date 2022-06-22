@@ -25,12 +25,12 @@
   <ul class="pt-4">
   <% @list.items.each do | item | %>
     <li>
-      <div class="item-card test-red" data-controller="edit-item" data-edit-item-target="card">
-        <div class="item-infos d-flex justify-content-between test-green" data-edit-item-target="infos">
+      <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
+        <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
           <h4><%= item.name %></h4>
 
           <% if hide_button(@list.user)%>
-            <div class="test-blue">
+            <div>
               <%# edit %>
               <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
               <%# delete %>
@@ -67,10 +67,12 @@
           <% end %>
 
           <%# ARTICLE VIEW %>
-            <div class="test-purple" data-edit-item-target="article">
+            <div data-edit-item-target="article">
               <% if @list.article == true %>
-                <% if item.description == nil %>
-                  <em>Type a description...</em>
+                <% if item.description == nil || item.description == "" %>
+                  <% if hide_button(@list.user) %>
+                    <em>Type a description...</em>
+                  <% end %>
                 <% else %>
                   <p><%= item.description %></p>
                 <% end %>

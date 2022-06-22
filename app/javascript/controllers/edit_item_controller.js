@@ -8,7 +8,7 @@ export default class extends Controller {
     this.formTarget.classList.remove("d-none")
 
     // this.editorTarget.classList.add("d-none")
-    // this.articleTarget.classList.add("d-none")
+    this.articleTarget.classList.add("d-none")
   }
 
   descBtn() {
