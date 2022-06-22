@@ -1,4 +1,4 @@
- <div class="container pad">
+ <div class="pad">
   <div class="d-flex-justify-content-between">
     <h1> <%= @list.title %> </h1>
     <% if @list.user == current_user %>
@@ -60,6 +60,7 @@
               <%= f.input :name, label: false %>
               <% if @list.article == true %>
                 <%= f.input :description, label: false %>
+                <%= f.input :photo, as: :file %>
               <% end %>
               <%= f.hidden_field :list_id, value: @list.id %>
               <%= f.submit %>
@@ -75,6 +76,7 @@
                   <% end %>
                 <% else %>
                   <p><%= item.description %></p>
+                  <%= cl_image_tag item.photo.key, class:"list-photo-card", height: 200, width: 300, crop: :fill if item.photo.key %>
                 <% end %>
               <% end %>
             </div>

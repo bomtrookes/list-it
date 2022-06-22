@@ -3,6 +3,7 @@
     <%= f.input :name, label: false, placeholder: "Item Name" %>
   <% if @list.article == true %>
     <%= f.input :description, label: false, placeholder: "Text..." %>
+    <%= f.input :photo, as: :file, label: false %>
   <% end %>
     <%= f.hidden_field :list_id, value: @list.id %>
     <%= f.submit %>

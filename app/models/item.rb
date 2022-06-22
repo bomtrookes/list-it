@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :list
+  has_one_attached :photo
 
   validates :name, presence: true, length: { minimum: 2 }
   validates :list_id, presence: true

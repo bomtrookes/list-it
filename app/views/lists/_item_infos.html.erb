@@ -19,6 +19,7 @@
     <%= f.input :name, label: false %>
     <% if @item.list.article == true %>
       <%= f.input :description, label: false %>
+      <%= f.input :photo, as: :file %>
     <% end %>
     <%= f.hidden_field :list_id, value: @item.list.id %>
     <%= f.submit %>
@@ -34,6 +35,7 @@
       <% else %>
       <% end %>
         <p><%= @item.description %></p>
+        <%= cl_image_tag item.photo.key, class:"list-photo-card", height: 200, width: 300, crop: :fill if item.photo.key %>
     <% end %>
   </div>
 
