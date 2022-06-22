@@ -78,3 +78,6 @@ gem 'acts-as-taggable-on', '~> 9.0'
 gem 'stimulus-rails'
 # Search funtion
 gem 'pg_search', '~> 2.3.0'
+
+# Social Sharing
+gem 'social-share-button'
