@@ -4,10 +4,10 @@ class ListsController < ApplicationController
   def index
     # search
     if params[:query].present?
-      @top_lists = List.global_search(params[:query])
-      @search_lists = List.search_list(params[:query])
-      @search_users = List.search_user(params[:query])
-      @search_tags = List.search_tag(params[:query])
+      @top_lists = List.published_lists.global_search(params[:query])
+      @search_lists = List.published_lists.search_list(params[:query])
+      @search_users = List.published_lists.search_user(params[:query])
+      @search_tags = List.published_lists.search_tag(params[:query])
     else
       @top_lists = List.ordered_published_lists
       @search_lists = []
@@ -71,7 +71,7 @@ class ListsController < ApplicationController
     @list = find_list
     @list.published = true
     @list.save
-    redirect_to current_user
+    redirect_to @user
   end
 
   def article

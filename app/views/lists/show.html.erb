@@ -14,7 +14,7 @@
 
   <%# LIST AUTHOR %>
   <% if @list.user != current_user %>
-    <p><%= format_username(@list.user.username) %> <%= follow_or_unfollow_button(@list.user, @following) %></p>
+    <p><%= link_to format_username(@list.user.username), @list.user %> <%= follow_or_unfollow_button(@list.user, @following) %></p>
   <% end %>
 
   <%# UPLOADED IMAGE %>
