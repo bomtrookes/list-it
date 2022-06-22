@@ -3,17 +3,16 @@ import { Controller } from "stimulus"
 export default class extends Controller {
   static targets = ["infos", "form", "card", "editor", "article"];
 
-  // connect() {
-  //   console.log(this.formTarget);
-  //   console.log(this.infosTarget);
-  // }
-
   displayForm() {
     this.infosTarget.classList.add("d-none")
     this.formTarget.classList.remove("d-none")
 
-    this.editorTarget.classList.add("d-none")
-    this.articleTarget.classList.add("d-none")
+    // this.editorTarget.classList.add("d-none")
+    // this.articleTarget.classList.add("d-none")
+  }
+
+  descBtn() {
+    this.articleTarget.classList.toggle("d-none")
   }
 
   update(event) {

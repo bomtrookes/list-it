@@ -19,26 +19,26 @@
     <div class="item-info-bottom d-flex justify-content-end test-green" data-edit-item-target="editor">
       <div class="article-editor test-blue">
         <%# text %>
-        <i class="fa-solid fa-align-justify"></i>
+        <i class="fa-solid fa-align-justify" data-action="click->edit-item#descBtn"></i>
         <%# image %>
-        <i class="fa-solid fa-image"></i>
+        <%# <i class="fa-solid fa-image"></i> %>
         <%# url %>
-        <i class="fa-solid fa-link"></i>
+        <%# <i class="fa-solid fa-link"></i> %>
       </div>
     </div>
   <% end %>
 
   <%= simple_form_for @item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
-    <%= f.input :name %>
+    <%= f.input :name, label: false %>
     <% if @item.list.article == true %>
-      <%= f.input :description %>
+      <%= f.input :description, label: false %>
     <% end %>
     <%= f.hidden_field :list_id, value: @item.list.id %>
     <%= f.submit %>
   <% end %>
 
   <%# ARTICLE VIEW %>
-  <div class="test-purple" data-edit-item-target="article">
+  <div class="test-purple d-none" data-edit-item-target="article">
     <% if @item.list.article == true %>
       <p><%= @item.description %></p>
     <% end %>
