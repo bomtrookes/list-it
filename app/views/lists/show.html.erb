@@ -18,7 +18,9 @@
   <% end %>
 
   <%# UPLOADED IMAGE %>
-  <%= cl_image_tag @list.photo.key, class: "list-photo-card", height: 200, width: 300, crop: :fill if @list.photo.key %>
+  <div class="d-flex justify-content-center mt-3">
+    <%= cl_image_tag @list.photo.key, class: "list-photo-card", height: 200, width: 300, crop: :fill if @list.photo.key %>
+  </div>
 
   <%# PIN & VOTE BUTTONS %>
   <% unless hide_button(@list.user) %>
@@ -27,6 +29,7 @@
   <% end %>
 
   <%# CURRENT LIST & ADD ITEMS %>
+<div data-controller="add-item">
   <ul class="pt-4">
   <% @list.items.each do | item | %>
     <li>
@@ -73,7 +76,9 @@
                   <% end %>
                 <% else %>
                   <p><%= item.description %></p>
-                  <%= cl_image_tag item.photo.key, class:"list-photo-card", height: 200, width: 300, crop: :fill if item.photo.key %>
+                  <div class="d-flex justify-content-center">
+                    <%= cl_image_tag item.photo.key, class:"list-photo-card", height: 200, width: 300, crop: :fill if item.photo.key %>
+                  </div>
                 <% end %>
               <% end %>
             </div>
@@ -84,8 +89,8 @@
   <%# LIST ITEM FORM %>
   </ul>
 
-  <%= render "list_item_form" %>
-
+    <%= render "list_item_form" %>
+  </div>
   <%# TAG LINKS %>
   <div class="pt-4">
     <% @list.tag_list.each do |tag| %>

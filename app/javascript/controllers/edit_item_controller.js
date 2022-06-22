@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["infos", "form", "card", "editor", "article", "addItem"];
+  static targets = ["infos", "form", "card", "editor", "article"];
 
   connect() {
     this.articleTarget.classList.add("d-none")
@@ -11,8 +11,6 @@ export default class extends Controller {
   displayForm() {
     this.infosTarget.classList.add("d-none")
     this.formTarget.classList.remove("d-none")
-
-    // this.editorTarget.classList.add("d-none")
     this.articleTarget.classList.add("d-none")
   }
 
@@ -20,12 +18,6 @@ export default class extends Controller {
     this.articleTarget.classList.toggle("d-none")
     console.log("clicked")
   }
-
-  //displayArticle() {
-    // this.artViewTarget.nextElementSibling.classList.toggle("d-none")
-    //this.articleTarget.classList.toggle("d-none")
-    //console.log("clicked")
-  //}
 
   update(event) {
     event.preventDefault()
