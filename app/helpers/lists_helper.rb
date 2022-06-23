@@ -1,5 +1,4 @@
 module ListsHelper
-
   def published_lists(user)
     user.lists.select do |list|
       list.published?

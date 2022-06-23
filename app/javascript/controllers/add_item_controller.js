@@ -8,6 +8,7 @@ export default class extends Controller {
     this.addItemTarget.classList.remove("d-none")
     console.log("This is working")
   }
+
   nextItem() {
     this.newFormTarget.classList.remove("d-none")
     this.addItemTarget.classList.add("d-none")
