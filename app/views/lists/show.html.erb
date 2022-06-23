@@ -31,9 +31,9 @@
   <%# CURRENT LIST & ADD ITEMS %>
 
 <div data-controller="add-item">
-  <ol class="pt-4">
+  <ol id="sort-list" class="pt-4">
   <% @list.items.each do | item | %>
-    <li>
+    <li data-value="list-order">
       <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
         <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
           <h4><%= item.name %></h4>
@@ -57,7 +57,7 @@
 
         <%#= rendered update form %>
           <% if hide_button(@list.user) %>
-            <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
+            <%= simple_form_for item, html: { id: "sort-form", class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
               <%= f.input :name, label: false %>
               <% if @list.article == true %>
                 <%= f.input :description, label: false %>
