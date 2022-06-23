@@ -18,7 +18,9 @@
   <% end %>
 
   <%# UPLOADED IMAGE %>
-  <%= cl_image_tag @list.photo.key, class: "list-photo-card", height: 200, width: 300, crop: :fill if @list.photo.key %>
+  <div class="d-flex justify-content-center mt-3">
+    <%= cl_image_tag @list.photo.key, class: "list-photo-card", height: 200, width: 300, crop: :fill if @list.photo.key %>
+  </div>
 
   <%# PIN & VOTE BUTTONS %>
   <% unless hide_button(@list.user) %>
@@ -27,40 +29,34 @@
   <% end %>
 
   <%# CURRENT LIST & ADD ITEMS %>
-  <ul class="pt-4">
+
+<div data-controller="add-item">
+  <ol class="pt-4">
   <% @list.items.each do | item | %>
     <li>
       <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
         <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
           <h4><%= item.name %></h4>
 
-          <% if hide_button(@list.user)%>
-            <div>
+          <div>
+            <% if hide_button(@list.user)%>
               <%# edit %>
               <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
               <%# delete %>
               <i class="fa-solid fa-trash-can"></i>
-              <%#= button_to "Delete", item_path(item.id), method: :delete %>
-            </div>
-          <% end %>
+            <% end %>
+
+            <%# article %>
+            <% if @list.article == true %>
+              <%# reveal article %>
+              <i class="fa-solid fa-circle-info" data-action="click->edit-item#descBtn"></i>
+            <% end %>
+          </div>
 
         </div>
 
-        <%# if @list.article == true %>
-          <%# <div class="item-info-bottom d-flex justify-content-end test-green" data-edit-item-target="editor"> %>
-            <%# <div class="article-editor test-blue"> %>
-              <%# text %>
-              <%# <i class="fa-solid fa-align-justify" data-action="click->edit-item#descBtn"></i> %>
-              <%# image %>
-              <%# <i class="fa-solid fa-image"></i> %>
-              <%# url %>
-              <%# <i class="fa-solid fa-link"></i> %>
-            <%# </div> %>
-          <%# </div> %>
-        <%# end %>
-
-        <%#= render "list_item_update_form" %>
-          <% if hide_button(@list.user) && @list.items.length <= 9 %>
+        <%#= rendered update form %>
+          <% if hide_button(@list.user) %>
             <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
               <%= f.input :name, label: false %>
               <% if @list.article == true %>
@@ -81,7 +77,9 @@
                   <% end %>
                 <% else %>
                   <p><%= item.description %></p>
-                  <%= cl_image_tag item.photo.key, class:"list-photo-card", height: 200, width: 300, crop: :fill if item.photo.key %>
+                  <div class="d-flex justify-content-center">
+                    <%= cl_image_tag item.photo.key, class:"list-photo-card", height: 200, width: 300, crop: :fill if item.photo.key %>
+                  </div>
                 <% end %>
               <% end %>
             </div>
@@ -89,18 +87,11 @@
       </div>
     </li>
   <% end %>
+  <%# LIST ITEM FORM %>
   </ul>
 
-  <%# LIST ITEM FORM %>
-  <%= render "list_item_form" %>
-  <%# if hide_button(@list.user) && @list.items.length < 11 %>
-    <%#= simple_form_for [@item] do |f| %>
-      <%#= f.input :name %>
-      <%#= f.hidden_field :list_id, value: @list.id %>
-      <%#= f.submit %>
-    <%# end %>
-  <%# end %>
-
+    <%= render "list_item_form" %>
+  </div>
   <%# TAG LINKS %>
   <div class="pt-4">
     <% @list.tag_list.each do |tag| %>
@@ -114,8 +105,8 @@
   </div>
 
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    Share
+  <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <i class="fa-solid fa-share"></i>
   </button>
 
   <!-- Modal -->
@@ -127,7 +118,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p><%= social_share_button_tag(@list.title) %></p>
+          <%= social_share_button_tag(@list.title) %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -152,14 +143,10 @@
   <% end %>
 
   <div class="pt-5">
-    <p>
+  <% if @list.published == false %>
     <em>Created <%= time_ago_in_words(@list.created_at) %> ago</em>
-    </p>
+    <% else %>
+    <em>Published <%= time_ago_in_words(@list.updated_at) %> ago</em>
+  <% end %>
   </div>
 </div>
-
-<%# text <i class="fa-solid fa-align-justify"></i> %>
-<%# image <i class="fa-solid fa-image"></i> %>
-<%# url <i class="fa-solid fa-link"></i> %>
-<%# paperclip <i class="fa-solid fa-paperclip"></i> %>
-<%# delete <i class="fa-solid fa-trash-can"></i> %>
