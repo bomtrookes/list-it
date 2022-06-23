@@ -20,7 +20,28 @@
   transition: background 0.3s ease;
 }
 
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 50px;
+  background: $li-green;
+  transition: background 0.3s ease;
+}
+
 .btn-flat:hover {
   background: $li-green-shadow;
+  color: white;
+}
+
+.btn-alert {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 50px;
+  background: $li-red;
+  transition: background 0.3s ease;
+}
+
+.btn-alert:hover {
+  background: $li-red;
   color: white;
 }

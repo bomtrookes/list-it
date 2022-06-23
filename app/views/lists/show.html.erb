@@ -43,9 +43,10 @@
               <%# edit %>
               <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
               <%# delete %>
-              <i class="fa-solid fa-trash-can"></i>
+              <%= link_to list_item_path(item.list, item), method: :delete do %>
+                <i class="fa-solid fa-trash-can"></i>
+              <% end %>
             <% end %>
-
             <%# article %>
             <% if @list.article == true %>
               <%# reveal article %>
@@ -133,12 +134,12 @@
     <div class="d-flex justify-content-between list-editor pt-4">
       <%# Publish %>
       <% if @list.published == false %>
-        <%= button_to "Publish", publish_user_list_path(@list.user, @list), class: "btn btn-success" %>
+        <%= button_to "Publish", publish_user_list_path(@list.user, @list), class: "btn btn-flat" %>
       <% end %>
       <%# Save to Drafts %>
-      <%= link_to "Save", current_user, class:"btn btn-primary" %>
+      <%= link_to "Save", current_user, class:"btn btn-ghost" %>
       <%# Delete %>
-      <%= button_to "Delete", user_list_path(current_user, @list), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+      <%= button_to "Delete", user_list_path(current_user, @list), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-alert" %>
     </div>
   <% end %>
 
