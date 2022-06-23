@@ -49,7 +49,7 @@
             </div>
             <%# list username %>
             <div class="username-italic">
-              <%= format_username(list.user.username) %> - created <%= time_ago_in_words(list.created_at) %> ago
+              <%= format_username(list.user.username) %> - last updated: <%= time_ago_in_words(list.updated_at) %> ago
             </div>
           </div>
         </li>

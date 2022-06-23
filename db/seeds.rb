@@ -254,7 +254,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['superhero', 'power'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -278,7 +278,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['superhero', 'power'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -302,7 +302,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['tea', 'england', 'drink'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 7.times do
@@ -326,7 +326,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list:  ['tea', 'drink'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 7.times do
@@ -350,7 +350,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['univesity', 'study'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 9.times do
@@ -374,7 +374,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['univesity', 'study', 'programming'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 9.times do
@@ -397,7 +397,7 @@ list = List.create!(
     title: "Top 10 moest expensive unis",
     published: true,
     tag_list: ['univesity'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 9.times do
@@ -421,7 +421,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['mountain', 'climb'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -445,7 +445,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['harry potter'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -469,7 +469,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['harry potter'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -493,7 +493,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['harry potter'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -517,7 +517,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['art', 'artists'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -541,7 +541,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['art', 'artists'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -565,7 +565,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['beer', 'drink'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -587,7 +587,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['beer','drink'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -609,7 +609,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['beer', 'hops', 'drink'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -631,7 +631,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['beer', 'drink'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -653,7 +653,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['music', 'art'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -675,7 +675,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['music', 'art'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -697,7 +697,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['film', 'camera'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -719,7 +719,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['chuck norris'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -741,7 +741,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['health', 'cannabis'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 6.times do
@@ -763,7 +763,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['coffee', 'drink'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -785,7 +785,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['coffee', 'drink'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -807,7 +807,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['colors'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -829,7 +829,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['crypto', 'invest', 'get rich'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -851,7 +851,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['crypto'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -873,7 +873,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['crypto'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -895,7 +895,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['superhero', 'comic', 'dc'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -917,7 +917,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['superhero', 'comic', 'dc'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -939,7 +939,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['movie', 'comic', 'dc'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -961,7 +961,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'dessert'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -983,7 +983,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'dessert'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1004,7 +1004,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'desserts'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1026,7 +1026,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'dessert', 'toppings'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -1047,7 +1047,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'dessert', 'toppings'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -1068,7 +1068,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'mediterranean', 'recipe'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -1089,7 +1089,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1112,7 +1112,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -1135,7 +1135,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1158,7 +1158,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['hobbies', 'fun'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1181,7 +1181,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['hobbies'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -1204,7 +1204,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['hobbies'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -1228,7 +1228,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['hobbies'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1251,7 +1251,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['job', 'profession'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -1272,7 +1272,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['job', 'work'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1293,7 +1293,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['mountains', 'climb'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1314,7 +1314,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['programming', 'code'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -1335,7 +1335,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['programming', 'code'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1356,7 +1356,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['programming', 'code'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 7.times do
@@ -1378,7 +1378,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['programming', 'code'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1400,7 +1400,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['car'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1422,7 +1422,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['car'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1443,7 +1443,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['verbs', 'grammar'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1464,7 +1464,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['world cup', 'football'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1486,7 +1486,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['books', 'reading'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1507,7 +1507,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['books', 'reading'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1528,7 +1528,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['books', 'reading'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1549,7 +1549,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['books', 'reading', 'summer'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1570,7 +1570,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['books', 'authors'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1591,7 +1591,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['books', 'tolkien'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1613,7 +1613,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['books', 'tolkien'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1634,7 +1634,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['animals'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1655,7 +1655,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['animals'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1676,7 +1676,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['animals'],
-    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
