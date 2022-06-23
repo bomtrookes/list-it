@@ -1,6 +1,12 @@
 <div class="pad home-card">
   <div class="container d-flex flex-column justify-content-around logo-wrap">
 
+      <div class="logo-text">
+        <div class="home-logos">
+          <%= image_tag("https://res.cloudinary.com/mygreenhouses/image/upload/v1655547120/list-it/listit-icon_wordmark-horizontal_tgonja.png", width: 250, crop: :fill) %>
+        </div>
+      </div>
+
       <div class="welcome-card">
         <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
