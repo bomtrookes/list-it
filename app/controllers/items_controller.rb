@@ -41,6 +41,9 @@ class ItemsController < ApplicationController
   def destroy
     @item = find_item
     @item.destroy
+
+    session[:return_to] ||= request.referer
+    redirect_to session.delete(:return_to)
   end
 
   private

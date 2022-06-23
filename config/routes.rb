@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :items, only: [:create, :index, :update, :destroy]
+  resources :items, only: [:create, :index, :update]
 
   resources :users do
     resources :lists do
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :lists do
     resources :favourite_lists, only: [:create, :destroy]
     resources :votes, only: [:create, :destroy]
-    # resources :items, only: [:create, :index, :update, :destroy]
+    resources :items, only: [:destroy]
   end
 
 
