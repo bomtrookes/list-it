@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_user, only: [:new, :create, :publish, :article, :show]
+  before_action :set_user, only: [:new, :create, :publish, :article, :show, :destroy]
 
   def index
     # search
@@ -64,14 +64,16 @@ class ListsController < ApplicationController
   def destroy
     @list = find_list
     @list.destroy
-    redirect_to current_user
+
+    redirect_to user_path(@user)
   end
 
   def publish
     @list = find_list
     @list.published = true
     @list.save
-    redirect_to @user
+
+    redirect_to user_path(@user)
   end
 
   def article
