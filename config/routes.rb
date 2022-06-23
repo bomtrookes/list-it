@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :lists do
     resources :favourite_lists, only: [:create, :destroy]
     resources :votes, only: [:create, :destroy]
+    # resources :items, only: [:create, :index, :update, :destroy]
   end
 
 

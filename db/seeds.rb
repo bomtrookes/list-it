@@ -20,6 +20,10 @@ tom = User.create(username: "bomtrookes", email: "tom@test.com", password: "pass
 nuria = User.create(username: "nuria", email: "nuria@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote, admin: true)
 ana = User.create(username: "Athelas85", email: "athe@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote, admin: true)
 
+foodie1 = User.create(username: "foodie64", email: "food1@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
+foodie2 = User.create(username: "food_lover", email: "food2@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
+foodie3 = User.create(username: "food_lists", email: "food3@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
+
 Follow.create(follower_id: tom.id, followed_id: nuria.id)
 Follow.create(follower_id: tom.id, followed_id: ana.id)
 
@@ -80,6 +84,9 @@ rand(10..20).times do
   Follow.create(follower_id: user_b.id, followed_id: tom.id)
   Follow.create(follower_id: user_c.id, followed_id: tom.id)
 
+  Follow.create(follower_id: foodie1.id, followed_id: tom.id)
+  Follow.create(follower_id: user_b.id, followed_id: foodie2.id)
+
   i += 3
 end
 
@@ -131,6 +138,9 @@ rand(5..15).times do
   Follow.create(follower_id: user_a.id, followed_id: nuria.id)
   Follow.create(follower_id: user_b.id, followed_id: nuria.id)
   Follow.create(follower_id: user_c.id, followed_id: nuria.id)
+
+  Follow.create(follower_id: foodie2.id, followed_id: tom.id)
+  Follow.create(follower_id: user_b.id, followed_id: foodie3.id)
 
   i += 2
 
@@ -184,6 +194,9 @@ rand(6..13).times do
   Follow.create(follower_id: user_a.id, followed_id: ana.id)
   Follow.create(follower_id: user_b.id, followed_id: ana.id)
   Follow.create(follower_id: user_c.id, followed_id: ana.id)
+
+  Follow.create(follower_id: foodie3.id, followed_id: tom.id)
+  Follow.create(follower_id: user_b.id, followed_id: foodie1.id)
 
   i += 5
 
@@ -749,7 +762,7 @@ list = List.create!(
     title: "Best coffee origins",
     published: true,
     article: false,
-    tag_list: ['coffe', 'drink'],
+    tag_list: ['coffee', 'drink'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
@@ -771,7 +784,7 @@ list = List.create!(
     title: "Top 10 coffe blends",
     published: true,
     article: false,
-    tag_list: ['coffe', 'drink'],
+    tag_list: ['coffee', 'drink'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
@@ -984,6 +997,27 @@ end
 
 puts "list #{list.title} done!"
 
+list = List.create!(
+  {
+    user_id: foodie1.id,
+    title: "Best desserts in the UK",
+    published: true,
+    article: false,
+    tag_list: ['food', 'desserts'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+10.times do
+  Item.create!(
+    {
+      name: Faker::Dessert.flavor,
+      list_id: list.id
+    }
+  )
+end
+
+puts "list #{list.title} done!"
+
 user = User.all.sample
 list = List.create!(
   {
@@ -999,6 +1033,48 @@ list = List.create!(
   Item.create!(
     {
       name: Faker::Dessert.topping,
+      list_id: list.id
+    }
+  )
+end
+
+puts "list #{list.title} done!"
+
+list = List.create!(
+  {
+    user_id: foodie2.id,
+    title: "Top 10 toppings",
+    published: true,
+    article: false,
+    tag_list: ['food', 'dessert', 'toppings'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+8.times do
+  Item.create!(
+    {
+      name: Faker::Dessert.topping,
+      list_id: list.id
+    }
+  )
+end
+
+puts "list #{list.title} done!"
+
+list = List.create!(
+  {
+    user_id: foodie3.id,
+    title: "Best 10 Mediterranean recipes",
+    published: true,
+    article: false,
+    tag_list: ['food', 'mediterranean', 'recipe'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+8.times do
+  Item.create!(
+    {
+      name: Faker::Food.dish,
       list_id: list.id
     }
   )
