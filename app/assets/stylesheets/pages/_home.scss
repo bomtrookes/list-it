@@ -1,7 +1,11 @@
 // Specific CSS for your home-page
+html {
+  background-color: $li-green;
+}
 
-html, body {
+body {
   height: 100%;
+  // overscroll-behavior: none;
 }
 
 body {

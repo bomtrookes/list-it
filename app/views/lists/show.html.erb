@@ -29,8 +29,9 @@
   <% end %>
 
   <%# CURRENT LIST & ADD ITEMS %>
+
 <div data-controller="add-item">
-  <ul class="pt-4">
+  <ol class="pt-4">
   <% @list.items.each do | item | %>
     <li>
       <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
@@ -55,7 +56,7 @@
         </div>
 
         <%#= rendered update form %>
-          <% if hide_button(@list.user) && @list.items.length <= 9 %>
+          <% if hide_button(@list.user) %>
             <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
               <%= f.input :name, label: false %>
               <% if @list.article == true %>
@@ -117,7 +118,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p><%= social_share_button_tag(@list.title) %></p>
+          <%= social_share_button_tag(@list.title) %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -142,8 +143,10 @@
   <% end %>
 
   <div class="pt-5">
-    <p>
+  <% if @list.published == false %>
+    <em>Created <%= time_ago_in_words(@list.created_at) %> ago</em>
+    <% else %>
     <em>Published <%= time_ago_in_words(@list.updated_at) %> ago</em>
-    </p>
+  <% end %>
   </div>
 </div>

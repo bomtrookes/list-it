@@ -41,6 +41,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = find_item
     @item.destroy
+    redirect_to user_list_path(user_id: current_user, id: @item.list)
   end
 
   private
