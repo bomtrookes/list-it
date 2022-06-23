@@ -33,7 +33,7 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <%= render 'shared/bottom_navbar' %>
+    <%= render 'shared/bottom_navbar', local: { user: @user, list: @list } %>
 
     <%= yield %>
   </body>
