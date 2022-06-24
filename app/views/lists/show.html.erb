@@ -1,13 +1,21 @@
- <div class="pad">
+ <div class="pad" data-controller="preview">
   <div class="d-flex-justify-content-between">
+
+  <% if @list.published == true %>
+    <p id="preview" data-action="click->preview#previewToggle">Editor</p>
+  <% else %>
+    <p id="preview" data-action="click->preview#previewToggle">Preview</p>
+  <% end %>
+
     <h1> <%= @list.title %> <% if hide_button(@list.user)%>
             <%= link_to edit_user_list_path(current_user) do %>
-            <i class="fas fa-pen fa-xs ms-2"></i>
+            <i data-preview-target="title" class="fas fa-pen fa-xs ms-2"></i>
             <% end %>
           <% end %></h1>
 
     <% if @list.user == current_user %>
-      <%= button_to "Article", article_user_list_path(@list.user), class: "btn btn-primary" %>
+      <%= button_to "Article", article_user_list_path(@list.user), class: "btn btn-primary", data: { preview_target: "article"
+      } %>
     <% end %>
     <%# <label class="switch"><input type="checkbox"><span class="slider round"></span></label> %>
   </div>
@@ -33,12 +41,13 @@
 <div data-controller="add-item">
   <ol id="sort-list" class="pt-4">
   <% @list.items.each do | item | %>
-    <li data-value="list-order">
+    <li class="list-item" data-value="list-order">
       <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
         <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
-          <h4><%= item.name %></h4>
+          <h5><%= item.name %></h5>
 
-          <div>
+
+          <div class="list-editor">
             <% if hide_button(@list.user)%>
               <%# edit %>
               <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
@@ -99,15 +108,17 @@
     <% end %>
     <% if hide_button(@list.user)%>
             <%= link_to edit_user_list_path(current_user) do %>
-            <i class="fas fa-pen fa-xs ms-2"></i>
+            <i data-preview-target="tags" class="fas fa-pen fa-xs ms-2"></i>
             <% end %>
           <% end %>
   </div>
 
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    <i class="fa-solid fa-share"></i>
-  </button>
+  <% if @list.published == true %>
+    <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      <i class="fa-solid fa-share"></i>
+    </button>
+  <% end %>
 
   <!-- Modal -->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -127,7 +138,7 @@
     </div>
   </div>
 
-
+  <div id="buttons">
   <%# LIST PUBLISH OPTIONS %>
   <% if hide_button(@list.user) %>
     <div class="d-flex justify-content-between list-editor pt-4">
@@ -141,6 +152,7 @@
       <%= button_to "Delete", user_list_path(current_user, @list), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
     </div>
   <% end %>
+  </div>
 
   <div class="pt-5">
   <% if @list.published == false %>
