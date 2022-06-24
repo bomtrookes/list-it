@@ -30,6 +30,6 @@ module ListsHelper
   def random_list
     user = User.where("id != ?", current_user).sample
     list = List.where(published: true).sample
-    return user_list_path(user, list)
+    user_list_path(user, list)
   end
 end

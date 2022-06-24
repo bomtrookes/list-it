@@ -1,8 +1,10 @@
 <div class="container pad">
 
-  <div class="d-flex">
-    <%= link_to '<', current_user, class:"back-button" %>
+  <div class="d-flex justify-content-between">
     <h1>New List</h1>
+    <%= link_to :back, class:"back-button" do %>
+      <i class="fa-solid fa-xmark"></i>
+    <% end %>
   </div>
 
   <%# title, tag, photo %>

@@ -1,14 +1,14 @@
 <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
   <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
 
-    <h5><%= @item.name %></h5>
+    <h5 data-action="click->edit-item#displayForm"><%= @item.name %></h5>
 
     <div>
       <% if hide_button(@item.list.user)%>
         <%# edit %>
-        <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
+        <%# <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i> %>
         <%# delete %>
-        <i class="fa-solid fa-trash-can"></i>
+        <i class="fa-solid fa-xmark"></i>
       <% end %>
 
       <%# article %>

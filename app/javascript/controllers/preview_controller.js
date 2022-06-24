@@ -1,3 +1,14 @@
+const preview = document.getElementById("preview")
+const buttons = document.getElementById("buttons")
+const listEdits = document.querySelectorAll(".list-editor")
+
+function pT() {
+    buttons.classList.toggle("d-none");
+    listEdits.forEach((edit) => {
+      edit.classList.toggle("d-none")
+    });
+}
+
 import { Controller } from "stimulus"
 
 export default class extends Controller {
@@ -10,17 +21,4 @@ export default class extends Controller {
     this.articleTarget.classList.toggle("d-none")
     pT()
   }
-}
-
-const preview = document.getElementById("preview")
-const buttons = document.getElementById("buttons")
-const listEdits = document.querySelectorAll(".list-editor")
-
-function pT() {
-  preview.addEventListener("click", ()=> {
-    buttons.classList.toggle("d-none");
-    listEdits.forEach((edit) => {
-      edit.classList.toggle("d-none")
-    });
-  })
 }

@@ -2,7 +2,7 @@
   <div class="d-flex-justify-content-between">
 
   <% if @list.published == true && @list.user == current_user %>
-    <p id="preview" data-action="click->preview#previewToggle">Editor</p>
+  <p id="preview" data-action="click->preview#previewToggle">Editor</p>
   <% elsif @list.published == false && @list.user == current_user %>
     <p id="preview" data-action="click->preview#previewToggle">Preview</p>
   <% end %>
@@ -44,15 +44,15 @@
     <li class="list-item" data-value="list-order">
       <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
         <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
-          <h5><%= item.name %></h5>
+          <h5 data-action="click->edit-item#displayForm"><%= item.name %></h5>
 
 
           <div class="list-editor">
             <% if hide_button(@list.user)%>
               <%# edit %>
-              <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
+              <%# <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i> %>
               <%# delete %>
-              <i class="fa-solid fa-trash-can"></i>
+              <i class="fa-solid fa-xmark"></i>
             <% end %>
 
             <%# article %>
