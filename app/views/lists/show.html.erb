@@ -1,9 +1,9 @@
  <div class="pad" data-controller="preview">
   <div class="d-flex-justify-content-between">
 
-  <% if @list.published == true %>
+  <% if @list.published == true && @list.user == current_user %>
     <p id="preview" data-action="click->preview#previewToggle">Editor</p>
-  <% else %>
+  <% elsif @list.published == false && @list.user == current_user %>
     <p id="preview" data-action="click->preview#previewToggle">Preview</p>
   <% end %>
 

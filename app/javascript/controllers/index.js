@@ -9,4 +9,4 @@ const context = require.context("controllers", true, /_controller\.js$/)
 application.load(definitionsFromContext(context))
 
 import { initSortable } from "./init_sortable"
-initSortable()
+// initSortable()
