@@ -28,8 +28,7 @@ module ListsHelper
   end
 
   def random_list
-    user = User.where("id != ?", current_user).sample
-    list = List.where(published: true).sample
-    return user_list_path(user, list)
+    list = List.published_lists.where("user_id != ?", current_user).sample
+    return user_list_path(list.user, list)
   end
 end
