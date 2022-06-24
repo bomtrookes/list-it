@@ -1,18 +1,21 @@
 <div class="container pad">
-  <div class="d-flex">
+  <%# <div class="d-flex">
     <%= link_to '<', current_user, class:"back-button" %>
-    <h1>Discover</h1>
-  </div>
+    <%# <h1>Discover</h1>
+  <%# </div> %>
 
   <%# Search Form %>
-  <%= form_tag lists_path, class: "input-group d-flex search-bar justify-content-center", method: :get do %>
+
+    <%= form_tag lists_path, class: "input-group d-flex justify-content-center", method: :get do %>
     <%= text_field_tag :query,
         params[:query],
         id: "form1",
         type: "search",
         class: "form-control",
         placeholder: "Search..." %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%= button_tag(type: "submit", class: "btn btn-search") do %>
+            <i class="fas fa-search"></i> Search
+        <% end %>
   <% end %>
 
   <%# Search Filter %>
