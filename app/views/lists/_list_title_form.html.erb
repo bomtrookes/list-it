@@ -1,6 +1,11 @@
 <%= simple_form_for [current_user, @list] do |f| %>
   <%= f.input :title %>
-  <%= f.input :tag_list, label: "Add tags", hint: "Add your tags, separated by commas", :input_html => { :class => "css-class", :value => @list.tag_list.join(", ") } %>
+  <%= f.input :tag_list,
+              label: "Add tags",
+              hint: "Add your tags, separated by commas",
+              :input_html => { :class => "css-class", :value => @list.tag_list.join(", ") } %>
   <%= f.input :photo, as: :file %>
-  <%= f.submit %>
+  <div class="form-actions">
+    <%= f.button :submit, "Create", class:"btn btn-flat" %>
+  </div>
 <% end %>

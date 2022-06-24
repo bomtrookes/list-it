@@ -1,6 +1,6 @@
 .profile-info, .profile-nav {
   background-color: white;
-  border-top : 1px solid rgba(79, 79, 79, 0.2);
+  border-top : 1px solid rgba(29, 29, 29, 0.2);
   ul {
     list-style: none;
     margin : 0;
@@ -13,21 +13,22 @@
   }
   p {
     font-size : 12px;
-    color : rgb(79, 79, 79);
+    color : $li-gray;
     margin : 0;
   }
   a {
     font-size : 18px;
     text-decoration: none;
-    color : rgb(79, 79, 79);
+    color : $li-gray;
   }
   i {
-    color : rgb(79, 79, 79);
+    color : $li-gray;
     padding : 8px 0;
   }
 }
 
 .user-bio {
+  color : $li-gray;
   text-align: center;
   p {
     font-size : 14px;
@@ -35,5 +36,5 @@
 }
 
 .active-tab {
-    color : green;
+    color : #7FC8A9;
 }

@@ -35,7 +35,7 @@
 
       <div class="list-info d-flex align-items-center">
         <%# user image %>
-        <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail", height: 40, width: 40, crop: :fill if list.photo.key %>
+        <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail-big", height: 80, width: 80, crop: :fill if list.photo.key %>
         <div class="list-title-user d-flex flex-column">
             <%# list size, title %>
             <div class="d-flex list-card-info">
@@ -66,7 +66,7 @@
     <li class="list-card-info d-flex justify-content-between mt-2">
     <div class="list-info d-flex align-items-center">
       <%# list image %>
-      <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail", height: 40, width: 40, crop: :fill if list.photo.key %>
+      <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail-big", height: 80, width: 80, crop: :fill if list.photo.key %>
       <div class="list-title-user d-flex flex-column">
           <%# list size, title %>
           <div class="d-flex list-card-info">
@@ -122,7 +122,7 @@
         <li class="list-card-info d-flex justify-content-between mt-2">
         <div class="list-info d-flex align-items-center">
           <%# list image %>
-          <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail", height: 40, width: 40, crop: :fill if list.photo.key %>
+          <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail-big", height: 40, width: 40, crop: :fill if list.photo.key %>
           <div class="list-title-user d-flex flex-column">
             <%# list size, title %>
             <div class="d-flex list-card-info">
