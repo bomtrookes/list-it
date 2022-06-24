@@ -2,21 +2,22 @@
   <div class="d-flex-justify-content-between">
 
   <% if @list.published == true && @list.user == current_user %>
-  <p id="preview" data-action="click->preview#previewToggle">Editor</p>
+  <p id="preview">Editor</p>
   <% elsif @list.published == false && @list.user == current_user %>
-    <p id="preview" data-action="click->preview#previewToggle">Preview</p>
+    <p id="preview">Preview</p>
   <% end %>
 
     <h1> <%= @list.title %> <% if hide_button(@list.user)%>
-            <%= link_to edit_user_list_path(current_user) do %>
-            <i data-preview-target="title" class="fas fa-pen fa-xs ms-2"></i>
+            <%= link_to edit_user_list_path(current_user), id:"title" do %>
+            <i class="fas fa-pen fa-xs ms-2"></i>
             <% end %>
           <% end %></h1>
-
-    <% if @list.user == current_user %>
-      <%= button_to "Article", article_user_list_path(@list.user), class: "btn btn-primary", data: { preview_target: "article"
-      } %>
-    <% end %>
+    <div id="art">
+      <% if @list.user == current_user %>
+        <%= button_to "Article", article_user_list_path(@list.user), class: "btn btn-primary", data: { preview_target: "article"
+        } %>
+      <% end %>
+    </div>
     <%# <label class="switch"><input type="checkbox"><span class="slider round"></span></label> %>
   </div>
 
@@ -102,15 +103,16 @@
     <%= render "list_item_form" %>
   </div>
   <%# TAG LINKS %>
-  <div class="pt-4">
+  <div id="tags" class="pt-4">
     <% @list.tag_list.each do |tag| %>
       <%= link_to format_tag(tag), tagged_path(tag: tag) %>
     <% end %>
+
     <% if hide_button(@list.user)%>
-            <%= link_to edit_user_list_path(current_user) do %>
-            <i data-preview-target="tags" class="fas fa-pen fa-xs ms-2"></i>
-            <% end %>
-          <% end %>
+      <%= link_to edit_user_list_path(current_user) do %>
+        <i class="fas fa-pen fa-xs ms-2"></i>
+      <% end %>
+    <% end %>
   </div>
 
   <!-- Button trigger modal -->
