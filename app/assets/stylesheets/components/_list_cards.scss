@@ -78,3 +78,75 @@ ul {
 ol {
   padding-left: 18px;
 }
+
+//  TEST STARTS
+
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.c-details p {
+  font-weight: 300;
+  font-size: 13px;
+  a {
+    text-decoration: none;
+    color: $li-green;
+  }
+}
+
+.c-details span {
+  font-weight: 300;
+  font-size: 12px;
+  color: $li-gray;
+
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tag span {
+  background-color: rgba(127, 200, 169, 0.3);
+  width: 60px;
+  height: 25px;
+  font-size: 11px;
+  padding-bottom: 3px;
+  border-radius: 5px;
+  display: flex;
+  color: $li-green;
+  justify-content: center;
+  align-items: center
+}
+
+.tag span a {
+  text-decoration: none;
+  color: $li-green;
+}
+
+.text1 {
+  font-size: 14px;
+  font-weight: 600;
+  color: $li-gray;
+}
+
+.text2 {
+  color: $li-gray;
+  font-weight: normal;
+}
+
+.card-link {
+  color: #4A4A4A;
+  a {
+    text-decoration: none;
+    color: #4A4A4A;
+  }
+}
+
+.card-link a {
+  text-decoration: none;
+  color: #4A4A4A;
+}
