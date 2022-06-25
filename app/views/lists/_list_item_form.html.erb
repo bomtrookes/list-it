@@ -1,5 +1,5 @@
 <div id="add">
-  <% if hide_button(@list.user) && @list.items.length <= 9 %>
+  <%# if hide_button(@list.user) && @list.items.length <= 9 %>
     <p data-add-item-target="addItem" data-action="click->add-item#nextItem">
       + List Item
     </p>
@@ -12,5 +12,5 @@
       <%= f.hidden_field :list_id, value: @list.id %>
       <%= f.submit %>
     <% end %>
-  <% end %>
+  <%# end %>
 </div>

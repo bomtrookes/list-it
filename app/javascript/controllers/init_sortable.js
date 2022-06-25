@@ -1,9 +1,9 @@
 import { end } from "@popperjs/core"
 import Rails from "@rails/ujs"
 import Sortable from "sortablejs"
+const sortList = document.querySelector("#sortList");
 
 const initSortable = () => {
-  const sortList = document.querySelector("#sort-list");
   Sortable.create(sortList, {
     ghostClass: "ghost",
     animation: 150,
@@ -29,11 +29,12 @@ const initSortable = () => {
       }
    }
 })
+console.log("sorted")
 }
 
-if (document.querySelector("#sort-list")) {
-  initSortable();
-}
+// if (document.querySelector("#sort-list")) {
+//   initSortable();
+// }
 
 export { initSortable }
 

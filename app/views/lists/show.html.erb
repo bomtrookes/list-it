@@ -40,7 +40,7 @@
   <%# CURRENT LIST & ADD ITEMS %>
 
 <div data-controller="add-item">
-  <ol id="sort-list" class="pt-4">
+  <ol id="sortList" class="pt-4">
   <% @list.items.each do | item | %>
     <li class="list-item" data-value="list-order">
       <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
@@ -97,10 +97,11 @@
       </div>
     </li>
   <% end %>
-  <%# LIST ITEM FORM %>
   </ol>
 
+  <%# LIST ITEM FORM %>
     <%= render "list_item_form" %>
+
   </div>
   <%# TAG LINKS %>
   <div id="tags" class="pt-4">
