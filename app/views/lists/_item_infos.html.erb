@@ -3,7 +3,7 @@
 
     <h5 data-action="click->edit-item#displayForm"><%= @item.name %></h5>
 
-    <div>
+    <div class="list-editor">
       <% if hide_button(@item.list.user)%>
         <%# edit %>
         <%# <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i> %>
@@ -20,7 +20,7 @@
 
   </div>
 
-  <%= simple_form_for @item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
+  <%= simple_form_for @item, html: { id: "sort-form", class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
     <%= f.input :name, label: false %>
     <% if @item.list.article == true %>
       <%= f.input :description, label: false %>
@@ -38,9 +38,11 @@
             <em>Type a description...</em>
           <% end %>
       <% else %>
-      <% end %>
         <p><%= @item.description %></p>
+        <div class="d-flex justify-content-center">
         <%= cl_image_tag item.photo.key, class:"list-photo-card", height: 200, width: 300, crop: :fill if item.photo.key %>
+        </div>
+        <% end %>
     <% end %>
   </div>
 

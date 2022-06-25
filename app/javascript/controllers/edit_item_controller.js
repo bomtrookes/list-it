@@ -5,7 +5,7 @@ export default class extends Controller {
 
   connect() {
     this.articleTarget.classList.add("d-none")
-    this.addItemTarget.classList.add("d-none")
+    // this.addItemTarget.classList.add("d-none")
   }
 
   displayForm() {

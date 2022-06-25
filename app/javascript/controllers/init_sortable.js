@@ -1,34 +1,40 @@
-// const list = document.querySelector("#sort-list")
-// const form = document.querySelector("#sort-form")
+import { end } from "@popperjs/core"
+import Rails from "@rails/ujs"
+import Sortable from "sortablejs"
 
-// import Sortable from "sortablejs"
+const initSortable = () => {
+  const sortList = document.querySelector("#sort-list");
+  Sortable.create(sortList, {
+    ghostClass: "ghost",
+    animation: 150,
+    group: "listLocalStorage",
+    store: {
+      /**
+       * Get the order of elements. Called once during initialization.
+       * @param   {Sortable}  sortable
+       * @returns {Array}
+       */
+      get: function (sortable) {
+        var order = localStorage.getItem(sortable.options.group.name);
+        return order ? order.split('|') : [];
+      },
 
-// const initSortable = () => {
-//   Sortable.create(list, {
-//     ghostClass: "ghost",
-//     animation: 150,
-//     // onEnd: (event) => {
-//     //   alert(`${event.oldIndex} moved to ${event.newIndex}`)
-//     // }
-//     // onSort: (event) => {
-//     //   const itemEl = event.item
-//     //   console.log(itemEl, event.oldIndex, event.newIndex);
-//     //   const url = form.action
+      /**
+       * Save the order of elements. Called onEnd (when the item is dropped).
+       * @param {Sortable}  sortable
+       */
+      set: function (sortable) {
+        var order = sortable.toArray();
+        localStorage.setItem(sortable.options.group.name, order.join('|'));
+      }
+   }
+})
+}
 
-//     fetch(url, {
-//       method: "PATCH",
-//       headers: { "Accept": "text/plain" },
-//       body: new FormData(form)
-//     })
-//     .then(response => response.text())
-//     .then((data) => {
-//       list.outerHTML = data
-//     })
-//    }
-// })
-// }
+if (document.querySelector("#sort-list")) {
+  initSortable();
+}
 
-// export { initSortable }
-
+export { initSortable }
 
 // go to controllers/index and uncomment initSortable()
