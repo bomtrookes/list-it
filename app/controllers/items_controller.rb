@@ -41,7 +41,10 @@ class ItemsController < ApplicationController
   def destroy
     @item = find_item
     @item.destroy
-    redirect_to user_list_path(user_id: current_user, id: @item.list)
+
+    session[:return_to] ||= request.referer
+    redirect_to session.delete(:return_to)
+
   end
 
   private

@@ -1,7 +1,17 @@
 <div class="navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid d-flex justify-content-between align-items-center">
 
-    <div class="container white-font">
+    <div class="container white-font logo-text">
+
+        <% if user_signed_in? %>
+
+          <% if current_page?(root_path) %>
+            <%= image_tag("https://res.cloudinary.com/mygreenhouses/image/upload/v1655547120/list-it/listit-icon_wordmark-horizontal_tgonja.png", height: 20, crop: :fill) %>
+          <% elsif current_page?(user_path(current_user)) %>
+            <%= format_username(current_user.username) %>
+          <% end %>
+
+        <% end %>
 
     </div>
 

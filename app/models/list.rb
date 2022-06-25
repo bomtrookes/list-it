@@ -39,4 +39,5 @@ class List < ApplicationRecord
   def self.followings_lists(following)
     where(user_id: following, published: true).order('updated_at DESC')
   end
+
 end

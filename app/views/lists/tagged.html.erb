@@ -1,8 +1,34 @@
 <div class="container pad">
-  <h3>Related Lists</h3>
-  <ul>
-    <% @lists.each do |list| %>
-      <li><%= link_to list.title, user_list_path(current_user, list) %></li>
-    <% end %>
-  </ul>
-</div>
+    <div class="d-flex justify-content-between">
+      <%= link_to :back, class:"back-button" do %>
+        <i class="fa-solid fa-caret-left"></i>
+      <% end %>
+      <h3><%= format_tag(@tag) %></h3>
+    </div>
+    <ul>
+    <% @lists.each do | list | %>
+      <li class="list-card-info d-flex justify-content-between mt-2">
+      <div class="list-card-index d-flex align-items-center">
+        <%# list image %>
+         <%= link_to user_list_path(list.user, list)  do %>
+            <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail-big", height: 80, width: 80, crop: :fill if list.photo.key %>
+         <% end %>
+        <div class="list-title-user d-flex flex-column">
+            <%# list size, title %>
+            <div class="d-flex list-card-info">
+            <%#= list.item_ids.size %>
+            <%= link_to list.title, user_list_path(list.user, list), class:"list-title" %>
+            </div>
+            <%# list username %>
+            <div class="list-card-index-username">
+              <%= link_to format_username(list.user.username), list.user, class: "list-card-index-username" %>
+            </div>
+            <div class="datestamp-italic">
+              Last updated: <%= time_ago_in_words(list.updated_at) %> ago
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+
+  </div>

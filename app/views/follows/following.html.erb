@@ -1,18 +1,22 @@
 <div class="container pad">
-   <div class="d-flex">
-    <%= link_to '<', current_user, class:"back-button" %>
-    <h1>Following</h1>
+  <div class="d-flex justify-content-between">
+    <%= link_to :back, class:"back-button" do %>
+      <i class="fa-solid fa-caret-left"></i>
+    <% end %>
+    <h3>Following</h3>
   </div>
-  <% @user.followings.each do |following| %>
-    <ul class="follow-list">
-      <li class="list-card-info d-flex justify-content-between">
-        <div class="list-info d-flex align-items-center">
-          <%# user image %>
+  <div>
+    <% @user.followings.each do |following| %>
+      <ul class="follow-list">
+        <li class="list-card-info d-flex justify-content-between">
+          <div class="list-info d-flex align-items-center">
+            <%# user image %>
 
-          <%# following user %>
-          <%= link_to format_username(following.username), user_path(following) %>
-        </div>
+            <%# follower user %>
+            <%= link_to format_username(following.username), user_path(following) %>
+          </div>
         </li>
-    </ul>
-  <% end %>
+      </ul>
+    <% end %>
+  </div>
 </div>

@@ -29,18 +29,17 @@
   <div class="container pad">
 
     <div class="container d-flex flex-column justify-content-between">
-      <%#= link_to '<', current_user, class:"back-button" %>
-      <%# <div class="home-logos">
-        <%= cl_image_tag("list-it/listit-icon_wordmark-horizontal_tgonja", width: 250, crop: :fill) %>
-      <%# </div> %>
+
     </div>
 
     <ul>
     <% @lists.each do | list | %>
       <li class="list-card-info d-flex justify-content-between mt-2">
-      <div class="list-info d-flex align-items-center">
+      <div class="list-card-index d-flex align-items-center">
         <%# list image %>
-        <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail", height: 50, width: 50, crop: :fill if list.photo.key %>
+         <%= link_to user_list_path(list.user, list)  do %>
+            <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail-big", height: 80, width: 80, crop: :fill if list.photo.key %>
+         <% end %>
         <div class="list-title-user d-flex flex-column">
             <%# list size, title %>
             <div class="d-flex list-card-info">
@@ -48,8 +47,11 @@
             <%= link_to list.title, user_list_path(list.user, list), class:"list-title" %>
             </div>
             <%# list username %>
-            <div class="username-italic">
-              <%= format_username(list.user.username) %> - created <%= time_ago_in_words(list.created_at) %> ago
+            <div class="list-card-index-username">
+              <%= link_to format_username(list.user.username), list.user, class: "list-card-index-username" %>
+            </div>
+            <div class="datestamp-italic">
+              Last updated: <%= time_ago_in_words(list.updated_at) %> ago
             </div>
           </div>
         </li>

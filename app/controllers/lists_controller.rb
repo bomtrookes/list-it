@@ -1,13 +1,13 @@
 class ListsController < ApplicationController
-  before_action :set_user, only: [:new, :create, :publish, :article, :show]
+  before_action :set_user, only: [:new, :create, :publish, :article, :show, :destroy]
 
   def index
     # search
     if params[:query].present?
       @top_lists = List.published_lists.global_search(params[:query])
       @search_lists = List.published_lists.search_list(params[:query])
-      @search_users = List.published_lists.search_user(params[:query])
-      @search_tags = List.published_lists.search_tag(params[:query])
+      @search_users = List.published_lists.search_user(params[:query]).uniq { |list| list.user }
+      @search_tags = ActsAsTaggableOn::Tag.where("name LIKE ?", "#{params[:query]}%")
     else
       @top_lists = List.ordered_published_lists
       @search_lists = []
@@ -64,14 +64,16 @@ class ListsController < ApplicationController
   def destroy
     @list = find_list
     @list.destroy
-    redirect_to current_user
+
+    redirect_to user_path(@user)
   end
 
   def publish
     @list = find_list
     @list.published = true
     @list.save
-    redirect_to @user
+
+    redirect_to user_path(@user)
   end
 
   def article
@@ -88,6 +90,7 @@ class ListsController < ApplicationController
   def tagged
     if params[:tag].present?
       @lists = List.tagged_with(params[:tag])
+      @tag = params[:tag]
     else
       @lists = List.all
     end

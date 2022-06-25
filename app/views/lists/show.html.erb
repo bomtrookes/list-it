@@ -47,22 +47,21 @@
         <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
           <h5 data-action="click->edit-item#displayForm"><%= item.name %></h5>
 
-
           <div class="d-flex">
             <% if hide_button(@list.user)%>
-              <%# edit %>
-              <%# <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i> %>
               <%# delete %>
-              <p class="delBtn"><i class="fa-solid fa-xmark"></i></p>
-            <% end %>
+              <%= link_to list_item_path(item.list, item), method: :delete do %>
+                <p class="delBtn"><i class="fa-solid fa-xmark"></i></p>
+              <% end %>
 
+            <% end %>
             <%# article %>
             <% if @list.article == true %>
               <%# reveal article %>
               <p><i class="fa-solid fa-circle-info" data-action="click->edit-item#descBtn"></i>
             <% end %></p>
           </div>
-
+ 
         </div>
 
         <%#= rendered update form %>
@@ -149,12 +148,12 @@
     <div class="d-flex justify-content-between list-editor pt-4">
       <%# Publish %>
       <% if @list.published == false %>
-        <%= button_to "Publish", publish_user_list_path(@list.user, @list), class: "btn btn-success" %>
+        <%= button_to "Publish", publish_user_list_path(@list.user, @list), class: "btn btn-flat" %>
       <% end %>
       <%# Save to Drafts %>
-      <%= link_to "Save", current_user, class:"btn btn-primary" %>
+      <%= link_to "Save", current_user, class:"btn btn-ghost" %>
       <%# Delete %>
-      <%= button_to "Delete", user_list_path(current_user, @list), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+      <%= button_to "Delete", user_list_path(current_user, @list), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-alert" %>
     </div>
   <% end %>
   </div>
