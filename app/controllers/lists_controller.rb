@@ -8,8 +8,6 @@ class ListsController < ApplicationController
       @search_lists = List.published_lists.search_list(params[:query])
       @search_users = List.published_lists.search_user(params[:query]).uniq { |list| list.user }
       @search_tags = List.published_lists.search_tag(params[:query])
-      tag_ids = ActsAsTaggableOn::Tagging.where(:context => List).collect(&:tag_id).uniq
-      @tags = ActsAsTaggableOn::Tag.where(:id => tag_ids).search(params[:query])
       # search_tags = []
       # @search_tags = search_tags.uniq { |tag| tag }
       # List.published_lists.search_tag(params[:query]).each do |list|
