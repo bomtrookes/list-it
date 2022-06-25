@@ -14,17 +14,24 @@
 
           <div class="form-inputs">
             <%= f.input :username,
+                        placeholder: "Choose a username",
+                        label: false,
                         required: true,
                         autofocus: true,
                         input_html: { autocomplete: "username" } %>
             <%= f.input :email,
+                        placeholder: "Enter email",
+                        label: false,
                         required: true,
                         input_html: { autocomplete: "email" }%>
             <%= f.input :password,
+                        placeholder: "Enter password" + (" (#{@minimum_password_length} characters min)" if @minimum_password_length),
+                        label: false,
                         required: true,
-                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                         input_html: { autocomplete: "new-password" } %>
             <%= f.input :password_confirmation,
+                        placeholder: "Confirm password",
+                        label: false,
                         required: true,
                         input_html: { autocomplete: "new-password" } %>
           </div>
