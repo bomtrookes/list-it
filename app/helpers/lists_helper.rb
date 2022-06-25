@@ -31,4 +31,8 @@ module ListsHelper
     list = List.published_lists.where("user_id != ?", current_user).sample
     return user_list_path(list.user, list)
   end
+
+  def tagged_lists(tag)
+    List.tagged_with(tag)
+  end
 end
