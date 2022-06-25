@@ -1,29 +1,42 @@
 const preview = document.querySelector("#preview")
-
-const title = document.querySelector("#title")
-const tags = document.querySelector("#tags")
-const add = document.querySelector("#add")
-const article = document.querySelector("#art")
-const buttons = document.querySelector("#buttons")
-const listEdits = document.querySelectorAll(".list-editor")
+if(document.querySelector("#preview") && preview) {
+  preview.addEventListener("click", pT)
+}
 
 function pT() {
-    preview.classList.toggle("selected");
-    title.classList.toggle("d-none");
-    tags.classList.toggle("d-none");
-    add.classList.toggle("d-none");
-    article.classList.toggle("d-none");
-    buttons.classList.toggle("d-none");
-    listEdits.forEach((edit) => {
-      edit.classList.toggle("d-none")
-    });
+  const title = document.querySelector("#title")
+  const tags = document.querySelector("#tags")
+  const add = document.querySelector("#add")
+  const article = document.querySelector("#art")
+  const buttons = document.querySelector("#buttons")
+  const delBtns = document.querySelectorAll(".delBtn")
+  const listEdits = document.querySelectorAll(".list-editor")
+
+  preview.classList.toggle("selected");
+  title.classList.toggle("d-none");
+  tags.classList.toggle("d-none");
+  add.classList.toggle("d-none");
+  article.classList.toggle("d-none");
+  buttons.classList.toggle("d-none");
+  listEdits.forEach((edit) => {
+    edit.classList.toggle("d-none")
+  });
+  delBtns.forEach((del) => {
+    del.classList.toggle("d-none")
+  });
 }
 
-preview.addEventListener("click", pT)
 
-if (preview.innerHTML == "Editor") {
-  pT()
-}
+// document.addEventListener('turbolinks:load', function() {
+  if (preview && preview.innerHTML == "Editor") {
+    pT()
+  }
+// })
+// window.addEventListener("DOMContentLoaded", () => {
+// })
+
+
+
 import { Controller } from "stimulus"
 
 export default class extends Controller {

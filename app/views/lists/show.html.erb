@@ -48,19 +48,19 @@
           <h5 data-action="click->edit-item#displayForm"><%= item.name %></h5>
 
 
-          <div class="list-editor">
+          <div class="d-flex">
             <% if hide_button(@list.user)%>
               <%# edit %>
               <%# <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i> %>
               <%# delete %>
-              <i class="fa-solid fa-xmark"></i>
+              <p class="delBtn"><i class="fa-solid fa-xmark"></i></p>
             <% end %>
 
             <%# article %>
             <% if @list.article == true %>
               <%# reveal article %>
-              <i class="fa-solid fa-circle-info" data-action="click->edit-item#descBtn"></i>
-            <% end %>
+              <p><i class="fa-solid fa-circle-info" data-action="click->edit-item#descBtn"></i>
+            <% end %></p>
           </div>
 
         </div>
@@ -109,11 +109,13 @@
       <%= link_to format_tag(tag), tagged_path(tag: tag) %>
     <% end %>
 
+  <% if @list.tag_list.present? %>
     <% if hide_button(@list.user)%>
       <%= link_to edit_user_list_path(current_user) do %>
         <i class="fas fa-pen fa-xs ms-2"></i>
       <% end %>
     <% end %>
+  <% end %>
   </div>
 
   <!-- Button trigger modal -->
