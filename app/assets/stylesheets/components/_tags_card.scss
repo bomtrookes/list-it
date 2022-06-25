@@ -1,0 +1,25 @@
+.tag-card {
+  ul {
+    list-style: none;
+    margin : 0;
+    padding : 0;
+  }
+  li {
+    padding : 8px;
+    margin : 4px 0;
+  }
+}
+
+.tag-card-info {
+  border-radius: 8px;
+  color: $li-green;
+}
+.tag-name {
+  padding-left : 8px;
+  color: $li-green;
+}
+
+.tag-name a {
+  text-decoration: none !important;
+  color: $li-green;
+}

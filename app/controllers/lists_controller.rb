@@ -7,16 +7,7 @@ class ListsController < ApplicationController
       @top_lists = List.published_lists.global_search(params[:query])
       @search_lists = List.published_lists.search_list(params[:query])
       @search_users = List.published_lists.search_user(params[:query]).uniq { |list| list.user }
-      @search_tags = List.published_lists.search_tag(params[:query])
-      # search_tags = []
-      # @search_tags = search_tags.uniq { |tag| tag }
-      # List.published_lists.search_tag(params[:query]).each do |list|
-      #   list.tag_list.each do |tag|
-      #     if tag.include? params[:query]
-      #       search_tags << tag.to_s
-      #     end
-      #   end
-      # end
+      @search_tags = ActsAsTaggableOn::Tag.where("name LIKE ?", "#{params[:query]}%")
     else
       @top_lists = List.ordered_published_lists
       @search_lists = []
@@ -99,6 +90,7 @@ class ListsController < ApplicationController
   def tagged
     if params[:tag].present?
       @lists = List.tagged_with(params[:tag])
+      @tag = params[:tag]
     else
       @lists = List.all
     end
