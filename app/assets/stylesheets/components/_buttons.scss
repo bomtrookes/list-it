@@ -45,3 +45,10 @@
   background: $li-red;
   color: white;
 }
+
+.btn-search {
+  color: white;
+  padding: 8px 24px;
+  background: $li-green;
+  transition: background 0.3s ease;
+}

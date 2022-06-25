@@ -960,7 +960,7 @@ list = List.create!(
     title: "My fav desserts",
     published: true,
     article: false,
-    tag_list: ['food', 'dessert'],
+    tag_list: ['food', 'dessert', 'foodporn', 'foodie'],
     updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
@@ -1003,7 +1003,7 @@ list = List.create!(
     title: "Best desserts in the UK",
     published: true,
     article: false,
-    tag_list: ['food', 'desserts'],
+    tag_list: ['food', 'desserts', 'foodie'],
     updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
@@ -1025,7 +1025,7 @@ list = List.create!(
     title: "Best desset toppings",
     published: true,
     article: false,
-    tag_list: ['food', 'dessert', 'toppings'],
+    tag_list: ['food', 'dessert', 'toppings', 'foodporn'],
     updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )

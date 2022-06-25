@@ -8,3 +8,8 @@
 legend ~ div.form-check:first-of-type {
   clear: left;
 }
+
+#list_tag_list, #list_title, #list_photo {
+  font-size: 13px;
+  color: $li-gray;
+}
