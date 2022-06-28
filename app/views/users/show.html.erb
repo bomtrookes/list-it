@@ -1,33 +1,48 @@
 <div class="pad">
-  <%# profile image %>
-  <div class="container pad d-flex justify-content-center mt-3">
-    <%= image_tag @user.avatar, class: "avatar-profile", height: 150, width: 150, crop: :fill %>
+
+  <div class="card p-3">
+    <div class="d-flex align-items-center">
+      <div class="img-fluid">
+        <%# profile image %>
+        <%= image_tag @user.avatar, class: "avatar-profile", height: 100, width: 100, crop: :fill %>
+        <% unless hide_button(@user) %>
+          <div class="container d-flex  mb-2">
+            <%= follow_or_unfollow_button(@user, @following) %>
+          </div>
+          <% end %>
+      </div>
+
+
+      <div class="container w-100">
+        <%# profile name & bio %>
+        <div class="card-info">
+          <h4><%= format_username(@user.username) %></h4>
+          <%# follow button %>
+          <p class="bio"><%= @user.bio %></p>
+        </div>
+
+
+        <%# Lists, Followers, Following %>
+        <div class="profile-info mt-1 mb-1 stats">
+          <ul class="d-flex justify-content-around" >
+            <li class="d-flex flex-column align-items-center">
+            <%= link_to published_lists(@user).size, '#' %><p>lists</p>
+            </li>
+            <li class="d-flex flex-column align-items-center">
+            <%= link_to @user.followers.size, user_followers_path(@user) %><p>followers</p>
+            </li>
+            <li class="d-flex flex-column align-items-center">
+            <%= link_to @user.followings.size, user_following_path(@user) %><p>following</p>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+
+    </div>
   </div>
-  <%# profile name & bio %>
-  <div class="container d-flex justify-content-center flex-column user-bio mt-3">
-    <h3><%= format_username(@user.username) %></h3>
-    <p><%= @user.bio %></p>
-  </div>
-  <%# follow button %>
-  <% unless hide_button(@user) %>
-  <div class="container d-flex justify-content-center mb-3">
-    <%= follow_or_unfollow_button(@user, @following) %>
-  </div>
-  <% end %>
-  <%# Lists, Followers, Following %>
-  <div class="container profile-info mt-1 mb-1">
-    <ul class="d-flex justify-content-around" >
-      <li class="d-flex flex-column align-items-center">
-      <%= link_to published_lists(@user).size, '#' %><p>lists</p>
-      </li>
-      <li class="d-flex flex-column align-items-center">
-      <%= link_to @user.followers.size, user_followers_path(@user) %><p>followers</p>
-      </li>
-      <li class="d-flex flex-column align-items-center">
-      <%= link_to @user.followings.size, user_following_path(@user) %><p>following</p>
-      </li>
-    </ul>
-  </div>
+
   <div class="profile-views" data-controller="change-view">
     <%# Published, Drafts, Pinned %>
     <% if hide_button(@user) %>
@@ -56,7 +71,7 @@
           <div class="list-info d-flex">
             <%# list image %>
             <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail", height: 50, width: 50, crop: :fill if list.photo.key %>
-            <div class="list-title-user d-flex flex-column justify-content-center">
+            <div class="list-title-user d-flex align-items-start flex-column">
               <%# list size?, title %>
               <div class="d-flex">
                 <%#= list.item_ids.size %>
@@ -66,8 +81,7 @@
           </div>
           <%# votes %>
           <div class="vote-box d-flex align-items-center">
-            <%= list.votes.size ? list.votes.size : 0 %>
-            <i class="fa-solid fa-thumbs-up"></i>
+            <p class="votes"><%= list.votes.size ? list.votes.size : 0 %> votes</p>
           </div>
           </li>
 

@@ -1,26 +1,43 @@
- <div class="pad">
-  <div class="d-flex-justify-content-between">
-    <h1> <%= @list.title %> <% if hide_button(@list.user)%>
-            <%= link_to edit_user_list_path(current_user) do %>
-            <i class="fas fa-pen fa-xs ms-2"></i>
-            <% end %>
-          <% end %></h1>
+ <div class="pad" data-controller="preview">
+  <span id="published-status"><% @list.published %></span>
+  <%# UPLOADED IMAGE %>
+  <div class="photo-container d-flex justify-content-center">
+    <%# LIST PUBLISH OPTIONS %>
+    <% if hide_button(@list.user) %>
+      <div class="list-options d-flex justify-content-between mt-2">
+        <%# preview %>
+        <% if @list.user == current_user %>
+          <%= link_to "#", id:"preview" do %>
+            <i class="fa-solid fa-eye"></i>
+          <% end %>
+        <% end %>
 
-    <% if @list.user == current_user %>
-      <%= button_to "Article", article_user_list_path(@list.user), class: "btn btn-primary" %>
+        <%# Publish %>
+        <% if @list.published == false %>
+          <%= link_to publish_user_list_path(@list.user, @list), id:"publish-btn" do %>
+            <i class="fa-solid fa-circle-check"></i>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%= cl_image_tag @list.photo.key, class: "list-photo-card mt-2" if @list.photo.key %>
     <% end %>
-    <%# <label class="switch"><input type="checkbox"><span class="slider round"></span></label> %>
   </div>
 
-  <%# LIST AUTHOR %>
+  <%# TITLE %>
+  <div class="d-flex justify-content-between align-items-center mt-2">
+    <h1><%= @list.title %></h1>
+    <% if hide_button(@list.user)%>
+      <%= link_to edit_user_list_path(current_user), id:"title" do %>
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%# USERNAME %>
   <% if @list.user != current_user %>
     <p><%= link_to format_username(@list.user.username), @list.user %> <%= follow_or_unfollow_button(@list.user, @following) %></p>
   <% end %>
-
-  <%# UPLOADED IMAGE %>
-  <div class="d-flex justify-content-center mt-3">
-    <%= cl_image_tag @list.photo.key, class: "list-photo-card", height: 200, width: 300, crop: :fill if @list.photo.key %>
-  </div>
 
   <%# PIN & VOTE BUTTONS %>
   <% unless hide_button(@list.user) %>
@@ -29,36 +46,35 @@
   <% end %>
 
   <%# CURRENT LIST & ADD ITEMS %>
+  <div class="current-list" data-controller="add-item">
+    <ol id="sortList" class="hide-nums pt-4">
+    <% @list.items.each do | item | %>
+      <li class="list-item" data-value="list-order">
+        <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
+          <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
+            <h5 data-action="click->edit-item#displayForm"><span class="my-handle">:: </span><%= item.name %>
+            </h5>
 
-<div data-controller="add-item">
-  <ol class="pt-4">
-  <% @list.items.each do | item | %>
-    <li>
-      <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
-        <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
-          <h4><%= item.name %></h4>
-
-          <div>
-            <% if hide_button(@list.user)%>
-              <%# edit %>
-              <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
-              <%# delete %>
-              <%= link_to list_item_path(item.list, item), method: :delete do %>
-                <i class="fa-solid fa-trash-can"></i>
+            <div class="d-flex">
+              <% if hide_button(@list.user)%>
+                <%# delete item %>
+                <%= link_to list_item_path(item.list, item), method: :delete do %>
+                  <p class="delBtn"><i class="fa-solid fa-xmark"></i></p>
+                <% end %>
               <% end %>
-            <% end %>
-            <%# article %>
-            <% if @list.article == true %>
-              <%# reveal article %>
-              <i class="fa-solid fa-circle-info" data-action="click->edit-item#descBtn"></i>
-            <% end %>
+
+              <%# reveal text %>
+              <% if @list.article == true %>
+                <p><i class="fa-solid fa-circle-info" data-action="click->edit-item#descBtn"></i>
+                </p>
+              <% end %>
+            </div>
+
           </div>
 
-        </div>
-
-        <%#= rendered update form %>
+          <%#= rendered update form %>
           <% if hide_button(@list.user) %>
-            <%= simple_form_for item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
+            <%= simple_form_for item, html: { id: "sort-form", class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
               <%= f.input :name, label: false %>
               <% if @list.article == true %>
                 <%= f.input :description, label: false %>
@@ -70,84 +86,88 @@
           <% end %>
 
           <%# ARTICLE VIEW %>
-            <div data-edit-item-target="article">
-              <% if @list.article == true %>
-                <% if item.description == nil || item.description == "" %>
-                  <% if hide_button(@list.user) %>
-                    <em>Type a description...</em>
-                  <% end %>
-                <% else %>
-                  <p><%= item.description %></p>
-                  <div class="d-flex justify-content-center">
-                    <%= cl_image_tag item.photo.key, class:"list-photo-card", height: 200, width: 300, crop: :fill if item.photo.key %>
-                  </div>
+          <div data-edit-item-target="article">
+            <% if @list.article == true %>
+              <% if item.description == nil || item.description == "" %>
+                <% if hide_button(@list.user) %>
+                  <em>Type a description...</em>
                 <% end %>
+              <% else %>
+                <p><%= item.description %></p>
+                <div class="d-flex justify-content-center">
+                  <%= cl_image_tag item.photo.key, class:"list-photo-card" if item.photo.key %>
+                </div>
               <% end %>
-            </div>
-
-      </div>
-    </li>
-  <% end %>
-  <%# LIST ITEM FORM %>
-  </ul>
-
-    <%= render "list_item_form" %>
-  </div>
-  <%# TAG LINKS %>
-  <div class="pt-4">
-    <% @list.tag_list.each do |tag| %>
-      <%= link_to format_tag(tag), tagged_path(tag: tag) %>
-    <% end %>
-    <% if hide_button(@list.user)%>
-            <%= link_to edit_user_list_path(current_user) do %>
-            <i class="fas fa-pen fa-xs ms-2"></i>
             <% end %>
-          <% end %>
+          </div>
+
+        </div>
+      </li>
+    <% end %>
+    </ol>
+
+    <%# LIST ITEM FORM %>
+      <%= render "list_item_form" %>
+
   </div>
 
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    <i class="fa-solid fa-share"></i>
-  </button>
+  <% if @list.published == true %>
+    <button type="button" id="share-btn" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      <i class="fa-solid fa-share"></i>
+    </button>
+  <% end %>
 
   <!-- Modal -->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
+
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Share with everyone!</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+
         <div class="modal-body">
           <%= social_share_button_tag(@list.title) %>
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
+
       </div>
     </div>
   </div>
 
+  <%# Save to Drafts %>
+  <%= link_to current_user, class:"btn btn-primary mt-3", id:"save-btn" do %>
+    <i class="fa-solid fa-file"></i>
+  <% end %>
 
-  <%# LIST PUBLISH OPTIONS %>
-  <% if hide_button(@list.user) %>
-    <div class="d-flex justify-content-between list-editor pt-4">
-      <%# Publish %>
-      <% if @list.published == false %>
-        <%= button_to "Publish", publish_user_list_path(@list.user, @list), class: "btn btn-flat" %>
+  <div class="list-details-bottom">
+    <%# TAG LINKS %>
+    <div class="mt-2">
+      <% @list.tag_list.each do |tag| %>
+        <%= link_to format_tag(tag), tagged_path(tag: tag) %>
       <% end %>
-      <%# Save to Drafts %>
-      <%= link_to "Save", current_user, class:"btn btn-ghost" %>
-      <%# Delete %>
-      <%= button_to "Delete", user_list_path(current_user, @list), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-alert" %>
-    </div>
-  <% end %>
 
-  <div class="pt-5">
-  <% if @list.published == false %>
-    <em>Created <%= time_ago_in_words(@list.created_at) %> ago</em>
-    <% else %>
-    <em>Published <%= time_ago_in_words(@list.updated_at) %> ago</em>
-  <% end %>
+      <% if @list.tag_list.present? %>
+        <% if hide_button(@list.user)%>
+          <%= link_to edit_user_list_path(current_user), id:"tags" do %>
+            <i class="fas fa-pen fa-xs ms-2"></i>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div>
+      <% if @list.published == false %>
+        <em>Created <%= time_ago_in_words(@list.created_at) %> ago</em>
+        <% else %>
+        <em>Published <%= time_ago_in_words(@list.updated_at) %> ago</em>
+      <% end %>
+    </div>
   </div>
+
 </div>

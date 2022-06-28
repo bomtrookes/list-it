@@ -1,0 +1,60 @@
+.my-handle {
+	cursor: move;
+	cursor: -webkit-grabbing;
+}
+.fa-xmark {
+  color : lightgrey;
+  padding-right : 8px;
+}
+.fa-circle-info {
+  color : lightgrey;
+}
+.selected {
+  color : green;
+  font-weight : bold;
+}
+.list-details-bottom {
+  position : relative;
+  bottom: 0;
+  left : 0;
+}
+.hide-nums {
+  list-style : none;
+  padding: 0;
+}
+ol {
+  padding-left: 18px;
+}
+.photo-container {
+  position: relative;
+}
+.list-options {
+  position: absolute;
+  padding : 8px;
+  width : 100%;
+  top : 0;
+  left: 0;
+}
+.fa-eye {
+  color : rgba(20, 61, 137, 0.8);
+  font-size: 30px;
+}
+.fa-circle-check {
+  color : $li-green;
+  font-size : 40px;
+  background-color: white;
+  border-radius: 50%;
+}
+.btn-ghost {
+  background-color: white;
+  opacity : 1;
+}
+.form-check-label {
+  display: block;
+  text-align: left;
+}
+.art-info {
+  font-size: 14px;
+  color : lightgray;
+  padding-bottom : 4px;
+}

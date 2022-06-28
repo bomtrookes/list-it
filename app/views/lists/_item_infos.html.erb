@@ -1,26 +1,26 @@
 <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
   <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
 
-    <h4><%= @item.name %></h4>
+    <h5 data-action="click->edit-item#displayForm"><span class="my-handle">:: </span><%= @item.name %></h5>
 
-    <div>
+    <div class="d-flex">
       <% if hide_button(@item.list.user)%>
-        <%# edit %>
-        <i class="fas fa-pen fa-xs ms-2" data-action="click->edit-item#displayForm"></i>
         <%# delete %>
-        <i class="fa-solid fa-trash-can"></i>
+        <%= link_to list_item_path(item.list, item), method: :delete do %>
+        <p class="delBtn"><i class="fa-solid fa-xmark"></i></p>
       <% end %>
 
+      <% end %>
       <%# article %>
       <% if @item.list.article == true %>
         <%# reveal article %>
-        <i class="fa-solid fa-circle-info" data-action="click->edit-item#descBtn"></i>
+        <p><i class="fa-solid fa-circle-info" data-action="click->edit-item#descBtn"></i></p>
       <% end %>
     </div>
 
   </div>
 
-  <%= simple_form_for @item, html: { class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
+  <%= simple_form_for @item, html: { id: "sort-form", class: "d-none", data: { edit_item_target: "form", action: "submit->edit-item#update" } } do |f| %>
     <%= f.input :name, label: false %>
     <% if @item.list.article == true %>
       <%= f.input :description, label: false %>
@@ -34,13 +34,15 @@
   <div data-edit-item-target="article">
     <% if @item.list.article == true %>
       <% if @item.description == nil || @item.description == ""  %>
-         <% if hide_button(@list.user) %>
+         <% if hide_button(@item.list.user) %>
             <em>Type a description...</em>
           <% end %>
       <% else %>
-      <% end %>
         <p><%= @item.description %></p>
-        <%= cl_image_tag item.photo.key, class:"list-photo-card", height: 200, width: 300, crop: :fill if item.photo.key %>
+        <div class="d-flex justify-content-center">
+          <%= cl_image_tag item.photo.key, class:"list-photo-card" if item.photo.key %>
+        </div>
+        <% end %>
     <% end %>
   </div>
 
