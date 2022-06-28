@@ -7,6 +7,7 @@ const initSortable = () => {
   if (sortList) {
 
     Sortable.create(sortList, {
+      handle: ".my-handle",
       ghostClass: "ghost",
       animation: 150,
       group: "listLocalStorage",

@@ -77,6 +77,7 @@ class ListsController < ApplicationController
   end
 
   def article
+    fail
     @list = find_list
     if @list.article == false
       @list.article = true

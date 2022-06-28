@@ -5,12 +5,13 @@ html {
 
 body {
   height: 100%;
+  width: 100vw;
   // overscroll-behavior: none;
-}
-
-body {
   background-color: white;
-  overflow: none;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .home-card {
@@ -47,7 +48,15 @@ body {
 // padding top and bottom
 .pad {
   padding : 50px 12px;
+  min-height : 100vh;
+  width: 100vw;
+  overflow: scroll;
+  overflow-x: hidden;
 }
+.pad::-webkit-scrollbar {
+  display: none;
+}
+
 .logo-wrap {
   height : 100%;
 }
