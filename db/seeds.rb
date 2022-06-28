@@ -20,9 +20,14 @@ tom = User.create(username: "bomtrookes", email: "tom@test.com", password: "pass
 nuria = User.create(username: "nuria", email: "nuria@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote, admin: true)
 ana = User.create(username: "Athelas85", email: "athe@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote, admin: true)
 
+quentin = User.create(username: "QTarantino", email: "quentin@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
+
 foodie1 = User.create(username: "foodie64", email: "food1@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
 foodie2 = User.create(username: "food_lover", email: "food2@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
 foodie3 = User.create(username: "food_lists", email: "food3@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
+foodie4 = User.create(username: "food_top_10", email: "food4@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
+foodie5 = User.create(username: "foodieBoss", email: "food5@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
+foodie6 = User.create(username: "FOODMANIAC", email: "food6@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
 
 Follow.create(follower_id: tom.id, followed_id: nuria.id)
 Follow.create(follower_id: tom.id, followed_id: ana.id)
@@ -32,6 +37,18 @@ Follow.create(follower_id: nuria.id, followed_id: ana.id)
 
 Follow.create(follower_id: ana.id, followed_id: tom.id)
 Follow.create(follower_id: ana.id, followed_id: nuria.id)
+
+Follow.create(follower_id: quentin.id, followed_id: tom.id)
+Follow.create(follower_id: tom.id, followed_id: quentin.id)
+
+Follow.create(follower_id: foodie1.id, followed_id: tom.id)
+Follow.create(follower_id: foodie2.id, followed_id: ana.id)
+Follow.create(follower_id: foodie3.id, followed_id: nuria.id)
+
+Follow.create(follower_id: foodie4.id, followed_id: tom.id)
+Follow.create(follower_id: foodie5.id, followed_id: ana.id)
+Follow.create(follower_id: foodie6.id, followed_id: nuria.id)
+
 
 i = 0
 
@@ -84,8 +101,10 @@ rand(10..20).times do
   Follow.create(follower_id: user_b.id, followed_id: tom.id)
   Follow.create(follower_id: user_c.id, followed_id: tom.id)
 
-  Follow.create(follower_id: foodie1.id, followed_id: tom.id)
-  Follow.create(follower_id: user_b.id, followed_id: foodie2.id)
+  Follow.create(follower_id: foodie1.id, followed_id: user_c.id)
+  Follow.create(follower_id: foodie4.id, followed_id: user_c.id)
+  Follow.create(follower_id: user_b.id, followed_id: foodie1.id)
+  Follow.create(follower_id: user_b.id, followed_id: foodie4.id)
 
   i += 3
 end
@@ -139,8 +158,10 @@ rand(5..15).times do
   Follow.create(follower_id: user_b.id, followed_id: nuria.id)
   Follow.create(follower_id: user_c.id, followed_id: nuria.id)
 
-  Follow.create(follower_id: foodie2.id, followed_id: tom.id)
-  Follow.create(follower_id: user_b.id, followed_id: foodie3.id)
+  Follow.create(follower_id: foodie2.id, followed_id: user_c.id)
+  Follow.create(follower_id: foodie5.id, followed_id: user_c.id)
+  Follow.create(follower_id: user_b.id, followed_id: foodie2.id)
+  Follow.create(follower_id: user_b.id, followed_id: foodie5.id)
 
   i += 2
 
@@ -195,8 +216,10 @@ rand(6..13).times do
   Follow.create(follower_id: user_b.id, followed_id: ana.id)
   Follow.create(follower_id: user_c.id, followed_id: ana.id)
 
-  Follow.create(follower_id: foodie3.id, followed_id: tom.id)
-  Follow.create(follower_id: user_b.id, followed_id: foodie1.id)
+  Follow.create(follower_id: foodie3.id, followed_id: user_c.id)
+  Follow.create(follower_id: foodie6.id, followed_id: user_c.id)
+  Follow.create(follower_id: user_b.id, followed_id: foodie6.id)
+  Follow.create(follower_id: user_b.id, followed_id: foodie3.id)
 
   i += 5
 
@@ -978,7 +1001,7 @@ puts "list #{list.title} done!"
 user = User.all.sample
 list = List.create!(
   {
-    user_id: user.id,
+    user_id: foodie6.id,
     title: "Yummiest dessert flavors",
     published: true,
     article: false,
@@ -1021,7 +1044,7 @@ puts "list #{list.title} done!"
 user = User.all.sample
 list = List.create!(
   {
-    user_id: user.id,
+    user_id: foodie2.id,
     title: "Best desset toppings",
     published: true,
     article: false,
@@ -1042,7 +1065,7 @@ puts "list #{list.title} done!"
 
 list = List.create!(
   {
-    user_id: foodie2.id,
+    user_id: foodie3.id,
     title: "Top 10 toppings",
     published: true,
     article: false,
@@ -1063,11 +1086,74 @@ puts "list #{list.title} done!"
 
 list = List.create!(
   {
+    user_id: foodie5.id,
+    title: "Best toppings for icecream",
+    published: true,
+    article: false,
+    tag_list: ['food', 'dessert', 'toppings'],
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+8.times do
+  Item.create!(
+    {
+      name: Faker::Dessert.topping,
+      list_id: list.id
+    }
+  )
+end
+
+puts "list #{list.title} done!"
+
+list = List.create!(
+  {
+    user_id: foodie6.id,
+    title: "Best UK topping",
+    published: true,
+    article: false,
+    tag_list: ['food', 'dessert', 'toppings', 'UK', 'foodporn'],
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+8.times do
+  Item.create!(
+    {
+      name: Faker::Dessert.topping,
+      list_id: list.id
+    }
+  )
+end
+
+puts "list #{list.title} done!"
+
+list = List.create!(
+  {
     user_id: foodie3.id,
-    title: "Best 10 Mediterranean recipes",
+    title: "Top 10 Mediterranean recipes",
     published: true,
     article: false,
     tag_list: ['food', 'mediterranean', 'recipe'],
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+10.times do
+  Item.create!(
+    {
+      name: Faker::Food.dish,
+      list_id: list.id
+    }
+  )
+end
+
+puts "list #{list.title} done!"
+
+list = List.create!(
+  {
+    user_id: foodie4.id,
+    title: "Best Mediterranean food",
+    published: true,
+    article: false,
+    tag_list: ['food', 'mediterranean', 'recipes'],
     updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
@@ -1084,11 +1170,53 @@ puts "list #{list.title} done!"
 
 list = List.create!(
   {
-    user_id: tom.id,
+    user_id: foodie5.id,
+    title: "Top UK recipes",
+    published: true,
+    article: false,
+    tag_list: ['food', 'recipe', 'UK'],
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+8.times do
+  Item.create!(
+    {
+      name: Faker::Food.dish,
+      list_id: list.id
+    }
+  )
+end
+
+puts "list #{list.title} done!"
+
+list = List.create!(
+  {
+    user_id: foodie4.id,
+    title: "Top Jamie Oliver recipes",
+    published: true,
+    article: false,
+    tag_list: ['food', 'jamie oliver', 'recipe', 'UK', 'foodie'],
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+8.times do
+  Item.create!(
+    {
+      name: Faker::Food.dish,
+      list_id: list.id
+    }
+  )
+end
+
+puts "list #{list.title} done!"
+
+list = List.create!(
+  {
+    user_id: foodie1.id,
     title: "My top 10 food dishes ever",
     published: true,
     article: false,
-    tag_list: ['food'],
+    tag_list: ['food', 'foodie', 'foodporn', 'recipe'],
     updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
@@ -1107,7 +1235,7 @@ puts "list #{list.title} done!"
 
 list = List.create!(
   {
-    user_id: nuria.id,
+    user_id: foodie3.id,
     title: "My favourite dishes",
     published: true,
     article: false,
@@ -1134,7 +1262,7 @@ list = List.create!(
     title: "Best food dishes",
     published: true,
     article: false,
-    tag_list: ['food'],
+    tag_list: ['food', 'foodie'],
     updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
@@ -1247,7 +1375,7 @@ puts "list #{list.title} done!"
 list = List.create!(
   {
     user_id: ana.id,
-    title: "Most paid professions - IMO",
+    title: "Most paid professions",
     published: true,
     article: false,
     tag_list: ['job', 'profession'],
@@ -1676,6 +1804,48 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['animals'],
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+10.times do
+  Item.create!(
+    {
+      name: Faker::Creature::Animal.name,
+      list_id: list.id
+    }
+  )
+end
+
+puts "list #{list.title} done!"
+
+list = List.create!(
+  {
+    user_id: foodie2.id,
+    title: "Best animals to eat",
+    published: true,
+    article: false,
+    tag_list: ['food', 'carnivore', 'keto'],
+    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+10.times do
+  Item.create!(
+    {
+      name: Faker::Creature::Animal.name,
+      list_id: list.id
+    }
+  )
+end
+
+puts "list #{list.title} done!"
+
+list = List.create!(
+  {
+    user_id: foodie5.id,
+    title: "Best food source of protein",
+    published: true,
+    article: false,
+    tag_list: ['animals', 'carnivore', 'food'],
     updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )

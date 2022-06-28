@@ -13,13 +13,11 @@
 .list-card-info {
   background-color: #f1f1f1;
   border-radius: 8px;
-   a {
-    text-decoration: none;
-  }
 }
 .list-title-user {
   padding-left : 8px;
 }
+
 .list-title {
   color : $li-gray;
   font-size : 16px;
@@ -41,9 +39,6 @@
   font-size : 12px;
   font-weight: normal;
   color: $li-gray;
-  a {
-    text-decoration: none;
-  }
 }
 
 .datestamp-italic {
@@ -74,4 +69,102 @@
 ul {
   list-style : none;
   padding-left: 0;
+}
+
+ol {
+  padding-left: 18px;
+}
+
+//  NURIA LIST CARD
+
+.card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.c-details p {
+  font-weight: 300;
+  font-size: 13px;
+  a {
+    text-decoration: none;
+    color: $li-green;
+  }
+}
+
+.c-details span {
+  font-weight: 300;
+  font-size: 12px;
+  color: $li-gray;
+}
+
+.tag span {
+  background-color: rgba(127, 200, 169, 0.3);
+  width: 100%;
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+  color: $li-green;
+  justify-content: center;
+  align-items: center
+}
+
+.tag span a {
+  text-decoration: none;
+  color: $li-green;
+}
+
+.text1 {
+  font-size: 14px;
+  font-weight: 600;
+  color: $li-gray;
+}
+
+.text2 {
+  color: $li-gray;
+  font-weight: normal;
+}
+
+.card-link {
+  color: #4A4A4A;
+  a {
+    text-decoration: none;
+    color: #4A4A4A;
+  }
+}
+
+.card-link a {
+  text-decoration: none;
+  color: #4A4A4A;
+}
+
+.card-photo-title {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  line-height: 1.2em;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-title {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  line-height: 1.2em;
+  align-items: center;
+  color: $li-gray;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
 }
