@@ -13,13 +13,11 @@
 .list-card-info {
   background-color: #f1f1f1;
   border-radius: 8px;
-   a {
-    text-decoration: none;
-  }
 }
 .list-title-user {
   padding-left : 8px;
 }
+
 .list-title {
   color : $li-gray;
   font-size : 16px;
@@ -41,9 +39,6 @@
   font-size : 12px;
   font-weight: normal;
   color: $li-gray;
-  a {
-    text-decoration: none;
-  }
 }
 
 .datestamp-italic {
@@ -79,11 +74,11 @@ ol {
   padding-left: 18px;
 }
 
-//  TEST STARTS
+//  NURIA LIST CARD
 
 .card {
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
@@ -100,21 +95,13 @@ ol {
   font-weight: 300;
   font-size: 12px;
   color: $li-gray;
-
-}
-
-.icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .tag span {
   background-color: rgba(127, 200, 169, 0.3);
-  width: 60px;
-  height: 25px;
+  width: 100%;
   font-size: 11px;
-  padding-bottom: 3px;
+  padding: 5px 10px;
   border-radius: 5px;
   display: flex;
   color: $li-green;
@@ -149,4 +136,34 @@ ol {
 .card-link a {
   text-decoration: none;
   color: #4A4A4A;
+}
+
+.card-photo-title {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  line-height: 1.2em;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-title {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  line-height: 1.2em;
+  align-items: center;
+  color: $li-gray;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
 }

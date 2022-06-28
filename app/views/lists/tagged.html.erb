@@ -1,34 +1,54 @@
-<div class="container pad">
-    <div class="d-flex justify-content-between">
+
+
+  <div class="container mt-5 mb-3">
+  <div class="row">
+  <div class="d-flex justify-content-between">
       <%= link_to :back, class:"back-button" do %>
         <i class="fa-solid fa-caret-left"></i>
       <% end %>
       <h3><%= format_tag(@tag) %></h3>
     </div>
-    <ul>
-    <% @lists.each do | list | %>
-      <li class="list-card-info d-flex justify-content-between mt-2">
-      <div class="list-card-index d-flex align-items-center">
-        <%# list image %>
-         <%= link_to user_list_path(list.user, list)  do %>
-            <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail-big", height: 80, width: 80, crop: :fill if list.photo.key %>
-         <% end %>
-        <div class="list-title-user d-flex flex-column">
-            <%# list size, title %>
-            <div class="d-flex list-card-info">
-            <%#= list.item_ids.size %>
-            <%= link_to list.title, user_list_path(list.user, list), class:"list-title" %>
-            </div>
-            <%# list username %>
-            <div class="list-card-index-username">
-              <%= link_to format_username(list.user.username), list.user, class: "list-card-index-username" %>
-            </div>
-            <div class="datestamp-italic">
-              Last updated: <%= time_ago_in_words(list.updated_at) %> ago
-            </div>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+    <div class="col-md-4 mt-2">
+      <%# list card starts %>
+      <% @lists.each do | list | %>
+        <div class="card p-2 mb-2">
 
+          <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex flex-row align-items-center">
+                  <div class="ms-2 c-details">
+                      <p class="mb-0">
+                      <%= link_to format_username(list.user.username), list.user %>
+                      </p>
+                  </div>
+              </div>
+          </div>
+          <%= link_to user_list_path(list.user, list)  do %>
+            <div class="mt-2 card-link">
+                <% if list.photo.key %>
+                  <div class="mt-2 card-photo-title" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= cl_image_path list.photo.key, class: "list-photo-card", crop: :fill %>)">
+                    <%= list.title %>
+                  </div>
+                <% else %>
+                  <div class="mt-2 card-title">
+                  <%= list.title %>
+                  </div>
+                <% end %>
+            </div>
+          <% end %>
+          <div class="d-flex justify-content-between align-items-end">
+              <div class="d-flex flex-row align-items-center">
+                  <div class="mt-2 c-details">
+                    <span><em>Updated: <%= time_ago_in_words(list.updated_at) %> ago</em></span>
+                  </div>
+              </div>
+                <div class="ms-2">
+                  <span class="text1"><%= list.votes.size %> <span class="text2">votes</span></span>
+                </div>
+          </div>
+
+        </div>
+      <% end %>
+      <%# list card ends %>
+    </div>
   </div>
+</div>
