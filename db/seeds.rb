@@ -1195,7 +1195,7 @@ list = List.create!(
     title: "Top Jamie Oliver recipes",
     published: true,
     article: false,
-    tag_list: ['food', 'jamie oliver', 'recipe', 'UK', 'foodie'],
+    tag_list: ['food', 'recipe', 'UK', 'foodie'],
     updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
