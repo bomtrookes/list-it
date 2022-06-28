@@ -5,7 +5,12 @@
     <%= f.input :title %>
     <%= f.input :tag_list, label: "Add tags", hint: "Add your tags, separated by commas", :input_html => { :class => "css-class", :value => @list.tag_list.join(", ") } %>
     <%= f.input :photo, as: :file %>
+    <%= f.input :article, as: :boolean %>
     <%= f.submit %>
   <% end %>
+
+  <div class="d-flex justify-content-evenly mt-3">
+    <%= button_to "Delete", user_list_path(current_user, @list), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-alert" %>
+  </div>
 
 </div>
