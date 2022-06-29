@@ -52,12 +52,14 @@
   background: $li-green;
   transition: background 0.3s ease;
 }
-.btn-selected {
-  color : $li-green;
-}
+
 .btn-pin, .btn-vote, .btn-share {
-  padding : 0 4px;
+  padding : 0 8px;
   border : none;
   background-color : transparent;
   color : grey;
+  font-size : 18px;
+}
+.btn-selected {
+  color : $li-green;
 }
