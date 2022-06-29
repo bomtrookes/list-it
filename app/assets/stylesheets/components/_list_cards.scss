@@ -81,15 +81,15 @@ ol {
   border: none;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-
-.c-details p {
-  font-weight: 300;
-  font-size: 13px;
   a {
     text-decoration: none;
     color: $li-green;
   }
+}
+
+.c-details p {
+  font-weight: 300;
+  font-size: 14px;
 }
 
 .c-details span {
@@ -98,10 +98,20 @@ ol {
   color: $li-gray;
 }
 
+.c-details-username {
+  font-weight: 300;
+  font-size: 14px;
+  margin-left: 8px;
+  a {
+    text-decoration: none;
+    color: $li-green;
+  }
+}
+
 .tag span {
   background-color: rgba(127, 200, 169, 0.3);
   width: 100%;
-  font-size: 11px;
+  font-size: 12px;
   padding: 5px 10px;
   border-radius: 5px;
   display: flex;
