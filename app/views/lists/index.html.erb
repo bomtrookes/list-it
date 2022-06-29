@@ -1,156 +1,239 @@
-<div class="container pad">
-  <%# <div class="d-flex">
-    <%= link_to '<', current_user, class:"back-button" %>
-    <%# <h1>Discover</h1>
-  <%# </div> %>
+  <%# NEW %>
 
-  <%# Search Form %>
+<div class="pad">
 
+  <%# Search bar %>
+
+  <div class="d-flex pt-2 justify-content-between align-items-center">
     <%= form_tag lists_path, class: "input-group d-flex justify-content-center", method: :get do %>
-    <%= text_field_tag :query,
-        params[:query],
-        id: "form1",
-        type: "search",
-        class: "form-control",
-        placeholder: "What are you searching for?" %>
-    <%= button_tag(type: "submit", class: "btn btn-search") do %>
-            <i class="fas fa-search"></i>
-        <% end %>
-  <% end %>
+      <%= text_field_tag :query,
+          params[:query],
+          id: "form1",
+          type: "search",
+          class: "form-control",
+          placeholder: "What are you searching for?" %>
+      <%= button_tag(type: "submit", class: "btn btn-search") do %>
+              <i class="fas fa-search"></i>
+          <% end %>
+    <% end %>
+  </div>
 
   <%# Search Filter %>
 
-   <div class="container discover-list" data-controller="filter-search">
+   <div class="discover-list" data-controller="filter-search">
 
     <div class="container discover-tabs mt-1 mb-1">
       <ul class="d-flex justify-content-around" >
         <li class="d-flex flex-column align-items-center">
-        <p data-action="click->filter-search#tops" data-filter-search-target="topbutton">top</p>
+          <p data-action="click->filter-search#tops" data-filter-search-target="topbutton">all</p>
         </li>
         <li class="d-flex flex-column align-items-center">
-        <p data-action="click->filter-search#lists" data-filter-search-target="listbutton">lists</p>
+          <p data-action="click->filter-search#lists" data-filter-search-target="listbutton">lists</p>
         </li>
         <li class="d-flex flex-column align-items-center">
-        <p data-action="click->filter-search#users" data-filter-search-target="userbutton">users</p>
+          <p data-action="click->filter-search#users" data-filter-search-target="userbutton">users</p>
         </li>
         <li class="d-flex flex-column align-items-center">
-        <p data-action="click->filter-search#tags" data-filter-search-target="tagbutton">tags</p>
+          <p data-action="click->filter-search#tags" data-filter-search-target="tagbutton">tags</p>
         </li>
       </ul>
     </div>
 
+  <%# Results %>
+
   <%# TOP - search results %>
-  <ul class="d-none" data-filter-search-target="top">
+
+  <div class="row d-none" data-filter-search-target="top">
     <% if @top_lists.present? %>
+      <%# list card starts %>
       <% @top_lists.each do | list | %>
-      <li class="list-card-info d-flex justify-content-between mt-2">
-
-      <div class="list-info d-flex align-items-center">
-        <%# user image %>
-        <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail-big", height: 80, width: 80, crop: :fill if list.photo.key %>
-        <div class="list-title-user d-flex flex-column">
-            <%# list size, title %>
-            <div class="d-flex list-card-info">
-            <%#= list.item_ids.size %>
-            <%= link_to list.title, user_list_path(list.user, list), class:"list-title" %>
+        <div class="col-md-4 mt-1">
+          <div class="card p-2 mb-2">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex flex-row align-items-center">
+                <div class="c-details">
+                  <p class="mb-0">
+                  <%= link_to format_username(list.user.username), list.user %>
+                  </p>
+                </div>
+              </div>
             </div>
-            <%# list username %>
-            <%= link_to format_username(list.user.username), user_path(list.user), class:"username-italic" %>
+            <%= link_to user_list_path(list.user, list)  do %>
+              <div class="mt-2 card-link">
+                <% if list.photo.key %>
+                  <div class="mt-2 card-photo-title" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path list.photo.key, class: "list-photo-card", crop: :fill %>)">
+                    <%= list.title %>
+                  </div>
+                <% else %>
+                  <div class="mt-2 card-title">
+                    <%= list.title %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+            <div class="d-flex justify-content-between align-items-end">
+              <div class="d-flex flex-row align-items-center">
+                <div class="mt-2 c-details">
+                  <span><em>Updated: <%= time_ago_in_words(list.updated_at) %> ago</em></span>
+                </div>
+              </div>
+              <div class="ms-2">
+                <span class="text1"><%= list.votes.size %> <span class="text2">votes</span></span>
+              </div>
+            </div>
           </div>
-
         </div>
-        <%# votes %>
-        <div class="vote-box d-flex align-items-center">
-        <%= list.votes.size ? list.votes.size : 0 %>
-        <i class="fa-solid fa-thumbs-up"></i>
-        </div>
-      </li>
-    <% end %>
+      <% end %>
+        <%# list card ends %>
     <% else %>
-      <p>No Results Found</p>
+      <div class="col-md-4 mt-1">
+          <div class="p-2 mb-2">
+              <div class="mt-5">
+                  <div class="d-flex justify-content-center align-items-center" id="no-results">
+                    No results found
+                  </div>
+              </div>
+          </div>
+        </div>
     <% end %>
-  </ul>
+  </div>
 
   <%# LISTS - search results %>
-  <ul class="d-none" data-filter-search-target="list">
-  <% if @search_lists.present? %>
-  <% @search_lists.each do | list | %>
-    <li class="list-card-info d-flex justify-content-between mt-2">
-    <div class="list-info d-flex align-items-center">
-      <%# list image %>
-      <%= cl_image_tag list.photo.key, class: "list-photo-thumbnail-big", height: 80, width: 80, crop: :fill if list.photo.key %>
-      <div class="list-title-user d-flex flex-column">
-          <%# list size, title %>
-          <div class="d-flex list-card-info">
-          <%#= list.item_ids.size %>
-          <%= link_to list.title, list, class:"list-title" %>
+
+  <div class="row d-none" data-filter-search-target="list">
+    <% if @search_lists.present? %>
+      <%# list card starts %>
+      <% @search_lists.each do | list | %>
+        <div class="col-md-4 mt-1">
+          <div class="card p-2 mb-2">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex flex-row align-items-center">
+                <div class="c-details">
+                  <p class="mb-0">
+                  <%= link_to format_username(list.user.username), list.user %>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <%= link_to user_list_path(list.user, list)  do %>
+              <div class="mt-2 card-link">
+                <% if list.photo.key %>
+                  <div class="mt-2 card-photo-title" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path list.photo.key, class: "list-photo-card", crop: :fill %>)">
+                    <%= list.title %>
+                  </div>
+                <% else %>
+                  <div class="mt-2 card-title">
+                    <%= list.title %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+            <div class="d-flex justify-content-between align-items-end">
+              <div class="d-flex flex-row align-items-center">
+                <div class="mt-2 c-details">
+                  <span><em>Updated: <%= time_ago_in_words(list.updated_at) %> ago</em></span>
+                </div>
+              </div>
+              <div class="ms-2">
+                <span class="text1"><%= list.votes.size %> <span class="text2">votes</span></span>
+              </div>
+            </div>
           </div>
-          <%# list username %>
-          <%= link_to format_username(list.user.username), user_path(list.user), class:"username-italic" %>
-      </div>
-    </div>
-    <%# votes %>
-    <div class="vote-box d-flex align-items-center">
-      <%= list.votes.size ? list.votes.size : 0 %>
-      <i class="fa-solid fa-thumbs-up"></i>
-    </div>
-    </li>
-  <% end %>
-  <% else %>
-    <p>No Results Found</p>
-  <% end %>
-  </ul>
-
-    <%# USERS - search results %>
-    <ul class="d-none" data-filter-search-target="user">
-      <% if @search_users.present? %>
-        <% @search_users.each do | list | %>
-          <li class="list-card-info d-flex justify-content-between mt-2">
-            <div class="list-info d-flex align-items-center">
-              <%# user image %>
-              <%= image_tag list.user.avatar, class: "avatar-profile", height: 40, width: 40, crop: :fill %>
-              <div class="list-title-user d-flex flex-column">
-                <%# username %>
-                <%= link_to format_username(list.user.username), user_path(list.user), class:"list-title" %>
-              </div>
-            </div>
-            <%# followers %>
-              <div class="followers-box d-flex align-items-center">
-                <p>followers:
-                <%= list.user.follower_ids.size %>
-                </p>
-              </div>
-          </li>
-        <% end %>
-      <% else %>
-        <p>No Results Found</p>
+        </div>
       <% end %>
-    </ul>
-
-    <%# TAG - search results %>
-
-    <ul class="d-none" data-filter-search-target="tag">
-      <% if @search_tags.present? %>
-        <% @search_tags.each do | tag | %>
-          <li class="tag-card-info d-flex justify-content-between mt-2">
-            <div class="tag-info d-flex align-items-center">
-              <%# tag %>
-              <div class="tag-name d-flex flex-column">
-                <%= link_to format_tag(tag.name), tagged_path(tag: tag.name) %>
+        <%# list card ends %>
+    <% else %>
+       <div class="col-md-4 mt-1">
+          <div class="p-2 mb-2">
+              <div class="mt-5">
+                  <div class="d-flex justify-content-center align-items-center" id="no-results">
+                    No results found
+                  </div>
               </div>
-            </div>
-            <%# number of lists %>
-              <div class="d-flex align-items-center">
-                <p>
-                  <%= tagged_lists(tag).size %> lists
-                </p>
-              </div>
-          </li>
-        <% end %>
-      <% else %>
-        <p>No Results Found</p>
-      <% end %>
-    </ul>
-
+          </div>
+        </div>
+    <% end %>
   </div>
+
+<%# USER - search results %>
+
+  <div class="row d-none" data-filter-search-target="user">
+    <% if @search_users.present? %>
+      <%# list card starts %>
+      <% @search_users.each do | list | %>
+        <div class="col-md-4 mt-1">
+          <div class="card p-2 mb-2">
+            <div class="d-flex justify-content-between align-items-center">
+              <%= link_to list.user do %>
+              <div class="d-flex flex-row align-items-center">
+                <div class="d-flex align-items-center">
+                    <%= image_tag list.user.avatar, class: "c-details-avatar", height: 30, width: 30, crop: :fill %>
+                </div>
+                <div class="c-details-username">
+                  <p class="mb-0">
+                     <%= format_username(list.user.username) %>
+                  </p>
+                </div>
+              </div>
+              <% end %>
+              <div class="ms-2">
+                <span class="text1"><%= list.user.lists.size %> <span class="text2">lists</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%# list card ends %>
+    <% else %>
+      <div class="col-md-4 mt-1">
+          <div class="p-2 mb-2">
+              <div class="mt-5">
+                  <div class="d-flex justify-content-center align-items-center" id="no-results">
+                    No results found
+                  </div>
+              </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+<%# TAG - search results %>
+
+  <div class="row d-none" data-filter-search-target="tag">
+    <% if @search_tags.present? %>
+      <%# list card starts %>
+      <% @search_tags.each do | tag | %>
+        <div class="col-md-4 mt-1">
+          <div class="card p-2 mb-2">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex flex-row">
+                <div class="c-details">
+                  <p class="mb-0">
+                     <%= link_to format_tag(tag.name), tagged_path(tag: tag.name) %>
+                  </p>
+                </div>
+              </div>
+              <div class="ms-2">
+                <span class="text1"> <%= tagged_lists(tag).size %><span class="text2"> lists</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+        <%# list card ends %>
+    <% else %>
+      <div class="col-md-4 mt-1">
+          <div class="p-2 mb-2">
+              <div class="mt-5">
+                  <div class="d-flex justify-content-center align-items-center" id="no-results">
+                    No results found
+                  </div>
+              </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+</div>
+
 </div>

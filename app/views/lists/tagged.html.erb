@@ -1,21 +1,18 @@
-
-
-  <div class="container mt-5 mb-3">
+<div class="container mt-5 mb-3">
+  <div class="d-flex pt-2 justify-content-between align-items-center">
+    <%= link_to :back, class:"back-button" do %>
+      <i class="fa-solid fa-caret-left arrow"></i>
+    <% end %>
+    <h5><%= format_tag(@tag) %></h5>
+  </div>
   <div class="row">
-  <div class="d-flex justify-content-between">
-      <%= link_to :back, class:"back-button" do %>
-        <i class="fa-solid fa-caret-left"></i>
-      <% end %>
-      <h3><%= format_tag(@tag) %></h3>
-    </div>
-    <div class="col-md-4 mt-2">
-      <%# list card starts %>
-      <% @lists.each do | list | %>
+    <%# list card starts %>
+    <% @lists.each do | list | %>
+    <div class="col-md-4 mt-1">
         <div class="card p-2 mb-2">
-
           <div class="d-flex justify-content-between align-items-center">
               <div class="d-flex flex-row align-items-center">
-                  <div class="ms-2 c-details">
+                  <div class="c-details">
                       <p class="mb-0">
                       <%= link_to format_username(list.user.username), list.user %>
                       </p>
@@ -25,7 +22,7 @@
           <%= link_to user_list_path(list.user, list)  do %>
             <div class="mt-2 card-link">
                 <% if list.photo.key %>
-                  <div class="mt-2 card-photo-title" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= cl_image_path list.photo.key, class: "list-photo-card", crop: :fill %>)">
+                  <div class="mt-2 card-photo-title" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path list.photo.key, class: "list-photo-card", crop: :fill %>)">
                     <%= list.title %>
                   </div>
                 <% else %>
@@ -45,10 +42,9 @@
                   <span class="text1"><%= list.votes.size %> <span class="text2">votes</span></span>
                 </div>
           </div>
-
         </div>
-      <% end %>
-      <%# list card ends %>
     </div>
+    <% end %>
+    <%# list card ends %>
   </div>
 </div>
