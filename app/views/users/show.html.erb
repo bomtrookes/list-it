@@ -1,12 +1,12 @@
 <div class="pad">
 
-  <div class="card p-3">
+  <div class="p-3">
     <div class="d-flex align-items-center">
       <div class="img-fluid">
         <%# profile image %>
         <%= image_tag @user.avatar, class: "avatar-profile", height: 100, width: 100, crop: :fill %>
         <% unless hide_button(@user) %>
-          <div class="container d-flex  mb-2">
+          <div class="d-flex  mb-2">
             <%= follow_or_unfollow_button(@user, @following) %>
           </div>
           <% end %>
@@ -47,7 +47,7 @@
     <%# Published, Drafts, Pinned %>
     <% if hide_button(@user) %>
 
-    <div class="container profile-nav pt-2 pb-2">
+    <div class="profile-nav pt-2 pb-2">
       <ul class ="d-flex justify-content-around">
         <li class="d-flex flex-column align-items-center" data-action="click->change-view#lists" data-change-view-target="listicon">
           <i class="fa-solid fa-list"></i>
@@ -63,7 +63,7 @@
     </div>
     <% end %>
     <%# Published Lists - progress %>
-    <div class="list-card container">
+    <div class="list-card">
       <ul class="d-none" data-change-view-target="list">
         <% published_lists(@user).each do | list | %>
           <li class="list-card-info d-flex justify-content-between">

@@ -52,3 +52,12 @@
   background: $li-green;
   transition: background 0.3s ease;
 }
+.btn-selected {
+  color : $li-green;
+}
+.btn-pin, .btn-vote, .btn-share {
+  padding : 0 4px;
+  border : none;
+  background-color : transparent;
+  color : grey;
+}

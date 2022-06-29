@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def hide_button(user)
     user.id == current_user.id
   end
@@ -11,5 +10,4 @@ module ApplicationHelper
   def format_tag(tag)
     '#' + tag
   end
-
 end

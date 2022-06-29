@@ -14,16 +14,14 @@
   font-weight : bold;
 }
 .list-details-bottom {
-  position : relative;
-  bottom: 0;
-  left : 0;
+  width : 100%;
 }
 .hide-nums {
   list-style : none;
   padding: 0;
 }
 ol {
-  padding-left: 18px;
+  padding-left: 22px;
 }
 .photo-container {
   position: relative;
@@ -35,7 +33,7 @@ ol {
   top : 0;
   left: 0;
 }
-.fa-eye {
+.fa-eye, .fa-file {
   color : rgba(20, 61, 137, 0.8);
   font-size: 30px;
 }
@@ -57,4 +55,15 @@ ol {
   font-size: 14px;
   color : lightgray;
   padding-bottom : 4px;
+}
+// published / created at
+#create-info {
+  width : 100%;
+  border-top : 1px rgba(210, 208, 208, 0.7) solid;
+  em {
+    color : grey;
+  }
+}
+.user-pin-vote {
+  border-bottom : 1px solid lightgrey;
 }
