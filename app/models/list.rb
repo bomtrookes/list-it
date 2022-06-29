@@ -28,16 +28,4 @@ class List < ApplicationRecord
   pg_search_scope :search_user, associated_against: { user: [:username] }, using: { tsearch: { prefix: true } }
   pg_search_scope :search_tag, associated_against: { tags: [:name] }, using: { tsearch: { prefix: true } }
 
-  def self.ordered_published_lists
-    where('published = ?', true).left_joins(:votes).group(:id).order('COUNT(votes.id) DESC')
-  end
-
-  def self.published_lists
-    where('published = ?', true)
-  end
-
-  def self.followings_lists(following)
-    where(user_id: following, published: true).order('updated_at DESC')
-  end
-
 end

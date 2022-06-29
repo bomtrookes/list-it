@@ -16,18 +16,96 @@ puts "Database clean"
 
 puts "Creating Users and followers..."
 
-tom = User.create(username: "bomtrookes", email: "tom@test.com", password: "pass123", avatar: Faker::Avatar.image, bio: Faker::GreekPhilosophers.quote, admin: true)
-nuria = User.create(username: "nuria", email: "nuria@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote, admin: true)
-ana = User.create(username: "Athelas85", email: "athe@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote, admin: true)
+tom = User.create(
+  username: "bomtrookes",
+  email: "tom@test.com",
+  password: "pass123",
+  avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441174/list-it/user%20faces/tom_aoclbs.jpg",
+  bio: Faker::GreekPhilosophers.quote,
+  admin: true
+)
 
-quentin = User.create(username: "QTarantino", email: "quentin@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
+nuria = User.create(
+  username: "nuria",
+  email: "nuria@test.com",
+  password: "pass123",
+  avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441172/list-it/user%20faces/Nuria_ucnd6q.jpg",
+  bio:  Faker::GreekPhilosophers.quote,
+  admin: true
+)
 
-foodie1 = User.create(username: "foodie64", email: "food1@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
-foodie2 = User.create(username: "food_lover", email: "food2@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
-foodie3 = User.create(username: "food_lists", email: "food3@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
-foodie4 = User.create(username: "food_top_10", email: "food4@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
-foodie5 = User.create(username: "foodieBoss", email: "food5@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
-foodie6 = User.create(username: "FOODMANIAC", email: "food6@test.com", password: "pass123", avatar: Faker::Avatar.image, bio:  Faker::GreekPhilosophers.quote)
+ana = User.create(
+  username: "Athelas85",
+  email: "athe@test.com",
+  password: "pass123",
+  avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441169/list-it/user%20faces/Ana_g7t7my.jpg",
+  bio:  Faker::GreekPhilosophers.quote,
+  admin: true
+)
+
+quentin = User.create(
+  username: "QTarantino",
+  email: "quentin@test.com",
+  password: "pass123",
+  avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656519436/list-it/user%20faces/Quentin-Tarantino_1200_AP_ylit55.jpg",
+  bio:  Faker::GreekPhilosophers.quote
+)
+
+foodie1 = User.create(
+  username: "foodie64",
+  email: "food1@test.com",
+  password: "pass123",
+  avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441172/list-it/user%20faces/samy_uxx4iz.jpg",
+  bio:  Faker::GreekPhilosophers.quote
+)
+
+foodie2 = User.create(
+  username: "food_lover",
+  email: "food2@test.com",
+  password: "pass123",
+  avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441173/list-it/user%20faces/stephani_dubjj0.jpg",
+  bio: Faker::GreekPhilosophers.quote
+)
+
+foodie3 = User.create(
+  username: "food_lists",
+  email: "food3@test.com",
+  password: "pass123",
+  avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441170/list-it/user%20faces/boris_atd0ra.jpg",
+  bio: Faker::GreekPhilosophers.quote
+)
+
+foodie4 = User.create(
+  username: "food_top_10",
+  email: "food4@test.com",
+  password: "pass123",
+  avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441171/list-it/user%20faces/joe_y9nwge.jpg",
+  bio: Faker::GreekPhilosophers.quote
+)
+
+foodie5 = User.create(
+  username: "foodieBoss",
+  email: "food5@test.com",
+  password: "pass123",
+  avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441174/list-it/user%20faces/seb_hyezd2.jpg",
+  bio: Faker::GreekPhilosophers.quote
+)
+
+foodie6 = User.create(
+  username: "FOODMANIAC",
+  email: "food6@test.com",
+  password: "pass123",
+  avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441171/list-it/user%20faces/Josh_fa8cew.jpg",
+  bio: Faker::GreekPhilosophers.quote
+)
+
+foodie7 = User.create(
+  username: "foodQueen",
+  email: "food7@test.com",
+  password: "pass123",
+  avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441170/list-it/user%20faces/cat_ssnfbz.jpg",
+  bio: Faker::GreekPhilosophers.quote
+)
 
 Follow.create(follower_id: tom.id, followed_id: nuria.id)
 Follow.create(follower_id: tom.id, followed_id: ana.id)
@@ -49,8 +127,87 @@ Follow.create(follower_id: foodie4.id, followed_id: tom.id)
 Follow.create(follower_id: foodie5.id, followed_id: ana.id)
 Follow.create(follower_id: foodie6.id, followed_id: nuria.id)
 
+Follow.create(follower_id: foodie7.id, followed_id: tom.id)
+Follow.create(follower_id: foodie7.id, followed_id: ana.id)
+Follow.create(follower_id: foodie7.id, followed_id: foodie1.id)
+Follow.create(follower_id: foodie7.id, followed_id: foodie2.id)
+Follow.create(follower_id: foodie7.id, followed_id: foodie3.id)
+Follow.create(follower_id: foodie7.id, followed_id: foodie4.id)
+Follow.create(follower_id: foodie7.id, followed_id: foodie5.id)
+
+le_wagon_avatars = [
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441175/list-it/user%20faces/setfan_wurxje.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441173/list-it/user%20faces/sean_xxxutc.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441174/list-it/user%20faces/mark_acomqe.png",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441174/list-it/user%20faces/yuvel_mnoguw.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441173/list-it/user%20faces/shenton_gt3vxg.png",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441173/list-it/user%20faces/bruno_ma2lyc.png",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441173/list-it/user%20faces/soojin_ilnsxv.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441174/list-it/user%20faces/tracy_ecnmon.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441173/list-it/user%20faces/simone_ni8uq8.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441173/list-it/user%20faces/stanley_eoy6rs.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441172/list-it/user%20faces/megan_ls0syc.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441172/list-it/user%20faces/roel_mgkca5.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441172/list-it/user%20faces/meehir_suycap.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441172/list-it/user%20faces/kurt_kpivga.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441172/list-it/user%20faces/madina_chtffm.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441172/list-it/user%20faces/Mustafa_lhcjuv.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441172/list-it/user%20faces/michael_rryy05.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441172/list-it/user%20faces/josef_vlx6cw.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441171/list-it/user%20faces/jess_szgsrs.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441171/list-it/user%20faces/juan_qyvxqa.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441171/list-it/user%20faces/Jonno_lpzmef.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441171/list-it/user%20faces/harriet_mslcid.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441171/list-it/user%20faces/jenny_khkpt1.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441171/list-it/user%20faces/gabriel_fbgtwu.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441171/list-it/user%20faces/hugo_dtzjoc.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441171/list-it/user%20faces/heba_ga9fij.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441171/list-it/user%20faces/eddie_i7dnr1.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441171/list-it/user%20faces/ed_ouyeqb.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441171/list-it/user%20faces/dorothy_dp9yus.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441171/list-it/user%20faces/darren_iqbulq.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441170/list-it/user%20faces/doreem_x7kxwt.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441170/list-it/user%20faces/diego_f8zyuc.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441170/list-it/user%20faces/david_copy_uxtjrw.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441170/list-it/user%20faces/david_v1zlmi.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441170/list-it/user%20faces/ashley_a7qzhk.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441170/list-it/user%20faces/daniela_pwrf86.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441170/list-it/user%20faces/daniel_glyqvo.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441170/list-it/user%20faces/alex_no3gxz.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441170/list-it/user%20faces/anna_tdxjqr.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441169/list-it/user%20faces/andy_gm4ve4.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441170/list-it/user%20faces/armaan_xzazdf.jpg",
+  "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441169/list-it/user%20faces/alessia_ult64z.jpg",
+]
 
 i = 0
+
+students = []
+
+le_wagon_avatars.each do |avatar|
+
+  student = User.create!(
+    {
+      email: Faker::Internet.email,
+      password: "pass123",
+      bio: Faker::GreekPhilosophers.quote,
+      username: "#{Faker::Name.first_name}",
+      avatar: "#{avatar}"
+    }
+  )
+
+  students << student
+
+  Follow.create(follower_id: student.id, followed_id: tom.id)
+  Follow.create(follower_id: student.id, followed_id: ana.id)
+  Follow.create(follower_id: student.id, followed_id: nuria.id)
+
+  Follow.create(follower_id: tom.id, followed_id: student.id)
+  Follow.create(follower_id: nuria.id, followed_id: student.id)
+  Follow.create(follower_id: ana.id, followed_id: student.id)
+
+    i += 3
+  end
 
 # tom's followers
 
@@ -105,6 +262,7 @@ rand(10..20).times do
   Follow.create(follower_id: foodie4.id, followed_id: user_c.id)
   Follow.create(follower_id: user_b.id, followed_id: foodie1.id)
   Follow.create(follower_id: user_b.id, followed_id: foodie4.id)
+  Follow.create(follower_id: user_c.id, followed_id: foodie7.id)
 
   i += 3
 end
@@ -162,6 +320,7 @@ rand(5..15).times do
   Follow.create(follower_id: foodie5.id, followed_id: user_c.id)
   Follow.create(follower_id: user_b.id, followed_id: foodie2.id)
   Follow.create(follower_id: user_b.id, followed_id: foodie5.id)
+  Follow.create(follower_id: foodie7.id, followed_id: user_c.id)
 
   i += 2
 
@@ -269,7 +428,7 @@ Item.create(name: "Roasted veggie curry", list_id: list6.id)
 Item.create(name: "Claudia Winkleman's butter chicken", list_id: list6.id)
 Item.create(name: "Love heart Camembert", list_id: list6.id)
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -293,7 +452,7 @@ list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/j
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -317,7 +476,7 @@ list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/j
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -341,7 +500,7 @@ list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/j
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -365,7 +524,7 @@ list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/j
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -389,7 +548,7 @@ list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/j
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -413,7 +572,7 @@ list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/j
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -436,7 +595,7 @@ list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/j
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -460,7 +619,7 @@ list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/j
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -484,7 +643,7 @@ list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/j
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -508,7 +667,7 @@ list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/j
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -532,7 +691,7 @@ list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/j
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -556,7 +715,7 @@ list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/j
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -580,7 +739,7 @@ list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/j
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -602,7 +761,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -624,7 +783,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -646,7 +805,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -668,7 +827,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -690,7 +849,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -712,7 +871,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -734,7 +893,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -756,7 +915,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -778,7 +937,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -800,7 +959,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -822,7 +981,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -844,7 +1003,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -866,7 +1025,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -888,7 +1047,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -910,7 +1069,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -932,7 +1091,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -954,7 +1113,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -976,7 +1135,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -998,7 +1157,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: foodie6.id,
@@ -1041,7 +1200,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: foodie2.id,
@@ -1348,7 +1507,7 @@ list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/j
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -1498,7 +1657,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -1520,7 +1679,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -1542,7 +1701,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -1606,7 +1765,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -1733,7 +1892,7 @@ end
 
 puts "list #{list.title} done!"
 
-user = User.all.sample
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
