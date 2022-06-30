@@ -3,9 +3,11 @@ class FollowsController < ApplicationController
   before_action :set_user
 
   def following
+    @followings = @user.followings.sort_by {|following| following.lists.size }.reverse!
   end
 
   def followers
+    @followers = @user.followers.sort_by {|follower| follower.lists.size }.reverse!
   end
 
   def create

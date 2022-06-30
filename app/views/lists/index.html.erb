@@ -23,7 +23,7 @@
     <div class="container discover-tabs mt-1 mb-1">
       <ul class="d-flex justify-content-around" >
         <li class="d-flex flex-column align-items-center">
-          <p data-action="click->filter-search#tops" data-filter-search-target="topbutton">all</p>
+          <p data-action="click->filter-search#tops" data-filter-search-target="topbutton">popular</p>
         </li>
         <li class="d-flex flex-column align-items-center">
           <p data-action="click->filter-search#lists" data-filter-search-target="listbutton">lists</p>
@@ -72,7 +72,7 @@
             <div class="d-flex justify-content-between align-items-end">
               <div class="d-flex flex-row align-items-center">
                 <div class="mt-2 c-details">
-                  <span><em>Updated: <%= time_ago_in_words(list.updated_at) %> ago</em></span>
+                  <span><em>Updated: <%= time_ago_in_words(list.created_at) %> ago</em></span>
                 </div>
               </div>
               <div class="ms-2">
@@ -129,7 +129,7 @@
             <div class="d-flex justify-content-between align-items-end">
               <div class="d-flex flex-row align-items-center">
                 <div class="mt-2 c-details">
-                  <span><em>Updated: <%= time_ago_in_words(list.updated_at) %> ago</em></span>
+                  <span><em>Updated: <%= time_ago_in_words(list.created_at) %> ago</em></span>
                 </div>
               </div>
               <div class="ms-2">

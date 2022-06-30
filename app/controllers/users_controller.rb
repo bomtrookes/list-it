@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @following = current_user.followings.find_by(id: @user.id)
+    @user_lists = List.newest_published(@user)
   end
 
   def index
