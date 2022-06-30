@@ -84,7 +84,16 @@ ol {
   }
 }
 .list-item {
-  padding-bottom: 12px;
+  padding: 8px 4px 0 4px;
+  margin-bottom: 8px;
+  background-color: rgba(216, 216, 216, 0.1);
+  border-radius : 4px;
+}
+.add-list-item {
+  padding-left : 24px;
+}
+.li-desc {
+  padding: 0 8px;
 }
 
 // update form
@@ -94,4 +103,7 @@ ol {
 #item_name, #item_description {
   border : none;
   background-color : transparent;
+}
+.simple_form .new_item {
+  margin : 0 12px 8px 12px;
 }

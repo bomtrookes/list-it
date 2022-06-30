@@ -4,11 +4,12 @@
         <%= cl_image_tag @list.photo.key, class: "list-photo-card mt-2" if @list.photo.key %>
 
     <span class ="d-none" id="published-status"><%= @list.published %></span>
+    <span class ="d-none" id="user-status"><%= @list.user == current_user %></span>
     <%# UPLOADED IMAGE %>
       <%# LIST PUBLISH OPTIONS %>
       <% if hide_button(@list.user) %>
         <div class="container list-options d-flex justify-content-between mt-2">
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center ghoul">
             <%# PREVIEW %>
             <% if @list.user == current_user %>
               <%= link_to "Editor", "#", id:"preview", class:"btn btn-ghoul" %>
@@ -134,9 +135,9 @@
                     <em>+ List Description...</em>
                   <% end %>
                 <% else %>
-                  <p><%= item.description %></p>
-                  <div class="d-flex justify-content-center">
-                    <%= cl_image_tag item.photo.key, class:"list-photo-card" if item.photo.key %>
+                  <p class="li-desc"><%= item.description %></p>
+                  <div class="d-flex justify-content-center list-item-photo-box">
+                    <%= cl_image_tag item.photo.key, class:"list-item-photo-card" if item.photo.key %>
                   </div>
                 <% end %>
               <% end %>

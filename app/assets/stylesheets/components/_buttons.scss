@@ -7,17 +7,15 @@
   transition: opacity 0.3s ease;
 }
 .btn-ghoul {
-  color: rgb(26, 74, 219);
-  border: 1px solid rgb(26, 74, 219);
+  color: white;
+  border: 1px solid white;
   padding: 6px 22px;
   border-radius: 50px;
-  background-color: white;
-  transition: opacity 0.3s ease;
+  background-color: rgb(26, 74, 219);
 }
 .btn-ghoul-active {
-  border: 1px solid white;
-  background-color: rgb(26, 74, 219);
-  color : white !important;
+  background-color : white;
+  color : rgb(26, 74, 219);
 }
 .btn-ghost:hover {
   opacity: 1;

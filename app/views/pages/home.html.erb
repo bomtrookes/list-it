@@ -51,6 +51,11 @@
                 <% if list.photo.key %>
                   <div class="mt-2 card-photo-title" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= cl_image_path list.photo.key, class: "list-photo-card", crop: :fill %>)">
                     <%= list.title %>
+                    <% if list.article == true %>
+                      <span id="clip">
+                        <i class="fa-solid fa-paperclip"></i>
+                      </span>
+                    <% end %>
                   </div>
                 <% else %>
                   <div class="mt-2 card-title">
