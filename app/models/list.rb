@@ -39,7 +39,11 @@ class List < ApplicationRecord
   end
 
   def self.followings_lists(following)
-    where(user_id: following, published: true).order('updated_at DESC')
+    where(user_id: following, published: true).order('created_at DESC')
+  end
+
+  def self.newest_published(user)
+    where(user_id: user, published: true).order('created_at DESC')
   end
 
 end

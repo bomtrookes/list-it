@@ -47,7 +47,7 @@ quentin = User.create(
   username: "QTarantino",
   email: "quentin@test.com",
   password: "pass123",
-  avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656519436/list-it/user%20faces/Quentin-Tarantino_1200_AP_ylit55.jpg",
+  avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656590768/list-it/user%20faces/tarantino_jtco2v.jpg",
   bio:  Faker::GreekPhilosophers.quote
 )
 
@@ -191,7 +191,7 @@ le_wagon_avatars.each do |avatar|
       email: Faker::Internet.email,
       password: "pass123",
       bio: Faker::GreekPhilosophers.quote,
-      username: "#{Faker::Name.first_name}",
+      username: Faker::Internet.username,
       avatar: "#{avatar}"
     }
   )
@@ -436,7 +436,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['superhero', 'power'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -460,7 +460,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['superhero', 'power'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -484,7 +484,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['tea', 'england', 'drink'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 7.times do
@@ -508,7 +508,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list:  ['tea', 'drink'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 7.times do
@@ -532,7 +532,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['univesity', 'study'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 9.times do
@@ -556,7 +556,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['univesity', 'study', 'programming'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 9.times do
@@ -579,7 +579,7 @@ list = List.create!(
     title: "Top 10 moest expensive unis",
     published: true,
     tag_list: ['univesity'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 9.times do
@@ -602,8 +602,8 @@ list = List.create!(
     title: "Highest mountains climbed",
     published: true,
     article: false,
-    tag_list: ['mountain', 'climb'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    tag_list: ['mountain', 'climb', 'climbing'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -627,7 +627,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['harry potter'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -651,7 +651,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['harry potter'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -675,7 +675,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['harry potter'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -699,7 +699,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['art', 'artists'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -723,7 +723,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['art', 'artists'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -747,7 +747,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['beer', 'drink'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -758,6 +758,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656591867/list-it/user%20faces/beer_ydhkhv.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -769,7 +771,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['beer','drink'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -780,6 +782,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656591984/list-it/user%20faces/beer-2_ytw1so.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -791,7 +795,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['beer', 'hops', 'drink'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -802,6 +806,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592048/list-it/user%20faces/hops_czh28t.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -813,7 +819,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['beer', 'drink'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -824,6 +830,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592085/list-it/user%20faces/malt_kvkjts.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -835,7 +843,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['music', 'art'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -846,6 +854,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592144/list-it/user%20faces/bossanova_e1rd7z.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -857,7 +867,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['music', 'art'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -868,6 +878,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592185/list-it/user%20faces/bossanova-2_r7xg7v.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -879,7 +891,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['film', 'camera'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -890,6 +902,32 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592225/list-it/user%20faces/camera_hstdll.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+puts "list #{list.title} done!"
+
+user = User.all.sample
+list = List.create!(
+  {
+    user_id: user.id,
+    title: "Best mid range cameras 2022",
+    published: true,
+    article: false,
+    tag_list: ['film', 'camera'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+10.times do
+  Item.create!(
+    {
+      name: Faker::Camera.brand_with_model,
+      list_id: list.id
+    }
+  )
+end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592270/list-it/user%20faces/camera-2_z3pp4e.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -897,21 +935,23 @@ user = students.sample
 list = List.create!(
   {
     user_id: user.id,
-    title: "Best Chuck Norris facts",
+    title: "Favourite analogic cameras",
     published: true,
     article: false,
-    tag_list: ['chuck norris'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    tag_list: ['film', 'camera'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
   Item.create!(
     {
-      name: Faker::ChuckNorris.fact,
+      name: Faker::Camera.brand_with_model,
       list_id: list.id
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592371/list-it/user%20faces/camera-3_oajw1s.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -923,7 +963,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['health', 'cannabis'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 6.times do
@@ -934,6 +974,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592428/list-it/user%20faces/cannabis_fofwjs.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -945,7 +987,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['coffee', 'drink'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -956,6 +998,30 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592480/list-it/user%20faces/coffee_lfefnx.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+user = students.sample
+list = List.create!(
+  {
+    user_id: user.id,
+    title: "Top quality coffee origins",
+    published: true,
+    article: false,
+    tag_list: ['coffee', 'drink'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+10.times do
+  Item.create!(
+    {
+      name: Faker::Coffee.origin,
+      list_id: list.id
+    }
+  )
+end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592585/list-it/user%20faces/coffee-3_icoqff.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -963,11 +1029,11 @@ user = students.sample
 list = List.create!(
   {
     user_id: user.id,
-    title: "Top 10 coffe blends",
+    title: "Top 10 coffee blends",
     published: true,
     article: false,
     tag_list: ['coffee', 'drink'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -978,6 +1044,30 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592520/list-it/user%20faces/coffee-2_omx4qx.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+user = students.sample
+list = List.create!(
+  {
+    user_id: user.id,
+    title: "Favourite coffee blends",
+    published: true,
+    article: false,
+    tag_list: ['coffee', 'drink'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+10.times do
+  Item.create!(
+    {
+      name: Faker::Coffee.blend_name,
+      list_id: list.id
+    }
+  )
+end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592730/list-it/user%20faces/coffee-4_bhautw.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -989,7 +1079,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['colors'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1000,6 +1090,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592756/list-it/user%20faces/colors_l0qmwi.png")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1011,7 +1103,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['crypto', 'invest', 'get rich'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1022,6 +1114,30 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592794/list-it/user%20faces/crypto-1_mzfa7s.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+user = students.sample
+list = List.create!(
+  {
+    user_id: user.id,
+    title: "Top crypto scams",
+    published: true,
+    article: false,
+    tag_list: ['crypto', 'scam'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+10.times do
+  Item.create!(
+    {
+      name: Faker::CryptoCoin.coin_name,
+      list_id: list.id
+    }
+  )
+end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592862/list-it/user%20faces/crypto-2_czxeyg.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1033,7 +1149,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['crypto'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1044,6 +1160,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592897/list-it/user%20faces/crypto-3_ixa87b.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1055,7 +1173,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['crypto'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1066,6 +1184,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656592945/list-it/user%20faces/crypto-4_ixa8vp.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1077,7 +1197,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['superhero', 'comic', 'dc'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1088,6 +1208,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593018/list-it/user%20faces/dc-1_h5ipds.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1099,7 +1221,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['superhero', 'comic', 'dc'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1110,6 +1232,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593071/list-it/user%20faces/dc-2_ozvh7v.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1121,7 +1245,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['movie', 'comic', 'dc'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -1132,6 +1256,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593100/list-it/user%20faces/dc-3_d4pyp8.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1143,7 +1269,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'dessert', 'foodporn', 'foodie'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1154,6 +1280,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593185/list-it/user%20faces/dessert-2_vrobv5.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1165,7 +1293,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'dessert'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 50, to: DateTime.now)
   }
 )
 10.times do
@@ -1176,6 +1304,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593185/list-it/user%20faces/dessert-3_ixdran.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1186,7 +1316,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'desserts', 'foodie'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 20, to: DateTime.now)
   }
 )
 10.times do
@@ -1197,6 +1327,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593185/list-it/user%20faces/desset_hj74n8.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1208,7 +1340,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'dessert', 'toppings', 'foodporn'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 500, to: DateTime.now)
   }
 )
 8.times do
@@ -1219,6 +1351,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593253/list-it/user%20faces/toppings_y2dplp.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1229,7 +1363,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'dessert', 'toppings'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 200, to: DateTime.now)
   }
 )
 8.times do
@@ -1240,6 +1374,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593283/list-it/user%20faces/toppings-2_hvsfws.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1250,7 +1386,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'dessert', 'toppings'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 100, to: DateTime.now)
   }
 )
 8.times do
@@ -1261,6 +1397,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593320/list-it/user%20faces/toppings-3_sqpefn.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1271,7 +1409,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'dessert', 'toppings', 'UK', 'foodporn'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 700, to: DateTime.now)
   }
 )
 8.times do
@@ -1282,6 +1420,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593353/list-it/user%20faces/toppings-4_huoqfj.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1292,7 +1432,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'mediterranean', 'recipe'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 400, to: DateTime.now)
   }
 )
 10.times do
@@ -1303,6 +1443,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593391/list-it/user%20faces/food-1_chodwq.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1313,7 +1455,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'mediterranean', 'recipes'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -1324,6 +1466,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593427/list-it/user%20faces/food-5_t21urr.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1334,7 +1478,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'recipe', 'UK'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -1345,6 +1489,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593470/list-it/user%20faces/food-6_hndjjf.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1355,7 +1501,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'recipe', 'UK', 'foodie'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -1366,6 +1512,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593534/list-it/user%20faces/jamie-1_bmq858.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1376,7 +1524,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'foodie', 'foodporn', 'recipe'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1399,7 +1547,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 8.times do
@@ -1422,7 +1570,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['food', 'foodie'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 50, to: DateTime.now)
   }
 )
 10.times do
@@ -1445,7 +1593,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['hobbies', 'fun'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 40, to: DateTime.now)
   }
 )
 10.times do
@@ -1468,7 +1616,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['hobbies'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 20, to: DateTime.now)
   }
 )
 8.times do
@@ -1487,11 +1635,11 @@ puts "list #{list.title} done!"
 list = List.create!(
   {
     user_id: ana.id,
-    title: "My top hobbies",
+    title: "Hobbies I picked up during quarantine",
     published: true,
     article: false,
     tag_list: ['hobbies'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 20, to: DateTime.now)
   }
 )
 8.times do
@@ -1515,7 +1663,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['hobbies'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1533,12 +1681,12 @@ puts "list #{list.title} done!"
 
 list = List.create!(
   {
-    user_id: ana.id,
+    user_id: tom.id,
     title: "Most paid professions",
     published: true,
     article: false,
     tag_list: ['job', 'profession'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 10, to: DateTime.now)
   }
 )
 8.times do
@@ -1549,6 +1697,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656595647/list-it/user%20faces/money-2_bbgzw6.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1559,7 +1709,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['job', 'work'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 10, to: DateTime.now)
   }
 )
 10.times do
@@ -1570,17 +1720,20 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593600/list-it/user%20faces/skills_f2wvt2.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
+user = students.sample
 list = List.create!(
   {
-    user_id: ana.id,
-    title: "Most difficult mountains to climb",
+    user_id: user.id,
+    title: "Best mountains to climb with kids",
     published: true,
     article: false,
-    tag_list: ['mountains', 'climb'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    tag_list: ['mountain', 'climb', 'kids', 'parenting'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1591,6 +1744,29 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593642/list-it/user%20faces/mountain-4_ehhns8.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+list = List.create!(
+  {
+    user_id: ana.id,
+    title: "Most difficult mountains to climb",
+    published: true,
+    article: false,
+    tag_list: ['mountain', 'climb', 'climbing'],
+    created_at: Faker::Time.between(from: DateTime.now - 80, to: DateTime.now)
+  }
+)
+10.times do
+  Item.create!(
+    {
+      name: Faker::Mountain.name,
+      list_id: list.id
+    }
+  )
+end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593919/list-it/user%20faces/mountain-5_mu9tpr.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1601,7 +1777,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['programming', 'code'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 50, to: DateTime.now)
   }
 )
 8.times do
@@ -1612,9 +1788,12 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593950/list-it/user%20faces/code-1_rostco.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -1622,7 +1801,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['programming', 'code'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1633,9 +1812,12 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593979/list-it/user%20faces/code-2_sfc0gh.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
+user = students.sample
 list = List.create!(
   {
     user_id: user.id,
@@ -1643,7 +1825,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['programming', 'code'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 7.times do
@@ -1654,6 +1836,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656593997/list-it/user%20faces/code-3_jfwvrv.png")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1665,7 +1849,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['programming', 'code'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1676,6 +1860,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656594074/list-it/user%20faces/code-4_digbc6.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1686,8 +1872,8 @@ list = List.create!(
     title: "Best cars",
     published: true,
     article: false,
-    tag_list: ['car'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    tag_list: ['car', 'driving'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1698,8 +1884,32 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656594178/list-it/user%20faces/car-2_dnmvus.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
+
+user = students.sample
+list = List.create!(
+  {
+    user_id: user.id,
+    title: "Safest cars in 2022",
+    published: true,
+    article: false,
+    tag_list: ['car', 'safety', 'driving'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+10.times do
+  Item.create!(
+    {
+      name: Faker::Vehicle.make,
+      list_id: list.id
+    }
+  )
+end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656594177/list-it/user%20faces/car-1_hrnpml.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 user = students.sample
 list = List.create!(
@@ -1708,8 +1918,8 @@ list = List.create!(
     title: "Top car brands",
     published: true,
     article: false,
-    tag_list: ['car'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    tag_list: ['car', 'driving'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1720,6 +1930,9 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656594221/list-it/user%20faces/car-3_rcggdp.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
 
 puts "list #{list.title} done!"
 
@@ -1730,7 +1943,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['verbs', 'grammar'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 70, to: DateTime.now)
   }
 )
 10.times do
@@ -1741,17 +1954,20 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656594515/list-it/user%20faces/grammar_pkgtcr.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
+user = students.sample
 list = List.create!(
   {
-    user_id: ana.id,
+    user_id: user.id,
     title: "Favourite World Cup teams",
     published: true,
     article: false,
-    tag_list: ['world cup', 'football'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    tag_list: ['worldcup', 'football', 'teams'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1762,6 +1978,30 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656594548/list-it/user%20faces/cup-1_bqb5bf.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+user = students.sample
+list = List.create!(
+  {
+    user_id: user.id,
+    title: "World Cup 2022 favourites",
+    published: true,
+    article: false,
+    tag_list: ['worldcup', 'football'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+10.times do
+  Item.create!(
+    {
+      name: Faker::WorldCup.team,
+      list_id: list.id
+    }
+  )
+end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656594624/list-it/user%20faces/cup-2_uacn3s.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1772,8 +2012,8 @@ list = List.create!(
     title: "Best 2022 books",
     published: true,
     article: false,
-    tag_list: ['books', 'reading'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    tag_list: ['books', 'reading', 'read'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
 10.times do
@@ -1784,6 +2024,31 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656594688/list-it/user%20faces/books-1_sjif5m.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+user = students.sample
+list = List.create!(
+  {
+    user_id: user.id,
+    title: "Best classics of all times",
+    published: true,
+    article: false,
+    tag_list: ['books', 'reading', 'classics'],
+    created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+  }
+)
+10.times do
+  Item.create!(
+    {
+      name: Faker::Book.title,
+      list_id: list.id
+    }
+  )
+end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656594728/list-it/user%20faces/books-3_gxzk3e.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
 
 puts "list #{list.title} done!"
 
@@ -1793,8 +2058,8 @@ list = List.create!(
     title: "Top 10 books all time",
     published: true,
     article: false,
-    tag_list: ['books', 'reading'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    tag_list: ['books', 'reading', 'read'],
+    created_at: Faker::Time.between(from: DateTime.now - 40, to: DateTime.now)
   }
 )
 10.times do
@@ -1805,6 +2070,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656594728/list-it/user%20faces/books-2_n8phzl.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1815,7 +2082,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['books', 'reading'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 3, to: DateTime.now)
   }
 )
 10.times do
@@ -1826,17 +2093,19 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656594731/list-it/user%20faces/books-4_zubnxy.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
 list = List.create!(
   {
     user_id: tom.id,
-    title: "10 books for summer reading",
+    title: "10 kid books for summer reading",
     published: true,
     article: false,
-    tag_list: ['books', 'reading', 'summer'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    tag_list: ['books', 'reading', 'summer', 'kids', 'parenting'],
+    created_at: Faker::Time.between(from: DateTime.now - 2, to: DateTime.now)
   }
 )
 10.times do
@@ -1847,17 +2116,19 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656594779/list-it/user%20faces/books-5_ufsvg3.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
 list = List.create!(
   {
     user_id: nuria.id,
-    title: "Most amazing writers of all times",
+    title: "Best writers of 20th century",
     published: true,
     article: false,
     tag_list: ['books', 'authors'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 4, to: DateTime.now)
   }
 )
 10.times do
@@ -1868,6 +2139,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656594953/list-it/user%20faces/writer-1_iv93bf.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1878,7 +2151,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['books', 'tolkien'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 9, to: DateTime.now)
   }
 )
 10.times do
@@ -1889,6 +2162,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656594985/list-it/user%20faces/tolkien-1_cmzrni.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1900,7 +2175,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['books', 'tolkien'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 8, to: DateTime.now)
   }
 )
 10.times do
@@ -1911,6 +2186,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656595062/list-it/user%20faces/tolkien-2_dmlmsn.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1921,7 +2198,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['animals'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 38, to: DateTime.now)
   }
 )
 10.times do
@@ -1932,17 +2209,19 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656595208/list-it/user%20faces/animal-1_kowbdv.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
 list = List.create!(
   {
     user_id: tom.id,
-    title: "Animals I want to be",
+    title: "Animals I wish I could be",
     published: true,
     article: false,
     tag_list: ['animals'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 58, to: DateTime.now)
   }
 )
 10.times do
@@ -1953,6 +2232,8 @@ list = List.create!(
     }
   )
 end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656595208/list-it/user%20faces/animal-2_w4bvvs.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
@@ -1963,7 +2244,7 @@ list = List.create!(
     published: true,
     article: false,
     tag_list: ['animals'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
+    created_at: Faker::Time.between(from: DateTime.now - 10, to: DateTime.now)
   }
 )
 10.times do
@@ -1974,69 +2255,17 @@ list = List.create!(
     }
   )
 end
-
-puts "list #{list.title} done!"
-
-list = List.create!(
-  {
-    user_id: foodie2.id,
-    title: "Best animals to eat",
-    published: true,
-    article: false,
-    tag_list: ['food', 'carnivore', 'keto'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
-  }
-)
-10.times do
-  Item.create!(
-    {
-      name: Faker::Creature::Animal.name,
-      list_id: list.id
-    }
-  )
-end
-
-puts "list #{list.title} done!"
-
-list = List.create!(
-  {
-    user_id: foodie5.id,
-    title: "Best food source of protein",
-    published: true,
-    article: false,
-    tag_list: ['animals', 'carnivore', 'food'],
-    updated_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
-  }
-)
-10.times do
-  Item.create!(
-    {
-      name: Faker::Creature::Animal.name,
-      list_id: list.id
-    }
-  )
-end
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656595288/list-it/user%20faces/goat_fgmoz7.jpg")
+list.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 puts "list #{list.title} done!"
 
 puts "All lists created!"
 
-puts "Attaching list images"
-
-lists = List.all
-
-# lists.each do |l|
-#   list_image = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1655562546/list-it/pizza2_evnf9u.jpg")
-#   ActiveRecord::Base.transaction do
-#     l.photo.attach(io: list_image, filename: 'puzzle.jpg', content_type: 'image/jpg')
-#   end
-# end
-
-# puts "Images attached!"
-
 puts "Creating votes..."
 
 users = User.all
+lists = List.all
 
 1000.times do
   list = lists.sample
@@ -2053,14 +2282,10 @@ users = User.all
 
 lists.each do |list|
   if list.published?
-    rand(7..12).times do
+    rand(7..22).times do
       list.favourite_lists.create(user: users.sample)
     end
   end
 end
 
 puts "Pins created!"
-
-# puts "Creating Tags..."
-
-# puts "Creating List Tags..."
