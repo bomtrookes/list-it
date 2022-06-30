@@ -14,16 +14,18 @@
   font-weight : bold;
 }
 .list-details-bottom {
-  position : relative;
-  bottom: 0;
-  left : 0;
+  width : 100%;
+  padding : 8px 0 ;
+  a {
+    margin-bottom : 4px;
+  }
 }
 .hide-nums {
   list-style : none;
-  padding: 0;
+  padding-left: 10px;
 }
 ol {
-  padding-left: 18px;
+  padding-left: 28px;
 }
 .photo-container {
   position: relative;
@@ -35,7 +37,7 @@ ol {
   top : 0;
   left: 0;
 }
-.fa-eye {
+.fa-eye, .fa-file {
   color : rgba(20, 61, 137, 0.8);
   font-size: 30px;
 }
@@ -44,6 +46,12 @@ ol {
   font-size : 40px;
   background-color: white;
   border-radius: 50%;
+}
+.fa-ellipsis-vertical {
+  margin-right : 12px;
+}
+#preview {
+  margin-right : 8px;
 }
 .btn-ghost {
   background-color: white;
@@ -57,4 +65,33 @@ ol {
   font-size: 14px;
   color : lightgray;
   padding-bottom : 4px;
+}
+// published / created at
+#create-info {
+  width : 100%;
+  border-top : 1px rgba(210, 208, 208, 0.7) solid;
+  margin-top : 4px;
+  em {
+    color : grey;
+    padding : 4px 0;
+  }
+}
+.user-pin-vote {
+  border-bottom : 1px solid lightgrey;
+  a {
+    font-size : 20px;
+    color : $li-gray;
+  }
+}
+.list-item {
+  padding-bottom: 12px;
+}
+
+// update form
+#sort-form, #sort_form {
+  margin-bottom : 12px;
+}
+#item_name, #item_description {
+  border : none;
+  background-color : transparent;
 }

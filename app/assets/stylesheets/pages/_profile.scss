@@ -1,7 +1,5 @@
 .profile-info, .profile-nav {
   background-color: white;
-
-  // border-top : 1px solid rgba(29, 29, 29, 0.2);
   ul {
     list-style: none;
     margin : 0;
@@ -51,8 +49,27 @@
 
 .bio {
   font-size: small;
+  margin : 0;
 }
 
 .votes {
   font-size: x-small;
+}
+.profile-nav {
+  border-top : 1px lightgrey solid;
+  border-bottom : 1px lightgrey solid;
+  margin-bottom : 12px;
+}
+.profile-info {
+  li {
+    width : 30%;
+  }
+}
+.card-info {
+  height : 100%;
+  padding-left : 12px;
+  text-align: left;
+  h4 {
+    width: 100%;
+  }
 }

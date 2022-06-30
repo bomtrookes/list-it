@@ -1,12 +1,24 @@
 .btn-ghost {
   color: $li-green;
   border: 1px solid $li-green;
-  padding: 8px 24px;
+  padding: 6px 22px;
   border-radius: 50px;
-  opacity: 0.6;
+  background-color: white;
   transition: opacity 0.3s ease;
 }
-
+.btn-ghoul {
+  color: rgb(26, 74, 219);
+  border: 1px solid rgb(26, 74, 219);
+  padding: 6px 22px;
+  border-radius: 50px;
+  background-color: white;
+  transition: opacity 0.3s ease;
+}
+.btn-ghoul-active {
+  border: 1px solid white;
+  background-color: rgb(26, 74, 219);
+  color : white !important;
+}
 .btn-ghost:hover {
   opacity: 1;
   color: $li-green;
@@ -51,4 +63,23 @@
   padding: 8px 24px;
   background: $li-green;
   transition: background 0.3s ease;
+}
+
+.btn-pin, .btn-vote, .btn-share {
+  padding : 0 8px;
+  border : none;
+  background-color : transparent;
+  color : grey;
+  font-size : 18px;
+}
+.btn-selected {
+  color : $li-green;
+}
+
+#follow-btn {
+  margin-top : 8px;
+  width : 100% !important;
+  input {
+    width: 100%;
+  }
 }

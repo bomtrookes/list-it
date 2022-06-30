@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :lists do
       member do
-        post :publish
+        get :publish
         post :article
       end
     end

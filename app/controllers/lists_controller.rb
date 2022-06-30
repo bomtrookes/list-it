@@ -72,12 +72,10 @@ class ListsController < ApplicationController
     @list = find_list
     @list.published = true
     @list.save
-
     redirect_to user_path(@user)
   end
 
   def article
-    fail
     @list = find_list
     if @list.article == false
       @list.article = true

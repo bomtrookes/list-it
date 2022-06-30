@@ -1,3 +1,4 @@
+
 import { Controller } from "stimulus"
 
 export default class extends Controller {
@@ -9,9 +10,12 @@ export default class extends Controller {
   }
 
   displayForm() {
-    this.infosTarget.classList.add("d-none")
-    this.formTarget.classList.remove("d-none")
-    this.articleTarget.classList.add("d-none")
+    const status = document.querySelector("span")
+    if (status.innerText == "false") {
+      this.infosTarget.classList.add("d-none")
+      this.formTarget.classList.remove("d-none")
+      this.articleTarget.classList.add("d-none")
+      }
   }
 
   descBtn() {

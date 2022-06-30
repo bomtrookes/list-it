@@ -1,13 +1,18 @@
 const preview = document.querySelector("#preview")
-const status = document.querySelector("#published-status")
-if(document.querySelector("#preview") && preview) {
+
+if(preview) {
   preview.addEventListener("click", pT)
+  console.log("preview listener loaded")
 }
 
 function pT() {
+  if(preview) {
+    preview.classList.toggle("btn-ghoul-active");
+  }
   const title = document.querySelector("#title")
   const tags = document.querySelector("#tags")
-  const save = document.querySelector("#save-btn")
+  const preview = document.querySelector("#preview")
+  // const save = document.querySelector("#save-btn")
   // const share = document.querySelector("#share-btn")
   const add = document.querySelector("#add")
   const list = document.querySelector("#sortList")
@@ -17,12 +22,11 @@ function pT() {
   const delBtns = document.querySelectorAll(".delBtn")
   const listEdits = document.querySelectorAll(".list-editor")
 
-  // preview.classList.toggle("selected");
   list.classList.toggle("hide-nums")
   title.classList.toggle("d-none");
   tags.classList.toggle("d-none");
   add.classList.toggle("d-none");
-  save.classList.toggle("d-none");
+  // save.classList.toggle("d-none");
   // share.classList.toggle("d-none");
   // article.classList.toggle("d-none");
   // buttons.classList.toggle("d-none");
@@ -37,16 +41,13 @@ function pT() {
   });
 }
 
-
-// document.addEventListener('turbolinks:load', function() {
-  if (preview && status.innerHTML == true ) {
-    pT()
-  }
-// })
-// window.addEventListener("DOMContentLoaded", () => {
-// })
-
-
+const status = document.querySelector("span")
+if ( status && status.innerText == "true" ) {
+  console.log("status is indeed true!")
+  pT()
+} else {
+  console.log("profile loaded")
+}
 
 import { Controller } from "stimulus"
 
