@@ -1,16 +1,15 @@
 <div class="pad">
 
   <div class="pt-3">
-    <div class="d-flex justify-content-around align-items-start">
+    <div class="d-flex justify-content-around align-items-center">
       <div class="img-fluid">
         <%# profile image %>
         <%= image_tag @user.avatar, class: "avatar-profile", height: 100, width: 100, crop: :fill %>
       </div>
 
 
-      <div class="d-flex">
         <%# profile name & bio %>
-        <div class="card-info">
+        <div class="card-info d-flex flex-column justify-content-center">
           <h4><%= format_username(@user.username) %></h4>
           <p class="bio"><%= @user.bio %></p>
           <%# follow button %>
@@ -22,11 +21,9 @@
         </div>
 
 
-      </div>
-
     </div>
         <%# Lists, Followers, Following %>
-        <div class="profile-info stats">
+        <div class="profile-info stats mb-2">
           <ul class="d-flex justify-content-around" >
             <%# Lists %>
             <li class="d-flex flex-column align-items-center">
