@@ -6,8 +6,12 @@ if(preview) {
 }
 
 function pT() {
+  if(preview) {
+    preview.classList.toggle("btn-ghoul-active");
+  }
   const title = document.querySelector("#title")
   const tags = document.querySelector("#tags")
+  const preview = document.querySelector("#preview")
   // const save = document.querySelector("#save-btn")
   // const share = document.querySelector("#share-btn")
   const add = document.querySelector("#add")
@@ -18,7 +22,6 @@ function pT() {
   const delBtns = document.querySelectorAll(".delBtn")
   const listEdits = document.querySelectorAll(".list-editor")
 
-  // preview.classList.toggle("selected");
   list.classList.toggle("hide-nums")
   title.classList.toggle("d-none");
   tags.classList.toggle("d-none");

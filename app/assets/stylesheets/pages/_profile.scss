@@ -49,8 +49,19 @@
 
 .bio {
   font-size: small;
+  margin : 0;
 }
 
 .votes {
   font-size: x-small;
+}
+.profile-nav {
+  border-top : 1px lightgrey solid;
+  border-bottom : 1px lightgrey solid;
+  margin-bottom : 12px;
+}
+.profile-info {
+  li {
+    width : 30%;
+  }
 }

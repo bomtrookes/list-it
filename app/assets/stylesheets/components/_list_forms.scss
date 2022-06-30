@@ -31,15 +31,12 @@ ol {
   position: relative;
 }
 .list-options {
-
+  position: absolute;
+  padding : 8px;
+  width : 100%;
+  top : 0;
+  left: 0;
 }
-// .list-options {
-//   position: absolute;
-//   padding : 8px;
-//   width : 100%;
-//   top : 0;
-//   left: 0;
-// }
 .fa-eye, .fa-file {
   color : rgba(20, 61, 137, 0.8);
   font-size: 30px;
@@ -85,6 +82,9 @@ ol {
     font-size : 20px;
     color : $li-gray;
   }
+}
+.list-item {
+  padding-bottom: 12px;
 }
 
 // update form

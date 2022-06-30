@@ -1,5 +1,8 @@
  <div class="pad d-flex flex-column justify-content-between" data-controller="preview">
   <div>
+    <div class="photo-container d-flex justify-content-evenly align-items-end">
+        <%= cl_image_tag @list.photo.key, class: "list-photo-card mt-2" if @list.photo.key %>
+
     <span class ="d-none" id="published-status"><%= @list.published %></span>
     <%# UPLOADED IMAGE %>
       <%# LIST PUBLISH OPTIONS %>
@@ -8,7 +11,7 @@
           <div class="d-flex align-items-center">
             <%# PREVIEW %>
             <% if @list.user == current_user %>
-              <%= link_to "Editor", "#", id:"preview" %>
+              <%= link_to "Editor", "#", id:"preview", class:"btn btn-ghoul" %>
                 <%# <i class="fa-solid fa-eye"></i> %>
             <% end %>
 
@@ -26,10 +29,7 @@
           <% end %>
         </div>
       <% end %>
-    <div class="photo-container d-flex justify-content-evenly align-items-end">
-        <%= cl_image_tag @list.photo.key, class: "list-photo-card mt-2" if @list.photo.key %>
     </div>
-
     <%# TITLE %>
     <div class="d-flex justify-content-between align-items-center mt-3">
       <h1><%= @list.title %></h1>
