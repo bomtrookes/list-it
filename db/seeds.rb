@@ -9,8 +9,6 @@ List.destroy_all
 Item.destroy_all
 FavouriteList.destroy_all
 Vote.destroy_all
-# Tag.destroy_all
-# ListTag.destroy_all
 
 puts "Database clean"
 
@@ -43,8 +41,8 @@ ana = User.create(
   admin: true
 )
 
-quentin = User.create(
-  username: "QTarantino",
+tarantino = User.create(
+  username: "Tarantino",
   email: "quentin@test.com",
   password: "pass123",
   avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656590768/list-it/user%20faces/tarantino_jtco2v.jpg",
@@ -68,7 +66,7 @@ foodie2 = User.create(
 )
 
 foodie3 = User.create(
-  username: "food_lists",
+  username: "TheFoodist",
   email: "food3@test.com",
   password: "pass123",
   avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441170/list-it/user%20faces/boris_atd0ra.jpg",
@@ -76,7 +74,7 @@ foodie3 = User.create(
 )
 
 foodie4 = User.create(
-  username: "food_top_10",
+  username: "food_only",
   email: "food4@test.com",
   password: "pass123",
   avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441171/list-it/user%20faces/joe_y9nwge.jpg",
@@ -110,24 +108,21 @@ foodie7 = User.create(
 Follow.create(follower_id: tom.id, followed_id: nuria.id)
 Follow.create(follower_id: tom.id, followed_id: ana.id)
 
-Follow.create(follower_id: nuria.id, followed_id: tom.id)
+# Follow.create(follower_id: nuria.id, followed_id: tom.id)
 Follow.create(follower_id: nuria.id, followed_id: ana.id)
 
-Follow.create(follower_id: ana.id, followed_id: tom.id)
+# Follow.create(follower_id: ana.id, followed_id: tom.id)
 Follow.create(follower_id: ana.id, followed_id: nuria.id)
 
-Follow.create(follower_id: quentin.id, followed_id: tom.id)
-Follow.create(follower_id: tom.id, followed_id: quentin.id)
-
-Follow.create(follower_id: foodie1.id, followed_id: tom.id)
+# Follow.create(follower_id: foodie1.id, followed_id: tom.id)
 Follow.create(follower_id: foodie2.id, followed_id: ana.id)
 Follow.create(follower_id: foodie3.id, followed_id: nuria.id)
 
-Follow.create(follower_id: foodie4.id, followed_id: tom.id)
+# Follow.create(follower_id: foodie4.id, followed_id: tom.id)
 Follow.create(follower_id: foodie5.id, followed_id: ana.id)
 Follow.create(follower_id: foodie6.id, followed_id: nuria.id)
 
-Follow.create(follower_id: foodie7.id, followed_id: tom.id)
+# Follow.create(follower_id: foodie7.id, followed_id: tom.id)
 Follow.create(follower_id: foodie7.id, followed_id: ana.id)
 Follow.create(follower_id: foodie7.id, followed_id: foodie1.id)
 Follow.create(follower_id: foodie7.id, followed_id: foodie2.id)
@@ -198,7 +193,7 @@ le_wagon_avatars.each do |avatar|
 
   students << student
 
-  Follow.create(follower_id: student.id, followed_id: tom.id)
+  # Follow.create(follower_id: student.id, followed_id: tom.id)
   Follow.create(follower_id: student.id, followed_id: ana.id)
   Follow.create(follower_id: student.id, followed_id: nuria.id)
 
@@ -254,9 +249,9 @@ rand(10..20).times do
 
   Follow.create(follower_id: tom.id, followed_id: user_a.id)
 
-  Follow.create(follower_id: user_a.id, followed_id: tom.id)
-  Follow.create(follower_id: user_b.id, followed_id: tom.id)
-  Follow.create(follower_id: user_c.id, followed_id: tom.id)
+  # Follow.create(follower_id: user_a.id, followed_id: tom.id)
+  # Follow.create(follower_id: user_b.id, followed_id: tom.id)
+  # Follow.create(follower_id: user_c.id, followed_id: tom.id)
 
   Follow.create(follower_id: foodie1.id, followed_id: user_c.id)
   Follow.create(follower_id: foodie4.id, followed_id: user_c.id)
@@ -394,7 +389,11 @@ list2 = List.create(user_id: tom.id, title: "Walks in London",  published: false
 
 # nuria
 list3 = List.create(user_id: nuria.id, title: "Summer Holiday Destionations", published: false, tag_list: ["madrid", "spain", "summer"], article: false)
-list4 = List.create(user_id: nuria.id, title: "Ketchup Brands", published: false, tag_list: ["ketchup", "food", "sauces"], article: false)
+
+# tarantino
+list4 = List.create(user_id: tarantino.id, title: "Ketchups I would die for", published: false, tag_list: ["ketchup", "food", "sauces"], article: true)
+list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656619207/list-it/user%20faces/Screenshot_2022-06-30_at_20.56.14_dm28zp.png")
+list4.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
 # ana
 list5 = List.create(user_id: ana.id, title: "Website Designs", published: false, tag_list: ["design", "website"], article: false)
@@ -413,9 +412,46 @@ Item.create(name: "Spain", description: "It's really good, so I made a list abou
 Item.create(name: "Greece", description: "It's really good, so I made a list about it", link: "#", list_id: list3.id)
 Item.create(name: "France", description: "It's really good, so I made a list about it", link: "#", list_id: list3.id)
 # list 4 - items
-Item.create(name: "Heinz", description: "It's really good, so I made a list about it", link: "#", list_id: list4.id)
-Item.create(name: "Daddy's", description: "It's really good, so I made a list about it", link: "#", list_id: list4.id)
-Item.create(name: "Sauce Shop", description: "It's really good, so I made a list about it", link: "#", list_id: list4.id)
+i1 = Item.create(name: "Heinz", description: "Heinz holds the title of number 1 ketchup brand in the world for very good reasons. It's everything you expect from ketchup — sweet, tangy, and rich.", link: "#", list_id: list4.id)
+item_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656619207/list-it/user%20faces/Screenshot_2022-06-30_at_20.58.12_wxaxsk.png")
+i1.photo.attach(io: item_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+i2 = Item.create(name: "Hunt's", description: "While always in the shadows of the other 'H' brand, Hunt's has quite a loyal following who love its simple yet robust tomato flavor.", link: "#", list_id: list4.id)
+item_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656619207/list-it/user%20faces/Screenshot_2022-06-30_at_20.57.50_fzmypf.png")
+i2.photo.attach(io: item_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+i3 = Item.create(name: "French's", description: "French's might be more well known for producing mustard, but we thought it was due time for us to spread the good news on the brand's ketchup.", link: "#", list_id: list4.id)
+item_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656619205/list-it/user%20faces/Screenshot_2022-06-30_at_20.57.00_q6exvz.png")
+i2.photo.attach(io: item_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+i4 = Item.create(name: "Annie's", description: "Annie's has provided kitchens with tasty prepared organic products since 1989, well before the average diner caught onto the benefits of organic eating.", link: "#", list_id: list4.id)
+item_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656619205/list-it/user%20faces/Screenshot_2022-06-30_at_20.57.30_pyyyca.png")
+i2.photo.attach(io: item_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+i5 = Item.create(name: "365 by Wholefoods Market", description: "For many consumers, Whole Foods has built a reputation as a trustworthy source of delicious organic products.", link: "#", list_id: list4.id)
+item_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656619206/list-it/user%20faces/Screenshot_2022-06-30_at_20.56.36_cpavfo.png")
+i2.photo.attach(io: item_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+i6 = Item.create(name: "Primal Kitchen", description: "Ketchup and healthy don't necessarily belong in the same sentence. Not only is ketchup often packed with preservatives, but a tablespoon of ketchup can also contain 4 grams of sugar.", link: "#", list_id: list4.id)
+item_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656619212/list-it/user%20faces/Screenshot_2022-06-30_at_20.57.41_jx2l20.png")
+i2.photo.attach(io: item_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+i7 = Item.create(name: "Sir Kensington's", description: "Sir Kensington ketchup delivers a pure tomato flavor, which helps add richness.", link: "#", list_id: list4.id)
+item_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656619209/list-it/user%20faces/Screenshot_2022-06-30_at_20.57.59_e8fqoz.png")
+i2.photo.attach(io: item_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+i8 = Item.create(name: "Del Monte", description: "Del Monte specializes in a wide range of canned tomato products, so it's no secret they also proudly produce their own ketchup.", link: "#", list_id: list4.id)
+item_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656619208/list-it/user%20faces/Screenshot_2022-06-30_at_20.56.25_zwyt1f.png")
+i2.photo.attach(io: item_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+i9 = Item.create(name: "Trader Joe's Organic", description: "It's really good, so I made a list about it", link: "#", list_id: list4.id)
+item_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656619207/list-it/user%20faces/Screenshot_2022-06-30_at_20.58.20_k9glbf.png")
+i2.photo.attach(io: item_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
+i10 = Item.create(name: "Tesco", description: "It's really good, so I made a list about it", link: "#", list_id: list4.id)
+item_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656619204/list-it/user%20faces/Screenshot_2022-06-30_at_20.56.51_ivrs4l.png")
+i2.photo.attach(io: item_photo, filename: 'listit.jpg', content_type: 'image/jpg')
+
 # list 5 - items
 Item.create(name: "Google", description: "It's really good, so I made a list about it", link: "#", list_id: list5.id)
 Item.create(name: "Apple", description: "It's really good, so I made a list about it", link: "#", list_id: list5.id)
