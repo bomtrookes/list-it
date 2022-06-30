@@ -27,7 +27,7 @@
       <%= f.input :photo, as: :file %>
     <% end %>
     <%= f.hidden_field :list_id, value: @item.list.id %>
-    <%= f.submit %>
+    <%= f.submit "Save" %>
   <% end %>
 
   <%# ARTICLE VIEW %>
@@ -35,12 +35,12 @@
     <% if @item.list.article == true %>
       <% if @item.description == nil || @item.description == ""  %>
          <% if hide_button(@item.list.user) %>
-            <em>Type a description...</em>
+            <em>+ List Description...</em>
           <% end %>
       <% else %>
         <p><%= @item.description %></p>
         <div class="d-flex justify-content-center">
-          <%= cl_image_tag item.photo.key, class:"list-photo-card" if item.photo.key %>
+          <%= cl_image_tag item.photo.key, class:"list-item-photo-card" if item.photo.key %>
         </div>
         <% end %>
     <% end %>

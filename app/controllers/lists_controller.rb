@@ -7,7 +7,7 @@ class ListsController < ApplicationController
       @top_lists = List.published_lists.global_search(params[:query])
       @search_lists = List.published_lists.search_list(params[:query])
       @search_users = List.published_lists.search_user(params[:query]).uniq { |list| list.user }
-      @search_tags = ActsAsTaggableOn::Tag.where("name LIKE ?", "#{params[:query]}%")
+      @search_tags = ActsAsTaggableOn::Tag.where("name ILIKE ?", "#{params[:query]}%")
     else
       @top_lists = List.ordered_published_lists
       @search_lists = []

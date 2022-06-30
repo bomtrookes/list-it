@@ -11,6 +11,7 @@ export default class extends Controller {
 
   displayForm() {
     const status = document.querySelector("span")
+    const user = document.querySelector("#user-status")
     if (status.innerText == "false") {
       this.infosTarget.classList.add("d-none")
       this.formTarget.classList.remove("d-none")
