@@ -76,5 +76,5 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   #PWA
-  config.hosts << /[a-z0-9\-]+\.ngrok\.io/
+  config.hosts << "ana.local"
 end
