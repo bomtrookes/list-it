@@ -10,7 +10,7 @@ class ListsController < ApplicationController
       @search_lists = search_lists.sort_by {|list| list.votes.size }.reverse!
       search_users = List.published_lists.search_user(params[:query]).uniq { |list| list.user }
       @search_users = search_users.sort_by {|list| list.user.lists.size }.reverse!
-      search_tags = ActsAsTaggableOn::Tag.where("name LIKE ?", "#{params[:query]}%")
+      search_tags = ActsAsTaggableOn::Tag.where("name ILIKE ?", "#{params[:query]}%")
       @search_tags = search_tags.sort_by {|tag| tagged_lists(tag).size }.reverse!
     else
       @top_lists = List.ordered_published_lists
