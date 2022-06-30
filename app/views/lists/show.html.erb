@@ -183,7 +183,7 @@
         <% end %>
 
         <% if @list.tag_list.present? %>
-          <div id="tags">
+          <div id="tags" class="tag">
             <% if hide_button(@list.user)%>
               <%= link_to edit_user_list_path(current_user) do %>
                 <i class="fas fa-pen fa-xs ms-2"></i>
