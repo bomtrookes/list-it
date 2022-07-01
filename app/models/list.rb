@@ -25,9 +25,7 @@ class List < ApplicationRecord
       tags:[:name]
   }
 
-
   pg_search_scope :search_list, against: [:title], using: { tsearch: { prefix: true } }
-  pg_search_scope :search_user, associated_against: { user: [:username] }, using: { tsearch: { prefix: true } }
   pg_search_scope :search_tag, associated_against: { tags: [:name] }, using: { tsearch: { prefix: true } }
 
   def self.ordered_published_lists

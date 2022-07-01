@@ -198,8 +198,8 @@
         <% if @list.published == false %>
             <em >Created <%= time_ago_in_words(@list.created_at) %> ago</em>
           <% else %>
-            <em>Published <%= time_ago_in_words(@list.updated_at) %> ago</em>
-            <em><%= @list.votes.size %> likes</em>
+            <em>Published <%= time_ago_in_words(@list.created_at) %> ago</em>
+            <em><%= @list.votes.size  %> <%= "like".pluralize(@list.votes.size) %></em>
         <% end %>
       </div>
     </div>

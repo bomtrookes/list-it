@@ -58,7 +58,6 @@
 .profile-nav {
   border-top : 1px lightgrey solid;
   border-bottom : 1px lightgrey solid;
-  margin-bottom : 12px;
 }
 .profile-info {
   li {
@@ -71,6 +70,9 @@
   text-align: left;
   h4 {
     width: 100%;
+    font-size: 16px;
+    margin-bottom: 5px;
+    font-weight: bold;
   }
 }
 .photo-container {

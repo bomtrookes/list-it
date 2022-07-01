@@ -27,10 +27,10 @@
   <% else %>
 
 <div class="pad">
-  <div class="row">
+  <div class="row mt-2">
     <%# list card starts %>
     <% @lists.each do | list | %>
-    <div class="col-md-4 mt-2">
+    <div class="col-md-4 mt-1">
         <div class="card p-2 mb-2">
           <div class="d-flex justify-content-between align-items-center">
               <div class="d-flex flex-row align-items-center">
@@ -67,11 +67,11 @@
           <div class="d-flex justify-content-between align-items-end">
               <div class="d-flex flex-row align-items-center">
                   <div class="mt-2 c-details">
-                    <span><em>Updated: <%= time_ago_in_words(list.created_at) %> ago</em></span>
+                    <span><em>Published: <%= time_ago_in_words(list.created_at) %> ago</em></span>
                   </div>
               </div>
                 <div class="ms-2">
-                  <span class="text1"><%= list.votes.size %> <span class="text2">votes</span></span>
+                  <span class="text1"><%= list.votes.size %> <span class="text2"><%=  "like".pluralize(list.votes.size) %></span></span>
                 </div>
           </div>
         </div>

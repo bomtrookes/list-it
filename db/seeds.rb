@@ -43,7 +43,7 @@ ana = User.create(
 
 tarantino = User.create(
   username: "Tarantino",
-  email: "quentin@test.com",
+  email: "tarantino@test.com",
   password: "pass123",
   avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656590768/list-it/user%20faces/tarantino_jtco2v.jpg",
   bio:  Faker::GreekPhilosophers.quote
@@ -66,7 +66,7 @@ foodie2 = User.create(
 )
 
 foodie3 = User.create(
-  username: "TheFoodist",
+  username: "FoodistLord",
   email: "food3@test.com",
   password: "pass123",
   avatar: "https://res.cloudinary.com/mygreenhouses/image/upload/v1656441170/list-it/user%20faces/boris_atd0ra.jpg",
@@ -204,6 +204,8 @@ le_wagon_avatars.each do |avatar|
     i += 3
   end
 
+  avatar_id = 1
+
 # tom's followers
 
 rand(10..20).times do
@@ -214,7 +216,7 @@ rand(10..20).times do
       password: "pass123",
       bio: Faker::GreekPhilosophers.quote,
       username: "#{Faker::Name.first_name}_#{i}",
-      avatar: Faker::Avatar.image
+      avatar: "https://xsgames.co/randomusers/assets/avatars/male/#{avatar_id}.jpg"
     }
   )
 
@@ -224,9 +226,11 @@ rand(10..20).times do
       password: "pass123",
       bio: Faker::GreekPhilosophers.quote,
       username: "#{i}_#{Faker::Internet.username}",
-      avatar: Faker::Avatar.image
+      avatar: "https://xsgames.co/randomusers/assets/avatars/female/#{avatar_id}.jpg"
     }
   )
+
+  avatar_id += 1
 
   user_c = User.create!(
     {
@@ -234,9 +238,11 @@ rand(10..20).times do
       password: "pass123",
       bio: Faker::GreekPhilosophers.quote,
       username: "#{Faker::Name.first_name}#{i}",
-      avatar: Faker::Avatar.image
+      avatar: "https://xsgames.co/randomusers/assets/avatars/female/#{avatar_id}.jpg"
     }
   )
+
+  avatar_id += 1
 
   Follow.create(follower_id: user_a.id, followed_id: user_b.id)
   Follow.create(follower_id: user_a.id, followed_id: user_c.id)
@@ -272,9 +278,11 @@ rand(5..15).times do
       password: "pass123",
       bio: Faker::GreekPhilosophers.quote,
       username: "#{Faker::Name.first_name}_#{i}",
-      avatar: Faker::Avatar.image
+      avatar: "https://xsgames.co/randomusers/assets/avatars/male/#{avatar_id}.jpg"
     }
   )
+
+  avatar_id += 1
 
   user_b = User.create!(
     {
@@ -282,7 +290,7 @@ rand(5..15).times do
       password: "pass123",
       bio: Faker::GreekPhilosophers.quote,
       username: "#{i}_#{Faker::Internet.username}",
-      avatar: Faker::Avatar.image
+      avatar: "https://xsgames.co/randomusers/assets/avatars/male/#{avatar_id}.jpg"
     }
   )
 
@@ -292,9 +300,11 @@ rand(5..15).times do
       password: "pass123",
       bio: Faker::GreekPhilosophers.quote,
       username: "#{Faker::Name.first_name}#{i}",
-      avatar: Faker::Avatar.image
+      avatar: "https://xsgames.co/randomusers/assets/avatars/female/#{avatar_id}.jpg"
     }
   )
+
+  avatar_id += 1
 
   Follow.create(follower_id: user_a.id, followed_id: user_b.id)
   Follow.create(follower_id: user_a.id, followed_id: user_c.id)
@@ -331,7 +341,7 @@ rand(6..13).times do
       password: "pass123",
       bio: Faker::GreekPhilosophers.quote,
       username: "#{Faker::Name.first_name}_#{i}",
-      avatar: Faker::Avatar.image
+      avatar:  "https://xsgames.co/randomusers/assets/avatars/male/#{avatar_id}.jpg"
     }
   )
 
@@ -341,9 +351,11 @@ rand(6..13).times do
       password: "pass123",
       bio: Faker::GreekPhilosophers.quote,
       username: "#{i}_#{Faker::Internet.username}",
-      avatar: Faker::Avatar.image
+      avatar:  "https://xsgames.co/randomusers/assets/avatars/female/#{avatar_id}.jpg"
     }
   )
+
+  avatar_id += 1
 
   user_c = User.create!(
     {
@@ -351,9 +363,11 @@ rand(6..13).times do
       password: "pass123",
       bio: Faker::GreekPhilosophers.quote,
       username: "#{Faker::Name.first_name}#{i}",
-      avatar: Faker::Avatar.image
+      avatar: "https://xsgames.co/randomusers/assets/avatars/female/#{avatar_id}.jpg"
     }
   )
+
+  avatar_id += 1
 
   Follow.create(follower_id: user_a.id, followed_id: user_b.id)
   Follow.create(follower_id: user_a.id, followed_id: user_c.id)
@@ -379,13 +393,38 @@ rand(6..13).times do
 
 end
 
+# tarantino's followers
+
+User.all.each do |user|
+  Follow.create(follower_id: user.id, followed_id: tarantino.id)
+end
+
 puts "User and followings created!"
 
 puts "Creating Lists and items..."
 
 # tom
-list1 = List.create(user_id: tom.id, title: "Best Movies",  published: false, tag_list: ["cinema", "movies"], article: false)
-list2 = List.create(user_id: tom.id, title: "Walks in London",  published: false, tag_list: ["steps", "london", "walks"], article: false)
+list1 = List.create!(
+  {
+    user_id: tom.id,
+    title: "Best Movies",
+    published: false,
+    article: false,
+    tag_list: ["cinema", "movies"],
+    created_at: Faker::Time.between(from: DateTime.now - 10, to: DateTime.now)
+  }
+)
+
+list2 = List.create!(
+  {
+    user_id: tom.id,
+    title: "Walks in London",
+    published: false,
+    article: false,
+    tag_list: ["steps", "london", "walks"],
+    created_at: Faker::Time.between(from: DateTime.now - 20, to: DateTime.now)
+  }
+)
 
 # nuria
 list3 = List.create(user_id: nuria.id, title: "Summer Holiday Destionations", published: false, tag_list: ["madrid", "spain", "summer"], article: false)
@@ -543,7 +582,7 @@ list = List.create!(
     title: "My favourite teas",
     published: true,
     article: false,
-    tag_list:  ['tea', 'drink'],
+    tag_list: ['tea', 'drink'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
@@ -2325,3 +2364,10 @@ lists.each do |list|
 end
 
 puts "Pins created!"
+
+puts "Removing followers from Tom"
+
+tom.followers.delete_all
+tarantino.followings.delete_all
+
+puts "SEEDS COMPLETED!!"

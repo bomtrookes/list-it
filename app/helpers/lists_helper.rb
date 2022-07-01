@@ -33,6 +33,10 @@ module ListsHelper
   end
 
   def tagged_lists(tag)
-    List.tagged_with(tag)
+    List.published_lists.tagged_with(tag)
+  end
+
+  def created_today?(list)
+    list.created_at < 12.hours.ago
   end
 end
