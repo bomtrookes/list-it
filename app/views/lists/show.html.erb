@@ -1,7 +1,6 @@
  <div class="pad d-flex flex-column justify-content-between" data-controller="preview">
   <div>
     <span class ="d-none" id="published-status"><%= @list.published %></span>
-    <span class ="d-none" id="user-status"><%= @list.user == current_user %></span>
 
   <%# LIST PUBLISH OPTIONS %>
     <% if @list.photo.key %>
@@ -18,6 +17,13 @@
     <% else %>
       <div class="mt-2 card-title">
         <%= @list.title %>
+      </div>
+      <div id="title">
+        <% if hide_button(@list.user)%>
+          <%= link_to edit_user_list_path(current_user) do %>
+            <i class="fa-solid fa-ellipsis-vertical" style="color: darkgrey; margin-top: 50px;"></i>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
 
@@ -89,7 +95,11 @@
         <li class="list-item" data-value="list-order">
           <div class="item-card card pt-2 pb-1" data-controller="edit-item" data-edit-item-target="card">
             <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
-              <span class="my-handle">:: </span>
+                <% if @list.published == true %>
+                  <span class="my-handle d-none">:: </span>
+                <% else %>
+                  <span class="my-handle">:: </span>
+                  <% end %>
               <h5 class="list-item-title" data-action="click->edit-item#displayForm"><%= item.name.titleize %>
               </h5>
 

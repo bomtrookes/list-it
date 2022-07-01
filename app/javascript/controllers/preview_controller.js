@@ -26,7 +26,7 @@ function pT() {
   const add = document.querySelector("#add")
   // const list = document.querySelector("#sortList")
   // const article = document.querySelector("#art")
-  const grips = document.querySelectorAll(".my-handle")
+  let grips = document.querySelectorAll(".my-handle")
   // const buttons = document.querySelector("#buttons")
   const delBtns = document.querySelectorAll(".delBtn")
   const listEdits = document.querySelectorAll(".list-editor")
@@ -38,6 +38,11 @@ function pT() {
   title.classList.toggle("d-none");
   tags.classList.toggle("d-none");
   add.classList.toggle("d-none");
+
+  grips.forEach((grip) => {
+    grip.classList.toggle("d-none")
+  });
+  console.log(grips)
   // save.classList.toggle("d-none");
   // share.classList.toggle("d-none");
   // article.classList.toggle("d-none");
@@ -47,9 +52,6 @@ function pT() {
   });
   delBtns.forEach((del) => {
     del.classList.toggle("d-none")
-  });
-  grips.forEach((grip) => {
-    grip.classList.toggle("d-none")
   });
 }
 
