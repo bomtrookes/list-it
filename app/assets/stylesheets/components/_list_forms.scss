@@ -47,13 +47,10 @@ ol {
   position: absolute;
   top : 0;
   right : 0;
-  padding-top : 4px;
-  padding-right : 6px;
+  padding-top : 12px;
+  padding-right : 10px;
   color : white;
   font-size: 16px;
-}
-#preview {
-  margin-right : 8px;
 }
 .btn-ghost {
   background-color: white;
@@ -85,6 +82,9 @@ ol {
     color : $li-gray;
   }
 }
+#list-title {
+  font-size : 9vw;
+}
 .list-item {
   // padding: 8px 4px 0 4px;
   margin-bottom: 8px;
@@ -92,9 +92,16 @@ ol {
   border-radius : 4px;
 }
 .list-item-title {
+  width : 100%;
+  text-align : center;
   margin-bottom : 0;
 }
-
+#list-user {
+  font-style: italic;
+  color : $li-green;
+  padding-left: 4px;
+  font-size: 18px;
+}
 .add-list-item {
   padding-left : 24px;
 }
@@ -107,7 +114,12 @@ ol {
   padding: 0 8px;
   margin-bottom : 6px;
 }
-
+.tag > a {
+  padding-right : 4px;
+  font-style: italic;
+  font-size : 14px;
+  color : rgb(0, 70, 185);
+}
 // update form
 #sort-form, #sort_form {
   margin-bottom : 12px;

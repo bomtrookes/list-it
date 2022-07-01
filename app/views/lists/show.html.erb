@@ -6,7 +6,7 @@
   <%# LIST PUBLISH OPTIONS %>
     <% if @list.photo.key %>
       <div class="card-photo-title mt-2 mb-2" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= cl_image_path @list.photo.key, class: "list-photo-card", crop: :fill %>); height: 140px">
-        <%= @list.title.upcase %>
+        <h1 id="list-title"><%= @list.title.titleize %></h1>
         <div id="title">
         <% if hide_button(@list.user)%>
           <%= link_to edit_user_list_path(current_user) do %>
@@ -26,13 +26,13 @@
 
             <%# PREVIEW %>
             <% if @list.user == current_user %>
-              <%= link_to "Editor", "#", id:"preview", class:"btn btn-primary", style:"width:100%" %>
+              <%= link_to "Preview", "#", id:"preview", class:"btn btn-primary btn-sm", style:"width:100%" %>
                 <%# <i class="fa-solid fa-eye"></i> %>
             <% end %>
 
             <%# PUBLISH %>
             <% if @list.published == false %>
-              <%= link_to "Publish", publish_user_list_path(current_user, @list), id:"publish-btn", class:"btn btn-success", style:"width:100%" %>
+              <%= link_to "Publish", publish_user_list_path(current_user, @list), id:"publish-btn", class:"btn btn-success btn-sm", style:"width:100%" %>
             <% end %>
           </div>
         <% end %>
@@ -42,7 +42,7 @@
 
       <% if @list.user != current_user %>
         <%# USERNAME %>
-        <%= link_to format_username(@list.user.username), @list.user %>
+        <%= link_to format_username(@list.user.username), @list.user, id:"list-user" %>
       <% end %>
 
       <div class="d-flex align-items-center">
@@ -84,12 +84,13 @@
 
     <%# CURRENT LIST & ADD ITEMS %>
     <div class="current-list" data-controller="add-item">
-      <ul id="sortList" class="pt-2">
+      <ul id="sortList" class="mt-3">
       <% @list.items.each do | item | %>
         <li class="list-item" data-value="list-order">
-          <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
+          <div class="item-card card pt-2 pb-1" data-controller="edit-item" data-edit-item-target="card">
             <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
-              <h5 class="list-item-title" data-action="click->edit-item#displayForm"><span class="my-handle">:: </span><%= item.name %>
+              <span class="my-handle">:: </span>
+              <h5 class="list-item-title" data-action="click->edit-item#displayForm"><%= item.name.titleize %>
               </h5>
 
               <div class="d-flex">
@@ -173,13 +174,13 @@
   </div>
     <div class="list-details-bottom">
       <%# TAG LINKS %>
-      <div class="d-flex">
+      <div class="d-flex tag">
         <% @list.tag_list.each do |tag| %>
           <%= link_to format_tag(tag), tagged_path(tag: tag) %>
         <% end %>
 
         <% if @list.tag_list.present? %>
-          <div id="tags" class="tag">
+          <div id="tags">
             <% if hide_button(@list.user)%>
               <%= link_to edit_user_list_path(current_user) do %>
                 <%# <i class="fas fa-pen fa-xs ms-2"></i> %>

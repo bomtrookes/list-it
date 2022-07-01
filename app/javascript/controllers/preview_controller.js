@@ -4,6 +4,14 @@ if(preview) {
   preview.addEventListener("click", pT)
   console.log("preview listener loaded")
 }
+if(document.querySelector(".infoBtn")) {
+  const infos = document.querySelectorAll(".infoBtn")
+  infos.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.currentTarget.classList.toggle("info-active")
+    })
+  })
+}
 
 function pT() {
   if(preview) {
@@ -24,6 +32,9 @@ function pT() {
   const listEdits = document.querySelectorAll(".list-editor")
 
   // list.classList.toggle("hide-nums")
+  if(preview) {
+    preview.classList.toggle("primary-active")
+  }
   title.classList.toggle("d-none");
   tags.classList.toggle("d-none");
   add.classList.toggle("d-none");

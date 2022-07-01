@@ -1,3 +1,10 @@
+.btn-primary {
+  background-color: rgb(0, 70, 185);
+}
+.btn-success {
+  background-color: $li-green;
+  color : white;
+}
 .btn-ghost {
   color: $li-green;
   border: 1px solid $li-green;
@@ -18,10 +25,6 @@
 .btn-ghoul-active {
   color : white;
 }
-.btn-ghost:hover {
-  opacity: 1;
-  color: $li-green;
-}
 
 .btn-flat {
   color: white;
@@ -35,19 +38,20 @@
 }
 .infoBtn {
   margin-bottom : 0;
+  color : rgb(145, 165, 200);
+  svg {
+    color : inherit;
+  }
 }
-
+.info-active {
+  color :rgb(0, 70, 185);
+}
 .btn-flat {
   color: white;
   padding: 8px 24px;
   border-radius: 50px;
   background: $li-green;
   transition: background 0.3s ease;
-}
-
-.btn-flat:hover {
-  background: $li-green-shadow;
-  color: white;
 }
 
 .btn-alert {
@@ -58,9 +62,8 @@
   transition: background 0.3s ease;
 }
 
-.btn-alert:hover {
-  background: $li-red;
-  color: white;
+.publish-btn, #preview {
+  margin : 0 4px;
 }
 
 .btn-search {
@@ -87,4 +90,8 @@
   input {
     width: 100%;
   }
+}
+.primary-active {
+  background-color: lightsteelblue;
+  color: rgb(0, 70, 185);
 }
