@@ -1,19 +1,19 @@
 <div id="add">
   <% if hide_button(@list.user) && @list.items.length <= 9 %>
-    <p class="add-list-item" data-add-item-target="addItem" data-action="click->add-item#nextItem">
+    <p class="add-list-item d-flex justify-content-center" data-add-item-target="addItem" data-action="click->add-item#nextItem">
       + List Item
     </p>
-    <%= simple_form_for [@item], html: { data: { add_item_target:"newForm" } } do |f| %>
+    <%= simple_form_for [@item], html: { data: { add_item_target:"newForm" }, id:"new-item" } do |f| %>
       <%= f.input :name, label: false, placeholder: "Item Name" %>
     <% if @list.article == true %>
       <%= f.input :description, label: false, placeholder: "Text..." %>
       <%= f.input :photo, as: :file, label: false %>
     <% end %>
       <%= f.hidden_field :list_id, value: @list.id %>
-      <%= f.submit %>
+      <%= f.submit "Add Item", style:"width: 100%" %>
     <% end %>
     <% else %>
-      <p class="d-none add-list-item" data-add-item-target="addItem newForm" data-action="click->add-item#nextItem">
+      <p class="d-none add-list-item d-flex justify-content-center" data-add-item-target="addItem newForm" data-action="click->add-item#nextItem">
       + List Item
     </p>
   <% end %>

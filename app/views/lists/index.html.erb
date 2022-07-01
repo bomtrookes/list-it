@@ -44,7 +44,7 @@
   <div class="row d-none" data-filter-search-target="top">
     <% if @top_lists.present? %>
       <%# list card starts %>
-      <% @top_lists.each do | list | %>
+      <% @top_lists.limit(20).each do | list | %>
         <div class="col-md-4 mt-1">
           <div class="card p-2 mb-2">
             <div class="d-flex justify-content-between align-items-center">

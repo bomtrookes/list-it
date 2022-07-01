@@ -1,39 +1,12 @@
  <div class="pad d-flex flex-column justify-content-between" data-controller="preview">
   <div>
-    <div class="photo-container d-flex justify-content-evenly align-items-end">
-        <%= cl_image_tag @list.photo.key, class: "list-photo-card mt-2" if @list.photo.key %>
-
     <span class ="d-none" id="published-status"><%= @list.published %></span>
     <span class ="d-none" id="user-status"><%= @list.user == current_user %></span>
-    <%# UPLOADED IMAGE %>
-      <%# LIST PUBLISH OPTIONS %>
-      <% if hide_button(@list.user) %>
-        <div class="container list-options d-flex justify-content-between mt-2">
-          <div class="d-flex align-items-center ghoul">
-            <%# PREVIEW %>
-            <% if @list.user == current_user %>
-              <%= link_to "Editor", "#", id:"preview", class:"btn btn-ghoul" %>
-                <%# <i class="fa-solid fa-eye"></i> %>
-            <% end %>
 
-            <%# SAVE %>
-            <%# if hide_button(@list.user) %>
-              <%#= link_to "Save", current_user %>
-                <%# <i class="fa-solid fa-file"></i> %>
-            <%# end %>
-          </div>
-
-          <%# PUBLISH %>
-          <% if @list.published == false %>
-            <%= link_to "Publish", publish_user_list_path(current_user, @list), id:"publish-btn", class:"btn btn-ghost" %>
-              <%# <i class="fa-solid fa-circle-check"></i> %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-    <%# TITLE %>
-    <div class="d-flex justify-content-between align-items-center mt-3">
-      <h1><%= @list.title %></h1>
+  <%# LIST PUBLISH OPTIONS %>
+    <% if @list.photo.key %>
+      <div class="card-photo-title mt-2 mb-2" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= cl_image_path @list.photo.key, class: "list-photo-card", crop: :fill %>); height: 140px">
+        <h1 id="list-title"><%= @list.title.titleize %></h1>
         <div id="title">
         <% if hide_button(@list.user)%>
           <%= link_to edit_user_list_path(current_user) do %>
@@ -41,14 +14,39 @@
           <% end %>
         <% end %>
       </div>
-    </div>
+      </div>
+    <% else %>
+      <div class="mt-2 card-title">
+        <%= @list.title %>
+      </div>
+    <% end %>
+
+        <% if hide_button(@list.user) %>
+          <div class="list-options d-flex justify-content-between mt-2">
+
+            <%# PREVIEW %>
+            <% if @list.user == current_user %>
+              <%= link_to "Preview", "#", id:"preview", class:"btn btn-primary btn-sm", style:"width:100%" %>
+                <%# <i class="fa-solid fa-eye"></i> %>
+            <% end %>
+
+            <%# PUBLISH %>
+            <% if @list.published == false %>
+              <%= link_to "Publish", publish_user_list_path(current_user, @list), id:"publish-btn", class:"btn btn-success btn-sm", style:"width:100%" %>
+            <% end %>
+          </div>
+        <% end %>
+
 
     <div class="d-flex justify-content-between align-content-center user-pin-vote pb-2">
-      <%# USERNAME %>
+
       <% if @list.user != current_user %>
-        <%= link_to format_username(@list.user.username), @list.user %>
+        <%# USERNAME %>
+        <%= link_to format_username(@list.user.username), @list.user, id:"list-user" %>
       <% end %>
+
       <div class="d-flex align-items-center">
+
           <%# LIKES %>
           <% unless hide_button(@list.user) %>
             <% if @vote %>
@@ -69,7 +67,6 @@
             </button>
           <% end %>
 
-
           <%#= PIN / UNPIN %>
           <% if @fav %>
             <%= button_to list_favourite_list_path(@list, @fav), class:"btn-pin btn-selected", method: :delete do %>
@@ -81,20 +78,19 @@
             <% end %>
           <% end %>
 
-
-
         <% end %>
       </div>
     </div>
 
     <%# CURRENT LIST & ADD ITEMS %>
     <div class="current-list" data-controller="add-item">
-      <ol id="sortList" class="hide-nums pt-4">
+      <ul id="sortList" class="mt-3">
       <% @list.items.each do | item | %>
         <li class="list-item" data-value="list-order">
-          <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
+          <div class="item-card card pt-2 pb-1" data-controller="edit-item" data-edit-item-target="card">
             <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
-              <h5 data-action="click->edit-item#displayForm"><span class="my-handle">:: </span><%= item.name %>
+              <span class="my-handle">:: </span>
+              <h5 class="list-item-title" data-action="click->edit-item#displayForm"><%= item.name.titleize %>
               </h5>
 
               <div class="d-flex">
@@ -107,7 +103,7 @@
 
                 <%# reveal text %>
                 <% if @list.article == true %>
-                  <p><i class="fa-solid fa-circle-info" data-action="click->edit-item#descBtn"></i>
+                  <p class="infoBtn"><i class="fa-solid fa-circle-info" data-action="click->edit-item#descBtn"></i>
                   </p>
                 <% end %>
               </div>
@@ -123,7 +119,7 @@
                   <%= f.input :photo, as: :file, label: false, placeholder: "Upload Photo" %>
                 <% end %>
                 <%= f.hidden_field :list_id, value: @list.id %>
-                <%= f.submit "Save" %>
+                <%= f.submit "Save", style:"width: 100%" %>
               <% end %>
             <% end %>
 
@@ -146,7 +142,7 @@
           </div>
         </li>
       <% end %>
-      </ol>
+      </ul>
 
       <%# LIST ITEM FORM %>
         <%= render "list_item_form" %>
@@ -178,23 +174,23 @@
   </div>
     <div class="list-details-bottom">
       <%# TAG LINKS %>
-      <div class="d-flex container">
+      <div class="d-flex tag">
         <% @list.tag_list.each do |tag| %>
           <%= link_to format_tag(tag), tagged_path(tag: tag) %>
         <% end %>
 
         <% if @list.tag_list.present? %>
-          <div id="tags" class="tag">
+          <div id="tags">
             <% if hide_button(@list.user)%>
               <%= link_to edit_user_list_path(current_user) do %>
-                <i class="fas fa-pen fa-xs ms-2"></i>
+                <%# <i class="fas fa-pen fa-xs ms-2"></i> %>
               <% end %>
             <% end %>
           </div>
         <% end %>
       </div>
 
-      <div id="create-info" class="d-flex justify-content-between container">
+      <div id="create-info" class="d-flex justify-content-between">
         <% if @list.published == false %>
             <em >Created <%= time_ago_in_words(@list.created_at) %> ago</em>
           <% else %>
