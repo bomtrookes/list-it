@@ -43,6 +43,7 @@
   margin-bottom : 0;
 }
 .infoBtn {
+  z-index : 6;
   margin-bottom : 0;
   color : $li-light-blue;
   svg {
@@ -131,4 +132,13 @@ a.btn.btn-ghost { color: $li-green; }
 .btn:focus {
   outline : none;
   box-shadow: none;
+}
+.my-handle {
+  position : absolute;
+  top : 8px;
+  left : 4px;
+  color : white;
+  span {
+    color : white;
+  }
 }

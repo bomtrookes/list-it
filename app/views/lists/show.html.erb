@@ -1,6 +1,7 @@
+
  <div class="pad d-flex flex-column justify-content-between" data-controller="preview">
   <div>
-    <span class ="d-none" id="published-status"><%= @list.published %></span>
+    <span class="d-none" id="published-status"><%= @list.published %></span>
 
   <%# LIST PUBLISH OPTIONS %>
     <% if @list.photo.key %>
@@ -91,16 +92,17 @@
     <%# CURRENT LIST & ADD ITEMS %>
     <div class="current-list" data-controller="add-item">
       <ul id="sortList" class="mt-3">
+      <% if @list.user != current_user %>
+        <div id="cover"></div>
+      <% end %>
       <% @list.items.each do | item | %>
         <li class="list-item" data-value="list-order">
           <div class="item-card card pt-2 pb-1" data-controller="edit-item" data-edit-item-target="card">
             <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
-                <% if @list.published == true %>
-                  <span class="my-handle d-none">:: </span>
-                <% else %>
-                  <span class="my-handle">:: </span>
-                  <% end %>
-              <h5 class="list-item-title" data-action="click->edit-item#displayForm"><%= item.name.titleize %>
+
+
+
+              <h5 class="list-item-title" data-edit-item-target="infos" data-action="click->edit-item#displayForm"><span class="my-handle">:: </span><%= item.name %>
               </h5>
 
               <div class="d-flex">
