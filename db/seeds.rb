@@ -1343,7 +1343,7 @@ list = List.create!(
     title: "My fav desserts",
     published: true,
     article: false,
-    tag_list: ['food', 'dessert', 'foodporn', 'foodie'],
+    tag_list: ['dessert', 'foodporn', 'foodie'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
@@ -1414,7 +1414,7 @@ list = List.create!(
     title: "Best desset toppings",
     published: true,
     article: false,
-    tag_list: ['food', 'dessert', 'toppings', 'foodporn'],
+    tag_list: ['dessert', 'toppings', 'foodporn'],
     created_at: Faker::Time.between(from: DateTime.now - 500, to: DateTime.now)
   }
 )
@@ -1483,7 +1483,7 @@ list = List.create!(
     title: "Best UK topping",
     published: true,
     article: false,
-    tag_list: ['food', 'dessert', 'toppings', 'UK', 'foodporn'],
+    tag_list: ['dessert', 'toppings', 'UK', 'foodporn'],
     created_at: Faker::Time.between(from: DateTime.now - 700, to: DateTime.now)
   }
 )
@@ -1598,7 +1598,7 @@ list = List.create!(
     title: "My top 10 food dishes ever",
     published: true,
     article: false,
-    tag_list: ['food', 'foodie', 'foodporn', 'recipe'],
+    tag_list: ['food', 'foodie', 'foodporn'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
@@ -1807,7 +1807,7 @@ list = List.create!(
     title: "Best mountains to climb with kids",
     published: true,
     article: false,
-    tag_list: ['mountain', 'climb', 'kids', 'parenting'],
+    tag_list: ['climb', 'kids', 'parenting'],
     created_at: Faker::Time.between(from: DateTime.now - 800, to: DateTime.now)
   }
 )
@@ -2179,7 +2179,7 @@ list = List.create!(
     title: "10 kid books for summer reading",
     published: true,
     article: false,
-    tag_list: ['books', 'reading', 'summer', 'kids', 'parenting'],
+    tag_list: ['books', 'summer', 'parenting'],
     created_at: Faker::Time.between(from: DateTime.now - 2, to: DateTime.now)
   }
 )
