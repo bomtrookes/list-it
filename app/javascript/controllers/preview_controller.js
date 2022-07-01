@@ -7,7 +7,8 @@ if(preview) {
 
 function pT() {
   if(preview) {
-    preview.classList.toggle("btn-ghoul-active");
+    // preview.classList.toggle("btn-ghoul-active");
+    console.log("sort this button out")
   }
   const title = document.querySelector("#title")
   const tags = document.querySelector("#tags")
@@ -15,14 +16,14 @@ function pT() {
   // const save = document.querySelector("#save-btn")
   // const share = document.querySelector("#share-btn")
   const add = document.querySelector("#add")
-  const list = document.querySelector("#sortList")
+  // const list = document.querySelector("#sortList")
   // const article = document.querySelector("#art")
   const grips = document.querySelectorAll(".my-handle")
   // const buttons = document.querySelector("#buttons")
   const delBtns = document.querySelectorAll(".delBtn")
   const listEdits = document.querySelectorAll(".list-editor")
 
-  list.classList.toggle("hide-nums")
+  // list.classList.toggle("hide-nums")
   title.classList.toggle("d-none");
   tags.classList.toggle("d-none");
   add.classList.toggle("d-none");

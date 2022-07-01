@@ -20,23 +20,19 @@
     margin-bottom : 4px;
   }
 }
-.hide-nums {
-  list-style : none;
-  padding-left: 10px;
-}
 ol {
   padding-left: 28px;
 }
 .photo-container {
   position: relative;
 }
-.list-options {
-  position: absolute;
-  padding : 8px;
-  width : 100%;
-  top : 0;
-  left: 0;
-}
+// .list-options {
+//   position: absolute;
+//   padding : 8px;
+//   width : 100%;
+//   top : 0;
+//   left: 0;
+// }
 .fa-eye, .fa-file {
   color : rgba(20, 61, 137, 0.8);
   font-size: 30px;
@@ -48,7 +44,13 @@ ol {
   border-radius: 50%;
 }
 .fa-ellipsis-vertical {
-  margin-right : 12px;
+  position: absolute;
+  top : 0;
+  right : 0;
+  padding-top : 4px;
+  padding-right : 6px;
+  color : white;
+  font-size: 16px;
 }
 #preview {
   margin-right : 8px;
@@ -84,16 +86,26 @@ ol {
   }
 }
 .list-item {
-  padding: 8px 4px 0 4px;
+  // padding: 8px 4px 0 4px;
   margin-bottom: 8px;
   background-color: rgba(216, 216, 216, 0.1);
   border-radius : 4px;
 }
+.list-item-title {
+  margin-bottom : 0;
+}
+
 .add-list-item {
   padding-left : 24px;
 }
+.item-infos {
+  margin-bottom : 6px;
+}
 .li-desc {
+  font-size : 14px;
+  text-align: justify;
   padding: 0 8px;
+  margin-bottom : 6px;
 }
 
 // update form
@@ -106,4 +118,16 @@ ol {
 }
 .simple_form .new_item {
   margin : 0 12px 8px 12px;
+}
+#sort-form, #new-item {
+  #item_name {
+  font-weight : bold;
+  font-size : 17px;
+  }
+  #item_description {
+    font-size : 15px;
+  }
+  #item_photo {
+    font-size : 15px;
+  }
 }

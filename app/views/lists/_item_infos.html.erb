@@ -1,7 +1,7 @@
 <div class="item-card" data-controller="edit-item" data-edit-item-target="card">
   <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
 
-    <h5 data-action="click->edit-item#displayForm"><span class="my-handle">:: </span><%= @item.name %></h5>
+    <h5 class="list-item-title" data-action="click->edit-item#displayForm"><span class="my-handle">:: </span><%= @item.name %></h5>
 
     <div class="d-flex">
       <% if hide_button(@item.list.user)%>
@@ -14,7 +14,7 @@
       <%# article %>
       <% if @item.list.article == true %>
         <%# reveal article %>
-        <p><i class="fa-solid fa-circle-info" data-action="click->edit-item#descBtn"></i></p>
+        <p class="infoBtn"><i class="fa-solid fa-circle-info" data-action="click->edit-item#descBtn"></i></p>
       <% end %>
     </div>
 
@@ -27,7 +27,7 @@
       <%= f.input :photo, as: :file %>
     <% end %>
     <%= f.hidden_field :list_id, value: @item.list.id %>
-    <%= f.submit "Save" %>
+    <%= f.submit "Save", style:"width: 100%" %>
   <% end %>
 
   <%# ARTICLE VIEW %>
@@ -38,8 +38,8 @@
             <em>+ List Description...</em>
           <% end %>
       <% else %>
-        <p><%= @item.description %></p>
-        <div class="d-flex justify-content-center">
+        <p class="li-desc"><%= @item.description %></p>
+        <div class="d-flex justify-content-center list-item-photo-box">
           <%= cl_image_tag item.photo.key, class:"list-item-photo-card" if item.photo.key %>
         </div>
         <% end %>

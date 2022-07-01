@@ -5,17 +5,18 @@
   border-radius: 50px;
   background-color: white;
   transition: opacity 0.3s ease;
+  font-size: 16px;
 }
 .btn-ghoul {
-  color: white;
-  border: 1px solid white;
+  color: rgb(26, 74, 219);
+  border: 1px solid rgb(26, 74, 219);
   padding: 6px 22px;
   border-radius: 50px;
-  background-color: rgb(26, 74, 219);
+  background-color: white;
+  font-size: 16px;
 }
 .btn-ghoul-active {
-  background-color : white;
-  color : rgb(26, 74, 219);
+  color : white;
 }
 .btn-ghost:hover {
   opacity: 1;
@@ -28,6 +29,12 @@
   border-radius: 50px;
   background: $li-green;
   transition: background 0.3s ease;
+}
+.delBtn {
+  margin-bottom : 0;
+}
+.infoBtn {
+  margin-bottom : 0;
 }
 
 .btn-flat {
