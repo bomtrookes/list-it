@@ -1,5 +1,5 @@
 .btn-primary {
-  background-color: rgb(0, 70, 185);
+  background-color: $li-blue;
 }
 .btn-success {
   background-color: $li-green;
@@ -15,8 +15,8 @@
   font-size: 16px;
 }
 .btn-ghoul {
-  color: rgb(26, 74, 219);
-  border: 1px solid rgb(26, 74, 219);
+  color: $li-blue;
+  border: 1px solid $li-blue;
   padding: 6px 22px;
   border-radius: 50px;
   background-color: white;
@@ -38,13 +38,13 @@
 }
 .infoBtn {
   margin-bottom : 0;
-  color : rgb(145, 165, 200);
+  color : $li-light-blue;
   svg {
     color : inherit;
   }
 }
 .info-active {
-  color :rgb(0, 70, 185);
+  color : $li-blue;
 }
 .btn-flat {
   color: white;
@@ -77,7 +77,7 @@
   padding : 0 8px;
   border : none;
   background-color : transparent;
-  color : grey;
+  color : $li-gray;
   font-size : 18px;
 }
 .btn-selected {
@@ -92,6 +92,10 @@
   }
 }
 .primary-active {
-  background-color: lightsteelblue;
-  color: rgb(0, 70, 185);
+  background-color: $li-light-blue;
+  color: $li-blue;
+}
+.btn:focus {
+  outline : none;
+  box-shadow: none;
 }

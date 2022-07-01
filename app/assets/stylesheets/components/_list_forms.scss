@@ -3,14 +3,14 @@
 	cursor: -webkit-grabbing;
 }
 .fa-xmark {
-  color : lightgrey;
+  color : $li-light-gray;
   padding-right : 8px;
 }
 .fa-circle-info {
-  color : lightgrey;
+  color : $li-light-gray;
 }
 .selected {
-  color : green;
+  color : $li-green;
   font-weight : bold;
 }
 .list-details-bottom {
@@ -33,10 +33,10 @@ ol {
 //   top : 0;
 //   left: 0;
 // }
-.fa-eye, .fa-file {
-  color : rgba(20, 61, 137, 0.8);
-  font-size: 30px;
-}
+// .fa-eye, .fa-file {
+//   color : rgba(20, 61, 137, 0.8);
+//   font-size: 30px;
+// }
 .fa-circle-check {
   color : $li-green;
   font-size : 40px;
@@ -62,7 +62,7 @@ ol {
 }
 .art-info {
   font-size: 14px;
-  color : lightgray;
+  color : $li-light-gray;
   padding-bottom : 4px;
 }
 // published / created at
@@ -84,9 +84,10 @@ ol {
 }
 #list-title {
   font-size : 9vw;
+  font-weight : bold;
+  font-family : "Work Sans"
 }
 .list-item {
-  // padding: 8px 4px 0 4px;
   margin-bottom: 8px;
   background-color: rgba(216, 216, 216, 0.1);
   border-radius : 4px;
@@ -95,6 +96,7 @@ ol {
   width : 100%;
   text-align : center;
   margin-bottom : 0;
+  color : $li-dark-gray;
 }
 #list-user {
   font-style: italic;
@@ -103,22 +105,27 @@ ol {
   font-size: 18px;
 }
 .add-list-item {
-  padding-left : 24px;
+  padding-right : 24px;
+  color : $li-gray;
 }
 .item-infos {
   margin-bottom : 6px;
 }
 .li-desc {
   font-size : 14px;
-  text-align: justify;
+  text-align: center;
   padding: 0 8px;
   margin-bottom : 6px;
+  color : $li-gray;
 }
 .tag > a {
   padding-right : 4px;
   font-style: italic;
   font-size : 14px;
   color : rgb(0, 70, 185);
+}
+.item-card {
+  padding: 0 8px 0 8px;
 }
 // update form
 #sort-form, #sort_form {
