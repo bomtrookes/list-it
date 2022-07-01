@@ -7,16 +7,18 @@ export default class extends Controller {
   connect() {
     this.articleTarget.classList.add("d-none")
     // this.addItemTarget.classList.add("d-none")
+    console.log("connected")
   }
 
   displayForm() {
     const status = document.querySelector("span")
-    const user = document.querySelector("#user-status")
-    if (status.innerText == "false") {
+    // const user = document.querySelector("#user-status")
+
       this.infosTarget.classList.add("d-none")
       this.formTarget.classList.remove("d-none")
       this.articleTarget.classList.add("d-none")
-      }
+
+      console.log("display form working")
   }
 
   descBtn() {

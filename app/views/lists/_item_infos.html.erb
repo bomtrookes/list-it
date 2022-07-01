@@ -1,7 +1,7 @@
 <div class="item-card card pt-2 pb-1" data-controller="edit-item" data-edit-item-target="card">
   <div class="item-infos d-flex justify-content-between" data-edit-item-target="infos">
     <span class="my-handle">:: </span>
-    <h5 class="list-item-title" data-action="click->edit-item#displayForm"><%= @item.name.titleize %></h5>
+    <h5 class="list-item-title" data-action="click->edit-item#displayForm"><span class="my-handle">:: </span><%= @item.name %></h5>
 
     <div class="d-flex">
       <% if hide_button(@item.list.user)%>
