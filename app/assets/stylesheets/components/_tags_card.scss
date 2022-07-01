@@ -23,3 +23,22 @@
   text-decoration: none !important;
   color: $li-green;
 }
+
+.tag-show span {
+  background-color: rgba(127, 200, 169, 0.3);
+  width: 100%;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 5px;
+  margin-bottom: 0;
+  display: flex;
+  color: $li-green;
+  justify-content: center;
+  align-items: center
+}
+
+.tag-show span a {
+  text-decoration: none;
+  color: $li-green;
+}
