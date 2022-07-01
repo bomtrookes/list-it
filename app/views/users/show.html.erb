@@ -1,27 +1,27 @@
 <div class="pad">
 
   <div class="pt-3">
-    <div class="d-flex justify-content-around align-items-center">
+
+    <%# Profile card starts %>
+    <div class="d-flex justify-content-around align-items-center mb-3">
       <div class="img-fluid">
         <%# profile image %>
         <%= image_tag @user.avatar, class: "avatar-profile", height: 100, width: 100, crop: :fill %>
       </div>
-
-
         <%# profile name & bio %>
         <div class="card-info d-flex flex-column justify-content-center">
           <h4><%= format_username(@user.username) %></h4>
           <p class="bio"><%= @user.bio %></p>
           <%# follow button %>
           <% unless hide_button(@user) %>
-            <div class="d-flex justify-content-center mb-3">
+            <div class="d-flex justify-content-center">
               <%= follow_or_unfollow_button(@user, @following) %>
             </div>
           <% end %>
         </div>
-
-
     </div>
+     <%# Profile card ends %>
+
         <%# Lists, Followers, Following %>
         <div class="profile-info stats mb-2">
           <ul class="d-flex justify-content-around" >
@@ -46,7 +46,7 @@
     <%# Published, Drafts, Pinned %>
     <% if hide_button(@user) %>
 
-    <div class="profile-nav pt-2 pb-2">
+    <div class="profile-nav pt-2 pb-2 mb-2">
       <ul class ="d-flex justify-content-around">
         <%# Lists %>
         <li class="d-flex flex-column align-items-center" data-action="click->change-view#lists" data-change-view-target="listicon">
@@ -70,7 +70,7 @@
 
       <%# Published lists card starts %>
       <% @user_lists.each do | list | %>
-      <div class="col-md-4 mt-2">
+      <div class="col-md-4 mt-1">
           <div class="card p-2 mb-2">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex flex-row align-items-center">
@@ -102,11 +102,15 @@
             <div class="d-flex justify-content-between align-items-end">
                 <div class="d-flex flex-row align-items-center">
                     <div class="mt-2 c-details">
-                      <span><em>Updated: <%= time_ago_in_words(list.created_at) %> ago</em></span>
+                        <% if created_today?(list) %>
+                          <span><em>Published: <%= time_ago_in_words(list.created_at) %> ago</em></span>
+                        <% else %>
+                           <span><em>Published: <%= time_ago_in_words(list.updated_at) %> ago</em></span>
+                        <% end %>
                     </div>
                 </div>
                   <div class="ms-2">
-                    <span class="text1"><%= list.votes.size %> <span class="text2">votes</span></span>
+                    <span class="text1"><%= list.votes.size %> <span class="text2"><%=  "like".pluralize(list.votes.size) %></span></span>
                   </div>
             </div>
           </div>
@@ -120,7 +124,7 @@
       <% if hide_button(@user) %>
         <% if unpublished_lists(@user).present? %>
           <% unpublished_lists(current_user).each do | list | %>
-          <div class="col-md-4 mt-2">
+          <div class="col-md-4 mt-1">
               <div class="card p-2 mb-2">
                 <% if !hide_button(@user) %>
                 <div class="d-flex justify-content-between align-items-center">
@@ -154,11 +158,11 @@
                 <div class="d-flex justify-content-between align-items-end">
                     <div class="d-flex flex-row align-items-center">
                         <div class="mt-2 c-details">
-                          <span><em>Updated: <%= time_ago_in_words(list.created_at) %> ago</em></span>
+                          <span><em>Created: <%= time_ago_in_words(list.created_at) %> ago</em></span>
                         </div>
                     </div>
                       <div class="ms-2">
-                        <span class="text1"><%= list.votes.size %> <span class="text2">votes</span></span>
+                        <span class="text1"><%= list.votes.size %> <span class="text2"><%=  "like".pluralize(list.votes.size) %></span></span>
                       </div>
                 </div>
               </div>
@@ -184,7 +188,7 @@
       <% if hide_button(@user) %>
         <% if @user.favourite_lists.present? %>
           <% @user.favourited_lists.each do | list | %>
-          <div class="col-md-4 mt-2">
+          <div class="col-md-4 mt-1">
               <div class="card p-2 mb-2">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="d-flex flex-row align-items-center">
@@ -216,11 +220,11 @@
                 <div class="d-flex justify-content-between align-items-end">
                     <div class="d-flex flex-row align-items-center">
                         <div class="mt-2 c-details">
-                          <span><em>Updated: <%= time_ago_in_words(list.created_at) %> ago</em></span>
+                          <span><em>Published: <%= time_ago_in_words(list.created_at) %> ago</em></span>
                         </div>
                     </div>
                       <div class="ms-2">
-                        <span class="text1"><%= list.votes.size %> <span class="text2">votes</span></span>
+                        <span class="text1"><%= list.votes.size %> <span class="text2"><%=  "like".pluralize(list.votes.size) %></span></span>
                       </div>
                 </div>
               </div>

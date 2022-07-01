@@ -10,4 +10,8 @@ module ApplicationHelper
   def format_tag(tag)
     '#' + tag
   end
+
+  def published_lists(user)
+    List.published_lists.where(user_id: user.id)
+  end
 end

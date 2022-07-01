@@ -31,4 +31,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Search Users, Lists, Tags
+  include PgSearch::Model
+  pg_search_scope :search_user, against: [:username], using: { tsearch: { prefix: true } }
+
 end
