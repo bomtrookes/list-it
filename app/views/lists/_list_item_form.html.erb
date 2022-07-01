@@ -1,8 +1,10 @@
 <div id="add">
   <% if hide_button(@list.user) && @list.items.length <= 9 %>
-    <p class="add-list-item d-flex justify-content-center" data-add-item-target="addItem" data-action="click->add-item#nextItem">
-      + List Item
-    </p>
+     <% if hide_button(@list.user) %>
+      <p class="add-list-item d-flex justify-content-center" data-add-item-target="addItem" data-action="click->add-item#nextItem">
+        + List Item
+      </p>
+    <% end %>
     <%= simple_form_for [@item], html: { data: { add_item_target:"newForm" }, id:"new-item" } do |f| %>
       <%= f.input :name, label: false, placeholder: "Item Name" %>
     <% if @list.article == true %>
@@ -13,8 +15,10 @@
       <%= f.submit "Add Item", style:"width: 100%" %>
     <% end %>
     <% else %>
-      <p class="d-none add-list-item d-flex justify-content-center" data-add-item-target="addItem newForm" data-action="click->add-item#nextItem">
-      + List Item
-    </p>
+       <% if hide_button(@list.user) %>
+        <p class="d-none add-list-item d-flex justify-content-center" data-add-item-target="addItem newForm" data-action="click->add-item#nextItem">
+        + List Item
+        </p>
+      <% end %>
   <% end %>
 </div>
