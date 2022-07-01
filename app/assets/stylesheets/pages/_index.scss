@@ -9,6 +9,10 @@
 //   background-color : rgba(0, 100, 0, 0.1) !important;
 // }
 
-* a {
+* a, a:link, a:visited, a:hover, a:active {
   text-decoration: none;
+}
+
+.regular-links a {
+  color: $li-green;
 }

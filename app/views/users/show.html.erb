@@ -14,8 +14,12 @@
           <p class="bio"><%= @user.bio %></p>
           <%# follow button %>
           <% unless hide_button(@user) %>
-            <div class="d-flex justify-content-center">
-              <%= follow_or_unfollow_button(@user, @following) %>
+            <div class="d-flex justify-content-center align-items-center mt-1">
+              <% if @following %>
+                <%= link_to "Unfollow", user_follow_path(@user, @following), class: "btn btn-follow", method: :delete %>
+              <% else %>
+                <%= link_to "Follow", user_follows_path(@user), class: "btn btn-follow", method: :post %>
+              <% end %>
             </div>
           <% end %>
         </div>
