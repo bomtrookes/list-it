@@ -100,12 +100,16 @@ ol {
 
 .c-details-username {
   font-weight: 300;
-  font-size: 14px;
-  margin-left: 8px;
+  font-size: 16px;
+  margin-left: 10px;
   a {
     text-decoration: none;
     color: $li-green;
   }
+}
+
+#tag-bigger {
+  font-size: 16px;
 }
 
 .tag span {
@@ -156,13 +160,14 @@ ol {
   display: flex;
   height: 80px;
   justify-content: center;
+  padding: 5px 15px;
   line-height: 1.2em;
   align-items: center;
   text-align: center;
   color: white;
   font-size: 24px;
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
@@ -173,6 +178,8 @@ ol {
   display: flex;
   justify-content: center;
   line-height: 1.2em;
+  padding: 0px 15px;
+  margin: 0;
   align-items: center;
   color: $li-gray;
   font-size: 24px;

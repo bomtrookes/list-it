@@ -8,12 +8,13 @@
 .btn-ghost {
   color: $li-green;
   border: 1px solid $li-green;
-  padding: 6px 22px;
-  border-radius: 50px;
+  padding: 8px 24px;
+  border-radius: 4px;
   background-color: white;
   transition: opacity 0.3s ease;
   font-size: 16px;
 }
+
 .btn-ghoul {
   color: $li-blue;
   border: 1px solid $li-blue;
@@ -25,16 +26,19 @@
 .btn-ghoul-active {
   color : white;
 }
+
 .back-button {
   margin-right : 0 !important;
 }
+
 .btn-flat {
   color: white;
   padding: 8px 24px;
-  border-radius: 50px;
+  border-radius: 4px;
   background: $li-green;
   transition: background 0.3s ease;
 }
+
 .delBtn {
   margin-bottom : 0;
 }
@@ -48,12 +52,39 @@
 .info-active {
   color : $li-blue;
 }
-.btn-flat {
+
+.btn-follow {
   color: white;
-  padding: 8px 24px;
-  border-radius: 50px;
+  padding: 4px 0px;
+  border-radius: 4px;
+  width: 100%;
   background: $li-green;
   transition: background 0.3s ease;
+}
+
+a.btn.btn-follow { color: #fff; }
+a.btn.btn-flat, input.btn.btn-flat { color: #fff;}
+a.btn.btn-ghost { color: $li-green; }
+
+// to avoid forms to have a blue border
+.form-control:focus {
+  outline: none !important;
+  border: 1px solid $li-green !important;
+  box-shadow: 0 0 3px $li-green !important;
+}
+
+// remove blue border from buttons
+.btn-follow:focus, a.btn-flat:focus, input.btn-flat:focus {
+  outline: none !important;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.btn-ghost:focus {
+  outline: none !important;
+  box-shadow: none;
+  border-color: transparent;
+  border: 1px solid $li-green;
 }
 
 .btn-alert {

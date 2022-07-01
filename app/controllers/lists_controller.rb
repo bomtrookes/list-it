@@ -8,8 +8,8 @@ class ListsController < ApplicationController
       @top_lists = top_lists.sort_by {|list| list.votes.size }.reverse!
       search_lists = List.published_lists.search_list(params[:query])
       @search_lists = search_lists.sort_by {|list| list.votes.size }.reverse!
-      search_users = List.published_lists.search_user(params[:query]).uniq { |list| list.user }
-      @search_users = search_users.sort_by {|list| list.user.lists.size }.reverse!
+      search_users = User.search_user(params[:query])
+      @search_users = search_users.sort_by {|user| user.lists.size }.reverse!
       search_tags = ActsAsTaggableOn::Tag.where("name ILIKE ?", "#{params[:query]}%")
       @search_tags = search_tags.sort_by {|tag| tagged_lists(tag).size }.reverse!
     else

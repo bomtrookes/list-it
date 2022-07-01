@@ -72,11 +72,11 @@
             <div class="d-flex justify-content-between align-items-end">
               <div class="d-flex flex-row align-items-center">
                 <div class="mt-2 c-details">
-                  <span><em>Updated: <%= time_ago_in_words(list.created_at) %> ago</em></span>
+                  <span><em>Published: <%= time_ago_in_words(list.created_at) %> ago</em></span>
                 </div>
               </div>
               <div class="ms-2">
-                <span class="text1"><%= list.votes.size %> <span class="text2">votes</span></span>
+                <span class="text1"><%= list.votes.size %> <span class="text2"><%=  "like".pluralize(list.votes.size) %></span></span>
               </div>
             </div>
           </div>
@@ -129,11 +129,11 @@
             <div class="d-flex justify-content-between align-items-end">
               <div class="d-flex flex-row align-items-center">
                 <div class="mt-2 c-details">
-                  <span><em>Updated: <%= time_ago_in_words(list.created_at) %> ago</em></span>
+                  <span><em>Published: <%= time_ago_in_words(list.created_at) %> ago</em></span>
                 </div>
               </div>
               <div class="ms-2">
-                <span class="text1"><%= list.votes.size %> <span class="text2">votes</span></span>
+                <span class="text1"><%= list.votes.size %> <span class="text2"><%=  "like".pluralize(list.votes.size) %></span></span>
               </div>
             </div>
           </div>
@@ -158,24 +158,24 @@
   <div class="row d-none" data-filter-search-target="user">
     <% if @search_users.present? %>
       <%# list card starts %>
-      <% @search_users.each do | list | %>
+      <% @search_users.each do | user | %>
         <div class="col-md-4 mt-1">
           <div class="card p-2 mb-2">
             <div class="d-flex justify-content-between align-items-center">
-              <%= link_to list.user do %>
+              <%= link_to user do %>
               <div class="d-flex flex-row align-items-center">
                 <div class="d-flex align-items-center">
-                    <%= image_tag list.user.avatar, class: "c-details-avatar", height: 30, width: 30, crop: :fill %>
+                    <%= image_tag user.avatar, class: "c-details-avatar", height: 45, width: 45, crop: :fill %>
                 </div>
                 <div class="c-details-username">
                   <p class="mb-0">
-                     <%= format_username(list.user.username) %>
+                     <%= format_username(user.username) %>
                   </p>
                 </div>
               </div>
               <% end %>
               <div class="ms-2">
-                <span class="text1"><%= list.user.lists.size %> <span class="text2">lists</span></span>
+                <span class="text1"><%= published_lists(user).size %> <span class="text2"><%= "list".pluralize(published_lists(user).size) %></span></span>
               </div>
             </div>
           </div>
@@ -198,38 +198,43 @@
 <%# TAG - search results %>
 
   <div class="row d-none" data-filter-search-target="tag">
-    <% if @search_tags.present? %>
+
+
       <%# list card starts %>
       <% @search_tags.each do | tag | %>
-        <div class="col-md-4 mt-1">
-          <div class="card p-2 mb-2">
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="d-flex flex-row">
-                <div class="c-details">
-                  <p class="mb-0">
-                     <%= link_to format_tag(tag.name), tagged_path(tag: tag.name) %>
-                  </p>
+        <% if tagged_lists(tag).size > 0 %>
+          <div class="col-md-4 mt-1">
+            <div class="card p-2 mb-2">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex flex-row">
+                  <div class="c-details">
+                    <p class="mb-0" id="tag-bigger">
+                      <%= link_to format_tag(tag.name), tagged_path(tag: tag.name) %>
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div class="ms-2">
-                <span class="text1"> <%= tagged_lists(tag).size %><span class="text2"> lists</span></span>
+                <div class="ms-2">
+                  <span class="text1"><%= tagged_lists(tag).size %> <span class="text2"><%= "list".pluralize(tagged_lists(tag).size) %></span></span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        <% else %>
+          <div class="col-md-4 mt-1">
+            <div class="p-2 mb-2">
+                <div class="mt-5">
+                    <div class="d-flex justify-content-center align-items-center" id="no-results">
+                      No results found
+                    </div>
+                </div>
+            </div>
+          </div>
+          <% break if tagged_lists(tag).size.zero? %>
+        <% end %>
       <% end %>
         <%# list card ends %>
-    <% else %>
-      <div class="col-md-4 mt-1">
-          <div class="p-2 mb-2">
-              <div class="mt-5">
-                  <div class="d-flex justify-content-center align-items-center" id="no-results">
-                    No results found
-                  </div>
-              </div>
-          </div>
-        </div>
-    <% end %>
+
+
   </div>
 
 </div>

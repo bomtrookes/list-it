@@ -13,7 +13,7 @@
             <div class="d-flex justify-content-between align-items-center">
               <div class="d-flex flex-row align-items-center">
                 <div class="d-flex align-items-center">
-                    <%= image_tag follower.avatar, class: "c-details-avatar", height: 30, width: 30, crop: :fill %>
+                    <%= image_tag follower.avatar, class: "c-details-avatar", height: 45, width: 45, crop: :fill %>
                 </div>
                 <div class="c-details-username">
                   <p class="mb-0">
@@ -22,7 +22,7 @@
                 </div>
               </div>
               <div class="ms-2">
-                <span class="text1"><%= follower.lists.size %> <span class="text2">lists</span></span>
+                <span class="text1"><%= published_lists(follower).size %> <span class="text2"><%=  "list".pluralize(published_lists(follower).size) %></span></span>
               </div>
             </div>
           </div>
