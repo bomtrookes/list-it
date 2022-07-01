@@ -4,6 +4,9 @@
 }
 .fa-xmark {
   color : $li-light-gray;
+  // padding-right : 8px;
+}
+.delBtn svg {
   padding-right : 8px;
 }
 .fa-circle-info {
@@ -128,6 +131,10 @@ ol {
   padding: 0 8px 0 8px;
 }
 // update form
+#new-list {
+  margin-bottom: 0;
+}
+
 #sort-form, #sort_form {
   margin-bottom : 12px;
 }
