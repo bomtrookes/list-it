@@ -63,7 +63,12 @@
   transition: background 0.3s ease;
 }
 
-a.btn.btn-follow { color: #fff; }
+.btn-publish {
+  background: $li-green;
+  color: white;
+}
+
+a.btn.btn-follow, a.btn.btn-publish, a#btn.btn-publish  { color: #fff; }
 a.btn.btn-flat, input.btn.btn-flat { color: #fff;}
 a.btn.btn-ghost { color: $li-green; }
 
@@ -75,7 +80,7 @@ a.btn.btn-ghost { color: $li-green; }
 }
 
 // remove blue border from buttons
-.btn-follow:focus, a.btn-flat:focus, input.btn-flat:focus {
+.btn-follow:focus, a.btn-flat:focus, input.btn-flat:focus, a#btn-publish:focus, a#preview.btn.btn-primary {
   outline: none !important;
   box-shadow: none;
   border-color: transparent;

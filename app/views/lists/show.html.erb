@@ -39,7 +39,7 @@
 
             <%# PUBLISH %>
             <% if @list.published == false %>
-              <%= link_to "Publish", publish_user_list_path(current_user, @list), id:"publish-btn", class:"btn btn-success btn-sm", style:"width:100%" %>
+              <%= link_to "Publish", publish_user_list_path(current_user, @list), id:"publish-btn", class:"btn btn-publish btn-sm", style:"width:100%" %>
             <% end %>
           </div>
         <% end %>
@@ -185,30 +185,64 @@
 
   </div>
     <div class="list-details-bottom">
-      <%# TAG LINKS %>
-      <div class="d-flex tag">
-        <% @list.tag_list.each do |tag| %>
-          <%= link_to format_tag(tag), tagged_path(tag: tag) %>
-        <% end %>
 
-        <% if @list.tag_list.present? %>
-          <div id="tags">
-            <% if hide_button(@list.user)%>
-              <%= link_to edit_user_list_path(current_user) do %>
+      <%# TAG LINKS STARTS %>
+      <%# <div class="d-flex tag"> %>
+        <%# <% @list.tag_list.each do |tag| %>
+          <%# <%= link_to format_tag(tag), tagged_path(tag: tag) %>
+        <%# <% end %>
+
+        <%# <% if @list.tag_list.present? %>
+          <%# <div id="tags"> %>
+            <%# <% if hide_button(@list.user)%>
+              <%# <%= link_to edit_user_list_path(current_user) do %>
                 <%# <i class="fas fa-pen fa-xs ms-2"></i> %>
-              <% end %>
+              <%# <% end %>
+            <%# <% end %>
+          <%# </div> %>
+        <%# <% end %>
+      <%# </div> %>
+      <%# TAG ENDS %>
+
+      <%# green tags start %>
+      <div class="list-details-bottom">
+        <div class="d-flex tag">
+          <div>
+            <% if @list.tags.present? %>
+              <div class="tag-show d-flex justify-content-between align-items-center">
+                <% @list.tag_list.each do |tag| %>
+                    <span><%= link_to format_tag(tag), tagged_path(tag: tag) %></span>
+                <% end %>
+                <div id="tags">
+                  <% if hide_button(@list.user)%>
+                    <%= link_to edit_user_list_path(current_user) do %>
+                      <%# <i class="fas fa-pen fa-xs ms-2"></i> %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
             <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
+      <%# green tags end %>
 
-      <div id="create-info" class="d-flex justify-content-between">
-        <% if @list.published == false %>
-            <em >Created <%= time_ago_in_words(@list.created_at) %> ago</em>
-          <% else %>
-            <em>Published <%= time_ago_in_words(@list.created_at) %> ago</em>
-            <em><%= @list.votes.size  %> <%= "like".pluralize(@list.votes.size) %></em>
-        <% end %>
+      <%# published info starts %>
+      <div id="create-info" class="d-flex justify-content-between align-items-end">
+        <div class="d-flex flex-row align-items-center">
+          <div class="mt-2">
+            <% if @list.published == false %>
+                <span><em>Created: <%= time_ago_in_words(@list.created_at) %> ago</em></span>
+              <% else %>
+                <span><em>Published: <%= time_ago_in_words(@list.created_at) %> ago</em></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="ms-2">
+          <span class="text3"><%= @list.votes.size %> <span class="text4"><%=  "like".pluralize(@list.votes.size) %></span></span>
+        </div>
       </div>
+      <%# published info ends %>
+
     </div>
 </div>

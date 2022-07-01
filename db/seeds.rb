@@ -430,7 +430,7 @@ list2 = List.create!(
 list3 = List.create(user_id: nuria.id, title: "Summer Holiday Destionations", published: false, tag_list: ["madrid", "spain", "summer"], article: false)
 
 # tarantino
-list4 = List.create(user_id: tarantino.id, title: "Ketchups I would die for", published: false, tag_list: ["ketchup", "food", "sauces"], article: true)
+list4 = List.create(user_id: tarantino.id, title: "Ketchups I would die for", published: true, tag_list: ["ketchup", "food", "sauces"], article: true)
 list_photo = URI.open("https://res.cloudinary.com/mygreenhouses/image/upload/v1656619207/list-it/user%20faces/Screenshot_2022-06-30_at_20.56.14_dm28zp.png")
 list4.photo.attach(io: list_photo, filename: 'listit.jpg', content_type: 'image/jpg')
 
