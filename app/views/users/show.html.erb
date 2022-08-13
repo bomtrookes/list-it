@@ -6,7 +6,11 @@
     <div class="d-flex justify-content-around align-items-center mb-3">
       <div class="img-fluid">
         <%# profile image %>
-        <%= image_tag @user.avatar, class: "avatar-profile", height: 100, width: 100, crop: :fill %>
+        <% if @user.avatar %>
+          <%= image_tag @user.avatar, class: "avatar-profile", height: 100, width: 100, crop: :fill %>
+        <% else %>
+          <%= image_tag "https://res.cloudinary.com/dzxuvey8d/image/upload/v1660399373/default-user_cdb0ks.jpg", class: "avatar-profile", height: 100, width: 100, crop: :fill %>
+        <% end %>
       </div>
         <%# profile name & bio %>
         <div class="card-info d-flex flex-column justify-content-center">
